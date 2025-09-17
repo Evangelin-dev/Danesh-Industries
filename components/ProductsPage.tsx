@@ -15,6 +15,12 @@ const productData = [
             'Proven reliability in oil & gas, petrochemicals, and industrial applications',
             'Backed by quality assurance and on-time delivery'
         ],
+        faq: [
+            { q: 'What are valve components?', a: 'Valve components are the individual parts that make up a valve, such as stems, plugs, and seals, designed for specific functions in controlling fluid flow.' },
+            { q: 'What materials are used in valve components?', a: 'We use high-grade materials like SS316, Teflon, and other alloys to ensure durability and compatibility with various applications.' },
+            { q: 'Where are valve components used?', a: 'They are used in oil & gas, petrochemicals, water treatment, and industrial processes where precise flow control is required.' },
+            { q: 'Why choose Danesh Industries for valve components?', a: 'We offer customized solutions, premium materials, and strict quality control to meet global standards.' }
+        ],
         items: [
             {
                 name: 'Plug Valve Components',
@@ -1222,12 +1228,21 @@ const ProductDetail: React.FC<{ item: any }> = ({ item }) => {
 
 const ProductsPage: React.FC = () => {
     const [openItem, setOpenItem] = useState<string | null>(null);
+    const [selectedItem, setSelectedItem] = useState<Record<string, string>>({});
+    const [selectedSection, setSelectedSection] = useState<Record<string, string>>({});
+    const [selectedCategory, setSelectedCategory] = useState<string>('');
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
         e.preventDefault();
         const element = document.getElementById(id);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }
+    };
+    const handleItemSelect = (categoryId: string, itemName: string) => {
+        setSelectedItem(prev => ({ ...prev, [categoryId]: itemName }));
+    };
+    const handleSectionSelect = (categoryId: string, section: string) => {
+        setSelectedSection(prev => ({ ...prev, [categoryId]: section }));
     };
     return (
         <>
@@ -1261,6 +1276,13 @@ const ProductsPage: React.FC = () => {
                         -webkit-text-fill-color: transparent;
                         background-clip: text;
                     }
+                    select option {
+                        background-color: grey;
+                        color: white;
+                    }
+                    select option:hover {
+                        background-color: #e3b37f;
+                    }
                 `
             }} />
             <div className="bg-brand-light py-20 relative" style={{ backgroundSize: 'cover', backgroundPosition: 'center', animation: 'products-slideshow 22s infinite' }}>
@@ -1276,20 +1298,41 @@ const ProductsPage: React.FC = () => {
                     <div className="sticky top-16 bg-brand-light py-4 z-40 mb-12 border-b-2 border-brand-yellow">
                     <div className="container mx-auto flex justify-center items-center space-x-4 md:space-x-8 overflow-x-auto whitespace-nowrap">
                         <h3 className="hidden md:block font-bold text-brand-dark flex-shrink-0">Navigate to:</h3>
-                        {productData.map(cat => (
-                            <a 
-                                key={cat.id} 
-                                href={`#${cat.id}`}
-                                onClick={(e) => handleNavClick(e, cat.id)}
-                                className="font-semibold text-brand-blue hover:text-brand-dark hover:underline transition-colors duration-300 flex-shrink-0 cursor-pointer"
-                            >
-                                {cat.category}
-                            </a>
-                        ))}
+                        <select
+                            value={selectedCategory}
+                            onChange={(e) => setSelectedCategory(e.target.value)}
+                            className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue"
+                            style={{ backgroundColor: '#FFC400' }}
+                        >
+                            <option value="">Select a category</option>
+                            <option value="valve-components">Valve Components</option>
+                            <option value="flanges">Flanges</option>
+                            <option value="ms-flanges">MS Flanges</option>
+                            <option value="ss-304-flanges">SS 304 Flanges</option>
+                            <option value="ms-spacer-flanges">MS Spacer Flanges</option>
+                            <option value="ss-316-flanges">SS 316 Flanges</option>
+                            <option value="gi-slip-on-flanges">GI Slip-On Flanges</option>
+                            <option value="gi-threaded-flanges">GI Threaded Flanges</option>
+                            <option value="pipe-fittings">Pipe Fittings</option>
+                            <option value="cast-steel-screwed-fittings">Cast Steel Screwed Fittings</option>
+                            <option value="ductile-iron-fittings">Ductile Iron Fittings</option>
+                            <option value="grooved-fittings">Grooved Fittings</option>
+                            <option value="forged-steel-fittings">Forged Steel Fittings</option>
+                            <option value="gi-r-brand-fittings">GI R Brand Fittings</option>
+                            <option value="gi-fittings">GI Fittings</option>
+                            <option value="ss-fittings">Stainless Steel (SS) Fittings</option>
+                            <option value="pull-studs">Pull Studs</option>
+                            <option value="plug-valves">Plug Valves</option>
+                            <option value="control-valves">Control Valves</option>
+                            <option value="mild-steel-pins">Mild Steel Pins</option>
+                            <option value="partition-plate-die">Partition Plate Die</option>
+                            <option value="ball-valve-seat-ring">Ball Valve Seat Ring</option>
+                            <option value="solenoid-valves">Solenoid Valves</option>
+                        </select>
                     </div>
                 </div>
 
-                    {productData.map((categoryData, catIndex) => (
+                    {productData.filter(cat => selectedCategory === cat.id).map((categoryData, catIndex) => (
                         <section key={categoryData.id} id={categoryData.id} className="mb-20 scroll-mt-32 animate-fade-in" style={{ animationDelay: `${0.5 + catIndex * 0.2}s` }}>
                             <div className="mb-8">
                                 <h2 className="text-3xl lg:text-4xl font-bold gradient-text-alt mb-4 border-l-4 border-brand-yellow pl-4">{categoryData.category}</h2>
@@ -1362,7 +1405,7 @@ const ProductsPage: React.FC = () => {
                                 )}
                                 {categoryData.advantages && (
                                     <div className="mt-6">
-                                        <h3 className="text-2xl font-bold text-brand-blue mb-4">Benefits of Forged Steel Fittings</h3>
+                                        <h3 className="text-2xl font-bold text-brand-blue mb-4">Benefits of Danesh Industries Flanges</h3>
                                         <ul className="list-none space-y-2 text-lg text-brand-dark">
                                             {categoryData.advantages.map((adv, index) => (
                                                 <li key={index} className="flex items-center">
@@ -1459,12 +1502,20 @@ const ProductsPage: React.FC = () => {
                                     </div>
                                 )}
                             </div>
-                            <div className="bg-white rounded-lg shadow-lg">
-                                {categoryData.items.map((item, index) => (
-                                    <AccordionItem key={index} title={item.name} isOpen={openItem === `${categoryData.id}-${item.name}`} onToggle={() => setOpenItem(openItem === `${categoryData.id}-${item.name}` ? null : `${categoryData.id}-${item.name}`)}>
-                                        <ProductDetail item={item} />
-                                    </AccordionItem>
-                                ))}
+                            <div className="bg-white rounded-lg shadow-lg p-6">
+                                <select
+                                    value={selectedItem[categoryData.id] || ''}
+                                    onChange={(e) => handleItemSelect(categoryData.id, e.target.value)}
+                                    className="w-full p-3 border border-gray-300 rounded-md mb-6 focus:outline-none focus:ring-2 focus:ring-brand-blue"
+                                >
+                                    <option value="">Select an item</option>
+                                    {categoryData.items.map((item, index) => (
+                                        <option key={index} value={item.name}>{item.name}</option>
+                                    ))}
+                                </select>
+                                {selectedItem[categoryData.id] && (
+                                    <ProductDetail item={categoryData.items.find(item => item.name === selectedItem[categoryData.id])} />
+                                )}
                             </div>
                         </section>
                     ))}

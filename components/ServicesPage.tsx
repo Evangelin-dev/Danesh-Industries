@@ -36,12 +36,20 @@ const servicesData: Service[] = [
 ];
 
 const ServiceCard: React.FC<{ service: Service }> = ({ service }) => (
-    <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-        <div className="text-brand-blue mb-4">
-            {service.icon}
+    <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-[300px] flex flex-col">
+        <div className="text-brand-blue mb-3 flex-shrink-0">
+            {React.cloneElement(service.icon, { className: "h-8 w-8" })}
         </div>
-        <h3 className={`text-2xl font-bold mb-3 ${service.title === "Precision Machining" ? "text-brand-blue hover:text-brand-yellow" : "text-brand-blue"} transition-colors duration-300`}>{service.title}</h3>
-        <p className="text-brand-dark leading-relaxed">{service.description}</p>
+        <h3 className={`text-xl font-bold mb-2 ${
+            service.title === "Precision Machining" 
+                ? "text-brand-blue hover:text-brand-yellow" 
+                : "text-brand-blue"
+        } transition-colors duration-300 flex-shrink-0`}>
+            {service.title}
+        </h3>
+        <p className="text-brand-dark text-sm leading-relaxed overflow-y-auto flex-grow">
+            {service.description}
+        </p>
     </div>
 );
 
@@ -51,11 +59,11 @@ const ServicesPage: React.FC = () => {
             <style dangerouslySetInnerHTML={{
                 __html: `
                     @keyframes services-slideshow {
-                        0% { background-image: url('https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?q=80&w=2070&auto=format&fit=crop'); }
-                        25% { background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop'); }
-                        50% { background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop'); }
-                        75% { background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070&auto=format&fit=crop'); }
-                        100% { background-image: url('https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?q=80&w=2070&auto=format&fit=crop'); }
+                        0% { background-image: url('https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?q=80&w=4000&auto=format&fit=crop'); }
+                        25% { background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=4000&auto=format&fit=crop'); }
+                        50% { background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=4000&auto=format&fit=crop'); }
+                        75% { background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=4000&auto=format&fit=crop'); }
+                        100% { background-image: url('https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?q=80&w=4000&auto=format&fit=crop'); }
                     }
                     @keyframes fade-in {
                         from { opacity: 0; transform: translateY(20px); }
@@ -74,9 +82,13 @@ const ServicesPage: React.FC = () => {
                         <h1 className="text-4xl font-extrabold text-brand-dark">Our Services</h1>
                         <p className="mt-4 text-lg text-brand-gray">Comprehensive solutions from design to delivery.</p>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                         {servicesData.map((service, index) => (
-                            <div key={service.title} className="animate-fade-in" style={{ animationDelay: `${index * 0.2}s` }}>
+                            <div 
+                                key={service.title} 
+                                className="animate-fade-in w-full"
+                                style={{ animationDelay: `${index * 0.2}s` }}
+                            >
                                 <ServiceCard service={service} />
                             </div>
                         ))}

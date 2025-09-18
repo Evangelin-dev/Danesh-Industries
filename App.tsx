@@ -7,7 +7,7 @@ import AboutPage from './components/AboutPage';
 import ProductsPage from './components/ProductsPage';
 import ServicesPage from './components/ServicesPage';
 import TechnologyPage from './components/TechnologyPage';
-import TestimonialsPage from './components/TestimonialsPage';
+// import TestimonialsPage from './components/TestimonialsPage';
 import ContactPage from './components/ContactPage';
 import TermsPage from './components/TermsPage';
 import PrivacyPage from './components/PrivacyPage';
@@ -40,7 +40,7 @@ const App: React.FC = () => {
             <Route path="/capabilities" element={<CapabilitiesPage />} />
             <Route path="/technology" element={<TechnologyPage />} />
             <Route path="/certifications" element={<CertificationsPage />} />
-            <Route path="/testimonials" element={<TestimonialsPage />} />
+            {/* <Route path="/testimonials" element={<TestimonialsPage />} /> */}
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/terms" element={<TermsPage />} />

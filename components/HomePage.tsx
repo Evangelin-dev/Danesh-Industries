@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const highlights = [
@@ -93,7 +93,58 @@ const highlights = [
 	},
 ];
 
+const testimonials = [
+	{
+		quote: 'Thanks for the fast delivery within a short span.',
+		author: 'Arun Kumar',
+		company: 'Flowserve Sanmar Ltd',
+		logo: '/logos/flowserve-sanmar.jpeg', // Updated with logo from logos.docx
+	},
+	{
+		quote:
+			'The supply of materials we received was timely and of high quality. The consistency in your deliveries has helped us maintain our production schedule smoothly. Keep up the good work!',
+		author: 'Karthick',
+		company: 'Armstrong International Pvt Ltd',
+		logo: '/logos/armstrong-international.png', // Updated with logo from logos.docx
+	},
+	{
+		quote:
+			'Danesh Industries has been a reliable partner for our critical valve components. Their precision machining is top-notch.',
+		author: 'Priya Singh',
+		company: 'IGP Engineers',
+		logo: '/logos/priyasingh.jpeg', // Updated with logo from logos.docx
+	},
+	{
+		quote:
+			'The quality of the flanges we ordered exceeded our expectations. Excellent service and support from their team.',
+		author: 'Rajesh Menon',
+		company: 'VK Fasteners',
+		logo: '/logos/vkfasteners.jpeg', // Updated with logo from logos.docx
+	},
+	{
+		quote:
+			'We appreciate the custom solutions and the attention to detail. Danesh Industries is our go-to for specialized fittings.',
+		author: 'Anjali Verma',
+		company: 'Autosys Pvt Ltd',
+		logo: '/logos/autosys.jpeg', // Updated with logo from logos.docx
+	},
+];
+
 const HomePage: React.FC = () => {
+	const [currentIndex, setCurrentIndex] = useState(0);
+
+	const handlePrev = () => {
+		setCurrentIndex((prevIndex) =>
+			prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+		);
+	};
+
+	const handleNext = () => {
+		setCurrentIndex((prevIndex) =>
+			prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+		);
+	};
+
 	const backgroundStyle = {
 		backgroundImage:
 			"url('https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?q=80&w=2070&auto=format&fit=crop')",
@@ -195,17 +246,109 @@ const HomePage: React.FC = () => {
 									<h3 className='text-xl font-semibold mb-2 hover:text-brand-yellow transition-colors duration-300'>
 										{item.title}
 									</h3>
-									<iframe
-										className='w-full h-96 rounded-2xl shadow-lg'
-										src={item.title === "Wide Range of Industrial Fittings & Flanges" ? "https://www.youtube.com/embed/example2" : "https://www.youtube.com/embed/-PDEwil52Lg"}
-										title='YouTube Shorts Video'
-										frameBorder='0'
-										allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-										allowFullScreen
-									></iframe>
+									
 								</div>
 							))}
 						</div>
+					</div>
+				</div>
+			</section>
+			{/* YouTube video embed */}
+			<div className="container mx-auto px-6 py-4 ">
+				<div className="flex justify-end"> {/* Aligns content to the right */}
+					<div className="w-full md:w-1/2"> {/* Takes up half width on medium screens and up */}
+						<iframe
+							className='w-full aspect-video rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300'
+							src='https://www.youtube.com/embed/R2eZH0n2Gd0'
+							title='Company Overview'
+							frameBorder='0'
+							allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+							allowFullScreen
+						></iframe>
+					</div>
+				</div>
+			</div>
+
+			{/* Testimonials Section */}
+			<section className='bg-brand-light py-20 relative' style={{ ...backgroundStyle }}>
+				<div className='absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black opacity-85'></div>
+				<div className='container mx-auto px-3 relative z-10'>
+					<div className='text-center mb-16'>
+						<h2 className='text-4xl font-extrabold text-white'>
+							Clientele & Testimonials
+						</h2>
+						<p className='mt-4 text-lg text-gray-300'>
+							Trusted by leading clients in oil & gas, valves, pumps, and engineering
+							sectors.
+						</p>
+					</div>
+
+					<div className='relative max-w-7xl mx-auto'>
+						<div className='overflow-hidden relative'>
+							<div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+								{testimonials.slice(currentIndex, currentIndex + 3).map((testimonial, index) => (
+									<div
+										key={index}
+										className='bg-black bg-opacity-50 p-8 rounded-lg shadow-lg flex flex-col justify-between h-full transition-all duration-500 hover:transform hover:scale-105'
+									>
+										<div className='flex-grow'>
+											<svg
+												className='w-10 h-10 text-brand-yellow mb-4'
+												fill='currentColor'
+												viewBox='0 0 32 32'
+											>
+												<path d='M9.333 22.583c0 2.25 1.042 4.125 3.125 5.625l2.208-2.833c-1.042-.667-1.583-1.625-1.583-2.875 0-.917.333-1.625 1-2.125.667-.5 1.5-1.042 2.5-1.625 1.25-.75 2.167-1.542 2.75-2.375.583-.833.875-1.833.875-3 0-2.417-.917-4.417-2.75-6S15.417 1 13 1c-2.417 0-4.417.875-6 2.625S4 7.583 4 10.333c0 3.083.833 5.75 2.5 8 1.667 2.25 3.833 3.25 3.833 4.25z'></path>
+											</svg>
+											<p className='text-white text-lg italic mb-6'>
+												{`"${testimonial.quote}"`}
+											</p>
+										</div>
+										<div className='flex justify-between items-end'>
+											<div>
+												<p className='font-bold text-brand-yellow'>
+													{testimonial.author}
+												</p>
+												<p className='text-gray-300'>{testimonial.company}</p>
+											</div>
+											{testimonial.logo && (
+												<img
+													src={testimonial.logo}
+													alt={testimonial.company}
+													className='h-12 w-auto object-contain'
+												/>
+											)}
+										</div>
+									</div>
+								))}
+							</div>
+						</div>
+
+						<button
+							onClick={handlePrev}
+							className='absolute top-1/2 -left-4 md:-left-12 transform -translate-y-1/2 bg-black bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-75 transition'
+						>
+							<svg
+								className='w-6 h-6'
+								fill='none'
+								stroke='currentColor'
+								viewBox='0 0 24 24'
+							>
+								<path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M15 19l-7-7 7-7' />
+							</svg>
+						</button>
+						<button
+							onClick={handleNext}
+							className='absolute top-1/2 -right-4 md:-right-12 transform -translate-y-1/2 bg-black bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-75 transition'
+						>
+							<svg
+								className='w-6 h-6'
+								fill='none'
+								stroke='currentColor'
+								viewBox='0 0 24 24'
+							>
+								<path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M9 5l7 7-7 7' />
+							</svg>
+						</button>
 					</div>
 				</div>
 			</section>

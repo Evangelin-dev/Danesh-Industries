@@ -9,6 +9,31 @@ const Card: React.FC<{ title: string; children: React.ReactNode }> = ({ title, c
     </div>
 );
 
+const clientLogos = [
+    '/client_logos/c1.png',
+    '/client_logos/c2.png',
+    '/client_logos/c3.png',
+    '/client_logos/c4.png',
+    '/client_logos/c5.png',
+    '/client_logos/c6.png',
+    '/client_logos/c7.png',
+    '/client_logos/Picture1.png',
+    '/client_logos/Picture2.png',
+    '/client_logos/Picture3.png',
+    '/client_logos/Picture4.png',
+    '/client_logos/Picture5.png',
+    '/client_logos/Picture6.png',
+    '/client_logos/Picture7.png',
+    '/client_logos/Picture9.png',
+    '/client_logos/Picture10.png',
+    '/client_logos/Picture11.png',
+    '/client_logos/Picture12.png',
+    '/client_logos/Picture14.png',
+    '/client_logos/Picture15.png',
+    '/client_logos/Picture16.png',
+    '/client_logos/Picture17.png',
+    '/client_logos/Picture18.png',
+];
 
 const AboutPage: React.FC = () => {
     return (
@@ -45,13 +70,52 @@ const AboutPage: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="mt-20 bg-white p-10 rounded-lg shadow-lg">
+                <div className="mt-20 bg-white p-10 rounded-lg shadow-lg overflow-hidden">
                     <h2 className="text-3xl font-bold text-brand-dark text-center mb-6">Our Trusted Clients</h2>
-                    <div className="text-center">
-                        <p className="text-lg text-brand-dark mb-4">We are proud to serve leading companies in the industry, including:</p>
-                        <ul className="list-disc list-inside text-lg text-brand-dark">
-                            <li>Flowserve Sanmar Ltd</li>
-                        </ul>
+                    <p className="text-lg text-brand-dark text-center mb-8">
+                        We are proud to serve leading companies in the industry
+                    </p>
+                    
+                    <div className="relative overflow-hidden w-full py-4">
+                        <style dangerouslySetInnerHTML={{
+                            __html: `
+                                @keyframes scroll {
+                                    0% { transform: translateX(0); }
+                                    100% { transform: translateX(-50%); }
+                                }
+                                .animate-scroll {
+                                    animation: scroll 30s linear infinite;
+                                }
+                                .logo-container:hover .animate-scroll {
+                                    animation-play-state: paused;
+                                }
+                            `
+                        }} />
+                        
+                        <div className="logo-container relative w-full overflow-hidden">
+                            <div className="animate-scroll flex space-x-8 whitespace-nowrap">
+                                {/* First set of logos */}
+                                {clientLogos.map((logo, index) => (
+                                    <div key={`logo1-${index}`} className="inline-block">
+                                        <img 
+                                            src={logo} 
+                                            alt={`Client Logo ${index + 1}`}
+                                            className="h-28 max-w-[220px] w-auto object-contain hover:scale-110 transition-transform duration-300"
+                                        />
+                                    </div>
+                                ))}
+                                {/* Duplicate set for seamless scrolling */}
+                                {clientLogos.map((logo, index) => (
+                                    <div key={`logo2-${index}`} className="inline-block">
+                                        <img 
+                                            src={logo} 
+                                            alt={`Client Logo ${index + 1}`}
+                                            className="h-28 max-w-[220px] w-auto object-contain hover:scale-110 transition-transform duration-300"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const PRODUCT_IMAGE = 'https://www.mcneilinstruments.com/wp-content/uploads/2022/08/industrial-valve-500x500-1.png';
+const PRODUCT_IMAGE = 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=4000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
 // Data extracted from the user-provided document
 const productData = [
@@ -167,12 +167,12 @@ const productData = [
         items: [
             {
                 name: 'SS 304 Slip-On Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/ss-slip-on-flangesimage.jpg',
                 keyFeatures: ['Durability', 'Corrosion Resistance', 'Versatility', 'Affordability']
             },
             {
                 name: 'SS 304 Weld Neck Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/ss-304-weld-neck-flanges-image.jpeg',
                 keyFeatures: ['High Strength & Durability', 'Excellent Sealing', 'Versatile Applications']
             }
         ]
@@ -1218,7 +1218,7 @@ const ProductDetail: React.FC<{ item: any }> = ({ item }) => {
             {item.specifications && (<div><h4 className="text-lg font-semibold mb-2">Specifications</h4>{renderTable(item.specifications)}</div>)}
             {item.additionalInfo && (<div><h4 className="text-lg font-semibold mb-2">Additional Information</h4>{renderTable(item.additionalInfo)}</div>)}
             {item.keyFeatures && (<div><h4 className="text-lg font-semibold mb-2">Key Features</h4>{renderList(item.keyFeatures)}</div>)}
-            {item.additionalNote && <p className="text-lg text-brand-gray italic">{item.additionalNote}</p>}
+            {item.additionalNote && <p className="text-lg text-white  italic">{item.additionalNote}</p>}
             {item.advantages && (<div><h4 className="text-lg font-semibold mb-2">Advantages</h4>{renderList(item.advantages)}</div>)}
             {item.applications && (<div><h4 className="text-lg font-semibold mb-2">Applications</h4>{renderList(item.applications)}</div>)}
             {item.faq && (<div><h4 className="text-lg font-semibold mb-2">FAQs</h4>{renderFaq(item.faq)}</div>)}
@@ -1249,12 +1249,12 @@ const ProductsPage: React.FC = () => {
             <style dangerouslySetInnerHTML={{
                 __html: `
                     @keyframes products-slideshow {
-                        0% { background-image: url('https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?q=80&w=2070&auto=format&fit=crop'); }
-                        20% { background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop'); }
-                        40% { background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop'); }
-                        60% { background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070&auto=format&fit=crop'); }
-                        80% { background-image: url('https://images.unsplash.com/photo-1581092921462-63f1c1ae3b09?q=80&w=2070&auto=format&fit=crop'); }
-                        100% { background-image: url('https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?q=80&w=2070&auto=format&fit=crop'); }
+                        0% { background-image: url('https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?q=80&w=4000&auto=format&fit=crop'); }
+                        20% { background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=4000&auto=format&fit=crop'); }
+                        40% { background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=4000&auto=format&fit=crop'); }
+                        60% { background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=4000&auto=format&fit=crop'); }
+                        80% { background-image: url('https://images.unsplash.com/photo-1581092921462-63f1c1ae3b09?q=80&w=4000&auto=format&fit=crop'); }
+                        100% { background-image: url('https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?q=80&w=4000&auto=format&fit=crop'); }
                     }
                     @keyframes fade-in {
                         from { opacity: 0; transform: translateY(20px); }
@@ -1285,19 +1285,19 @@ const ProductsPage: React.FC = () => {
                     }
                 `
             }} />
-            <div className="bg-brand-light py-20 relative" style={{ backgroundSize: 'cover', backgroundPosition: 'center', animation: 'products-slideshow 22s infinite' }}>
-                <div className="absolute inset-0 bg-white opacity-40"></div>
+            <div className="bg-brand-dark py-20 relative" style={{ backgroundSize: 'cover', backgroundPosition: 'center', backgroundImage: 'url(/stockvalve.jpg.png)' }}>
+                <div className="absolute inset-0 bg-blue-900 opacity-40"></div>
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="text-center mb-16 animate-fade-in">
                         <h1 className="text-4xl lg:text-5xl font-extrabold gradient-text">Our Products</h1>
-                        <p className="mt-4 text-lg text-brand-gray max-w-3xl mx-auto">
+                        <p className="mt-4 text-lg text-white  max-w-3xl mx-auto">
                             Explore our comprehensive range of high-quality, precision-engineered components for various industrial applications.
                         </p>
                     </div>
 
                     <div className="sticky top-16 bg-brand-light py-4 z-40 mb-12 border-b-2 border-brand-yellow">
                     <div className="container mx-auto flex justify-center items-center space-x-4 md:space-x-8 overflow-x-auto whitespace-nowrap">
-                        <h3 className="hidden md:block font-bold text-brand-dark flex-shrink-0">Navigate to:</h3>
+                        <h3 className="hidden md:block font-bold text-white flex-shrink-0">Navigate to:</h3>
                         <select
                             value={selectedCategory}
                             onChange={(e) => setSelectedCategory(e.target.value)}
@@ -1336,7 +1336,7 @@ const ProductsPage: React.FC = () => {
                         <section key={categoryData.id} id={categoryData.id} className="mb-20 scroll-mt-32 animate-fade-in" style={{ animationDelay: `${0.5 + catIndex * 0.2}s` }}>
                             <div className="mb-8">
                                 <h2 className="text-3xl lg:text-4xl font-bold gradient-text-alt mb-4 border-l-4 border-brand-yellow pl-4">{categoryData.category}</h2>
-                                <p className="text-lg text-brand-gray">{categoryData.introduction}</p>
+                                <p className="text-lg text-white ">{categoryData.introduction}</p>
                                 {categoryData.uses && (
                                     <div className="mt-6">
                                         <h3 className="text-2xl font-bold text-brand-blue mb-4">Uses of Forged Steel Fittings</h3>
@@ -1369,8 +1369,8 @@ const ProductsPage: React.FC = () => {
                                 {categoryData.composition && (
                                     <div className="mt-6">
                                         <h3 className="text-2xl font-bold text-brand-blue mb-4">Composition of Ductile Iron Fittings</h3>
-                                        <p className="text-lg text-brand-dark mb-2">{categoryData.composition.text}</p>
-                                        <ul className="list-none space-y-1">
+                                        <p className="text-lg text-white mb-2">{categoryData.composition.text}</p>
+                                        <ul className="list-none space-y-1 text-white">
                                             {categoryData.composition.points.map((point, index) => (
                                                 <li key={index} className="flex items-center">
                                                     <span className="text-green-500 mr-2">•</span>{point}
@@ -1382,7 +1382,7 @@ const ProductsPage: React.FC = () => {
                                 {categoryData.whyChoose && (
                                     <div className="mt-6">
                                         <h3 className="text-2xl font-bold text-brand-blue mb-4">Why Choose Danesh Industries {categoryData.category}?</h3>
-                                        <ul className="list-none space-y-2 text-lg text-brand-dark">
+                                        <ul className="list-none space-y-2 text-lg text-white">
                                             {categoryData.whyChoose.map((point, index) => (
                                                 <li key={index} className="flex items-center">
                                                     <span className="text-green-500 mr-2">✔</span>{point}
@@ -1394,7 +1394,7 @@ const ProductsPage: React.FC = () => {
                                 {categoryData.keyFeatures && (
                                     <div className="mt-6">
                                         <h3 className="text-2xl font-bold text-brand-blue mb-4">Key Features of {categoryData.category}</h3>
-                                        <ul className="list-none space-y-2 text-lg text-brand-dark">
+                                        <ul className="list-none space-y-2 text-lg text-white">
                                             {categoryData.keyFeatures.map((feature, index) => (
                                                 <li key={index} className="flex items-center">
                                                     <span className="text-blue-500 mr-2">●</span>{feature}
@@ -1406,7 +1406,7 @@ const ProductsPage: React.FC = () => {
                                 {categoryData.advantages && (
                                     <div className="mt-6">
                                         <h3 className="text-2xl font-bold text-brand-blue mb-4">Benefits of Danesh Industries Flanges</h3>
-                                        <ul className="list-none space-y-2 text-lg text-brand-dark">
+                                        <ul className="list-none space-y-2 text-lg text-white">
                                             {categoryData.advantages.map((adv, index) => (
                                                 <li key={index} className="flex items-center">
                                                     <span className="text-green-500 mr-2">✔</span>{adv}
@@ -1429,8 +1429,8 @@ const ProductsPage: React.FC = () => {
                                 )}
                                 {categoryData.applications && (
                                     <div className="mt-6">
-                                        <h3 className="text-2xl font-bold text-brand-blue mb-4">Applications of {categoryData.category}</h3>
-                                        <ul className="list-none space-y-2 text-lg text-brand-dark">
+                                        <h3 className="text-2xl font-bold text-yellow mb-4">Applications of {categoryData.category}</h3>
+                                        <ul className="list-none space-y-2 text-lg text-white">
                                             {categoryData.applications.map((app, index) => (
                                                 <li key={index} className="flex items-center">
                                                     <span className="text-blue-500 mr-2">●</span>{app}
@@ -1479,7 +1479,7 @@ const ProductsPage: React.FC = () => {
                                 {categoryData.safetyGuidelines && (
                                     <div className="mt-6">
                                         <h3 className="text-2xl font-bold text-brand-blue mb-4">{categoryData.id === 'ductile-iron-fittings' ? 'Maintenance & Installation' : `Workplace Safety Guidelines for ${categoryData.category}`}</h3>
-                                        <ul className="list-none space-y-2 text-lg text-brand-dark">
+                                        <ul className="list-none space-y-2 text-lg text-white">
                                             {categoryData.safetyGuidelines.map((guideline, index) => (
                                                 <li key={index} className="flex items-center">
                                                     <span className="text-red-500 mr-2">⚠️</span>{guideline}
@@ -1490,12 +1490,12 @@ const ProductsPage: React.FC = () => {
                                 )}
                                 {categoryData.faq && (
                                     <div className="mt-6">
-                                        <h3 className="text-2xl font-bold text-brand-blue mb-4">{categoryData.category} FAQ</h3>
+                                        <h3 className="text-2xl font-bold text-brand-yellow mb-4">{categoryData.category} FAQ</h3>
                                         <div className="space-y-4">
                                             {categoryData.faq.map((faq, index) => (
                                                 <div key={index}>
                                                     <p className="font-bold text-brand-yellow">Q{index + 1}. {faq.q}</p>
-                                                    <p className="text-brand-dark">A: {faq.a}</p>
+                                                    <p className="text-white">A: {faq.a}</p>
                                                 </div>
                                             ))}
                                         </div>

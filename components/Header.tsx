@@ -9,7 +9,7 @@ const navLinks = [
   { name: 'Capabilities', path: '/capabilities' },
   { name: 'Technology', path: '/technology' },
   { name: 'Certifications', path: '/certifications' },
-  { name: 'Testimonials', path: '/testimonials' },
+  // { name: 'Testimonials', path: '/testimonials' },
   { name: 'Blog', path: '/blog' },
   { name: 'Contact Us', path: '/contact' },
 ];
@@ -54,7 +54,7 @@ const Header: React.FC = () => {
           }
         `
       }} />
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div className="flex justify-between">
         <NavLink to="/" className="hover:scale-105 transition-transform duration-300">
           <img 
             src="/logos/daneshlogo.jpg" 
@@ -62,12 +62,12 @@ const Header: React.FC = () => {
             className="h-20 w-250 object-contain"
           />
         </NavLink>
-        <div className="hidden lg:flex items-center space-x-6">
+        <div className="hidden lg:flex items-center space-x-6 mr-6 ">
           {navLinks.map((link) => (
             <NavLink
               key={link.name}
               to={link.path}
-              className="menu-item-hover text-brand-dark hover:text-white hover:bg-gradient-to-r hover:from-orange-300 hover:to-pink-300 hover:bg-opacity-90 hover:scale-110 hover:shadow-lg transition-all duration-500 pb-1 text-sm px-3 py-2 rounded-lg font-semibold border border-transparent hover:border-orange-400"
+              className="menu-item-hover text-brand-dark hover:text-white hover:bg-gradient-to-r hover:from-orange-300 hover:to-pink-300 hover:bg-opacity-90 hover:scale-110 hover:shadow-lg transition-all duration-500  rounded-lg font-semibold border border-transparent hover:border-orange-400"
               style={({ isActive }) => (isActive ? activeLinkStyle : {})}
             >
               {link.name}

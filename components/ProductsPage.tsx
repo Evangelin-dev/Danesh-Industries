@@ -68,12 +68,12 @@ const productData = [
         items: [
             {
                 name: 'Slip-On Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/ss-slip-on-flangesimage.jpg',
                 keyFeatures: ['Easy to install and align', 'Ideal for low-pressure applications', 'Commonly used in piping systems where quick assembly is required']
             },
             {
                 name: 'Butt Weld Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/weldneckimage.jpeg',
                 keyFeatures: ['Strong, durable, and ideal for high-pressure and high-temperature applications', 'Provides structural reinforcement to piping systems']
             },
             {
@@ -1259,6 +1259,13 @@ const ProductsPage: React.FC = () => {
     const handleItemSelect = (categoryId: string, itemName: string) => {
         setSelectedItem(prev => ({ ...prev, [categoryId]: itemName }));
         navigate(`/products/${categoryId}/${encodeURIComponent(itemName)}`);
+        // Scroll to the product details after a short delay
+        setTimeout(() => {
+            const element = document.getElementById(`product-${encodeURIComponent(itemName)}`);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 100);
     };
     const handleSectionSelect = (categoryId: string, section: string) => {
         setSelectedSection(prev => ({ ...prev, [categoryId]: section }));
@@ -1304,7 +1311,7 @@ const ProductsPage: React.FC = () => {
             <SEO
                 title={seoTitle}
                 description={seoDescription}
-                keywords={`${selectedCategory ? currentCategory?.category + ',' : ''} industrial components, precision machining, flanges, fittings, valves, Danesh Industries`}
+                keywords={`${selectedCategory ? currentCategory?.category + ',' : ''} industrial components, precision machining, flanges, fittings, valves, Danesh Industries,flanges manufacturer in chennai,flanges manufacturer in india`}
                 url={seoUrl}
                 structuredData={productStructuredData}
             />
@@ -1584,7 +1591,9 @@ const ProductsPage: React.FC = () => {
                                     ))}
                                 </select>
                                 {selectedItem[categoryData.id] && (
-                                    <ProductDetail item={categoryData.items.find(item => item.name === selectedItem[categoryData.id])} />
+                                    <div id={`product-${encodeURIComponent(selectedItem[categoryData.id])}`}>
+                                        <ProductDetail item={categoryData.items.find(item => item.name === selectedItem[categoryData.id])} />
+                                    </div>
                                 )}
                             </div>
                         </section>

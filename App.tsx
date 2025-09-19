@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import HomePage from './components/HomePage';
 import AboutPage from './components/AboutPage';
 import ProductsPage from './components/ProductsPage';
+// import ProductDetailPage from './components/ProductDetailPage';
 import ServicesPage from './components/ServicesPage';
 import TechnologyPage from './components/TechnologyPage';
 // import TestimonialsPage from './components/TestimonialsPage';
@@ -36,6 +37,8 @@ const App: React.FC = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/products" element={<ProductsPage />} />
+            <Route path="/products/:categoryId" element={<ProductsPage />} />
+            <Route path="/products/:categoryId/:productId" element={<ProductsPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/capabilities" element={<CapabilitiesPage />} />
             <Route path="/technology" element={<TechnologyPage />} />

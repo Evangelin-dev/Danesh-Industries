@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import SEO from './SEO';
 
 const PRODUCT_IMAGE = 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=4000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
@@ -1262,8 +1263,51 @@ const ProductsPage: React.FC = () => {
     const handleSectionSelect = (categoryId: string, section: string) => {
         setSelectedSection(prev => ({ ...prev, [categoryId]: section }));
     };
+    // Dynamic SEO
+    const currentCategory = productData.find(cat => cat.id === selectedCategory);
+    const currentProduct = currentCategory?.items.find(item => item.name === selectedItem[selectedCategory]);
+
+    let seoTitle = "Our Products - Danesh Industries";
+    let seoDescription = "Explore our comprehensive range of precision machined parts, flanges, fittings, valves, and industrial components manufactured to global standards.";
+    let seoUrl = "/products";
+
+    if (selectedCategory && currentCategory) {
+        seoTitle = `${currentCategory.category} - Danesh Industries`;
+        seoDescription = currentCategory.introduction;
+        seoUrl = `/products/${selectedCategory}`;
+
+        if (currentProduct) {
+            seoTitle = `${currentProduct.name} - ${currentCategory.category} | Danesh Industries`;
+            seoDescription = (currentProduct as any).keyFeatures ? (currentProduct as any).keyFeatures.join('. ') : (currentProduct as any).description || seoDescription;
+            seoUrl = `/products/${selectedCategory}/${encodeURIComponent(currentProduct.name)}`;
+        }
+    }
+
+    const productStructuredData = currentProduct ? {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": currentProduct.name,
+        "description": (currentProduct as any).keyFeatures ? (currentProduct as any).keyFeatures.join('. ') : (currentProduct as any).description || currentCategory?.introduction,
+        "brand": {
+            "@type": "Brand",
+            "name": "Danesh Industries"
+        },
+        "category": currentCategory?.category,
+        "manufacturer": {
+            "@type": "Organization",
+            "name": "Danesh Industries"
+        }
+    } : null;
+
     return (
         <>
+            <SEO
+                title={seoTitle}
+                description={seoDescription}
+                keywords={`${selectedCategory ? currentCategory?.category + ',' : ''} industrial components, precision machining, flanges, fittings, valves, Danesh Industries`}
+                url={seoUrl}
+                structuredData={productStructuredData}
+            />
             <style dangerouslySetInnerHTML={{
                 __html: `
                     @keyframes products-slideshow {

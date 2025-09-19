@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import type { JSX } from 'react';
+import SEO from './SEO';
 
 const ContactInfoItem: React.FC<{ icon: JSX.Element; title: string; children: React.ReactNode }> = ({ icon, title, children }) => (
   <div className="flex items-start space-x-4">
@@ -31,6 +32,12 @@ const ContactPage: React.FC = () => {
 
   return (
     <>
+      <SEO
+        title="Contact Us - Danesh Industries"
+        description="Get in touch with Danesh Industries for precision machined parts, flanges, fittings, and valves. Contact us for inquiries, quotes, and industrial solutions."
+        keywords="contact Danesh Industries, precision machining, industrial components, flanges, fittings, valves, Chennai, India"
+        url="/contact"
+      />
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes contact-slideshow {

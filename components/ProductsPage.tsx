@@ -3,7 +3,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 import SEO from './SEO';
 
 const PRODUCT_IMAGE = 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=4000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+const getProductDescription = (category: string) => {
+                return `Leading manufacturer and supplier of ${category}, flanges, fittings, valves, and industrial components. Danesh Industries offers high-quality ${category.toLowerCase()} manufacturing in Chennai, India. We specialize in precision-engineered products meeting international standards. Contact us for ${category.toLowerCase()}, industrial valves, and fittings requirements.`;
+            };
 
+const getProductKeywords = (category: string) => {
+    return `${category}, flanges, fittings, valves, Danesh Industries, flanges manufacturer in chennai, flanges manufacturer in india, ${category.toLowerCase()} manufacturer in chennai, ${category.toLowerCase()} manufacturer in india`;
+};
 // Data extracted from the user-provided document
 const productData = [
     {
@@ -1308,10 +1314,11 @@ const ProductsPage: React.FC = () => {
 
     return (
         <>
+            
             <SEO
                 title={seoTitle}
-                description={seoDescription}
-                keywords={`${selectedCategory ? currentCategory?.category + ',' : ''} industrial components, precision machining, flanges, fittings, valves, Danesh Industries,flanges manufacturer in chennai,flanges manufacturer in india`}
+                description={getProductDescription(currentCategory?.category || 'Industrial Components')}
+                keywords={getProductKeywords(selectedCategory)}     
                 url={seoUrl}
                 structuredData={productStructuredData}
             />

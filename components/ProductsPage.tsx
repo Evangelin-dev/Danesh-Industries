@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const PRODUCT_IMAGE = 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=4000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
@@ -1227,10 +1228,26 @@ const ProductDetail: React.FC<{ item: any }> = ({ item }) => {
 };
 
 const ProductsPage: React.FC = () => {
+    const { categoryId, productId } = useParams();
+    const navigate = useNavigate();
     const [openItem, setOpenItem] = useState<string | null>(null);
     const [selectedItem, setSelectedItem] = useState<Record<string, string>>({});
     const [selectedSection, setSelectedSection] = useState<Record<string, string>>({});
     const [selectedCategory, setSelectedCategory] = useState<string>('');
+
+    useEffect(() => {
+        if (categoryId) {
+            setSelectedCategory(categoryId);
+        } else {
+            setSelectedCategory('');
+        }
+    }, [categoryId]);
+
+    useEffect(() => {
+        if (categoryId && productId) {
+            setSelectedItem(prev => ({ ...prev, [categoryId]: decodeURIComponent(productId) }));
+        }
+    }, [categoryId, productId]);
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
         e.preventDefault();
         const element = document.getElementById(id);
@@ -1240,6 +1257,7 @@ const ProductsPage: React.FC = () => {
     };
     const handleItemSelect = (categoryId: string, itemName: string) => {
         setSelectedItem(prev => ({ ...prev, [categoryId]: itemName }));
+        navigate(`/products/${categoryId}/${encodeURIComponent(itemName)}`);
     };
     const handleSectionSelect = (categoryId: string, section: string) => {
         setSelectedSection(prev => ({ ...prev, [categoryId]: section }));
@@ -1300,7 +1318,15 @@ const ProductsPage: React.FC = () => {
                         <h3 className="hidden md:block font-bold text-white flex-shrink-0">Navigate to:</h3>
                         <select
                             value={selectedCategory}
-                            onChange={(e) => setSelectedCategory(e.target.value)}
+                            onChange={(e) => {
+                                const value = e.target.value;
+                                setSelectedCategory(value);
+                                if (value) {
+                                    navigate(`/products/${value}`);
+                                } else {
+                                    navigate('/products');
+                                }
+                            }}
                             className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue"
                             style={{ backgroundColor: '#FFC400' }}
                         >
@@ -1332,7 +1358,7 @@ const ProductsPage: React.FC = () => {
                     </div>
                 </div>
 
-                    {productData.filter(cat => selectedCategory === cat.id).map((categoryData, catIndex) => (
+                    {productData.filter(cat => !selectedCategory || selectedCategory === cat.id).map((categoryData, catIndex) => (
                         <section key={categoryData.id} id={categoryData.id} className="mb-20 scroll-mt-32 animate-fade-in" style={{ animationDelay: `${0.5 + catIndex * 0.2}s` }}>
                             <div className="mb-8">
                                 <h2 className="text-3xl lg:text-4xl font-bold gradient-text-alt mb-4 border-l-4 border-brand-yellow pl-4">{categoryData.category}</h2>

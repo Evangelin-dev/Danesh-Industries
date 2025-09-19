@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from './SEO';
 
 const highlights = [
 	{
@@ -153,8 +154,36 @@ const HomePage: React.FC = () => {
 		backgroundAttachment: 'fixed', // This makes the background fixed while scrolling
 	};
 
+	const organizationStructuredData = {
+		"@context": "https://schema.org",
+		"@type": "Organization",
+		"name": "Danesh Industries",
+		"description": "Manufacturer of precision machined parts, socket weld fittings, flanges, valves, and assemblies for industrial applications.",
+		"url": "https://daneshindustries.com",
+		"logo": "https://daneshindustries.com/logos/daneshlogo.jpg",
+		"contactPoint": {
+			"@type": "ContactPoint",
+			"telephone": "+91-XXXX-XXXXXX", // Replace with actual phone
+			"contactType": "Customer Service"
+		},
+		"address": {
+			"@type": "PostalAddress",
+			"addressCountry": "IN"
+		},
+		"sameAs": [
+			// Add social media URLs if available
+		]
+	};
+
 	return (
 		<>
+			<SEO
+				title="Danesh Industries - Precision Machined Parts Manufacturer"
+				description="Leading manufacturer of precision machined parts, socket weld fittings, flanges, valves, and industrial assemblies. Serving oil & gas, petrochemical, and process industries with global quality standards."
+				keywords="precision machining, industrial fittings, flanges, valves, socket weld fittings, Danesh Industries, manufacturing, oil & gas components"
+				url="/"
+				structuredData={organizationStructuredData}
+			/>
 			<style
 				dangerouslySetInnerHTML={{
 					__html: `

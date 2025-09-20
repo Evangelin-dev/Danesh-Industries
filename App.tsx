@@ -16,7 +16,7 @@ import CapabilitiesPage from './components/CapabilitiesPage';
 import CertificationsPage from './components/CertificationsPage';
 import BlogPage from './components/BlogPage';
 import ContactPage from './components/ContactPage';
-import AdminPanel from './components/AdminPanel';
+// import AdminPanel from './components/AdminPanel';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -159,7 +159,7 @@ const App: React.FC = () => {
               {/* <Route path="/testimonials" element={<TestimonialsPage />} /> */}
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/contact" element={<ContactPage />} />
-              <Route path="/admin" element={<AdminPanel />} />
+{/*               <Route path="/admin" element={<AdminPanel />} /> */}
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
             </Routes>

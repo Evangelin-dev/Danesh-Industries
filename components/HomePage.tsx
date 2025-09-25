@@ -137,8 +137,15 @@ const HomePage: React.FC = () => {
 	const [showContactPopup, setShowContactPopup] = useState(false);
 
 	useEffect(() => {
+		const timer = setTimeout(() => {
+			setShowContactPopup(true);
+		}, 60000); // 60 seconds
+		return () => clearTimeout(timer);
+	}, []);
+
+	useEffect(() => {
 		// Show contact popup immediately for testing
-		setShowContactPopup(true);
+		setShowContactPopup(false);
 	}, []);
 
 	const handlePrev = () => {
@@ -161,26 +168,6 @@ const HomePage: React.FC = () => {
 		backgroundAttachment: 'fixed', // This makes the background fixed while scrolling
 	};
 
-	const organizationStructuredData = {
-		"@context": "https://schema.org",
-		"@type": "Organization",
-		"name": "Danesh Industries",
-		"description": "Manufacturer of precision machined parts, socket weld fittings, flanges, valves, and assemblies for industrial applications.",
-		"url": "https://daneshindustries.com",
-		"logo": "https://daneshindustries.com/logos/daneshlogo.jpg",
-		"contactPoint": {
-			"@type": "ContactPoint",
-			"telephone": "+91-XXXX-XXXXXX", // Replace with actual phone
-			"contactType": "Customer Service"
-		},
-		"address": {
-			"@type": "PostalAddress",
-			"addressCountry": "IN"
-		},
-		"sameAs": [
-			// Add social media URLs if available
-		]
-	};
 
 	return (
 		<>
@@ -189,7 +176,6 @@ const HomePage: React.FC = () => {
 			  description="Leading manufacturer of precision machined parts, socket weld fittings, flanges, valves, and industrial assemblies. Serving oil & gas, petrochemical, and process industries with global quality standards."
 			  keywords="precision machining, industrial fittings, flanges, valves, socket weld fittings, Danesh Industries, manufacturing, oil & gas components, OEM spare parts, pump spare parts, valve components, pipe fittings, stainless steel flanges, carbon steel flanges, industrial valves, mechanical engineering, reverse engineering, CNC machining, industrial manufacturing, petrochemical equipment, water treatment parts, HVAC components, process industry equipment, custom machining, bulk manufacturing, quality assurance, ASME standards, ASTM standards, DIN standards, industrial supplies Chennai, mechanical components manufacturer, engineering spare parts, durable industrial solutions, high-performance valves, reliable pipe fittings, precision engineering, industrial automation parts"
 			  url="/"
-			  structuredData={organizationStructuredData}
 			/>
 			<style
 				dangerouslySetInnerHTML={{
@@ -310,36 +296,39 @@ const HomePage: React.FC = () => {
 				<div className="container mx-auto px-6">
 					<h2 className="text-3xl font-bold text-center text-brand-dark mb-12">Our Machinery in Action</h2>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-						<div className="text-center">
-							<h3 className="text-xl font-semibold text-brand-blue mb-4">Sample 1 Machine Rework</h3>
+						<div className="text-center min-h-[300px] flex flex-col justify-end">
+							<h4 className="text-xl font-semibold text-brand-blue mb-4">Drilling in vertical machining center</h4>
 							<video
 								className="w-full rounded-lg shadow-lg"
 								controls
 								preload="metadata"
+								style={{ objectFit: 'cover', height: '250px' }}
 							>
 								<source src="/sample1.mp4" type="video/mp4" />
 								Your browser does not support the video tag.
 							</video>
 						</div>
-						<div className="text-center">
-							<h3 className="text-xl font-semibold text-brand-blue mb-4">Sample 2 Machine</h3>
+						<div className="text-center min-h-[300px] flex flex-col justify-end">
+							<h4 className="text-xl font-semibold text-brand-blue mb-4">Inspection</h4>
 							<video
 								className="w-full rounded-lg shadow-lg"
 								controls
 								preload="metadata"
+								style={{ objectFit: 'cover', height: '250px' }}
 							>
 								<source src="/sample2.mp4" type="video/mp4" />
 								Your browser does not support the video tag.
 							</video>
 						</div>
-						<div className="text-center">
-							<h3 className="text-xl font-semibold text-brand-blue mb-4">Sample 3 Machine</h3>
+						<div className="text-center min-h-[300px] flex flex-col justify-end">
+							<h4 className="text-xl font-semibold text-brand-blue mb-4">Machining precision components by using CNC TURNING CENTER</h4>
 							<video
 								className="w-full rounded-lg shadow-lg"
 								controls
 								preload="metadata"
+								style={{ objectFit: 'cover', height: '250px' }}
 							>
-								<source src="/sample3.mp4" type="video/mp4" />
+								<source src="/sample3_compressed.mp4" type="video/mp4" />
 								Your browser does not support the video tag.
 							</video>
 						</div>
@@ -381,20 +370,7 @@ const HomePage: React.FC = () => {
 												{`"${testimonial.quote}"`}
 											</p>
 										</div>
-										<div className='flex justify-between items-end'>
-											<div>
-												<p className='font-bold text-brand-yellow'>
-													{testimonial.author}
-												</p>
-												<p className='text-gray-300'>{testimonial.company}</p>
-											</div>
-											{testimonial.logo && (
-												<img
-													src={testimonial.logo}
-													alt={testimonial.company}
-													className='h-12 w-auto object-contain'
-												/>
-											)}
+										<div className='text-center'>
 										</div>
 									</div>
 								))}

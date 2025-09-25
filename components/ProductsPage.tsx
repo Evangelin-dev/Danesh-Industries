@@ -32,14 +32,14 @@ const productData = [
         items: [
             {
                 name: 'Plug Valve Components',
-                // image: PRODUCT_IMAGE,
+                image: '/product_image/Plug_Valve_components.png',
                 specifications: { 'Material': 'Teflon', 'Finishing': 'Machined', 'Packaging Type': 'Box', 'Size': '2 inch', 'Color': 'White' },
                 additionalInfo: { 'Production Capacity': '500 Nos. per month', 'Delivery Time': '3 weeks', 'Packaging': 'As per customer requirement' },
                 keyFeatures: ['Manufactured with premium-grade Teflon for chemical resistance', 'Precision machined for accurate sealing and smooth operation', 'High-volume production capability (500 pcs/month)', 'Packaged for safe handling and logistics']
             },
             {
                 name: 'Stem for Ball Valve',
-                // image: PRODUCT_IMAGE,
+                image: '/product_image/Stem_for_ball_valve.png',
                 specifications: { 'Material': 'Stainless Steel SS316', 'Size': '½ inch to 12 inches', 'Usage/Application': 'For use in Ball Valves', 'Head Shape': 'Circular', 'Packaging Type': 'As per customer requirement' },
                 additionalInfo: { 'Delivery Time': '1 month' },
                 keyFeatures: ['Made from SS316 for superior corrosion resistance and durability', 'Available in a wide size range (½" to 12") to suit different valve types', 'High strength and precision machining for reliable valve operation', 'Custom packaging available for client-specific needs']
@@ -74,32 +74,32 @@ const productData = [
         items: [
             {
                 name: 'Slip-On Flanges',
-                image: '/ss-slip-on-flangesimage.jpg',
+                image: '/product_image/Slip-on_flanges.png',
                 keyFeatures: ['Easy to install and align', 'Ideal for low-pressure applications', 'Commonly used in piping systems where quick assembly is required']
             },
             {
                 name: 'Butt Weld Flanges',
-                image: '/weldneckimage.jpeg',
+                image: '/product_image/Butt_weld_flanges.png',
                 keyFeatures: ['Strong, durable, and ideal for high-pressure and high-temperature applications', 'Provides structural reinforcement to piping systems']
             },
             {
                 name: 'Socket Weld Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Socket_weld_flanges.png',
                 keyFeatures: ['Designed for small pipe diameters and high-pressure systems', 'Offers a strong weld connection with smooth flow inside the pipe']
             },
             {
                 name: 'Threaded Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Threaded_Flanges.png',
                 keyFeatures: ['Attached without welding, making them ideal for maintenance and quick installation', 'Commonly used in low-pressure applications']
             },
             {
                 name: 'Blind Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Blind_Flanges.png',
                 keyFeatures: ['Used to seal off piping systems or terminate pipelines', 'Suitable for inspection and testing of flow systems']
             },
             {
                 name: 'Lap Joint Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Lap_Joint_Flanges.png',
                 keyFeatures: ['Designed for easy disassembly and maintenance', 'Commonly used in systems requiring frequent inspection or cleaning']
             }
         ]
@@ -131,12 +131,12 @@ const productData = [
         items: [
             {
                 name: 'Socket Weld MS Flanges',
-                image: '/socketwelt.png',
+                image: '/product_image/Socket_Weld_MS_flanges.png',
                 keyFeatures: ['Designed for smaller pipe sizes and lower pressure applications', 'Easy to weld and install, ensuring a smooth and secure seal', 'Widely used in plumbing, HVAC, and water distribution systems']
             },
             {
                 name: 'Weld Neck MS Flanges',
-                image: '/msflanges.png',
+                image: '/product_image/Weld_neck_MS_flanges.png',
                 keyFeatures: ['Heavier duty flanges for high-pressure and high-temperature applications', 'Long tapered hub design ensures stress distribution and resistance to warping', 'Commonly used in oil refineries, petrochemicals, and power plants']
             }
         ]
@@ -175,12 +175,12 @@ const productData = [
         items: [
             {
                 name: 'SS 304 Slip-On Flanges',
-                image: '/ss304slip.png',
+                image: '/product_image/SS_304_Slip-on_Flanges.png',
                 keyFeatures: ['Durability', 'Corrosion Resistance', 'Versatility', 'Affordability']
             },
             {
                 name: 'SS 304 Weld Neck Flanges',
-                image: '/ss-304-weld-neck-flanges-image.jpeg',
+                image: '/product_image/SS_304_Weld_Neck_Flanges.png',
                 keyFeatures: ['High Strength & Durability', 'Excellent Sealing', 'Versatile Applications']
             }
         ]
@@ -224,7 +224,7 @@ const productData = [
             },
             {
                 name: 'Blind Spacer Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Blind_Spacer_Flanges.png',
                 keyFeatures: ['With or without countersunk holes, recesses, or custom designs']
             },
              {
@@ -235,7 +235,7 @@ const productData = [
             },
              {
                 name: 'Raised Face Options',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Raised_Face_Options.png',
                 keyFeatures: ['Matching the mating flange face for proper sealing Thickness and dimensions can be customized based on application requirements.']
             }
         ]
@@ -280,27 +280,27 @@ const productData = [
         items: [
             {
                 name: 'Slip-On Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Slip-on_flanges.png',
                 keyFeatures: ['Superior Corrosion Resistance', 'High Strength & Durability', 'Excellent Sealing', 'Versatile Applications', 'Heat Resistance']
             },
             {
                 name: 'Weld Neck Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Weld_Neck_Flanges.png',
                 keyFeatures: ['Superior Corrosion Resistance', 'High Strength & Durability', 'Excellent Sealing', 'Versatile Applications', 'Heat Resistance']
             },
             {
                 name: 'Lap Joint Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Lap_Joint_Flanges.png',
                 keyFeatures: ['Perfect for applications requiring frequent dismantling and inspection']
             },
             {
                 name: 'Blind Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Blind_Flanges.png',
                 keyFeatures: ['Used to seal or terminate pipelines securely']
             },
             {
                 name: 'Threaded Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Threaded_Flanges.png',
                 keyFeatures: ['No welding required, suitable for quick installation']
             },
             {
@@ -347,27 +347,27 @@ const productData = [
         items: [
             {
                 name: 'Weld Neck Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Weld_Neck_Flanges.png',
                 keyFeatures: ['Designed for high-pressure systems requiring strength and precision']
             },
             {
                 name: 'Socket Weld Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Socket_weld_flanges.png',
                 keyFeatures: ['Ideal for small-diameter, high-pressure piping']
             },
             {
                 name: 'Threaded Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Threaded_Flanges.png',
                 keyFeatures: ['For quick installation without welding']
             },
             {
                 name: 'Blind Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Blind_Flanges.png',
                 keyFeatures: ['Used to seal off or terminate a pipeline']
             },
             {
                 name: 'Forged Steel Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Forged_Steel_Flange.png',
                 keyFeatures: ['Machined from a single block of steel for maximum durability']
             }
         ]
@@ -413,12 +413,12 @@ const productData = [
         items: [
             {
                 name: 'GI Blind Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/GI_Blind_Flanges.png',
                 additionalNote: 'Used to seal the end of a pipe system, providing safety and inspection points.',
             },
             {
                 name: 'GI Threaded Flanges',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/GI_Threaded_Flanges.png',
                 additionalNote: 'Used to connect pipes with external threads, ensuring a secure seal without welding. Both types are available in multiple sizes, thread types, and materials including mild steel, stainless steel, and copper alloys.'
             }
         ]
@@ -451,17 +451,17 @@ const productData = [
         items: [
             {
                 name: 'Barbed Fittings',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Barbed_Fittings.png',
                 keyFeatures: ['Best suited for low to medium-pressure applications', 'Easy to install by hand or with a wrench', 'Available in brass, steel, and plastic', 'Suitable for plastic tubing, flexible hoses, and reinforced rubber pipes', 'Tapered design with ridges ensures a tight, secure hold']
             },
             {
                 name: 'Threaded Fittings',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Threaded_Fittings.png',
                 keyFeatures: ['Provide stronger sealing than barbed fittings', 'Designed with a threaded lip for secure connection and disconnection', 'Excellent resistance to water and gas leaks', 'Manufactured in steel, brass, and plastic', 'Common uses include pressure relief valves, check valves, and joint connections', 'Compatible with straight and angled pipes']
             },
             {
                 name: 'Compression Fittings',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Compression_Fittings.png',
                 keyFeatures: ['Ideal for high-pressure applications', 'Made from brass, steel, aluminum, or plastic', 'Create a leak-proof seal using a ferrule or compression ring', 'Easy to install and highly reliable', 'Suitable for pipelines requiring durability, flexibility, and safety']
             }
         ]
@@ -501,22 +501,22 @@ const productData = [
         items: [
             {
                 name: 'Threaded Fittings',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Threaded_Fittings.png',
                 keyFeatures: ['Provide secure connections in water and fluid delivery systems']
             },
             {
                 name: 'Socket Fittings',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Socket_Fittings.png',
                 keyFeatures: ['Strong and durable, suitable for industrial piping networks']
             },
             {
                 name: 'Flanged Fittings',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Flanged_Fittings.png',
                 keyFeatures: ['Reliable sealing, widely used in gas pipelines and pressure systems']
             },
             {
                 name: 'Bulkhead Union Fittings',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Bulkhead_Union_Fittings.png',
                 keyFeatures: ['Provide medium-pressure sealing, commonly used in plumbing and chemical applications']
             }
         ]
@@ -567,12 +567,12 @@ const productData = [
         items: [
             {
                 name: 'Elbows',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Elbows.png',
                 keyFeatures: ['Heat Resistant – Withstands temperatures up to 1000°F (538°C), making it ideal for extreme operating conditions', 'Corrosion Resistant – Zinc phosphate coating ensures protection against moisture, salt water, and corrosive elements', 'Versatility – Available in multiple designs including elbows, tees, reducers, couplers, and flanges, in sizes ranging from ½” to 6” or larger', 'Strong & Durable – A cost-effective alternative to steel, resistant to cracking, bending, and warping', 'Economical – Affordable and reliable solution for large-scale infrastructure and industrial projects']
             },
             {
                 name: 'Tees',
-                image: PRODUCT_IMAGE,
+                image: '/public/product_image/Tees_Fittings.png',
                 keyFeatures: ['Heat Resistant – Withstands temperatures up to 1000°F (538°C), making it ideal for extreme operating conditions', 'Corrosion Resistant – Zinc phosphate coating ensures protection against moisture, salt water, and corrosive elements', 'Versatility – Available in multiple designs including elbows, tees, reducers, couplers, and flanges, in sizes ranging from ½” to 6” or larger', 'Strong & Durable – A cost-effective alternative to steel, resistant to cracking, bending, and warping', 'Economical – Affordable and reliable solution for large-scale infrastructure and industrial projects']
             }
         ]
@@ -628,11 +628,11 @@ const productData = [
         items: [
             {
                 name: 'Grooved Elbows',
-                image: PRODUCT_IMAGE
+                image: '/product_image/Grooved_Elbow_Fittings.png'
             },
             {
                 name: 'Grooved Tees',
-                image: PRODUCT_IMAGE
+                image: '/product_image/Grooved_Tee_Fittings.png'
             }
         ]
     },
@@ -684,11 +684,11 @@ const productData = [
         items: [
             {
                 name: 'Threaded Fittings',
-                image: PRODUCT_IMAGE
+                image: '/product_image/Threaded_Fittings.png'
             },
             {
                 name: 'Socket Weld Fittings',
-                image: PRODUCT_IMAGE
+                image: '/product_image/Socket_Weld_Fittings.png'
             }
         ]
     },
@@ -726,12 +726,12 @@ const productData = [
         items: [
             {
                 name: 'GI R Tees',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/GI_R_Tees.png',
                 keyFeatures: ['High-Quality Construction – Made from durable galvanized iron, designed to last for years under tough conditions', 'Wide Range of Options – Available in multiple sizes, shapes, and styles to suit different projects', 'Easy Installation – Supplied with step-by-step guides and clear instructions for hassle-free setup', 'Corrosion Resistance – Protective galvanization ensures resistance to rust, moisture, and wear', 'Lifetime Reliability – Backed by industry-standard quality assurance and warranty support']
             },
             {
                 name: 'GI R Elbows',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/GI_R_Elbow.png',
                 keyFeatures: ['High-Quality Construction – Made from durable galvanized iron, designed to last for years under tough conditions', 'Wide Range of Options – Available in multiple sizes, shapes, and styles to suit different projects', 'Easy Installation – Supplied with step-by-step guides and clear instructions for hassle-free setup', 'Corrosion Resistance – Protective galvanization ensures resistance to rust, moisture, and wear', 'Lifetime Reliability – Backed by industry-standard quality assurance and warranty support']
             }
         ]
@@ -773,47 +773,47 @@ const productData = [
         items: [
             {
                 name: 'Tees',
-               // image: PRODUCT_IMAGE,
+                image: '/product_image/Tees_Fittings.png',
                 keyFeatures: ['For branching pipelines']
             },
             {
                 name: 'Elbows',
-                //image: PRODUCT_IMAGE,
+                image: '/product_image/Elbow_Fittings.png',
                 keyFeatures: ['For changing direction of flow (available in hot-dip galvanized or electroplated, ERW B class and C class)']
             },
             {
                 name: 'Couplings',
-                //image: PRODUCT_IMAGE,
+                image: '/product_image/Coupling_Fittings.png',
                 keyFeatures: ['For securely connecting two pipes']
             },
             {
                 name: 'Bends',
-                //image: PRODUCT_IMAGE,
+                image: '/product_image/Bends.png',
                 keyFeatures: ['Long bend threaded fittings for smooth directional changes']
             },
             {
                 name: 'Valves',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Valves.png',
                 keyFeatures: ['For controlling and regulating flow']
             },
             {
                 name: 'Plugs & Caps',
-               // image: PRODUCT_IMAGE,
+                image: '/product_image/Plugs_and_Caps.png',
                 keyFeatures: ['For closing pipe ends and outlets']
             },
             {
                 name: 'Pipe Nipples',
-                //image: PRODUCT_IMAGE,
+                image: '/product_image/Pipe_Nipples.png',
                 keyFeatures: ['Threaded nipples for direct pipe connections']
             },
             {
                 name: 'Reducers',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Reducers.png',
                 keyFeatures: ['Concentric reducers in electroplated ERW finish']
             },
             {
                 name: 'Flanges',
-               // image: PRODUCT_IMAGE,
+                image: '/product_image/Flanges.png',
                 keyFeatures: ['For secure pipe-to-equipment connections']
             }
         ]
@@ -854,42 +854,42 @@ const productData = [
         items: [
             {
                 name: 'Male Fittings (Male Adapters)',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Male_Fittings_(Male_Adapter).png',
                 keyFeatures: ['Designed with external (male) threads for secure connections']
             },
             {
                 name: 'Female Fittings (Female Adapters)',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Female_Fittings_(Female_Adapter).png',
                 keyFeatures: ['Designed with internal (female) threads to connect with male fittings']
             },
             {
                 name: 'Adapters',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Adapters.png',
                 keyFeatures: ['Used to connect male and female threaded components']
             },
             {
                 name: 'Flange Fittings',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Flange_Fittings.png',
                 keyFeatures: ['Provide strong, leak-proof connections between pipe ends']
             },
             {
                 name: 'Elbows',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Elbows.png',
                 keyFeatures: ['Used to change flow direction in pipelines']
             },
             {
                 name: 'Reducers',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Reducers.png',
                 keyFeatures: ['Connect pipes of different diameters']
             },
             {
                 name: 'Couplers',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Couplers.png',
                 keyFeatures: ['Join two pipe sections securely']
             },
             {
                 name: 'Unions',
-                image: PRODUCT_IMAGE,
+                image: '/product_image/Unions.png',
                 keyFeatures: ['Allow disconnection and reconnection without disturbing the pipeline']
             }
         ]
@@ -916,7 +916,7 @@ const productData = [
         items: [
             {
                 name: 'Pull Studs',
-               // image: PRODUCT_IMAGE,
+                image: '/product_image/Pull_Studs.png',
                 specifications: { 'Material': 'B7', 'Size': '8"', 'Finishing Type': 'Threaded', 'Packaging Type': 'Box' },
                 additionalInfo: { 'Production Capacity': '500 Nos. per month', 'Delivery Time': '3 weeks', 'Packaging': 'As per customer requirement' },
                 keyFeatures: ['High Strength - Manufactured using B7 grade steel, known for tensile strength and toughness', 'Precision Machined – Threaded finishing ensures accurate fit and secure clamping', 'Durable Performance – Built to withstand high spindle speeds and machining stresses', 'Bulk Production Capability – 500 pieces per month with consistent quality control', 'Custom Packaging – Ensures safe handling and delivery to clients']
@@ -951,7 +951,7 @@ const productData = [
         items: [
             {
                 name: 'Plug Stem Assembly',
-                //image: PRODUCT_IMAGE,
+                image: '/product_image/Plug_Stem_Assembly.png',
                 specifications: { 'Material': 'Aluminium', 'Size': '1 inch', 'Finishing': 'Coated', 'Thread Type': 'Circular', 'Color': 'Silver' },
                 additionalInfo: { 'Delivery Time': '1 month' },
                 keyFeatures: ['Durable Construction - Made from high-quality aluminium with a protective coating', 'Corrosion Resistance – Ensures long-lasting performance in harsh environments', 'Precision Engineering – Circular threading ensures accurate fit and leak-proof sealing', 'Lightweight & Strong – Strong aluminium body for durability with easy handling during installation', 'Custom Options – Available with tailored sizes, coatings, and finishes as per client requirements']
@@ -979,7 +979,7 @@ const productData = [
         items: [
             {
                 name: 'Quick Opening Cage',
-                //image: PRODUCT_IMAGE,
+                // image: '/product_image/Quick_Opening_Cage.png',
                 specifications: { 'Machine Type': 'Booth Type', 'Usage/Application': 'Industrial', 'Material to Be Blasted': 'Mild Steel', 'Number of Doors': 'Single Door', 'Surface Finish': 'Polished', 'Automation Grade': 'Manual' },
                 keyFeatures: ['Durable Construction - Manufactured from mild steel with polished surface finish', 'Reliable Performance - Designed for quick operation and efficient flow control', 'User-Friendly - Manual operation for ease of handling', 'Industrial Grade - Built to meet demanding industrial environments', 'Custom Options - Available with customer-specific design and size requirements']
             }
@@ -1012,7 +1012,7 @@ const productData = [
         items: [
             {
                 name: 'Mild Steel Pin',
-               // image: PRODUCT_IMAGE,
+                image: '/product_image/Mild_Steel_Pins.png',
                 specifications: { 'Material': 'Mild Steel', 'Finishing': 'Chrome Finish', 'Size': '1 inch', 'Diameter': '10 mm', 'Usage/Application': 'Automobiles Industry', 'Packaging Type': 'Packet' },
                 additionalInfo: { 'Delivery Time': '3 weeks', 'Packaging': 'As per customer requirement' },
                 keyFeatures: ['High Strength - Made from premium mild steel for maximum load-bearing capacity', 'Corrosion Resistant - Chrome finish ensures durability and extended service life', 'Precision Machined - Accurate dimensions for secure and reliable fitting', 'Customizable - Available in different sizes and finishes as per client requirements', 'Reliable Supply - Supported by bulk production and on-time delivery']
@@ -1052,7 +1052,7 @@ const productData = [
         items: [
             {
                 name: 'Partition Plate Die',
-               // image: PRODUCT_IMAGE,
+                image: '/product_image/Partition_Plate_Die.png',
                 specifications: { 'Material': 'Mild Steel', 'Pattern Type': 'Round', 'Usage/Application': 'Factory / Industrial use', 'Finishing': 'Polished' },
                 additionalInfo: { 'Production Capacity (Per Unit)': '10', 'Monthly Production Capacity': '50 Nos.', 'Delivery Time': '4 weeks', 'Packaging': 'As per customer requirement' },
                 keyFeatures: ['Durable Build - Manufactured from premium mild steel for strength and longevity', 'Precision Engineering - Round pattern ensures accuracy and repeatability in production', 'Polished Finish - Smooth surface for enhanced performance and reduced wear', 'Customizable Supply - Production and packaging tailored to client requirements', 'Bulk Availability – Consistent supply with up to 50 units per month']
@@ -1093,7 +1093,7 @@ const productData = [
         items: [
             {
                 name: 'Ball Valve Seat Ring',
-                //image: PRODUCT_IMAGE,
+                image: '/product_image/Ball_Valve_Seat_Ring.png',
                 specifications: { 'Size': '4"', 'Color': 'Silver', 'Material': 'Mild Steel', 'Shape': 'Round', 'Application': 'Industrial use' },
                 additionalInfo: { 'Production Capacity': '100 Nos. per month', 'Delivery Time': '3 weeks', 'Packaging': 'As per customer requirement' },
                 keyFeatures: ['Durable Build – Manufactured with premium mild steel for long-lasting performance', 'Precision Machined – Ensures accurate fit and reliable valve sealing', 'Corrosion Resistant – Silver finish offers added protection against wear and tear', 'Custom Options – Available in different sizes, finishes, and specifications', 'Reliable Supply – Production capacity of 100 units per month with on-time delivery']
@@ -1138,7 +1138,7 @@ const productData = [
         items: [
             {
                 name: 'Solenoid Valve',
-                // image: PRODUCT_IMAGE,
+                image: '/product_image/Solenoid_Valves.png',
                 specifications: { 'Type': 'Electromagnetically operated valve', 'Material': 'High-grade stainless steel / brass / mild steel (options available)', 'Application': 'Industrial automation, fluid & gas control systems', 'Surface Finish': 'Polished / Coated (as per requirement)', 'Packaging': 'As per customer requirement' },
                 additionalInfo: { 'Production Capacity': 'Bulk supply available', 'Delivery Time': '3–4 weeks', 'Packaging': 'Safe and customizable as per client needs' },
                 keyFeatures: ['Precise Flow Control – Provides accurate regulation of fluids and gases', 'Durable Build – Manufactured from premium-grade materials for long service life', 'Automation-Ready – Compatible with industrial automation and process systems', 'Leak-Proof Operation – Ensures reliability in critical applications', 'Custom Options – Available in different sizes, voltages, and materials']
@@ -1200,396 +1200,37 @@ const ProductDetail: React.FC<{ item: any; categoryId: string }> = ({ item, cate
 
     return (
         <div className="space-y-4">
-            {item.images && Array.isArray(item.images) && categoryId !== 'flanges' ? (
-                <div className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {item.images.map((img, idx) => (
+            {item.description && <p className="text-lg">{item.description}</p>}
+            <div className="flex flex-col lg:flex-row gap-6">
+                <div className="flex-shrink-0">
+                    <h4 className="text-lg font-semibold mb-2 text-center text-orange-400">{item.name}</h4>
+                    {item.image && (
                         <img
-                            key={idx}
-                            src={img}
-                            alt={`${item.name} ${idx + 1}`}
-                            className="rounded-lg shadow-md w-full h-10 object-cover"
+                            src={item.image}
+                            alt={item.name}
+                            className="w-48 h-48 object-contain rounded-lg shadow-lg"
                             loading="lazy"
                         />
-                    ))}
+                    )}
                 </div>
-            ) : item.image && categoryId !== 'flanges' && !( (item.name === "Socket Weld MS Flanges" || item.name === "Weld Neck MS Flanges") && categoryId === 'ms-flanges' ) && (
-                <div className="mb-6">
-                    <img
-                        src={item.image}
-                        alt={item.name}
-                        className="rounded-lg shadow-md w-full max-w-md h-auto mx-auto"
-                        loading="lazy"
-                    />
-                </div>
-            )}
-            {item.description && <p className="text-lg">{item.description}</p>}
-            {item.name === "Plug Valve Components" ? (
-                <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="flex-shrink-0">
-                        <h4 className="text-lg font-semibold mb-2 text-center text-orange-400">Plug Valve Components</h4>
-                        <img
-                            src="/plugvalvecomponentsimage.png"
-                            alt="Plug Valve Components"
-                            className="w-64 h-94 object-cover rounded-lg shadow-lg"
-                        />
-                    </div>
-                    <div className="flex-1 space-y-4">
-                        {item.keyFeatures && (<div className="p-4 bg-gray-50 rounded-lg"><h4 className="text-xl font-bold mb-3 text-brand-blue">Key Features</h4>{renderList(item.keyFeatures)}</div>)}
-                        {categoryId === 'ms-flanges' && (
-                            <div className="mt-6 text-center">
-                                <a
-                                    href="/contact"
-                                    className="inline-block px-6 py-3 bg-brand-blue text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                                >
-                                    Order Now
-                                </a>
-                            </div>
-                        )}
-                        {item.specifications && (<div><h4 className="text-lg font-semibold mb-2">Specifications</h4>{renderTable(item.specifications)}</div>)}
-                        {item.additionalInfo && (<div><h4 className="text-lg font-semibold mb-2">Additional Information</h4>{renderTable(item.additionalInfo)}</div>)}
-                        {item.additionalNote && <p className="text-lg text-white  italic">{item.additionalNote}</p>}
-                        {item.advantages && (<div><h4 className="text-lg font-semibold mb-2">Advantages</h4>{renderList(item.advantages)}</div>)}
-                        {item.applications && (<div><h4 className="text-lg font-semibold mb-2">Applications</h4>{renderList(item.applications)}</div>)}
-                        {item.faq && (<div><h4 className="text-lg font-semibold mb-2">FAQs</h4>{renderFaq(item.faq)}</div>)}
-                        {categoryId === 'flanges' && (
-                            <div className="mt-6 text-center">
-                                <a
-                                    href="/contact"
-                                    className="inline-block px-6 py-3 bg-brand-blue text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                                >
-                                    Order Now
-                                </a>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            ) : item.name === "Slip-On Flanges" && categoryId === 'flanges' ? (
-                <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="flex-shrink-0">
-                        <h4 className="text-lg font-semibold mb-2 text-center text-orange-400">Slip-On Flanges</h4>
-                        <img
-                            src="/ss-slip-on-flangesimage.jpg"
-                            alt="Slip-On Flanges"
-                            className="w-64 h-94 object-cover rounded-lg shadow-lg"
-                        />
-                    </div>
-                    <div className="flex-1 space-y-4">
-                        {item.specifications && (<div><h4 className="text-lg font-semibold mb-2">Specifications</h4>{renderTable(item.specifications)}</div>)}
-                        {item.additionalInfo && (<div><h4 className="text-lg font-semibold mb-2">Additional Information</h4>{renderTable(item.additionalInfo)}</div>)}
-                        {item.keyFeatures && (<div className="p-4 bg-gray-50 rounded-lg"><h4 className="text-xl font-bold mb-3 text-brand-blue">Key Features</h4>{renderList(item.keyFeatures)}</div>)}
-                        {categoryId === 'flanges' && (
-                            <div className="mt-6 text-center">
-                                <a
-                                    href="/contact"
-                                    className="inline-block px-6 py-3 bg-brand-blue text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                                >
-                                    Order Now
-                                </a>
-                            </div>
-                        )}
-                        {item.additionalNote && <p className="text-lg text-white  italic">{item.additionalNote}</p>}
-                        {item.advantages && (<div><h4 className="text-lg font-semibold mb-2">Advantages</h4>{renderList(item.advantages)}</div>)}
-                        {item.applications && (<div><h4 className="text-lg font-semibold mb-2">Applications</h4>{renderList(item.applications)}</div>)}
-                        {item.faq && (<div><h4 className="text-lg font-semibold mb-2">FAQs</h4>{renderFaq(item.faq)}</div>)}
-                    </div>
-                </div>
-            ) : item.name === "Butt Weld Flanges" && categoryId === 'flanges' ? (
-                <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="flex-shrink-0 text-center">
-                        <h4 className="text-lg font-semibold mb-2 text-orange-400">Butt Weld Flanges</h4>
-                        <img
-                            src="/buttweltimage.png"
-                            alt="Butt Weld Flanges"
-                            className="w-96 h-100 object-cover rounded-lg shadow-lg mx-auto"
-                        />
-                    </div>
-                    <div className="flex-1 space-y-4">
-                        {item.specifications && (<div><h4 className="text-lg font-semibold mb-2">Specifications</h4>{renderTable(item.specifications)}</div>)}
-                        {item.additionalInfo && (<div><h4 className="text-lg font-semibold mb-2">Additional Information</h4>{renderTable(item.additionalInfo)}</div>)}
-                        {item.keyFeatures && categoryId !== 'ms-flanges' && (<div><h4 className="text-lg font-semibold mb-2">Key Features</h4>{renderList(item.keyFeatures)}</div>)}
-                        {item.additionalNote && <p className="text-lg text-white  italic">{item.additionalNote}</p>}
-                        {item.advantages && (<div><h4 className="text-lg font-semibold mb-2">Advantages</h4>{renderList(item.advantages)}</div>)}
-                        {item.applications && (<div><h4 className="text-lg font-semibold mb-2">Applications</h4>{renderList(item.applications)}</div>)}
-                        {item.faq && (<div><h4 className="text-lg font-semibold mb-2">FAQs</h4>{renderFaq(item.faq)}</div>)}
-                        {categoryId === 'flanges' && (
-                            <div className="mt-6 text-center">
-                                <a
-                                    href="/contact"
-                                    className="inline-block px-6 py-3 bg-brand-blue text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                                >
-                                    Order Now
-                                </a>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            ) : item.name === "Socket Weld Flanges" && categoryId === 'flanges' ? (
-                <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="flex-shrink-0">
-                        <h4 className="text-lg font-semibold mb-2 text-center text-orange-400">Socket Weld Flanges</h4>
-                        <img
-                            src="/socketweltflanges.png"
-                            alt="Socket Weld Flanges"
-                            className="w-96 h-100 object-cover rounded-lg shadow-lg mx-auto"
-                        />
-                    </div>
-                    <div className="flex-1 space-y-4">
-                        {item.specifications && (<div><h4 className="text-lg font-semibold mb-2">Specifications</h4>{renderTable(item.specifications)}</div>)}
-                        {item.additionalInfo && (<div><h4 className="text-lg font-semibold mb-2">Additional Information</h4>{renderTable(item.additionalInfo)}</div>)}
-                        {item.keyFeatures && (<div><h4 className="text-lg font-semibold mb-2">Key Features</h4>{renderList(item.keyFeatures)}</div>)}
-                        {item.additionalNote && <p className="text-lg text-white  italic">{item.additionalNote}</p>}
-                        {item.advantages && (<div><h4 className="text-lg font-semibold mb-2">Advantages</h4>{renderList(item.advantages)}</div>)}
-                        {item.applications && (<div><h4 className="text-lg font-semibold mb-2">Applications</h4>{renderList(item.applications)}</div>)}
-                        {item.faq && (<div><h4 className="text-lg font-semibold mb-2">FAQs</h4>{renderFaq(item.faq)}</div>)}
-                        {categoryId === 'flanges' && (
-                            <div className="mt-6 text-center">
-                                <a
-                                    href="/contact"
-                                    className="inline-block px-6 py-3 bg-brand-blue text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                                >
-                                    Order Now
-                                </a>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            ) : item.name === "Threaded Flanges" && categoryId === 'flanges' ? (
-                <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="flex-shrink-0">
-                        <h4 className="text-lg font-semibold mb-2 text-center text-orange-400">Threaded Flanges</h4>
-                        <img
-                            src="/threadedflanges.png"
-                            alt="Threaded Flanges"
-                            className="w-96 h-100 object-cover rounded-lg shadow-lg mx-auto"
-                        />
-                    </div>
-                    <div className="flex-1 space-y-4">
-                        {item.specifications && (<div><h4 className="text-lg font-semibold mb-2">Specifications</h4>{renderTable(item.specifications)}</div>)}
-                        {item.additionalInfo && (<div><h4 className="text-lg font-semibold mb-2">Additional Information</h4>{renderTable(item.additionalInfo)}</div>)}
-                        {item.keyFeatures && (<div><h4 className="text-lg font-semibold mb-2">Key Features</h4>{renderList(item.keyFeatures)}</div>)}
-                        {item.additionalNote && <p className="text-lg text-white  italic">{item.additionalNote}</p>}
-                        {item.advantages && (<div><h4 className="text-lg font-semibold mb-2">Advantages</h4>{renderList(item.advantages)}</div>)}
-                        {item.applications && (<div><h4 className="text-lg font-semibold mb-2">Applications</h4>{renderList(item.applications)}</div>)}
-                        {item.faq && (<div><h4 className="text-lg font-semibold mb-2">FAQs</h4>{renderFaq(item.faq)}</div>)}
-                        {categoryId === 'flanges' && (
-                            <div className="mt-6 text-center">
-                                <a
-                                    href="/contact"
-                                    className="inline-block px-6 py-3 bg-brand-blue text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                                >
-                                    Order Now
-                                </a>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            ) : item.name === "Blind Flanges" && categoryId === 'flanges' ? (
-                <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="flex-shrink-0">
-                        <h4 className="text-lg font-semibold mb-2 text-center text-orange-400">Blind Flanges</h4>
-                        <img
-                            src="/blindflanges.png"
-                            alt="Blind Flanges"
-                            className="w-96 h-100 object-cover rounded-lg shadow-lg mx-auto"
-                        />
-                    </div>
-                    <div className="flex-1 space-y-4">
-                        {item.specifications && (<div><h4 className="text-lg font-semibold mb-2">Specifications</h4>{renderTable(item.specifications)}</div>)}
-                        {item.additionalInfo && (<div><h4 className="text-lg font-semibold mb-2">Additional Information</h4>{renderTable(item.additionalInfo)}</div>)}
-                        {item.keyFeatures && (<div className="p-4 bg-gray-50 rounded-lg"><h4 className="text-xl font-bold mb-3 text-brand-blue">Key Features</h4>{renderList(item.keyFeatures)}</div>)}
-                        {item.additionalNote && <p className="text-lg text-white  italic">{item.additionalNote}</p>}
-                        {item.advantages && (<div><h4 className="text-lg font-semibold mb-2">Advantages</h4>{renderList(item.advantages)}</div>)}
-                        {item.applications && (<div><h4 className="text-lg font-semibold mb-2">Applications</h4>{renderList(item.applications)}</div>)}
-                        {item.faq && (<div><h4 className="text-lg font-semibold mb-2">FAQs</h4>{renderFaq(item.faq)}</div>)}
-                        {categoryId === 'flanges' && (
-                            <div className="mt-6 text-center">
-                                <a
-                                    href="/contact"
-                                    className="inline-block px-6 py-3 bg-brand-blue text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                                >
-                                    Order Now
-                                </a>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            ) : item.name === "Lap Joint Flanges" && categoryId === 'flanges' ? (
-                <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="flex-shrink-0">
-                        <h4 className="text-lg font-semibold mb-2 text-center text-orange-400">Lap Joint Flanges</h4>
-                        <img
-                            src="/lapjoint.png"
-                            alt="Lap Joint Flanges"
-                            className="w-96 h-100 object-cover rounded-lg shadow-lg mx-auto"
-                        />
-                    </div>
-                    <div className="flex-1 space-y-4">
-                        {item.specifications && (<div><h4 className="text-lg font-semibold mb-2">Specifications</h4>{renderTable(item.specifications)}</div>)}
-                        {item.additionalInfo && (<div><h4 className="text-lg font-semibold mb-2">Additional Information</h4>{renderTable(item.additionalInfo)}</div>)}
-                        {item.keyFeatures && (<div><h4 className="text-lg font-semibold mb-2">Key Features</h4>{renderList(item.keyFeatures)}</div>)}
-                        {item.additionalNote && <p className="text-lg text-white  italic">{item.additionalNote}</p>}
-                        {item.advantages && (<div><h4 className="text-lg font-semibold mb-2">Advantages</h4>{renderList(item.advantages)}</div>)}
-                        {item.applications && (<div><h4 className="text-lg font-semibold mb-2">Applications</h4>{renderList(item.applications)}</div>)}
-                        {item.faq && (<div><h4 className="text-lg font-semibold mb-2">FAQs</h4>{renderFaq(item.faq)}</div>)}
-                        {categoryId === 'flanges' && (
-                            <div className="mt-6 text-center">
-                                <a
-                                    href="/contact"
-                                    className="inline-block px-6 py-3 bg-brand-blue text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                                >
-                                    Order Now
-                                </a>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            ) : item.name === "Stem for Ball Valve" ? (
-                <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="flex-shrink-0">
-                        <h4 className="text-lg font-semibold mb-2 text-center text-orange-400">Stem Ball Valve Components</h4>
-                        <img
-                            src="/stemforballvalve.png"
-                            alt="Stem for Ball Valve"
-                            className="w-64 h-64 object-cover rounded-lg shadow-lg"
-                        />
-                    </div>
-                    <div className="flex-1 space-y-4">
-                        {item.specifications && (<div><h4 className="text-lg font-semibold mb-2">Specifications</h4>{renderTable(item.specifications)}</div>)}
-                        {item.additionalInfo && (<div><h4 className="text-lg font-semibold mb-2">Additional Information</h4>{renderTable(item.additionalInfo)}</div>)}
-                        {item.keyFeatures && (<div><h4 className="text-lg font-semibold mb-2">Key Features</h4>{renderList(item.keyFeatures)}</div>)}
-                        {item.additionalNote && <p className="text-lg text-white  italic">{item.additionalNote}</p>}
-                        {item.advantages && (<div><h4 className="text-lg font-semibold mb-2">Advantages</h4>{renderList(item.advantages)}</div>)}
-                        {item.applications && (<div><h4 className="text-lg font-semibold mb-2">Applications</h4>{renderList(item.applications)}</div>)}
-                        {item.faq && (<div><h4 className="text-lg font-semibold mb-2">FAQs</h4>{renderFaq(item.faq)}</div>)}
-                        {categoryId === 'valve-components' && (
-                            <div className="mt-6 text-center">
-                                <a
-                                    href="/contact"
-                                    className="inline-block px-6 py-3 bg-brand-blue text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                                >
-                                    Order Now
-                                </a>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            ) : item.name === "Socket Weld MS Flanges" && categoryId === 'ms-flanges' ? (
-                <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="flex-shrink-0">
-                        <h4 className="text-lg font-semibold mb-2 text-center text-orange-400">Socket Weld MS Flanges</h4>
-                        <img
-                            src="/socketwelt.png"
-                            alt="Socket Weld MS Flanges"
-                            className="w-96 h-100 object-cover rounded-lg shadow-lg mx-auto"
-                        />
-                    </div>
-                    <div className="flex-1 space-y-4">
-                        {item.keyFeatures && (<div className="p-4 bg-gray-50 rounded-lg"><h4 className="text-xl font-bold mb-3 text-brand-blue">Key Features</h4>{renderList(item.keyFeatures)}</div>)}
-                        {categoryId === 'ms-flanges' && (
-                            <div className="mt-6 text-center">
-                                <a
-                                    href="/contact"
-                                    className="inline-block px-6 py-3 bg-brand-blue text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                                >
-                                    Order Now
-                                </a>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            ) : item.name === "Weld Neck MS Flanges" && categoryId === 'ms-flanges' ? (
-                <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="flex-shrink-0 text-center">
-                        <h4 className="text-lg font-semibold mb-2 text-orange-400">Weld Neck MS Flanges</h4>
-                        <img
-                            src="/msflanges.png"
-                            alt="Weld Neck MS Flanges"
-                            className="w-96 h-100 object-cover rounded-lg shadow-lg mx-auto"
-                        />
-                    </div>
-                    <div className="flex-1 space-y-4">
-                        {item.keyFeatures && (<div className="p-4 bg-gray-50 rounded-lg"><h4 className="text-xl font-bold mb-3 text-brand-blue">Key Features</h4>{renderList(item.keyFeatures)}</div>)}
-                        {categoryId === 'ms-flanges' && (
-                            <div className="mt-6 text-center">
-                                <a
-                                    href="/contact"
-                                    className="inline-block px-6 py-3 bg-brand-blue text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                                >
-                                    Order Now
-                                </a>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            ) : item.name === "SS 304 Slip-On Flanges" && categoryId === 'ss-304-flanges' ? (
-                <div className="flex flex-col gap-6">
-                    <div className="flex-shrink-0">
-                        <h4 className="text-lg font-semibold mb-2 text-center text-orange-400">SS 304 Slip-On Flanges</h4>
-                        <img
-                            src="/ss304slip.png"
-                            alt="SS 304 Slip-On Flanges"
-                            className="w-64 h-94 object-cover rounded-lg shadow-lg"
-                        />
-                    </div>
-                    <div className="flex-1 space-y-4">
-                        {item.keyFeatures && (<div className="p-4 bg-gray-50 rounded-lg"><h4 className="text-xl font-bold mb-3 text-brand-blue">Key Features</h4>{renderList(item.keyFeatures)}</div>)}
-                        {categoryId === 'ss-304-flanges' && (
-                            <div className="mt-6 text-center">
-                                <a
-                                    href="/contact"
-                                    className="inline-block px-6 py-3 bg-brand-blue text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                                >
-                                    Order Now
-                                </a>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            ) : item.name === "SS 304 Weld Neck Flanges" && categoryId === 'ss-304-flanges' ? (
-                <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="flex-shrink-0 text-center">
-                        <h4 className="text-lg font-semibold mb-2 text-orange-400">SS 304 Weld Neck Flanges</h4>
-                        <img
-                            src="/ss-304-weld-neck-flanges-image.jpeg"
-                            alt="SS 304 Weld Neck Flanges"
-                            className="w-96 h-100 object-cover rounded-lg shadow-lg mx-auto"
-                        />
-                    </div>
-                    <div className="flex-1 space-y-4">
-                        {item.keyFeatures && (<div className="p-4 bg-gray-50 rounded-lg"><h4 className="text-xl font-bold mb-3 text-brand-blue">Key Features</h4>{renderList(item.keyFeatures)}</div>)}
-                        {categoryId === 'ss-304-flanges' && (
-                            <div className="mt-6 text-center">
-                                <a
-                                    href="/contact"
-                                    className="inline-block px-6 py-3 bg-brand-blue text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                                >
-                                    Order Now
-                                </a>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            ) : (
-                <>
+                <div className="flex-1 space-y-4">
+                    {item.keyFeatures && (<div className="p-4 bg-gray-50 rounded-lg"><h4 className="text-xl font-bold mb-3 text-brand-blue">Key Features</h4>{renderList(item.keyFeatures)}</div>)}
                     {item.specifications && (<div><h4 className="text-lg font-semibold mb-2">Specifications</h4>{renderTable(item.specifications)}</div>)}
                     {item.additionalInfo && (<div><h4 className="text-lg font-semibold mb-2">Additional Information</h4>{renderTable(item.additionalInfo)}</div>)}
-                    {item.keyFeatures && (<div><h4 className="text-lg font-semibold mb-2">Key Features</h4>{renderList(item.keyFeatures)}</div>)}
                     {item.additionalNote && <p className="text-lg text-white  italic">{item.additionalNote}</p>}
                     {item.advantages && (<div><h4 className="text-lg font-semibold mb-2">Advantages</h4>{renderList(item.advantages)}</div>)}
                     {item.applications && (<div><h4 className="text-lg font-semibold mb-2">Applications</h4>{renderList(item.applications)}</div>)}
                     {item.faq && (<div><h4 className="text-lg font-semibold mb-2">FAQs</h4>{renderFaq(item.faq)}</div>)}
-                    {categoryId === 'valve-components' && (
-                        <div className="mt-6 text-center">
-                            <a
-                                href="/contact"
-                                className="inline-block px-6 py-3 bg-brand-blue text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                            >
-                                Order Now
-                            </a>
-                        </div>
-                    )}
-                </>
-            )}
+                    <div className="mt-6 text-center">
+                        <a
+                            href="/contact"
+                            className="inline-block px-6 py-3 bg-brand-blue text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-300"
+                        >
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
@@ -1723,7 +1364,7 @@ const ProductsPage: React.FC = () => {
             }} />
             <div className="bg-brand-dark py-20 relative" style={{ backgroundSize: 'cover', backgroundPosition: 'center', backgroundImage: 'url(/techno2.jpg)' }}>
                 <div className="absolute inset-0 bg-blue-900 opacity-40"></div>
-                <div className="container mx-auto px-6 relative z-10">
+                <div className="container mx-auto px-2 relative z-10">
                     <div className="text-center mb-16 animate-fade-in">
                         <h1 className="text-4xl lg:text-5xl font-extrabold gradient-text">Our Products</h1>
                         <p className="mt-4 text-lg text-white  max-w-3xl mx-auto">
@@ -1731,8 +1372,9 @@ const ProductsPage: React.FC = () => {
                         </p>
                     </div>
 
-                    <div className="sticky top-16 bg-brand-light py-0.5 z-40 mb-12 border-b-2 border-brand-yellow w-fit">
-                    <div className="flex justify-start items-center space-x-4 md:space-x-8 overflow-x-auto whitespace-nowrap pl-2">
+                    <div className="sticky top-15 bg-brand-light z-40 mb-2 border-b-1 border-brand-yellow w-fit">
+                    <div>
+                    {/* <div className="flex justify-start items-center space-x-4 md:space-x-8 overflow-x-auto pl-2"> */}
                         {/* <h3 className="hidden md:block font-bold text-white flex-shrink-0">Navigate to:</h3> */}
                         <select
                             value={selectedCategory}
@@ -1779,26 +1421,25 @@ const ProductsPage: React.FC = () => {
                     {productData.filter(cat => !selectedCategory || selectedCategory === cat.id).map((categoryData, catIndex) => (
                         <section key={categoryData.id} id={categoryData.id} className="mb-20 scroll-mt-32 animate-fade-in" style={{ animationDelay: `${0.5 + catIndex * 0.2}s` }}>
                             <div className="mb-8">
-                                {(categoryData.id === 'valve-components' || categoryData.id === 'flanges' || categoryData.id === 'ms-flanges' || categoryData.id === 'ss-304-flanges') ? (
-                                    <div className="flex justify-between items-center">
-                                        <h2 className="text-3xl lg:text-4xl font-bold gradient-text-alt border-l-4 border-brand-yellow pl-4 mb-4">{categoryData.category}</h2>
-                                        <select
-                                            value={selectedItem[categoryData.id] || ''}
-                                            onChange={(e) => handleItemSelect(categoryData.id, e.target.value)}
-                                            className="p-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                                            style={{ backgroundColor: '#FFC400' }}
-                                        >
-                                            <option value="">Select an item</option>
-                                            {categoryData.items.map((item, index) => (
-                                                <option key={index} value={item.name}>{item.name}</option>
-                                            ))}
-                                        </select>
-                                    </div>
-                                ) : (
-                                    <h2 className="text-3xl lg:text-4xl font-bold gradient-text-alt mb-4 border-l-4 border-brand-yellow pl-4">{categoryData.category}</h2>
-                                )}
-                                <p className="text-lg text-white ">{categoryData.introduction}</p>
-                                {(categoryData.id === 'valve-components' || categoryData.id === 'flanges' || categoryData.id === 'ms-flanges' || categoryData.id === 'ss-304-flanges') && selectedItem[categoryData.id] && (
+                                <div className="flex justify-between items-center">
+                                    <h2 className="text-3xl lg:text-4xl font-bold text-brand-yellow border-l-4 border-brand-yellow pl-4 mb-4">
+                                        {categoryData.category}</h2>
+                                    <select
+                                        value={selectedItem[categoryData.id] || ''}
+                                        onChange={(e) => handleItemSelect(categoryData.id, e.target.value)}
+                                        className="p-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue"
+                                        style={{ backgroundColor: '#FFC400' }}
+                                    >
+                                        <option value="">Select an item</option>
+                                        {categoryData.items.map((item, index) => (
+                                            <option key={index} value={item.name}>{item.name}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className="bg-white rounded-lg shadow-lg p-6">
+                                    <p className="text-lg text-gray-800">{categoryData.introduction}</p>
+                                </div>
+                                {selectedItem[categoryData.id] && (
                                     <div className="mt-6 bg-white rounded-lg shadow-lg p-6">
                                         <ProductDetail item={categoryData.items.find(item => item.name === selectedItem[categoryData.id])} categoryId={categoryData.id} />
                                     </div>
@@ -1911,7 +1552,7 @@ const ProductsPage: React.FC = () => {
                                                     <img
                                                         src="/valve_components.jpg"
                                                         alt="Valve Components"
-                                                        className="w-64 h-48 object-cover rounded-lg shadow-lg"
+                                                        className="w-64 h-48 object-contain rounded-lg shadow-lg"
                                                     />
                                                 </div>
                                             </div>
@@ -1989,25 +1630,6 @@ const ProductsPage: React.FC = () => {
                                                 </div>
                                             ))}
                                         </div>
-                                    </div>
-                                )}
-                            </div>
-                            <div className="bg-white rounded-lg shadow-lg p-6">
-                                {(categoryData.id !== 'valve-components' && categoryData.id !== 'flanges' && categoryData.id !== 'ms-flanges' && categoryData.id !== 'ss-304-flanges') && (
-                                    <select
-                                        value={selectedItem[categoryData.id] || ''}
-                                        onChange={(e) => handleItemSelect(categoryData.id, e.target.value)}
-                                        className="w-full p-3 border border-gray-300 rounded-md mb-6 focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                                    >
-                                        <option value="">Select an item</option>
-                                        {categoryData.items.map((item, index) => (
-                                            <option key={index} value={item.name}>{item.name}</option>
-                                        ))}
-                                    </select>
-                                )}
-                                {(categoryData.id !== 'valve-components' && categoryData.id !== 'flanges' && categoryData.id !== 'ms-flanges' && categoryData.id !== 'ss-304-flanges') && selectedItem[categoryData.id] && (
-                                    <div id={`product-${encodeURIComponent(selectedItem[categoryData.id])}`}>
-                                        <ProductDetail item={categoryData.items.find(item => item.name === selectedItem[categoryData.id])} categoryId={categoryData.id} />
                                     </div>
                                 )}
                             </div>

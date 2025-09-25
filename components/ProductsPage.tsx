@@ -1436,7 +1436,7 @@ const ProductsPage: React.FC = () => {
                                         <ProductDetail item={categoryData.items.find(item => item.name === selectedItem[categoryData.id])} categoryId={categoryData.id} />
                                     </div>
                                 )}
-                                {categoryData.applications && (
+                                {/* {categoryData.applications && (
                                     <div className="mt-6">
                                         {categoryData.id === 'control-valves' || categoryData.id === 'mild-steel-pins' || categoryData.id === 'partition-plate-die' || categoryData.id === 'ball-valve-seat-ring' || categoryData.id === 'solenoid-valves' || categoryData.id === 'gi-r-brand-fittings' || categoryData.id === 'ductile-iron-fittings' || categoryData.id === 'cast-steel-screwed-fittings' || categoryData.id === 'pipe-fittings' || categoryData.id === 'ss-316-flanges' || categoryData.id === 'ms-spacer-flanges' || categoryData.id === 'ss-304-flanges' || categoryData.id === 'plug-valves' || categoryData.id === 'pull-studs' || categoryData.id === 'ss-fittings' || categoryData.id === 'gi-fittings' || categoryData.id === 'forged-steel-fittings' || categoryData.id === 'gi-slip-on-flanges' || categoryData.id === 'gi-threaded-flanges' ? (
                                             <div className="flex flex-col lg:flex-row gap-6">
@@ -1470,8 +1470,8 @@ const ProductsPage: React.FC = () => {
                                                 </ul>
                                             </>
                                         )}
-                                    </div>
-                                )}
+                                    </div> */}
+                                {/* )} */}
                                 {categoryData.uses && (
                                     <div className="mt-6">
                                         <h3 className="text-2xl font-bold text-brand-blue mb-4">Uses of Forged Steel Fittings</h3>
@@ -1624,7 +1624,7 @@ const ProductsPage: React.FC = () => {
                                         }
                                     </div>
                                 )}
-                                {categoryData.advantages && (
+                                {/* {categoryData.advantages && (
                                     <div className="mt-6">
                                         {categoryData.id === 'flanges' || categoryData.id === 'grooved-fittings' || categoryData.id === 'gi-threaded-flanges' || categoryData.id === 'gi-slip-on-flanges' ? (
                                             <div className="flex flex-col lg:flex-row gap-6">
@@ -1659,7 +1659,7 @@ const ProductsPage: React.FC = () => {
                                             </>
                                         )}
                                     </div>
-                                )}
+                                )} */}
                                 {categoryData.types && (
                                     <div className="mt-6">
                                         <h3 className="text-2xl font-bold text-brand-blue mb-4">Types of Forged Steel Fittings</h3>

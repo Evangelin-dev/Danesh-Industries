@@ -1414,7 +1414,7 @@ const ProductsPage: React.FC = () => {
                         <section key={categoryData.id} id={categoryData.id} className="mb-20 scroll-mt-32 animate-fade-in" style={{ animationDelay: `${0.5 + catIndex * 0.2}s` }}>
                             <div className="mb-8">
                                 <div className="flex justify-between items-center">
-                                    <h2 className={`text-3xl lg:text-4xl font-bold border-l-4 border-brand-yellow pl-4 mb-4 ${categoryData.id === 'flanges' || categoryData.id === 'valve-components' || categoryData.id === 'ms-flanges' || categoryData.id === 'ss-304-flanges' ? 'text-orange-500' : 'text-brand-blue'}`}>
+                                    <h2 className={`text-3xl lg:text-4xl font-bold border-l-4 border-brand-yellow pl-4 mb-4 ${categoryData.id === 'flanges' || categoryData.id === 'valve-components' || categoryData.id === 'ms-flanges' || categoryData.id === 'ss-304-flanges' || categoryData.id === 'gi-r-brand-fittings' || categoryData.id === 'gi-fittings' || categoryData.id === 'ss-fittings' || categoryData.id === 'pull-studs' || categoryData.id === 'plug-valves' || categoryData.id === 'control-valves' || categoryData.id === 'mild-steel-pins' || categoryData.id === 'partition-plate-die' || categoryData.id === 'ball-valve-seat-ring' || categoryData.id === 'solenoid-valves' || categoryData.id === 'cast-steel-screwed-fittings' || categoryData.id === 'pipe-fittings' || categoryData.id === 'gi-slip-on-flanges' || categoryData.id === 'ss-316-flanges' || categoryData.id === 'ms-spacer-flanges' ? 'text-orange-500' : 'text-brand-blue'}`}>
                                         {categoryData.category}</h2>
                                     <select
                                         value={selectedItem[categoryData.id] || ''}
@@ -1452,7 +1452,7 @@ const ProductsPage: React.FC = () => {
                                                 </div>
                                                 <div className="flex-shrink-0">
                                                     <img
-                                                        src={categoryData.id === 'control-valves' ? "/product_image/Control_Valves.png" : categoryData.id === 'mild-steel-pins' ? "/product_image/Mild_Steel_Pins.png" : categoryData.id === 'partition-plate-die' ? "/product_image/Partition_Plate_Die.png" : categoryData.id === 'ball-valve-seat-ring' ? "/product_image/Ball_Valve_Seat_Ring.png" : categoryData.id === 'solenoid-valves' ? "/product_image/Solenoid_Valves.png" : categoryData.id === 'gi-r-brand-fittings' ? "/product_image/GI_R_Brand_Fittings.png" : categoryData.id === 'ductile-iron-fittings' ? "/product_image/Ductile_Iron_Fittings.png" : categoryData.id === 'cast-steel-screwed-fittings' ? "/product_image/Cast_Steel_Screw_Fittings.png" : categoryData.id === 'pipe-fittings' ? "/product_image/Pipe_Fittings.png" : categoryData.id === 'ss-316-flanges' ? "/product_image/SS_316_Flanges.png" : categoryData.id === 'ms-spacer-flanges' ? "/product_image/MS_Flanges.png" : categoryData.id === 'ss-304-flanges' ? "/product_image/SS_304_Flanges.png" : categoryData.id === 'plug-valves' ? "/product_image/Plug_Valves.png" : categoryData.id === 'pull-studs' ? "/product_image/Pull_Studs.png" : categoryData.id === 'ss-fittings' ? "/product_image/Stainless_Steel_(SS)_Fittings.png" : categoryData.id === 'gi-fittings' ? "/product_image/GI_Fittings.png" : "/product_image/Forged_Steel_Fittings.png"}
+                                                        src={categoryData.id === 'control-valves' ? "/product_image/Control_Valves.png" : categoryData.id === 'mild-steel-pins' ? "/product_image/Mild_Steel_Pins.png" : categoryData.id === 'partition-plate-die' ? "/product_image/Partition_Plate_Die.png" : categoryData.id === 'ball-valve-seat-ring' ? "/product_image/Ball_Valve_Seat_Ring.png" : categoryData.id === 'solenoid-valves' ? "/product_image/Solenoid_Valves.png" : categoryData.id === 'gi-r-brand-fittings' ? "/product_image/GI_R_Brand_Fittings.png" : categoryData.id === 'ductile-iron-fittings' ? "/product_image/Ductile_Iron_Fittings.png" : categoryData.id === 'cast-steel-screwed-fittings' ? "/product_image/Cast_Steel_Screw_Fittings.png" : categoryData.id === 'pipe-fittings' ? "/product_image/Pipe_Fittings.png" : categoryData.id === 'ss-316-flanges' ? "/product_image/SS_316_Flanges.png" : categoryData.id === 'ms-spacer-flanges' ? "/product_image/MS_Flanges.png" : categoryData.id === 'ss-304-flanges' ? "/product_image/SS_304_Flanges.png" : categoryData.id === 'plug-valves' ? "/product_image/Plug_Valves.png" : categoryData.id === 'pull-studs' ? "/product_image/Pull_Studs.png" : categoryData.id === 'ss-fittings' ? "/product_image/Stainless_Steel_(SS)_Fittings.png" : categoryData.id === 'gi-fittings' ? "/product_image/GI_Fittings.png" : categoryData.id === 'grooved-fittings' ? "/Grooved_Fitttings.png" : "/product_image/Forged_Steel_Fittings.png"}
                                                         alt={categoryData.category}
                                                         className={categoryData.id === 'gi-r-brand-fittings' ? "w-40 h-40 object-contain rounded-lg shadow-lg" : "w-48 h-48 object-contain rounded-lg shadow-lg"}
                                                     />
@@ -1472,6 +1472,42 @@ const ProductsPage: React.FC = () => {
                                         )}
                                     </div> */}
                                 {/* )} */}
+                                {categoryData.applications && (
+                                    <div className="mt-6">
+                                        {categoryData.id === 'control-valves' || categoryData.id === 'mild-steel-pins' || categoryData.id === 'partition-plate-die' || categoryData.id === 'ball-valve-seat-ring' || categoryData.id === 'solenoid-valves' || categoryData.id === 'gi-r-brand-fittings' || categoryData.id === 'ductile-iron-fittings' || categoryData.id === 'cast-steel-screwed-fittings' || categoryData.id === 'pipe-fittings' || categoryData.id === 'ss-316-flanges' || categoryData.id === 'ms-spacer-flanges' || categoryData.id === 'ss-304-flanges' || categoryData.id === 'plug-valves' || categoryData.id === 'pull-studs' || categoryData.id === 'ss-fittings' || categoryData.id === 'gi-fittings' || categoryData.id === 'forged-steel-fittings' || categoryData.id === 'grooved-fittings' ? (
+                                            <div className="flex flex-col lg:flex-row gap-6">
+                                                <div className="flex-1">
+                                                    <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' || categoryData.id === 'ms-flanges' ? 'text-orange-500' : 'text-amber-600'}`}>Applications of Danesh Industries {categoryData.category}</h3>
+                                                    <ul className="list-none space-y-2 text-lg text-white">
+                                                        {categoryData.applications.map((app, index) => (
+                                                            <li key={index} className="flex items-center">
+                                                                <span className="text-blue-500 mr-2">●</span>{app}
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                                <div className="flex-shrink-0">
+                                                    <img
+                                                        src={categoryData.id === 'control-valves' ? "/product_image/Control_Valves.png" : categoryData.id === 'mild-steel-pins' ? "/product_image/Mild_Steel_Pins.png" : categoryData.id === 'partition-plate-die' ? "/product_image/Partition_Plate_Die.png" : categoryData.id === 'ball-valve-seat-ring' ? "/product_image/Ball_Valve_Seat_Ring.png" : categoryData.id === 'solenoid-valves' ? "/product_image/Solenoid_Valves.png" : categoryData.id === 'gi-r-brand-fittings' ? "/product_image/GI_R_Brand_Fittings.png" : categoryData.id === 'ductile-iron-fittings' ? "/product_image/Ductile_Iron_Fittings.png" : categoryData.id === 'cast-steel-screwed-fittings' ? "/product_image/Cast_Steel_Screw_Fittings.png" : categoryData.id === 'pipe-fittings' ? "/product_image/Pipe_Fittings.png" : categoryData.id === 'ss-316-flanges' ? "/product_image/SS_316_Flanges.png" : categoryData.id === 'ms-spacer-flanges' ? "/product_image/MS_Flanges.png" : categoryData.id === 'ss-304-flanges' ? "/product_image/SS_304_Flanges.png" : categoryData.id === 'plug-valves' ? "/product_image/Plug_Valves.png" : categoryData.id === 'pull-studs' ? "/product_image/Pull_Studs.png" : categoryData.id === 'ss-fittings' ? "/product_image/Stainless_Steel_(SS)_Fittings.png" : categoryData.id === 'gi-fittings' ? "/product_image/GI_Fittings.png" : "/product_image/Forged_Steel_Fittings.png"}
+                                                        alt={categoryData.category}
+                                                        className={categoryData.id === 'gi-r-brand-fittings' ? "w-40 h-40 object-contain rounded-lg shadow-lg" : "w-48 h-48 object-contain rounded-lg shadow-lg"}
+                                                    />
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <>
+                                                <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' ? 'text-orange-500' : 'text-amber-600'}`}>Applications of Danesh Industries {categoryData.category}</h3>
+                                                <ul className="list-none space-y-2 text-lg text-white">
+                                                    {categoryData.applications.map((app, index) => (
+                                                        <li key={index} className="flex items-center">
+                                                            <span className="text-blue-500 mr-2">●</span>{app}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </>
+                                        )}
+                                    </div>
+                                )}
                                 {categoryData.uses && (
                                     <div className="mt-6">
                                         <h3 className="text-2xl font-bold text-brand-blue mb-4">Uses of Forged Steel Fittings</h3>
@@ -1482,42 +1518,6 @@ const ProductsPage: React.FC = () => {
                                                 </li>
                                             ))}
                                         </ul>
-                                    </div>
-                                )}
-                                {categoryData.advantages && (
-                                    <div className="mt-6">
-                                        {categoryData.id === 'flanges' || categoryData.id === 'grooved-fittings' ? (
-                                            <div className="flex flex-col lg:flex-row gap-6">
-                                                <div className="flex-1">
-                                                    <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' || categoryData.id === 'grooved-fittings' || categoryData.id === 'gi-slip-on-flanges' ? 'text-orange-500' : 'text-brand-blue'}`}>Benefits of Danesh Industries {categoryData.category}</h3>
-                                                    <ul className="list-none space-y-2 text-lg text-white">
-                                                        {categoryData.advantages.map((adv, index) => (
-                                                            <li key={index} className="flex items-center">
-                                                                <span className="text-green-500 mr-2">✔</span>{adv}
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                                <div className="flex-shrink-0">
-                                                    <img
-                                                        src={categoryData.id === 'flanges' ? "/flanges.png" : categoryData.id === 'grooved-fittings' ? "/product_image/Grooved_Fittings.png" : categoryData.id === 'gi-threaded-flanges' ? "/product_image/GI_Threaded_Flanges.png" : "/product_image/GI_Slip-On_Flanges.png"}
-                                                        alt={categoryData.category}
-                                                        className="w-48 h-48 object-contain rounded-lg shadow-lg"
-                                                    />
-                                                </div>
-                                            </div>
-                                        ) : (
-                                            <>
-                                                <h3 className="text-2xl font-bold text-brand-blue mb-4">Benefits of Danesh Industries {categoryData.category}</h3>
-                                                <ul className="list-none space-y-2 text-lg text-white">
-                                                    {categoryData.advantages.map((adv, index) => (
-                                                        <li key={index} className="flex items-center">
-                                                            <span className="text-green-500 mr-2">✔</span>{adv}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </>
-                                        )}
                                     </div>
                                 )}
                                 {categoryData.components && (
@@ -1550,35 +1550,35 @@ const ProductsPage: React.FC = () => {
                                         </ul>
                                     </div>
                                 )}
-                                {categoryData.applications && (
+                                {categoryData.advantages && (
                                     <div className="mt-6">
-                                        {categoryData.id === 'control-valves' || categoryData.id === 'mild-steel-pins' || categoryData.id === 'partition-plate-die' || categoryData.id === 'ball-valve-seat-ring' || categoryData.id === 'solenoid-valves' || categoryData.id === 'gi-r-brand-fittings' || categoryData.id === 'ductile-iron-fittings' || categoryData.id === 'cast-steel-screwed-fittings' || categoryData.id === 'pipe-fittings' || categoryData.id === 'ss-316-flanges' || categoryData.id === 'ms-spacer-flanges' || categoryData.id === 'ss-304-flanges' || categoryData.id === 'plug-valves' || categoryData.id === 'pull-studs' || categoryData.id === 'ss-fittings' || categoryData.id === 'gi-fittings' || categoryData.id === 'forged-steel-fittings' ? (
+                                        {categoryData.id === 'flanges' ? (
                                             <div className="flex flex-col lg:flex-row gap-6">
                                                 <div className="flex-1">
-                                                    <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' || categoryData.id === 'ms-flanges' ? 'text-orange-500' : 'text-amber-600'}`}>Applications of Danesh Industries {categoryData.category}</h3>
+                                                    <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' || categoryData.id === 'grooved-fittings' || categoryData.id === 'gi-slip-on-flanges' ? 'text-orange-500' : 'text-brand-blue'}`}>Benefits of Danesh Industries {categoryData.category}</h3>
                                                     <ul className="list-none space-y-2 text-lg text-white">
-                                                        {categoryData.applications.map((app, index) => (
+                                                        {categoryData.advantages.map((adv, index) => (
                                                             <li key={index} className="flex items-center">
-                                                                <span className="text-blue-500 mr-2">●</span>{app}
+                                                                <span className="text-green-500 mr-2">✔</span>{adv}
                                                             </li>
                                                         ))}
                                                     </ul>
                                                 </div>
                                                 <div className="flex-shrink-0">
                                                     <img
-                                                        src={categoryData.id === 'control-valves' ? "/product_image/Control_Valves.png" : categoryData.id === 'mild-steel-pins' ? "/product_image/Mild_Steel_Pins.png" : categoryData.id === 'partition-plate-die' ? "/product_image/Partition_Plate_Die.png" : categoryData.id === 'ball-valve-seat-ring' ? "/product_image/Ball_Valve_Seat_Ring.png" : categoryData.id === 'solenoid-valves' ? "/product_image/Solenoid_Valves.png" : categoryData.id === 'gi-r-brand-fittings' ? "/product_image/GI_R_Brand_Fittings.png" : categoryData.id === 'ductile-iron-fittings' ? "/product_image/Ductile_Iron_Fittings.png" : categoryData.id === 'cast-steel-screwed-fittings' ? "/product_image/Cast_Steel_Screw_Fittings.png" : categoryData.id === 'pipe-fittings' ? "/product_image/Pipe_Fittings.png" : categoryData.id === 'ss-316-flanges' ? "/product_image/SS_316_Flanges.png" : categoryData.id === 'ms-spacer-flanges' ? "/product_image/MS_Flanges.png" : categoryData.id === 'ss-304-flanges' ? "/product_image/SS_304_Flanges.png" : categoryData.id === 'plug-valves' ? "/product_image/Plug_Valves.png" : categoryData.id === 'pull-studs' ? "/product_image/Pull_Studs.png" : categoryData.id === 'ss-fittings' ? "/product_image/Stainless_Steel_(SS)_Fittings.png" : categoryData.id === 'gi-fittings' ? "/product_image/GI_Fittings.png" : "/product_image/Forged_Steel_Fittings.png"}
+                                                        src={categoryData.id === 'flanges' ? "/flanges.png" : categoryData.id === 'grooved-fittings' ? "/product_image/Grooved_Fittings.png" : categoryData.id === 'gi-threaded-flanges' ? "/product_image/GI_Threaded_Flanges.png" : "/product_image/GI_Slip-On_Flanges.png"}
                                                         alt={categoryData.category}
-                                                        className={categoryData.id === 'gi-r-brand-fittings' ? "w-40 h-40 object-contain rounded-lg shadow-lg" : "w-48 h-48 object-contain rounded-lg shadow-lg"}
+                                                        className="w-48 h-48 object-contain rounded-lg shadow-lg"
                                                     />
                                                 </div>
                                             </div>
                                         ) : (
                                             <>
-                                                <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' ? 'text-orange-500' : 'text-amber-600'}`}>Applications of Danesh Industries {categoryData.category}</h3>
+                                                <h3 className="text-2xl font-bold text-brand-blue mb-4">Benefits of Danesh Industries {categoryData.category}</h3>
                                                 <ul className="list-none space-y-2 text-lg text-white">
-                                                    {categoryData.applications.map((app, index) => (
+                                                    {categoryData.advantages.map((adv, index) => (
                                                         <li key={index} className="flex items-center">
-                                                            <span className="text-blue-500 mr-2">●</span>{app}
+                                                            <span className="text-green-500 mr-2">✔</span>{adv}
                                                         </li>
                                                     ))}
                                                 </ul>

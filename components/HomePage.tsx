@@ -291,6 +291,14 @@ const HomePage: React.FC = () => {
 				{/* </div> */}
 			{/* </div> */} 
 
+			{/* Chatbot Section
+			/*<section className="py-10 bg-white">
+				<div className="container mx-auto px-6 text-center">
+					<h2 className="text-2xl font-bold text-brand-dark mb-4">Chat with Danesh Assistant</h2>
+					<img src="/boticon1.png" alt="Chatbot Doll" className="w-24 h-24 object-contain mx-auto" />
+				</div>
+			</section>*/ }
+
 			{/* Sample Videos Section */}
 			<section className="py-20 bg-gray-100">
 				<div className="container mx-auto px-6">

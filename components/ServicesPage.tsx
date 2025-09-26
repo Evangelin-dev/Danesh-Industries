@@ -1,5 +1,6 @@
 import React from 'react';
 import type { JSX } from 'react';
+import SEO from './SEO';
 
 interface Service {
     title: string;
@@ -56,6 +57,11 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => (
 const ServicesPage: React.FC = () => {
     return (
         <>
+            <SEO
+                title="Our Services - Danesh Industries"
+                description="Comprehensive industrial services including precision machining, reverse engineering, surface treatments, design & automation, and quality assurance."
+                url="/services"
+            />
             <style dangerouslySetInnerHTML={{
                 __html: `
                     @keyframes services-slideshow {

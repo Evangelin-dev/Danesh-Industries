@@ -262,19 +262,30 @@ const App: React.FC = () => {
 
           {/* Doll Chatbot */}
           <div className="fixed bottom-4 right-1 z-50">
+
+          {/* <img src="/boticon1.png" alt="Chatbot Doll" className="w-24 h-24 object-contain mx-auto" /> */}
+
             <div
+            
               className="relative cursor-pointer"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               onClick={() => setShowChat(true)}
             >
-              <svg
+                        <img src="/boticon1.png" alt="Chatbot Doll" className="w-24 h-24 object-contain mx-auto" />
+
+              {/* <svg
                 viewBox="0 0 100 100"
                 className="w-24 h-24 drop-shadow-lg hover:scale-110 transition-transform duration-300"
                 xmlns="http://www.w3.org/2000/svg"
-              >
+                
+                
+              > */}
                 {/* Robot Doll Style */}
-                <rect x="35" y="25" width="30" height="25" fill="#e5e7eb" stroke="#374151" strokeWidth="2" rx="5" />
+
+                          {/* <img src="/boticon1.png" alt="Chatbot Doll" className="w-24 h-24 object-contain mx-auto" /> */}
+
+                {/* <rect x="35" y="25" width="30" height="25" fill="#e5e7eb" stroke="#374151" strokeWidth="2" rx="5" />
                 <rect x="40" y="30" width="20" height="15" fill="#3b82f6" stroke="#1e40af" strokeWidth="1" rx="2" />
                 <circle cx="45" cy="37" r="2" fill="#ffffff" />
                 <circle cx="55" cy="37" r="2" fill="#ffffff" />
@@ -284,7 +295,8 @@ const App: React.FC = () => {
                 <rect x="56" y="55" width="6" height="15" fill="#9ca3af" stroke="#6b7280" strokeWidth="1" rx="2" />
                 <circle cx="41" cy="72" r="3" fill="#374151" />
                 <circle cx="59" cy="72" r="3" fill="#374151" />
-              </svg>
+                
+              </svg>  */}
               {(isHovered || showTooltip) && (
                 <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-black text-white text-sm rounded shadow-lg whitespace-nowrap animate-pulse">
                   How can I help you?

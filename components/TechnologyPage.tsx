@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from './SEO';
 
 const technologies = [
     { name: 'SolidWorks', description: 'For 3D modeling and design.', image: 'https://upload.wikimedia.org/wikipedia/commons/9/9e/SolidWorks_Logo.svg' },
@@ -11,6 +12,11 @@ const technologies = [
 const TechnologyPage: React.FC = () => {
     return (
         <>
+            <SEO
+                title="Our Technology - Danesh Industries"
+                description="Advanced technologies and tools including SolidWorks, Mastercam, FARO Arm, PMI & Mobile Spectro, and Hydro Testing for precision manufacturing."
+                url="/technology"
+            />
             <style dangerouslySetInnerHTML={{
                 __html: `
                     @keyframes tech-slideshow {

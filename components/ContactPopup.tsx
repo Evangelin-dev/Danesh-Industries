@@ -27,12 +27,17 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50">
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-50 rounded-lg shadow-xl w-full max-w-md p-4">
         <div className="flex justify-between items-center p-6 border-b border-brand-light">
-          <div className="flex items-center space-x-3">
-            <img
-              src="/logos/daneshlogo.jpg"
-              alt="Danesh Industries Logo"
-              className="w-12 h-12 object-contain"
-            />
+          <div className="flex items-center space-x-3 relative">
+            <div className="relative">
+              <img
+                src="/logos/daneshlogo.jpg"
+                alt="Danesh Industries Logo"
+                className="w-12 h-12 object-contain"
+              />
+              <div className="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 rounded-full animate-ping opacity-75"></div>
+              <div className="absolute -top-3 -right-3 w-3 h-3 bg-green-500 rounded-full animate-bounce opacity-75"></div>
+              <div className="absolute -top-5 -right-5 w-2 h-2 bg-yellow-500 rounded-full animate-pulse opacity-75"></div>
+            </div>
             <h3 className="text-xl font-bold text-brand-dark">Contact Us</h3>
           </div>
           <button

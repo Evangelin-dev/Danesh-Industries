@@ -18,6 +18,11 @@ import BlogPage from './components/BlogPage';
 import ContactPage from './components/ContactPage';
 import AdminPanel from './components/AdminPanel';
 
+
+// Define the steps for the quote conversation flow
+type ChatStep = 'INITIAL' | 'AWAITING_PHONE' | 'AWAITING_EMAIL' | 'COMPLETED_QUOTE';
+type Message = { text: string; isUser: boolean };
+
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
@@ -35,8 +40,19 @@ const App: React.FC = () => {
   const [input, setInput] = useState('');
   const [showTooltip, setShowTooltip] = useState(false);
   const [whatsappHovered, setWhatsappHovered] = useState(false);
+  
+  
+  // New state for conversational flow
+  const [chatStep, setChatStep] = useState<ChatStep>('INITIAL');
+  const [quoteData, setQuoteData] = useState<{ phone: string; email: string }>({ phone: '', email: '' });
+  
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const tooltipRef = useRef<NodeJS.Timeout | null>(null);
+
+  // --- Utility Functions for Validation and State Management ---
+
+  const isValidPhone = (str: string) => /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/.test(str.replace(/\s+/g, ''));
+  const isValidEmail = (str: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(str.trim());
 
   const resetTimer = () => {
     if (timeoutRef.current) {
@@ -44,8 +60,128 @@ const App: React.FC = () => {
     }
     timeoutRef.current = setTimeout(() => {
       setShowChat(false);
-    }, 30000);
+    }, 30000); // 30 seconds inactivity timeout
   };
+
+  const initialGreeting: Message = {
+    text: "Hello! I'm the Danesh Assistant. We are online, chat with us! I can help with: **Get a quote**, **Browse our products**, or **Browse our services**.",
+    isUser: false,
+  };
+
+  const handleToggleChat = () => {
+    const shouldShow = !showChat;
+    setShowChat(shouldShow);
+    if (shouldShow && messages.length === 0) {
+      // Add initial greeting when chat is first opened
+      setMessages([initialGreeting]);
+      resetTimer();
+    }
+  };
+
+  // --- Chatbot Logic: Generating Responses and Managing State ---
+
+  const getBotResponseAndNextStep = (userMessage: string, currentStep: ChatStep) => {
+    const msg = userMessage.toLowerCase().trim();
+    let response = '';
+    let nextStep: ChatStep = currentStep;
+    let quoteUpdate = { phone: quoteData.phone, email: quoteData.email };
+
+    // 1. Handle Quote Flow Steps
+    if (currentStep === 'AWAITING_PHONE') {
+      if (isValidPhone(msg)) {
+        response = "Thanks, share your **email id** now.";
+        nextStep = 'AWAITING_EMAIL';
+        quoteUpdate.phone = userMessage;
+      } else {
+        response = "That doesn't look like a valid phone number. Please provide your **Phone Number** so our team can reach you.";
+      }
+    } else if (currentStep === 'AWAITING_EMAIL') {
+      if (isValidEmail(msg)) {
+        response = "Thank you! Our team will reach out to you shortly. You can ask another question, or type **'start'** for main options.";
+        nextStep = 'COMPLETED_QUOTE';
+        quoteUpdate.email = userMessage;
+        // Reset state after a slight delay
+        setTimeout(() => setChatStep('INITIAL'), 2000);
+      } else {
+        response = "Thanks, share your **email id** now."; // Repeat prompt on invalid email
+      }
+    } 
+    
+    // 2. Handle Initial State / General Queries
+    else { 
+      if (msg.includes('quote') || msg.includes('get a quote')) {
+        response = "Great! Please share your **Phone Number** so our team can contact you.";
+        nextStep = 'AWAITING_PHONE';
+        setQuoteData({ phone: '', email: '' }); // Reset quote data
+      } else if (msg.includes('browse product') || msg.includes('products link')) {
+        response = "Click on the link to know more about products: [Browse our products](/products)";
+      } else if (msg.includes('browse service') || msg.includes('services link')) {
+        response = "Click on the link to know more about our services: [Browse our services](/services)";
+      } else if (msg.includes('start') || msg.includes('home') || msg.includes('option')) {
+        response = "I can help with: **Get a quote**, **Browse our products**, or **Browse our services**. How can I help you?";
+      } 
+      
+      // Existing static responses (modified slightly to be more action-oriented)
+      else if (msg.includes('product') || msg.includes('flange') || msg.includes('fitting') || msg.includes('valve')) {
+        response = "We offer a wide range of precision machined parts. [Browse our products](/products) for details!";
+      } else if (msg.includes('contact') || msg.includes('phone') || msg.includes('email') || msg.includes('address')) {
+        response = "You can contact us at marketing@daneshindustries.com or call +91 8939 415026. [Visit our Contact Us page](/contact) for full details.";
+      } else if (msg.includes('about') || msg.includes('company') || msg.includes('danesh')) {
+        response = "Danesh Industries is a leading manufacturer of precision machined parts. [Learn more on our About Us page](/about).";
+      } else if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) {
+        response = "Hello! I'm the Danesh Assistant. I can help with: **Get a quote**, **Browse our products**, or **Browse our services**.";
+      } else if (msg.includes('thank') || msg.includes('thanks')) {
+        response = "You're welcome! Feel free to ask more questions!";
+      } else {
+        response = "I'm here to help with information about Danesh Industries. Try asking about our Products, Services, or start a task like **'Get a quote'**.";
+      }
+    }
+
+    return { response, nextStep, quoteUpdate };
+  };
+
+
+  const handleSend = () => {
+    if (input.trim()) {
+      const userMessage = input.trim();
+      
+      // 1. Add user message
+      setMessages(prev => [...prev, { text: userMessage, isUser: true }]);
+      setInput('');
+
+      // 2. Process message and determine next state
+      const { response, nextStep, quoteUpdate } = getBotResponseAndNextStep(userMessage, chatStep);
+
+      // 3. Update quote data and chat step immediately
+      setQuoteData(quoteUpdate);
+      setChatStep(nextStep);
+
+      // 4. Respond with bot message after a delay
+      setTimeout(() => {
+        setMessages(prev => {
+          // Check if we need to display a special message based on the step transition
+          let finalResponse = response;
+          if (nextStep === 'COMPLETED_QUOTE') {
+            // Optional: Log or send quote data externally here
+            console.log("Quote Submitted:", quoteUpdate); 
+          }
+
+          // Simple markdown rendering for links (replace [Text](url) with HTML link)
+          const renderedText = finalResponse.replace(/\[([^\]]+)\]\(([^\)]+)\)/g, (match, text, url) => {
+            return `<a href="${url}" class="text-brand-blue underline hover:text-blue-700" onclick="document.querySelector('.chatbot-close-button').click();">${text}</a>`;
+          });
+
+          return [...prev, { text: renderedText, isUser: false }];
+        });
+        resetTimer();
+      }, 500);
+
+      resetTimer();
+    }
+  };
+
+
+  // --- Hooks for Timers and Cleanup ---
 
   useEffect(() => {
     if (showChat) {
@@ -85,68 +221,25 @@ const App: React.FC = () => {
     };
   }, []);
 
-  const getBotResponse = (userMessage: string): string => {
-    const msg = userMessage.toLowerCase();
-    if (msg.includes('product') || msg.includes('flange') || msg.includes('fitting') || msg.includes('valve')) {
-      return "We offer a wide range of precision machined parts including flanges, fittings, valves, and more. Visit our Products page for details!";
-    }
-    if (msg.includes('contact') || msg.includes('phone') || msg.includes('email') || msg.includes('address')) {
-      return "You can contact us at marketing@daneshindustries.com or call +91 8939 415026. Visit our Contact Us page for full details.";
-    }
-    if (msg.includes('about') || msg.includes('company') || msg.includes('danesh')) {
-      return "Danesh Industries is a leading manufacturer of precision machined parts, flanges, fittings, and valves for industrial applications. Learn more on our About Us page.";
-    }
-    if (msg.includes('service') || msg.includes('machining') || msg.includes('engineering')) {
-      return "We provide precision machining, reverse engineering, and custom manufacturing services. Visit our Services page for more info.";
-    }
-    if (msg.includes('location') || msg.includes('chennai') || msg.includes('india')) {
-      return "We are located in Chennai, Tamil Nadu, India. Find us on the map in our Contact section.";
-    }
-    if (msg.includes('home')) {
-      return "Welcome to our Home page! Here you can learn about our company and offerings.";
-    }
-    if (msg.includes('capability') || msg.includes('capabilities')) {
-      return "Explore our manufacturing capabilities including CNC machining and more. Visit our Capabilities page.";
-    }
-    if (msg.includes('technolog') || msg.includes('tech')) {
-      return "Learn about the advanced technologies we use in our manufacturing processes. Check out our Technology page.";
-    }
-    if (msg.includes('certification') || msg.includes('certify')) {
-      return "We hold various industry certifications. Visit our Certifications page for details.";
-    }
-    if (msg.includes('blog')) {
-      return "Read our latest updates and industry insights on our Blog page.";
-    }
-    if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) {
-      return "Hello! How can I help you learn more about Danesh Industries? Ask about our products, services, contact, or any page!";
-    }
-    if (msg.includes('thank') || msg.includes('thanks')) {
-      return "You're welcome! Feel free to ask more questions.";
-    }
-    return "I'm here to help with information about Danesh Industries. Try asking about our Products, Services, Contact Us, Technology, or any other page!";
-  };
-
-  const handleSend = () => {
-    if (input.trim()) {
-      setMessages(prev => [...prev, { text: input, isUser: true }]);
-      const response = getBotResponse(input);
-      setTimeout(() => {
-        setMessages(prev => [...prev, { text: response, isUser: false }]);
-        resetTimer();
-      }, 500);
-      setInput('');
-      resetTimer();
-    }
-  };
+  // --- Render Component ---
 
   return (
     <HelmetProvider>
+      {/* Defined a custom CSS color for branding for demonstration */}
+      <style>{`
+        .bg-brand-dark { background-color: #1a365d; } /* Dark Blue/Navy */
+        .text-brand-dark { color: #1a365d; }
+        .text-brand-blue { color: #3b82f6; } /* Standard Blue */
+        .bg-brand-blue { background-color: #3b82f6; }
+        .bg-brand-light { background-color: #f7f7f9; }
+      `}</style>
       <BrowserRouter>
         <ScrollToTop />
         <div className="flex flex-col min-h-screen bg-brand-light font-sans">
           <Header />
           <main className="flex-grow">
             <Routes>
+              {/* Keeping existing routes as defined in the user's request */}
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/products" element={<ProductsPage />} />
@@ -156,7 +249,6 @@ const App: React.FC = () => {
               <Route path="/capabilities" element={<CapabilitiesPage />} />
               <Route path="/technology" element={<TechnologyPage />} />
               <Route path="/certifications" element={<CertificationsPage />} />
-              {/* <Route path="/testimonials" element={<TestimonialsPage />} /> */}
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/admin" element={<AdminPanel />} />
@@ -262,15 +354,11 @@ const App: React.FC = () => {
 
           {/* Doll Chatbot */}
           <div className="fixed bottom-4 right-1 z-50">
-
-          {/* <img src="/boticon1.png" alt="Chatbot Doll" className="w-24 h-24 object-contain mx-auto" /> */}
-
             <div
-            
               className="relative cursor-pointer"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
-              onClick={() => setShowChat(true)}
+              onClick={handleToggleChat}
             >
                         <img src="/boticon1.png" alt="Chatbot Doll" className="w-24 h-24 object-contain mx-auto" />
 
@@ -313,25 +401,31 @@ const App: React.FC = () => {
                   <h3 className="text-lg font-bold text-brand-dark">Danesh Assistant</h3>
                   <button
                     onClick={() => setShowChat(false)}
-                    className="text-gray-500 hover:text-gray-700"
+                    className="chatbot-close-button text-gray-500 hover:text-gray-700"
                   >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
                 </div>
+                {/* Chat Display Area */}
                 <div className="flex-1 overflow-y-auto mb-4 p-2 border rounded flex flex-col-reverse">
                   {messages.length === 0 && (
-                    <p className="text-gray-500 text-center">Ask me anything about Danesh Industries!</p>
+                    <p className="text-gray-500 text-center">Click the doll icon to start chatting!</p>
                   )}
                   {messages.slice().reverse().map((msg, index) => (
                     <div key={messages.length - 1 - index} className={`mb-2 ${msg.isUser ? 'text-right' : 'text-left'}`}>
-                      <span className={`inline-block px-3 py-2 rounded-lg ${msg.isUser ? 'bg-brand-blue text-white' : 'bg-gray-200 text-black'}`}>
-                        {msg.text}
-                      </span>
+                      {/* Using dangerouslySetInnerHTML to render simple HTML links for browsing, and bolding */}
+                      <span
+                        className={`inline-block px-3 py-2 rounded-lg text-sm max-w-[85%] ${msg.isUser ? 'bg-brand-blue text-white' : 'bg-gray-200 text-black'}`}
+                        dangerouslySetInnerHTML={{
+                          __html: msg.text.replace(/\*\*(.*?)\*\*/g, '<strong>$1')
+                        }}
+                      />
                     </div>
                   ))}
                 </div>
+                {/* Input Area */}
                 <div className="flex">
                   <input
                     type="text"
@@ -342,7 +436,7 @@ const App: React.FC = () => {
                     }}
                     onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                    placeholder="Type your question..."
+                    placeholder={chatStep === 'AWAITING_PHONE' ? "Enter phone number..." : chatStep === 'AWAITING_EMAIL' ? "Enter email ID..." : "Type your question..."}
                   />
                   <button
                     onClick={handleSend}
@@ -351,6 +445,11 @@ const App: React.FC = () => {
                     Send
                   </button>
                 </div>
+                {chatStep !== 'INITIAL' && chatStep !== 'COMPLETED_QUOTE' && (
+                  <p className="text-xs text-red-500 mt-2 text-center">
+                    **Active conversation: Please enter your {chatStep === 'AWAITING_PHONE' ? 'phone number' : 'email ID'}.**
+                  </p>
+                )}
               </div>
             </div>
           )}

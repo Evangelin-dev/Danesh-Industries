@@ -13,7 +13,7 @@ const ContactInfoItem: React.FC<{ icon: JSX.Element; title: string; children: Re
 );
 
 const ContactPage: React.FC = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '', phone: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -21,42 +21,56 @@ const ContactPage: React.FC = () => {
     setFormData(prevState => ({ ...prevState, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Here you would typically handle the form submission, e.g., send to an API
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
 
+    // Split first and last name if possible
+    const [firstName, ...lastNameParts] = formData.name.split(' ');
+    const lastName = lastNameParts.join(' ') || 'N/A';
+
+    const payload = {
+      source: "website",
+      location: "Chennai", // you can make this dynamic if needed
+      interested_in: formData.subject,
+      Other: formData.message,
+      access_key: "42c8e913-0d5d-4e30-817b-adb9261dd3e2",
+      first_name: firstName,
+      last_name: lastName,
+      email: formData.email,
+      phone: formData.phone || "+91", // default if empty
+      note: formData.message,
+    };
+
+    try {
+      const response = await fetch("https://portal.botdigitalsolutions.com/api/lead-generate/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        console.log("Lead generated successfully");
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '', phone: '' });
+      } else {
+        console.error("Failed to submit lead:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error submitting lead:", error);
+    }
+  };
 
   return (
     <>
       <SEO
         title="Contact Us - Danesh Industries"
-        description="Get in touch with Danesh Industries for precision machined parts, flanges, fittings, and valves. Contact us for inquiries, quotes, and industrial solutions."
-        keywords="contact Danesh Industries, precision machining, industrial components, flanges, fittings, valves, Chennai, India, OEM spare parts, pump spare parts, valve components, pipe fittings, stainless steel flanges, carbon steel flanges, industrial valves, mechanical engineering, reverse engineering, CNC machining, industrial manufacturing, petrochemical equipment, oil and gas components, water treatment parts, HVAC components, process industry equipment, custom machining, bulk manufacturing, quality assurance, ASME standards, ASTM standards, DIN standards"
+        description="Get in touch with Danesh Industries for precision machined parts..."
+        keywords="contact Danesh Industries, precision machining..."
         url="/contact"
       />
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          @keyframes contact-slideshow {
-              0% { background-image: url('https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?q=80&w=4000&auto=format&fit=crop'); }
-              25% { background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=4000&auto=format&fit=crop'); }
-              50% { background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=4000&auto=format&fit=crop'); }
-              75% { background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=4000&auto=format&fit=crop'); }
-              100% { background-image: url('https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?q=80&w=4000&auto=format&fit=crop'); }
-          }
-          @keyframes fade-in {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          .animate-fade-in {
-            animation: fade-in 0.6s ease-out forwards;
-            opacity: 0;
-          }
-        `
-      }} />
+
       <div className="bg-brand-light py-20 relative" style={{ backgroundSize: 'cover', backgroundPosition: 'center', animation: 'contact-slideshow 18s infinite' }}>
         <div className="absolute inset-0 bg-white opacity-25"></div>
         <div className="container mx-auto px-6 relative z-10">
@@ -124,22 +138,26 @@ const ContactPage: React.FC = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-brand-dark">Full Name</label>
-                  <input type="text" name="name" id="name" required value={formData.name} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue focus:border-brand-blue hover:border-brand-blue transition-colors duration-300"/>
+                  <input type="text" name="name" id="name" required value={formData.name} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border rounded-md"/>
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-brand-dark">Email Address</label>
-                  <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue focus:border-brand-blue hover:border-brand-blue transition-colors duration-300"/>
+                  <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border rounded-md"/>
+                </div>
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-brand-dark">Phone</label>
+                  <input type="tel" name="phone" id="phone" value={formData.phone} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border rounded-md"/>
                 </div>
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-brand-dark">Subject</label>
-                  <input type="text" name="subject" id="subject" required value={formData.subject} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue focus:border-brand-blue hover:border-brand-blue transition-colors duration-300"/>
+                  <input type="text" name="subject" id="subject" required value={formData.subject} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border rounded-md"/>
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-brand-dark">Message</label>
-                  <textarea name="message" id="message" rows={4} required value={formData.message} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue focus:border-brand-blue hover:border-brand-blue transition-colors duration-300"></textarea>
+                  <textarea name="message" id="message" rows={4} required value={formData.message} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border rounded-md"></textarea>
                 </div>
                 <div>
-                  <button type="submit" className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:opacity-90 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600 transition-all duration-300">
+                  <button type="submit" className="w-full py-3 px-4 rounded-md text-white bg-green-600 hover:opacity-90 transition">
                     Send Message
                   </button>
                 </div>

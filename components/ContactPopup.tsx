@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
@@ -9,16 +9,51 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
     setFormData(prevState => ({ ...prevState, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Here you would typically handle the form submission, e.g., send to an API
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', message: '' });
-      onClose();
-    }, 2000);
+
+    // Split name into first and last
+    const [first_name, ...lastParts] = formData.name.trim().split(' ');
+    const last_name = lastParts.join(' ') || '';
+
+    // Build payload
+    const payload = {
+      source: 'website',
+      location: 'Chennai',
+      interested_in: 'General Inquiry',
+      Other: '',
+      access_key: '42c8e913-0d5d-4e30-817b-adb9261dd3e2',
+      first_name,
+      last_name,
+      email: formData.email,
+      phone: formData.phone,
+      note: formData.message,
+    };
+
+    try {
+      const response = await fetch('https://portal.botdigitalsolutions.com/api/lead-generate/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        console.log('Lead generated successfully');
+        setIsSubmitted(true);
+
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({ name: '', email: '', phone: '', message: '' });
+          onClose();
+        }, 2000);
+      } else {
+        console.error('Failed to submit lead', await response.text());
+      }
+    } catch (error) {
+      console.error('Error submitting lead:', error);
+    }
   };
 
   if (!isOpen) return null;
@@ -134,7 +169,7 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
                 <button
                   type="button"
                   onClick={onClose}
-                  className="flex-1 bg-brand-blue text-white py-2 px-4 rounded-md hover:bg-opacity-90 hover:scale-105 transition-all duration-300 font-medium"
+                  className="flex-1 bg-gray-400 text-white py-2 px-4 rounded-md hover:bg-opacity-90 hover:scale-105 transition-all duration-300 font-medium"
                   style={{ minHeight: '44px' }}
                 >
                   Cancel

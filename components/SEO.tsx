@@ -18,7 +18,8 @@ const SEO: React.FC<SEOProps> = ({
   url,
   type = "website"
 }) => {
-  const siteUrl = "https://daneshindustries.com"; // Replace with actual domain
+  // 🔑 THE ONLY CHANGE NEEDED IS HERE
+  const siteUrl = "https://www.daneshindustries.com"; // Corrected to use 'www'
   const fullUrl = url ? `${siteUrl}${url}` : siteUrl;
   const fullImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 

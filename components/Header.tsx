@@ -17,87 +17,103 @@ const navLinks = [
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Define custom styles for consistency with the overall app theme
   const activeLinkStyle = {
-    color: '#0067C5',
-    fontWeight: '600',
-    borderBottom: '2px solid #FFC400'
+    color: '#0067C5', // Brand Blue
+    fontWeight: '700',
+    backgroundColor: 'rgba(0, 103, 197, 0.1)', // Light blue background
+    borderRadius: '4px',
+    borderBottom: '3px solid #FFC400' // Brand Yellow accent
   };
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
+    <header className="bg-white shadow-lg sticky top-0 z-50">
       <style dangerouslySetInnerHTML={{
         __html: `
-          @keyframes menu-glow {
-            0% { box-shadow: 0 0 0 0 rgba(255, 183, 143, 0.4); }
-            50% { box-shadow: 0 0 0 4px rgba(255, 183, 143, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 183, 143, 0); }
+          /* Custom brand colors for utility classes */
+          .bg-brand-blue { background-color: #0067C5; }
+          .text-brand-blue { color: #0067C5; }
+          .bg-brand-yellow { background-color: #FFC400; }
+          .text-brand-yellow { color: #FFC400; }
+          
+          /* Simplified Hover Effect for Professionalism */
+          .menu-item-base {
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            color: #4B5563; /* Gray-700 */
+            border-bottom: 3px solid transparent;
           }
-          .menu-item-hover {
-            position: relative;
-            overflow: hidden;
-          }
-          .menu-item-hover::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 183, 143, 0.3), transparent);
-            transition: left 0.5s;
-          }
-          .menu-item-hover:hover::before {
-            left: 100%;
-          }
-          .menu-item-hover:hover {
-            animation: menu-glow 1.5s infinite;
+
+          .menu-item-base:hover {
+            color: #0067C5; /* Brand Blue */
+            transform: translateY(-2px);
           }
         `
       }} />
-      <div className="flex justify-between">
-        <NavLink to="/" className="hover:scale-105 transition-transform duration-300">
+      <div className="max-w-7xl mx-auto flex justify-between items-center h-24 px-4 sm:px-6 lg:px-8">
+        {/* Logo Link to Home (Crucial for SEO) */}
+        <NavLink to="/" className="hover:opacity-90 transition-opacity duration-300">
           <img 
             src="/logos/daneshlogo.jpg" 
             alt="Danesh Industries Logo" 
-            className="h-20 w-250 object-contain"
+            className="h-16 w-auto object-contain"
           />
         </NavLink>
-        <div className="hidden lg:flex items-center space-x-6 mr-6 ">
+        
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center space-x-2 xl:space-x-4">
           {navLinks.map((link) => (
             <NavLink
               key={link.name}
               to={link.path}
-              className={link.name === 'Contact Us'
-                ? "menu-item-hover text-white bg-gradient-to-r from-orange-300 to-pink-300 bg-opacity-90 scale-110 shadow-lg transition-all duration-500 rounded-lg font-bold border border-orange-400"
-                : "menu-item-hover text-black hover:text-white hover:bg-gradient-to-r hover:from-orange-300 hover:to-pink-300 hover:bg-opacity-90 hover:scale-110 hover:shadow-lg transition-all duration-500 rounded-lg font-bold border border-transparent hover:border-orange-400"
+              className={({ isActive }) => 
+                `menu-item-base font-medium ${
+                  link.name === 'Contact Us' 
+                    ? 'bg-brand-yellow text-gray-800 hover:bg-brand-yellow/80 transition-all duration-300 shadow-md transform hover:scale-105 border-0'
+                    : ''
+                }`
               }
               style={({ isActive }) => (isActive ? activeLinkStyle : {})}
             >
               {link.name}
             </NavLink>
           ))}
-        </div>
-        <div className="lg:hidden">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-black focus:outline-none hover:text-brand-blue transition-colors duration-300">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <div className="lg:hidden flex items-center">
+          <button 
+            onClick={() => setIsMenuOpen(!isMenuOpen)} 
+            className="p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-blue transition-colors duration-300"
+            aria-label="Toggle menu"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}></path>
             </svg>
           </button>
         </div>
       </div>
+      
+      {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white shadow-lg">
-          <div className="px-2 pt-2 pb-2 space-y-2 sm:px-2 flex flex-col items-center">
+        <div className="lg:hidden bg-gray-50 pb-4 shadow-inner">
+          <div className="flex flex-col items-stretch space-y-1 px-4">
             {navLinks.map((link) => (
               <NavLink
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsMenuOpen(false)}
-                className={link.name === 'Contact Us'
-                  ? "menu-item-hover text-brand-blue bg-gradient-to-r from-brand-yellow to-brand-blue bg-opacity-20 block px-4 py-2.5 rounded-lg text-base font-bold transition-all duration-500 scale-105 shadow-md border border-brand-yellow w-full text-center"
-                  : "menu-item-hover text-black hover:text-brand-blue hover:bg-gradient-to-r hover:from-brand-yellow hover:to-brand-blue hover:bg-opacity-20 block px-4 py-2.5 rounded-lg text-base font-bold transition-all duration-500 hover:scale-105 hover:shadow-md border border-transparent hover:border-brand-yellow w-full text-center"
+                className={({ isActive }) => 
+                  `w-full text-center menu-item-base block font-semibold ${
+                    link.name === 'Contact Us'
+                      ? 'bg-brand-yellow text-gray-800 hover:bg-brand-yellow/80 mt-2 border-0'
+                      : 'hover:bg-gray-200'
+                  }`
                 }
-                style={({ isActive }) => (isActive ? activeLinkStyle : {})}
+                style={({ isActive }) => (isActive ? { ...activeLinkStyle, width: '100%', padding: '10px 0' } : { width: '100%', padding: '10px 0' })}
               >
                 {link.name}
               </NavLink>

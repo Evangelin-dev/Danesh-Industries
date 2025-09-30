@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import ContactPopup from './ContactPopup';
+
 import SEO from './SEO';
 
 const technologies = [
@@ -10,6 +12,25 @@ const technologies = [
 ];
 
 const TechnologyPage: React.FC = () => {
+
+//popup
+
+const [showContactPopup, setShowContactPopup] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowContactPopup(true);
+        }, 60000); // 60 seconds
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        // Show contact popup immediately for testing
+        setShowContactPopup(false);
+    }, []);
+
+
+
     return (
         <>
             <SEO
@@ -168,7 +189,14 @@ const TechnologyPage: React.FC = () => {
                         </ul>
                     </div>
                 </div>
-            </div>
+                            </div>
+
+                {/* Contact Popup */}
+            <ContactPopup
+                isOpen={showContactPopup}
+				onClose={() => setShowContactPopup(false)}
+			/>
+
         </>
     );
 };

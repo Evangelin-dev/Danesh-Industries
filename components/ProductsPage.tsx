@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import SEO from './SEO';
 
+import ContactPopup from './ContactPopup';
+
+
 const PRODUCT_IMAGE = 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=4000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 const getProductDescription = (category: string) => {
                 return `Leading manufacturer and supplier of ${category}, flanges, fittings, valves, and industrial components. Danesh Industries offers high-quality ${category.toLowerCase()} manufacturing in Chennai, India. We specialize in precision-engineered products meeting international standards. Contact us for ${category.toLowerCase()}, industrial valves, and fittings requirements.`;
@@ -1238,6 +1241,28 @@ const ProductDetail: React.FC<{ item: any; categoryId: string }> = ({ item, cate
 };
 
 const ProductsPage: React.FC = () => {
+
+//popup
+
+const [showContactPopup, setShowContactPopup] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowContactPopup(true);
+        }, 60000); // 60 seconds
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        // Show contact popup immediately for testing
+        setShowContactPopup(false);
+    }, []);
+
+
+
+
+
+
     const { categoryId, productId } = useParams();
     const navigate = useNavigate();
     const [openItem, setOpenItem] = useState<string | null>(null);
@@ -1379,8 +1404,11 @@ const ProductsPage: React.FC = () => {
                                     navigate('/products');
                                 }
                             }}
-                            className="p-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                            style={{ backgroundColor: '#FFC400' }}
+                            className="p-1 border border-gray-300 rounded-md 
+                            focus:outline-none focus:ring-2 focus:ring-brand-blue"
+                            style={{ backgroundColor: '#FFC400', position: 'fixed', top: '310px', left: '50px' }}
+                                
+                            
                         >
                             <option value="">Select a category</option>
                             <option value="valve-components">Valve Components</option>
@@ -1420,8 +1448,10 @@ const ProductsPage: React.FC = () => {
                                         value={selectedItem[categoryData.id] || ''}
                                         onChange={(e) => handleItemSelect(categoryData.id, e.target.value)}
                                         className="p-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                                        style={{ backgroundColor: '#FFC400' }}
-                                    >
+                                        style={{ backgroundColor: '#FFC400' 
+                                       , position: 'fixed', top: '20px', right: '10px' }}
+
+                    >
                                         <option value="">Select an item</option>
                                         {categoryData.items.map((item, index) => (
                                             <option key={index} value={item.name}>{item.name}</option>
@@ -1772,8 +1802,15 @@ const ProductsPage: React.FC = () => {
                                 )}
                             </div>
                         </section>
-                    ))}
+
+   ))}
                 </div>
+            {/* Contact Popup */}
+            <ContactPopup
+                isOpen={showContactPopup}
+				onClose={() => setShowContactPopup(false)}
+			/>
+
             </div>
         </>
     );

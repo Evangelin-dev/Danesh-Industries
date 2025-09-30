@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import ContactPopup from './ContactPopup';
 
 const standards = [
     { name: 'ASME', description: 'American Society of Mechanical Engineers standards for pressure vessels, piping, and components.' },
@@ -12,6 +13,25 @@ const standards = [
 ];
 
 const CertificationsPage: React.FC = () => {
+
+//popup
+
+const [showContactPopup, setShowContactPopup] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowContactPopup(true);
+        }, 60000); // 60 seconds
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        // Show contact popup immediately for testing
+        setShowContactPopup(false);
+    }, []);
+
+
+
     return (
         <>
             <style dangerouslySetInnerHTML={{
@@ -98,6 +118,23 @@ const CertificationsPage: React.FC = () => {
                         </div>
                     </div>
 
+                    <br />
+                    {/* ISO Certificate */}
+                    <div className="flex flex-col items-center space-y-4 ">
+                    {/* <iframe
+                        src="/ISO_CERTIFICATE_DANESH.pdf"
+                        title="ISO 9001 Certified"
+                        className="w-full h-[600px] border rounded-lg shadow"
+                    /> */}
+                    <a
+                        href="/ISO_CERTIFICATE_DANESH.pdf"
+                        download="ISO_CERTIFICATE_DANESH.pdf"
+                        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                    >
+                        Download ISO Certificate
+                    </a>
+                    </div>
+
                     <div className="mt-16 text-center animate-fade-in" style={{ animationDelay: '1.0s' }}>
                         <h2 className="text-3xl font-bold text-brand-dark mb-4 hover:text-brand-blue transition-colors duration-300">Our Quality Management System</h2>
                         <p className="max-w-3xl mx-auto text-lg text-brand-gray hover:text-brand-dark transition-colors duration-300">
@@ -120,9 +157,18 @@ const CertificationsPage: React.FC = () => {
                                     <path d="M12 6l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z"/>
                                 </svg>
                             </div>
+
+                         
+
                         </div>
                     </div>
                 </div>
+                                         {/* Contact Popup */}
+            <ContactPopup
+                isOpen={showContactPopup}
+				onClose={() => setShowContactPopup(false)}
+			/>
+
             </div>
         </>
     );

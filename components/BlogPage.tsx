@@ -1,7 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import ContactPopup from './ContactPopup';
 
-const BlogPage = () => {
+
+
+//const BlogPage: React.FC = () => {
+
+
+
+
+//const BlogPage = () => {
+const BlogPage: React.FC = () => {
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [showContactPopup, setShowContactPopup] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowContactPopup(true);
+    }, 60000); // 60 seconds
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    // Show contact popup immediately for testing
+    setShowContactPopup(true);
+  }, []);
+
+
+
+
   const [blogs, setBlogs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -135,6 +163,12 @@ const BlogPage = () => {
           </div>
         ))}
       </div>
+      			{/* Contact Popup */}
+			<ContactPopup
+				isOpen={showContactPopup}
+				onClose={() => setShowContactPopup(false)}
+			/>
+
     </div>
   );
 };

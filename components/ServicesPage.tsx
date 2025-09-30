@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import type { JSX } from 'react';
 import SEO from './SEO';
+
+import ContactPopup from './ContactPopup';
+
+
+
 
 interface Service {
     title: string;
@@ -55,6 +60,24 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => (
 );
 
 const ServicesPage: React.FC = () => {
+
+//popup
+
+const [showContactPopup, setShowContactPopup] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowContactPopup(true);
+        }, 60000); // 60 seconds
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        // Show contact popup immediately for testing
+        setShowContactPopup(false);
+    }, []);
+
+
     return (
         <>
             <SEO
@@ -99,6 +122,13 @@ const ServicesPage: React.FC = () => {
                         ))}
                     </div>
                 </div>
+
+                            {/* Contact Popup */}
+            <ContactPopup
+                isOpen={showContactPopup}
+				onClose={() => setShowContactPopup(false)}
+			/>
+
             </div>
         </>
     );

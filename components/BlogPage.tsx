@@ -24,7 +24,7 @@ const BlogPage: React.FC = () => {
 
   useEffect(() => {
     // Show contact popup immediately for testing
-    setShowContactPopup(true);
+    setShowContactPopup(false);
   }, []);
 
 
@@ -121,7 +121,7 @@ const BlogPage: React.FC = () => {
       {/* Page Header */}
       <div className="py-10 text-center">
         <h1 className="text-4xl md:text-5xl font-serif font-bold">
-          WinCity InfraWorks LLP
+          Danesh Industries
         </h1>
         <h2 className="text-3xl mt-2 font-serif">Blog</h2>
       </div>
@@ -152,12 +152,24 @@ const BlogPage: React.FC = () => {
                 <p className="text-gray-700 mt-2 line-clamp-3">
                   {blog.description}
                 </p>
-                <a
-                  href={`/blogs/${blog.slug}`}
+                {/* <Link to={`/blogs/${blog.slug}`}
+
                   className="text-blue-600 font-medium mt-3 inline-block hover:underline"
-                >
+                key={blog.id}>
                   Read more
-                </a>
+                </Link> */}
+
+<Link to={`/blogs/${blog.slug}`}>Read More</Link>
+
+{/* 
+{blogs.map(blog => (
+  <Link to={`/blogs/${blog.slug}`} key={blog.id}>
+    Read More
+  </Link>
+))} */}
+
+
+
               </div>
             </div>
           </div>

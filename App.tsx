@@ -17,6 +17,8 @@ import CertificationsPage from './components/CertificationsPage';
 import BlogPage from './components/BlogPage';
 import ContactPage from './components/ContactPage';
 import AdminPanel from './components/AdminPanel';
+import BlogDetail from "./components/BlogDetails";
+
 
 
 // Define the steps for the quote conversation flow
@@ -253,6 +255,7 @@ const App: React.FC = () => {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/admin" element={<AdminPanel />} />
               <Route path="/terms" element={<TermsPage />} />
+              <Route path="/blogs/:slug" element={<BlogDetail />} />
               <Route path="/privacy" element={<PrivacyPage />} />
             </Routes>
           </main>

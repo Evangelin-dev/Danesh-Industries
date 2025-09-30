@@ -299,18 +299,27 @@ const HomePage: React.FC = () => {
 				</div>
 			</section>*/ }
 
+
+{/* poster="/path/to/thumbnail.jpg" */}
+{/* <video autoplay muted loop poster="banner.jpg">
+  <source src="video.mp4" type="video/mp4">
+  Your browser does not support video.
+</video> */}
+
+
+
 			{/* Sample Videos Section */}
-			<section className="py-20 bg-gray-100">
-				<div className="container mx-auto px-6">
+			<section className="py-21 bg-gray-100">
+				<div className="container mx-auto px-6 py-4">
 					<h2 className="text-3xl font-bold text-center text-brand-dark mb-12">Our Machinery in Action</h2>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 						<div className="text-center min-h-[300px] flex flex-col justify-end">
 							<h4 className="text-xl font-semibold text-brand-blue mb-4">Drilling in vertical machining center</h4>
-							<video
-								className="w-full rounded-lg shadow-lg"
+							<video  muted loop poster="banner1.png"
+							className='w-full aspect-video rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300'
 								controls
 								preload="metadata"
-								style={{ objectFit: 'cover', height: '250px' }}
+								style={{ height: '500px' }}
 							>
 								<source src="/sample1.mp4" type="video/mp4" />
 								Your browser does not support the video tag.
@@ -318,11 +327,12 @@ const HomePage: React.FC = () => {
 						</div>
 						<div className="text-center min-h-[300px] flex flex-col justify-end">
 							<h4 className="text-xl font-semibold text-brand-blue mb-4">Inspection</h4>
-							<video
+							<video  muted loop poster="banner2.png"
 								className="w-full rounded-lg shadow-lg"
 								controls
 								preload="metadata"
-								style={{ objectFit: 'cover', height: '250px' }}
+								// style={{ objectFit: 'cover', height: '250px' }}
+								style={{height:'500px'}}
 							>
 								<source src="/sample2.mp4" type="video/mp4" />
 								Your browser does not support the video tag.
@@ -330,11 +340,11 @@ const HomePage: React.FC = () => {
 						</div>
 						<div className="text-center min-h-[300px] flex flex-col justify-end">
 							<h4 className="text-xl font-semibold text-brand-blue mb-4">Machining precision components by using CNC TURNING CENTER</h4>
-							<video
+							<video  muted loop poster="/banner3.png"
 								className="w-full rounded-lg shadow-lg"
 								controls
 								preload="metadata"
-								style={{ objectFit: 'cover', height: '250px' }}
+								style={{ height: '500px' }}
 							>
 								<source src="/sample3_compressed.mp4" type="video/mp4" />
 								Your browser does not support the video tag.

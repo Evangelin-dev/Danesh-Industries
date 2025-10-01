@@ -31,14 +31,14 @@ const ContactPage: React.FC = () => {
     const payload = {
       source: "website",
       location: "Chennai", // you can make this dynamic if needed
-      interested_in: formData.subject,
+      interested_in: "Lead Generation",
       Other: formData.message,
       access_key: "42c8e913-0d5d-4e30-817b-adb9261dd3e2",
       first_name: firstName,
       last_name: lastName,
       email: formData.email,
       phone: formData.phone || "+91", // default if empty
-      note: formData.message,
+      note: formData.subject,
     };
 
     try {

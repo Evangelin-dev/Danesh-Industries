@@ -20,7 +20,7 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
     const payload = {
       source: 'website',
       location: 'Chennai',
-      interested_in: 'General Inquiry',
+      interested_in: 'Lead Generation',
       Other: '',
       access_key: '42c8e913-0d5d-4e30-817b-adb9261dd3e2',
       first_name,

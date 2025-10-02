@@ -159,7 +159,9 @@ const BlogPage: React.FC = () => {
                   Read more
                 </Link> */}
 
-<Link to={`/blogs/${blog.slug}`}>Read More</Link>
+  <Link to={`/blogs/${blog.slug}`} style={{ color: 'blue' }}>
+    Read More
+  </Link>
 
 {/* 
 {blogs.map(blog => (

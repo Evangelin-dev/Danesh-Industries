@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from './SEO';
 import ContactPopup from './ContactPopup';
+import BannerCarousel from './Bannercarousel';
+
+
 
 const highlights = [
 	{
@@ -132,6 +135,12 @@ const testimonials = [
 	},
 ];
 
+
+
+
+
+
+
 const HomePage: React.FC = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [showContactPopup, setShowContactPopup] = useState(false);
@@ -209,14 +218,11 @@ const HomePage: React.FC = () => {
         `,
 				}}
 			/>
-			{/* Hero Section - Updated */}
-			<section
-				className='relative text-white py-20 md:py-32'
-				style={backgroundStyle}
-			>
-				<div className='absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black opacity-80'></div>
-				<div className='container mx-auto px-6 text-center relative z-10'>
-					{/* <img src='/logos/daneshlogo.jpg' alt='Danesh Industries Logo' className='mx-auto mb-6 w-32 h-32 md:w-48 md:h-48' /> */}
+			{/* Hero Section with Banner Carousel */}
+			<section className='relative'>
+				<BannerCarousel />
+				<div className='absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black opacity-60'></div>
+				<div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white z-10'>
 					<h1 className='text-4xl md:text-6xl font-extrabold leading-tight mb-4'>
 						Engineered for Excellence.
 					</h1>

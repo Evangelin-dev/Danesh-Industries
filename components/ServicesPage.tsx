@@ -7,55 +7,260 @@ import ContactPopup from './ContactPopup';
 
 
 
-interface Service {
+interface DetailedService {
     title: string;
     description: string;
     icon: JSX.Element;
+    capabilities: string[];
+    industriesServed: string[];
+    valueToClients: string[];
 }
 
-const servicesData: Service[] = [
+const servicesData: DetailedService[] = [
     {
-        title: 'Precision Machining',
-        description: 'Ready-to-use machined parts from castings, forgings, and bar materials.',
+        title: 'CNC Machining Services',
+        description: 'At Danesh Industries, we specialize in high-precision CNC machining solutions tailored for OEMs, industrial projects, and specialized engineering requirements. With state-of-the-art CNC turning and milling machines, our team delivers components with exact tolerances, smooth finishes, and international quality standards.',
         icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>,
+        capabilities: [
+            'CNC turning and milling for small to large components',
+            'Prototype to mass production runs',
+            'High accuracy ±0.01 mm tolerances',
+            'Machining in stainless steel, aluminum, brass, copper, and engineering plastics',
+            'Custom fixtures, jigs, and tooling'
+        ],
+        industriesServed: [
+            'Automotive & Aerospace',
+            'Oil & Gas',
+            'Heavy Machinery',
+            'Food Processing & Pharma Equipment'
+        ],
+        valueToClients: [
+            'Faster production cycles',
+            'Consistent quality with ISO-certified processes',
+            'Cost optimization for both low and high-volume requirements'
+        ]
     },
     {
-        title: 'Reverse Engineering',
-        description: 'Dismantling, material capture, dimensional accuracy check, rebuilding to specifications, and hydro testing for performance validation.',
+        title: 'Fabrication Services',
+        description: 'Our fabrication unit is equipped to handle both light and heavy fabrication works for diverse industries. We combine technical expertise with modern machinery to deliver durable and reliable structures.',
+        icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>,
+        capabilities: [
+            'Sheet metal fabrication',
+            'Welding (MIG, TIG, ARC) and structural assembly',
+            'Cutting, bending, and surface finishing',
+            'Stainless steel, mild steel, and aluminum fabrication'
+        ],
+        industriesServed: [
+            'Process Equipment Manufacturers',
+            'Construction & Infrastructure',
+            'Industrial Machinery',
+            'Power & Energy Sector'
+        ],
+        valueToClients: [
+            'End-to-end fabrication support from design to delivery',
+            'Strong adherence to safety and compliance standards',
+            'Long-lasting quality backed by skilled welders and inspectors'
+        ]
+    },
+    {
+        title: 'Reverse Engineering & MRO Services',
+        description: 'Danesh Industries is a trusted partner for restoring and replicating critical components when original parts are unavailable or obsolete. Our reverse engineering services are widely used in emergency breakdown situations and legacy equipment restoration.',
         icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h5M20 20v-5h-5M4 20h5v-5M20 4h-5v5" /></svg>,
+        capabilities: [
+            '3D scanning, measurement, and CAD modeling',
+            'Replication of damaged or worn-out parts',
+            'Metallurgical analysis for material matching',
+            'Redesign for improved durability and performance'
+        ],
+        industriesServed: [
+            'Pharma & Biotech',
+            'Petrochemical & Chemical Plants',
+            'Food Processing Units',
+            'Textile & Heavy Engineering'
+        ],
+        valueToClients: [
+            'Extend equipment life and reduce replacement costs',
+            'Minimize downtime with rapid part restoration',
+            'Assured performance with ISO-quality controls'
+        ]
     },
     {
-        title: 'Surface Treatments & Welding',
-        description: 'Hard facing of Stellite 6 & Ultimet on various materials including A105, F22, LF2 steel, SS300/400, Incoloy, Monel, and Hastelloy.',
+        title: 'Contract Manufacturing',
+        description: 'We work as long-term manufacturing partners for companies seeking consistent quality and timely delivery. With our infrastructure and skilled team, we provide turnkey manufacturing support for clients worldwide.',
+        icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>,
+        capabilities: [
+            'End-to-end production of OEM spare parts',
+            'Batch production with strict process control',
+            'Vendor-managed inventory (VMI) for repeat requirements',
+            'Export-quality packaging and logistics support'
+        ],
+        industriesServed: [
+            'Manufacturing Companies',
+            'Equipment OEMs',
+            'Industrial Suppliers',
+            'Global Exporters'
+        ],
+        valueToClients: [
+            'Reduced overhead costs for in-house facilities',
+            'On-time delivery with global supply chain integration',
+            'Strong confidentiality and IP protection'
+        ]
+    },
+    {
+        title: 'Surface Treatments',
+        description: 'Our surface treatment services enhance corrosion resistance, wear resistance, and improve the overall lifespan of components.',
+        icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a4 4 0 004-4V5z" /></svg>,
+        capabilities: [
+            'Zinc Plating (Electroplated & Hot-dip)',
+            'Nickel Plating & Electroless Nickel Plating',
+            'Chrome Plating, Boronizing & Nitriding',
+            'Anodizing for Aluminum & Passivation for Stainless Steel',
+            'Powder Coating, Painting & Blasting'
+        ],
+        industriesServed: [
+            'Automotive components',
+            'Oil & Gas & Petrochemicals',
+            'Food Processing equipment',
+            'Industrial machinery'
+        ],
+        valueToClients: [
+            'Increased part longevity',
+            'Improved performance with protective finishes',
+            'Compliance with international surface treatment standards'
+        ]
+    },
+    {
+        title: 'Welding Services',
+        description: 'Our welding division provides strong and reliable joints, essential for structural integrity and heavy-duty performance.',
         icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.293 2.293c.63.63 1.707.63 2.337 0l2.293-2.293m-4.586 16l-2.293-2.293a1.65 1.65 0 010-2.337l2.293-2.293c.63-.63 1.707-.63 2.337 0l2.293 2.293a1.65 1.65 0 010 2.337l-2.293 2.293z" /></svg>,
+        capabilities: [
+            'MIG Welding',
+            'TIG Welding',
+            'ARC Welding',
+            'Robust Welding Fixtures',
+            'Weld Inspection & NDT'
+        ],
+        industriesServed: [
+            'Fabrication & Process Equipment',
+            'Aerospace & Automotive Structures',
+            'Heavy Machinery & Infrastructure',
+            'Power Plant Components'
+        ],
+        valueToClients: [
+            'High-quality welding with strong, durable joints',
+            'Skilled workforce with certifications and experience',
+            'Support for prototype, batch, and large-scale projects'
+        ]
     },
     {
-        title: 'Design & Automation',
-        description: 'CAD/CAM design with SolidWorks, CNC process automation with Mastercam, and continuous monitoring by skilled engineers.',
+        title: 'Design & Automation Services',
+        description: 'We provide end-to-end design support and smart solutions for modern industries with CAD/CAM capabilities and automation expertise.',
         icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
+        capabilities: [
+            'CAD/CAM Design',
+            'Product Development',
+            'Automation Solutions',
+            'Process Improvement',
+            'Custom Machine Design'
+        ],
+        industriesServed: [
+            'Automotive & Aerospace',
+            'Pharma & Biotech Equipment',
+            'Industrial Automation & Robotics',
+            'Heavy Engineering'
+        ],
+        valueToClients: [
+            'Reduced product development time',
+            'Smarter, more efficient production with automation',
+            'Optimized designs for reliability and cost savings',
+            'Confidentiality and IP protection'
+        ]
     },
     {
         title: 'Quality Assurance',
-        description: 'Compliance with ASME, ASTM, AMS, SAE, AISI, DIN, EN, NORSOK, API, NACE standards with strict inspection and testing.',
+        description: 'At Danesh Industries, quality is built into every stage of our manufacturing and service process.',
         icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
-    },
+        capabilities: [
+            'Material Certification',
+            'Dimensional Accuracy',
+            'NDT (Non-Destructive Testing)',
+            'Mechanical Testing',
+            'Documentation & Reporting'
+        ],
+        industriesServed: [
+            'All Manufacturing Industries',
+            'Aerospace & Defense',
+            'Oil & Gas',
+            'Automotive & Transportation'
+        ],
+        valueToClients: [
+            'Guaranteed international quality',
+            'Reduced risk of part failures and downtime',
+            'Complete documentation for audits',
+            'Reliable, ISO-certified partner'
+        ]
+    }
 ];
 
-const ServiceCard: React.FC<{ service: Service }> = ({ service }) => (
-    <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-[300px] flex flex-col">
-        <div className="text-brand-blue mb-3 flex-shrink-0">
-            {React.cloneElement(service.icon, { className: "h-8 w-8" })}
+const ServiceCard: React.FC<{ service: DetailedService }> = ({ service }) => (
+    <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-h-[600px] flex flex-col">
+        <div className="text-brand-blue mb-4 flex-shrink-0">
+            {React.cloneElement(service.icon, { className: "h-12 w-12" })}
         </div>
-        <h3 className={`text-xl font-bold mb-2 ${
-            service.title === "Precision Machining" 
-                ? "text-brand-blue hover:text-brand-yellow" 
-                : "text-brand-blue"
-        } transition-colors duration-300 flex-shrink-0`}>
+        <h3 className="text-xl font-bold mb-4 text-brand-blue hover:text-yellow-500 transition-colors duration-300 flex-shrink-0 cursor-pointer">
             {service.title}
         </h3>
-        <p className="text-brand-dark text-sm leading-relaxed overflow-y-auto flex-grow">
+
+        <p className="text-brand-dark text-sm leading-relaxed mb-6 flex-grow">
             {service.description}
         </p>
+
+        <div className="space-y-6 flex-shrink-0">
+            <div>
+                <h4 className="font-semibold text-brand-blue mb-3 flex items-center">
+                    <span className="text-brand-blue mr-2">◆</span>
+                    Capabilities:
+                </h4>
+                <ul className="text-sm text-brand-dark space-y-2 ml-6">
+                    {service.capabilities.map((capability, index) => (
+                        <li key={index} className="flex items-start">
+                            <span className="text-brand-blue mr-2">•</span>
+                            <span>{capability}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            <div>
+                <h4 className="font-semibold text-brand-blue mb-3 flex items-center">
+                    <span className="text-brand-blue mr-2">◆</span>
+                    Industries Served:
+                </h4>
+                <ul className="text-sm text-brand-dark space-y-2 ml-6">
+                    {service.industriesServed.map((industry, index) => (
+                        <li key={index} className="flex items-start">
+                            <span className="text-brand-blue mr-2">•</span>
+                            <span>{industry}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            <div>
+                <h4 className="font-semibold text-brand-blue mb-3 flex items-center">
+                    <span className="text-brand-blue mr-2">◆</span>
+                    Value to Clients:
+                </h4>
+                <ul className="text-sm text-brand-dark space-y-2 ml-6">
+                    {service.valueToClients.map((value, index) => (
+                        <li key={index} className="flex items-start">
+                            <span className="text-brand-blue mr-2">•</span>
+                            <span>{value}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
     </div>
 );
 
@@ -108,14 +313,14 @@ const [showContactPopup, setShowContactPopup] = useState(false);
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="text-center mb-16">
                         <h1 className="text-4xl font-extrabold text-brand-dark">Our Services</h1>
-                        <p className="mt-4 text-lg text-brand-gray">Comprehensive solutions from design to delivery.</p>
+                        <p className="mt-4 text-lg text-brand-gray">Comprehensive manufacturing solutions from precision machining to quality assurance.</p>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
                         {servicesData.map((service, index) => (
-                            <div 
-                                key={service.title} 
+                            <div
+                                key={service.title}
                                 className="animate-fade-in w-full"
-                                style={{ animationDelay: `${index * 0.2}s` }}
+                                style={{ animationDelay: `${index * 0.15}s` }}
                             >
                                 <ServiceCard service={service} />
                             </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from './SEO';
 import ContactPopup from './ContactPopup';
-import BannerCarousel from './Bannercarousel';
+import BannerCarousel from './BannerCarousel';
 
 
 

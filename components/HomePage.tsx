@@ -222,7 +222,7 @@ const HomePage: React.FC = () => {
 			<section className='relative'>
 				<BannerCarousel />
 				<div className='absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black opacity-60'></div>
-				<div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white z-10'>
+				<div className='absolute top-8 left-1/2 -translate-x-1/2 text-center text-white z-10'>
 					<h1 className='text-4xl md:text-6xl font-extrabold leading-tight mb-4'>
 						Engineered for Excellence.
 					</h1>
@@ -252,7 +252,7 @@ const HomePage: React.FC = () => {
 
 			{/* Highlights Section - Updated */}
 			<section
-				className='py-20 relative'
+				className='py-20 relative bg-gray-100'
 				style={backgroundStyle}
 			>
 				<div className='absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black opacity-85'></div>
@@ -274,7 +274,7 @@ const HomePage: React.FC = () => {
 									<h3 className='text-xl font-semibold mb-2 hover:text-brand-yellow transition-colors duration-300'>
 										{item.title}
 									</h3>
-									
+
 								</div>
 							))}
 						</div>
@@ -394,7 +394,8 @@ const HomePage: React.FC = () => {
 												{`"${testimonial.quote}"`}
 											</p>
 										</div>
-										<div className='text-center'>
+										<div className='text-right'>
+											<p className='text-brand-yellow font-semibold'>{testimonial.company}</p>
 										</div>
 									</div>
 								))}
@@ -430,6 +431,526 @@ const HomePage: React.FC = () => {
 					</div>
 				</div>
 			</section>
+
+
+
+
+{/*  about section content  adding*/}
+
+                    {/* Company Overview Section */}
+                    <section className="mt-20 bg-white p-10 rounded-lg shadow-lg" aria-labelledby="company-overview-heading">
+                        <h2 id="company-overview-heading" className="text-3xl font-bold text-purple-600 text-center mb-8">
+                            About Us – Danesh Industries
+                        </h2>
+
+                        <div className="text-lg text-brand-dark leading-relaxed space-y-6">
+                            <p>
+                                Founded in 2016, Danesh Industries is a trusted manufacturer and exporter of
+                                <span className="font-bold text-blue-800 bg-blue-100 px-2 py-1 rounded-md border border-blue-300">machined components</span>,
+                                <span className="font-bold text-green-800 bg-green-100 px-2 py-1 rounded-md border border-green-300">precision machined parts</span>,
+                                <span className="font-bold text-purple-800 bg-purple-100 px-2 py-1 rounded-md border border-purple-300">CNC machine parts</span>, and
+                                <span className="font-bold text-indigo-800 bg-indigo-100 px-2 py-1 rounded-md border border-indigo-300">custom machined components</span>, based in Chennai, India.
+                                With a 5,000 sq. ft. ISO-certified manufacturing facility in Perungudi, we specialize in OEM spare parts,
+                                contract manufacturing services, and precision-engineered components for industries across India, Oman,
+                                Saudi Arabia, UAE, Qatar, Bahrain, Singapore, and Malaysia.
+                            </p>
+                        </div>
+                    </section>
+
+                    {/* Who We Are Section */}
+                    <section className="mt-10 bg-gradient-to-br from-gray-50 to-white p-12 rounded-xl shadow-lg border border-gray-200" aria-labelledby="who-we-are-heading">
+                        <div className="text-center mb-8">
+                            <h2 id="who-we-are-heading" className="text-3xl font-bold text-brand-blue mb-4 transition-all duration-300 hover:text-yellow-600 hover:scale-105 cursor-pointer inline-block">
+                                Who We Are
+                                <div className="w-20 h-1 bg-gradient-to-r from-brand-blue to-yellow-500 rounded-full mx-auto mt-2"></div>
+                            </h2>
+                        </div>
+                        <div className="max-w-5xl mx-auto">
+                            <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300">
+                                <div className="text-xl text-brand-dark leading-relaxed text-center">
+                                    <p className="mb-4">
+                                        For over a decade, Danesh Industries has partnered with leading global companies such as
+                                         {" "}
+ <span className="font-bold text-blue-800">Autosys</span>,
+                                        <span className="font-bold text-green-800">Severn Glocon Group</span>,
+                                        <span className="font-bold text-purple-800">Serino</span>,
+                                        <span className="font-bold text-indigo-800">Flowserve</span>,
+                                        <span className="font-bold text-orange-800">Armstrong International</span>,
+                                        <span className="font-bold text-red-800">JC VALVES</span> delivering export-quality
+                                        components that meet international standards.
+                                    </p>
+                                    <p>
+                                        Our skilled team of engineers and machinists is committed
+                                        to <span className="font-bold text-teal-800">cost-effective</span>,
+                                        <span className="font-bold text-cyan-800">reliable</span>, and   {" "}
+
+                                        <span className="font-bold text-violet-800">scalable solutions</span> for diverse industrial sectors.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* What We Do Section */}
+                    <section className="mt-10 bg-gradient-to-br from-white via-gray-50 to-white p-10 rounded-lg shadow-lg border border-gray-100" aria-labelledby="what-we-do-heading">
+                        <div className="text-center mb-8">
+                            <h2 id="what-we-do-heading" className="text-3xl font-bold text-brand-blue mb-3 relative inline-block">
+                                What We Do
+                                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-brand-blue to-yellow-500 rounded-full"></div>
+                            </h2>
+                            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                                We manufacture and supply a comprehensive range of industrial components and fittings, including:
+                            </p>
+                        </div>
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-blue-50 to-transparent rounded-lg border border-blue-100 hover:border-blue-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-brand-blue to-blue-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-blue-700 transition-colors duration-300">Valve Components</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-green-50 to-transparent rounded-lg border border-green-100 hover:border-green-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-green-700 transition-colors duration-300">Flanges (SS 304, SS 316, MS Spacer)</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-purple-50 to-transparent rounded-lg border border-purple-100 hover:border-purple-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-purple-700 transition-colors duration-300">GI Slip-On Flanges</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-yellow-50 to-transparent rounded-lg border border-yellow-100 hover:border-yellow-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-yellow-700 transition-colors duration-300">GI Threaded Flanges</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-red-50 to-transparent rounded-lg border border-red-100 hover:border-red-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-red-700 transition-colors duration-300">Pipe Fittings (GI, Stainless Steel, Ductile Iron)</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-indigo-50 to-transparent rounded-lg border border-indigo-100 hover:border-indigo-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-indigo-700 transition-colors duration-300">Cast Steel Screwed Fittings</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-pink-50 to-transparent rounded-lg border border-pink-100 hover:border-pink-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-pink-700 transition-colors duration-300">R Brand Fittings</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-teal-50 to-transparent rounded-lg border border-teal-100 hover:border-teal-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-teal-700 transition-colors duration-300">Grooved Fittings</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-orange-50 to-transparent rounded-lg border border-orange-100 hover:border-orange-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-orange-700 transition-colors duration-300">Partition Plate Dies</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-cyan-50 to-transparent rounded-lg border border-cyan-100 hover:border-cyan-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-cyan-700 transition-colors duration-300">Pull Studs</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-emerald-50 to-transparent rounded-lg border border-emerald-100 hover:border-emerald-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-emerald-700 transition-colors duration-300">Plug Valves</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-violet-50 to-transparent rounded-lg border border-violet-100 hover:border-violet-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-violet-500 to-violet-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-violet-700 transition-colors duration-300">Mild Steel Pins</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-rose-50 to-transparent rounded-lg border border-rose-100 hover:border-rose-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-rose-500 to-rose-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-rose-700 transition-colors duration-300">Ball Valve Seat Rings</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-amber-50 to-transparent rounded-lg border border-amber-100 hover:border-amber-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-amber-500 to-amber-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-amber-700 transition-colors duration-300">Solenoid Valves</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-lime-50 to-transparent rounded-lg border border-lime-100 hover:border-lime-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-lime-500 to-lime-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-lime-700 transition-colors duration-300">Cage for control valve</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-sky-50 to-transparent rounded-lg border border-sky-100 hover:border-sky-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-sky-500 to-sky-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-sky-700 transition-colors duration-300">Plug for control valve</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-fuchsia-50 to-transparent rounded-lg border border-fuchsia-100 hover:border-fuchsia-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-fuchsia-500 to-fuchsia-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-fuchsia-700 transition-colors duration-300">Seat Ring for all valves</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-emerald-50 to-transparent rounded-lg border border-emerald-100 hover:border-emerald-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-emerald-700 transition-colors duration-300">Actuator cylinder</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Our Services Section */}
+                    <section className="mt-10 bg-gray-50 p-10 rounded-lg" aria-labelledby="services-heading">
+                        <div className="text-center mb-8">
+                            <h2 id="services-heading" className="text-3xl font-bold text-brand-blue mb-3 relative inline-block transition-all duration-300 hover:text-yellow-500 hover:scale-105 cursor-pointer">
+                                Our Services
+                                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-brand-blue via-yellow-500 to-brand-blue rounded-full"></div>
+                                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-12 h-0.5 bg-yellow-400 rounded-full"></div>
+                            </h2>
+                        </div>
+                        <div className="space-y-4 text-brand-dark max-w-4xl mx-auto">
+                            <div className="group flex items-start p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer">
+                                <span className="text-brand-blue text-xl mr-3 flex-shrink-0 group-hover:text-yellow-500 group-hover:scale-125 transition-all duration-300">★</span>
+                                <div>
+                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">Precision Machining</div>
+                                    <p className="text-sm group-hover:text-gray-700 transition-colors duration-300">CNC Turning, Milling, Drilling</p>
+                                </div>
+                            </div>
+                            <div className="group flex items-start p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer">
+                                <span className="text-brand-blue text-xl mr-3 flex-shrink-0 group-hover:text-yellow-500 group-hover:scale-125 transition-all duration-300">★</span>
+                                <div>
+                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">Custom Component Manufacturing</div>
+                                    <p className="text-sm group-hover:text-gray-700 transition-colors duration-300">Flanges, fittings, valve parts</p>
+                                </div>
+                            </div>
+                            <div className="group flex items-start p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer">
+                                <span className="text-brand-blue text-xl mr-3 flex-shrink-0 group-hover:text-yellow-500 group-hover:scale-125 transition-all duration-300">★</span>
+                                <div>
+                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">Die & Mould Manufacturing</div>
+                                    <p className="text-sm group-hover:text-gray-700 transition-colors duration-300">Partition plates, seat rings, precision dies</p>
+                                </div>
+                            </div>
+                            <div className="group flex items-start p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer">
+                                <span className="text-brand-blue text-xl mr-3 flex-shrink-0 group-hover:text-yellow-500 group-hover:scale-125 transition-all duration-300">★</span>
+                                <div>
+                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">Threading, Grooving & Cutting Services</div>
+                                </div>
+                            </div>
+                            <div className="group flex items-start p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer">
+                                <span className="text-brand-blue text-xl mr-3 flex-shrink-0 group-hover:text-yellow-500 group-hover:scale-125 transition-all duration-300">★</span>
+                                <div>
+                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">Prototype Development & Mass Production</div>
+                                    <p className="text-sm group-hover:text-gray-700 transition-colors duration-300">With in-house CNC machining and quality testing, we cater to both low-volume prototypes and high-volume OEM manufacturing.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Our Expertise Section */}
+                    <section className="mt-10 bg-white p-10 rounded-lg shadow-lg" aria-labelledby="expertise-heading">
+                        <div className="text-center mb-8">
+                            <h2 id="expertise-heading" className="text-3xl font-bold text-brand-blue mb-3 relative inline-block transition-all duration-300 hover:text-purple-600 hover:scale-105 cursor-pointer">
+                                Our Expertise
+                                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-brand-blue via-purple-500 to-brand-blue rounded-full"></div>
+                                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-0.5 bg-purple-400 rounded-full"></div>
+                            </h2>
+                        </div>
+                        <div className="space-y-6 text-brand-dark">
+                            <div className="group flex items-start p-4 rounded-xl bg-gradient-to-r from-purple-50/50 to-transparent hover:from-purple-100/70 hover:shadow-xl transition-all duration-500 cursor-pointer border border-purple-100/50 hover:border-purple-300">
+                                <div className="relative mr-4 flex-shrink-0">
+                                    <span className="text-purple-600 text-2xl group-hover:text-purple-800 group-hover:scale-125 transition-all duration-300">◆</span>
+                                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-300"></div>
+                                </div>
+                                <div className="flex-1">
+                                    <h3 className="text-xl font-semibold text-purple-700 mb-2 group-hover:text-purple-900 transition-colors duration-300">Machined Components</h3>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">For pumps, process plants, and industrial assemblies.</p>
+                                </div>
+                                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <div className="flex space-x-1">
+                                        <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                                        <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                                        <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="group flex items-start p-4 rounded-xl bg-gradient-to-r from-blue-50/50 to-transparent hover:from-blue-100/70 hover:shadow-xl transition-all duration-500 cursor-pointer border border-blue-100/50 hover:border-blue-300">
+                                <div className="relative mr-4 flex-shrink-0">
+                                    <span className="text-blue-600 text-2xl group-hover:text-blue-800 group-hover:scale-125 transition-all duration-300">◆</span>
+                                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-300"></div>
+                                </div>
+                                <div className="flex-1">
+                                    <h3 className="text-xl font-semibold text-blue-700 mb-2 group-hover:text-blue-900 transition-colors duration-300">Precision Machined Parts</h3>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">With tight tolerances for critical industries.</p>
+                                </div>
+                                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <div className="flex space-x-1">
+                                        <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                                        <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="group flex items-start p-4 rounded-xl bg-gradient-to-r from-indigo-50/50 to-transparent hover:from-indigo-100/70 hover:shadow-xl transition-all duration-500 cursor-pointer border border-indigo-100/50 hover:border-indigo-300">
+                                <div className="relative mr-4 flex-shrink-0">
+                                    <span className="text-indigo-600 text-2xl group-hover:text-indigo-800 group-hover:scale-125 transition-all duration-300">◆</span>
+                                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-indigo-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-300"></div>
+                                </div>
+                                <div className="flex-1">
+                                    <h3 className="text-xl font-semibold text-indigo-700 mb-2 group-hover:text-indigo-900 transition-colors duration-300">CNC Machine Parts</h3>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">Manufactured on advanced CNC turning centres, VMC with 4th Axis, DRO milling, and lathes.</p>
+                                </div>
+                                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <div className="flex space-x-1">
+                                        <div className="w-2 h-2 bg-indigo-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                                        <div className="w-2 h-2 bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                                        <div className="w-2 h-2 bg-indigo-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="group flex items-start p-4 rounded-xl bg-gradient-to-r from-violet-50/50 to-transparent hover:from-violet-100/70 hover:shadow-xl transition-all duration-500 cursor-pointer border border-violet-100/50 hover:border-violet-300">
+                                <div className="relative mr-4 flex-shrink-0">
+                                    <span className="text-violet-600 text-2xl group-hover:text-violet-800 group-hover:scale-125 transition-all duration-300">◆</span>
+                                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-violet-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-300"></div>
+                                </div>
+                                <div className="flex-1">
+                                    <h3 className="text-xl font-semibold text-violet-700 mb-2 group-hover:text-violet-900 transition-colors duration-300">Contract Manufacturing Services</h3>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">Long-term partnerships for prototype development, small batch runs, and large-scale production, with strict ISO-certified quality control.</p>
+                                </div>
+                                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <div className="flex space-x-1">
+                                        <div className="w-2 h-2 bg-violet-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                                        <div className="w-2 h-2 bg-violet-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                                        <div className="w-2 h-2 bg-violet-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Why Choose Us Section */}
+                    <section className="mt-10 bg-gray-50 p-10 rounded-lg" aria-labelledby="why-choose-heading">
+                        <div className="text-center mb-8">
+                            <h2 id="why-choose-heading" className="text-3xl font-bold text-brand-blue mb-3 transition-all duration-300 hover:text-yellow-500 hover:scale-105 cursor-pointer inline-block">
+                                Why Choose Danesh Industries
+                                <div className="w-24 h-1 bg-gradient-to-r from-brand-blue to-yellow-500 rounded-full mx-auto mt-2"></div>
+                            </h2>
+                        </div>
+
+                        {/* Key Message - Standalone */}
+                        <div className="mb-8 text-center max-w-4xl mx-auto">
+                            <div className="flex items-center justify-center space-x-4">
+                                <span className="text-2xl text-brand-blue flex-shrink-0">◆</span>
+                                <p className="text-2xl font-bold text-brand-blue italic">At Danesh Industries, we don't just manufacture parts — we build precision, trust, and long-term partnerships.</p>
+                            </div>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-brand-dark max-w-6xl mx-auto">
+                            <div className="flex items-start space-x-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                                <div className="w-3 h-3 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <p className="text-sm">
+                                    <span className="font-bold text-blue-800 bg-yellow-200 px-1 rounded">10+ years</span> of proven experience in OEM and contract manufacturing.
+                                </p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-green-50 rounded-lg border border-green-200">
+                                <div className="w-3 h-3 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <p className="text-sm">
+                                    Trusted supplier to companies across
+                                    <span className="font-bold text-green-800 bg-yellow-200 px-1 rounded">India</span>,
+                                    <span className="font-bold text-green-800 bg-yellow-200 px-1 rounded">Middle East</span>
+                                    <span className="font-bold text-green-800 bg-yellow-200 px-1 rounded">(Oman, Saudi Arabia, UAE, Qatar, Bahrain)</span>, and
+                                    <span className="font-bold text-green-800 bg-yellow-200 px-1 rounded">Southeast Asia</span>
+                                    <span className="font-bold text-green-800 bg-yellow-200 px-1 rounded">(Singapore, Malaysia)</span>.
+                                </p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-purple-50 rounded-lg border border-purple-200">
+                                <div className="w-3 h-3 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <p className="text-sm">
+                                    Advanced <span className="font-bold text-purple-800 bg-yellow-200 px-1 rounded">CNC machinery</span> and
+                                    <span className="font-bold text-purple-800 bg-yellow-200 px-1 rounded">in-house calibration</span> testing.
+                                </p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-indigo-50 rounded-lg border border-indigo-200">
+                                <div className="w-3 h-3 bg-indigo-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <p className="text-sm">
+                                    <span className="font-bold text-indigo-800 bg-yellow-200 px-1 rounded">ISO-certified</span> processes ensuring quality and consistency.
+                                </p>
+                            </div>
+                            <div className="flex items-start space-x-3 p-3 bg-orange-50 rounded-lg border border-orange-200">
+                                <div className="w-3 h-3 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <p className="text-sm">
+                                    <span className="font-bold text-orange-800 bg-yellow-200 px-1 rounded">Fast</span> turnaround and scalable production capacity.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Contact Information Section */}
+                    <section className="mt-10 bg-white p-10 rounded-lg shadow-lg text-center" aria-labelledby="contact-heading">
+                        <h2 id="contact-heading" className="text-2xl font-bold text-brand-blue mb-6">Get In Touch</h2>
+                        <div className="space-y-4 text-brand-dark">
+                            <p className="text-lg">📧 Email: <span className="font-semibold">marketing@daneshindustries.com</span></p>
+                            <p className="text-lg">📞 Phone: <span className="font-semibold">+91 9884001473 | 8939415026</span></p>
+                        </div>
+                    </section>
+
+                    {/* Contract Manufacturing Section */}
+                    <section className="mt-10 bg-gray-50 p-10 rounded-lg" aria-labelledby="contract-manufacturing-heading">
+                        <div className="text-center mb-8">
+                            <h2 id="contract-manufacturing-heading" className="text-3xl font-bold text-brand-blue mb-3 transition-all duration-300 hover:text-indigo-600 hover:scale-105 cursor-pointer inline-block">
+                                Danesh Industries – Contract Manufacturing Services
+                                <div className="w-32 h-1 bg-gradient-to-r from-brand-blue via-indigo-500 to-brand-blue rounded-full mx-auto mt-2"></div>
+                            </h2>
+                        </div>
+                        <div className="text-center mb-8">
+                            <p className="text-lg text-brand-dark max-w-4xl mx-auto">
+                                For over a decade, Danesh Industries has been a reliable partner in contract manufacturing services,
+                                delivering precision-engineered components and assemblies to industries in
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">India</span>,
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">Oman</span>,
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">Saudi Arabia</span>,
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">UAE</span>,
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">Qatar</span>,
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">Bahrain</span>,
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">Singapore</span>, and
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">Malaysia</span>.
+                            </p>
+                        </div>
+
+                        <div className="text-center mb-6">
+                            <h3 className="text-2xl font-bold text-indigo-600 mb-4 relative inline-block transition-all duration-300 hover:text-indigo-800 hover:scale-105 cursor-pointer">
+                                Our Capabilities
+                                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-16 h-0.5 bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-full"></div>
+                                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-12 h-0.5 bg-indigo-400 rounded-full"></div>
+                            </h3>
+                        </div>
+                        <div className="max-w-5xl mx-auto mb-8 space-y-4">
+                            <div className="group flex items-start p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300 hover:shadow-md">
+                                <span className="text-yellow-500 text-xl mr-3 flex-shrink-0 group-hover:text-yellow-600 group-hover:scale-125 transition-all duration-300">★</span>
+                                <div>
+                                    <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">Precision Machining</div>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">CNC turning, milling, drilling, and finishing.</p>
+                                </div>
+                            </div>
+                            <div className="group flex items-start p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300 hover:shadow-md">
+                                <span className="text-yellow-500 text-xl mr-3 flex-shrink-0 group-hover:text-yellow-600 group-hover:scale-125 transition-all duration-300">★</span>
+                                <div>
+                                    <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">Fabrication & Assembly</div>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">End-to-end production support.</p>
+                                </div>
+                            </div>
+                            <div className="group flex items-start p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300 hover:shadow-md">
+                                <span className="text-yellow-500 text-xl mr-3 flex-shrink-0 group-hover:text-yellow-600 group-hover:scale-125 transition-all duration-300">★</span>
+                                <div>
+                                    <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">Custom Engineering</div>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">Reverse engineering, tailored designs, and product modifications.</p>
+                                </div>
+                            </div>
+                            <div className="group flex items-start p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300 hover:shadow-md">
+                                <span className="text-yellow-500 text-xl mr-3 flex-shrink-0 group-hover:text-yellow-600 group-hover:scale-125 transition-all duration-300">★</span>
+                                <div>
+                                    <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">Quality Assurance</div>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">ISO-certified processes, dimensional checks, and rigorous inspections.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="text-center mb-6">
+                            <h3 className="text-2xl font-bold text-indigo-600 mb-4 transition-all duration-300 hover:text-indigo-800 hover:scale-105 cursor-pointer inline-block">
+                                Our Work Process
+                                <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-full mx-auto mt-2"></div>
+                            </h3>
+                        </div>
+                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 mb-8 max-w-7xl mx-auto">
+                            <div className="text-center p-4 bg-white rounded-xl shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-yellow-400 hover:text-violet-800 group cursor-pointer hover:border-yellow-300">
+                                <div className="text-base font-bold text-gray-800 group-hover:text-violet-800 transition-colors duration-300 mb-2">1. Discuss Needs</div>
+                                <div className="w-8 h-8 bg-yellow-400 rounded-full mx-auto mb-2 group-hover:bg-violet-600 transition-colors duration-300"></div>
+                            </div>
+                            <div className="text-center p-4 bg-white rounded-xl shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-violet-600 hover:text-yellow-300 group cursor-pointer hover:border-violet-300">
+                                <div className="text-base font-bold text-gray-800 group-hover:text-yellow-300 transition-colors duration-300 mb-2">2. Plan & Quote</div>
+                                <div className="w-8 h-8 bg-violet-600 rounded-full mx-auto mb-2 group-hover:bg-yellow-400 transition-colors duration-300"></div>
+                            </div>
+                            <div className="text-center p-4 bg-white rounded-xl shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-yellow-400 hover:text-violet-800 group cursor-pointer hover:border-yellow-300">
+                                <div className="text-base font-bold text-gray-800 group-hover:text-violet-800 transition-colors duration-300 mb-2">3. Source Material</div>
+                                <div className="w-8 h-8 bg-yellow-400 rounded-full mx-auto mb-2 group-hover:bg-violet-600 transition-colors duration-300"></div>
+                            </div>
+                            <div className="text-center p-4 bg-white rounded-xl shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-violet-600 hover:text-yellow-300 group cursor-pointer hover:border-violet-300">
+                                <div className="text-base font-bold text-gray-800 group-hover:text-yellow-300 transition-colors duration-300 mb-2">4. Machine & Fabricate</div>
+                                <div className="w-8 h-8 bg-violet-600 rounded-full mx-auto mb-2 group-hover:bg-yellow-400 transition-colors duration-300"></div>
+                            </div>
+                            <div className="text-center p-4 bg-white rounded-xl shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-yellow-400 hover:text-violet-800 group cursor-pointer hover:border-yellow-300">
+                                <div className="text-base font-bold text-gray-800 group-hover:text-violet-800 transition-colors duration-300 mb-2">5. Quality Check</div>
+                                <div className="w-8 h-8 bg-yellow-400 rounded-full mx-auto mb-2 group-hover:bg-violet-600 transition-colors duration-300"></div>
+                            </div>
+                            <div className="text-center p-4 bg-white rounded-xl shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-violet-600 hover:text-yellow-300 group cursor-pointer hover:border-violet-300">
+                                <div className="text-base font-bold text-gray-800 group-hover:text-yellow-300 transition-colors duration-300 mb-2">6. Assemble & Finish</div>
+                                <div className="w-8 h-8 bg-violet-600 rounded-full mx-auto mb-2 group-hover:bg-yellow-400 transition-colors duration-300"></div>
+                            </div>
+                            <div className="text-center p-4 bg-white rounded-xl shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-yellow-400 hover:text-violet-800 group cursor-pointer hover:border-yellow-300">
+                                <div className="text-base font-bold text-gray-800 group-hover:text-violet-800 transition-colors duration-300 mb-2">7. Pack & Deliver</div>
+                                <div className="w-8 h-8 bg-yellow-400 rounded-full mx-auto mb-2 group-hover:bg-violet-600 transition-colors duration-300"></div>
+                            </div>
+                            <div className="text-center p-4 bg-white rounded-xl shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-violet-600 hover:text-yellow-300 group cursor-pointer hover:border-violet-300">
+                                <div className="text-base font-bold text-gray-800 group-hover:text-yellow-300 transition-colors duration-300 mb-2">8. Support</div>
+                                <div className="w-8 h-8 bg-violet-600 rounded-full mx-auto mb-2 group-hover:bg-yellow-400 transition-colors duration-300"></div>
+                            </div>
+                        </div>
+
+                        <div className="text-center mb-6">
+                            <h3 className="text-xl font-bold text-brand-blue mb-4">Frequently Asked Questions (FAQ)</h3>
+                        </div>
+                        <div className="bg-white p-6 rounded-lg shadow-lg max-w-5xl mx-auto">
+                            <div className="space-y-6">
+                                <div>
+                                    <h4 className="font-semibold text-brand-blue mb-2">Q: What is contract manufacturing?</h4>
+                                    <p className="text-brand-dark text-sm">A: It means outsourcing your product's machining, fabrication, or assembly to a trusted partner. Danesh Industries provides CNC machining, fabrication, and testing under ISO standards.</p>
+                                </div>
+                                <div>
+                                    <h4 className="font-semibold text-brand-blue mb-2">Q: Which industries do you serve?</h4>
+                                    <p className="text-brand-dark text-sm">A: Oil & Gas, automotive, valves, chemical process plants, water treatment, and industrial machinery in India, GCC countries, and Southeast Asia.</p>
+                                </div>
+                                <div>
+                                    <h4 className="font-semibold text-brand-blue mb-2">Q: Can you handle both prototypes and mass production?</h4>
+                                    <p className="text-brand-dark text-sm">A: Yes, we support low-volume prototypes, small-batch runs, and high-volume OEM spare parts manufacturing.</p>
+                                </div>
+                                <div>
+                                    <h4 className="font-semibold text-brand-blue mb-2">Q: What materials do you work with?</h4>
+                                    <p className="text-brand-dark text-sm">A: Stainless Steel (304, 316), Mild Steel, Hastelloy, and special alloys.</p>
+                                </div>
+                                <div>
+                                    <h4 className="font-semibold text-brand-blue mb-2">Q: How do you ensure quality?</h4>
+                                    <p className="text-brand-dark text-sm">A: With ISO-certified quality control, in-house calibration, and strict dimensional checks on every batch.</p>
+                                </div>
+                                <div>
+                                    <h4 className="font-semibold text-brand-blue mb-2">Q: How do I get started?</h4>
+                                    <p className="text-brand-dark text-sm">📧 Email us at <span className="font-semibold">marketing@daneshindustries.com</span> or 📞 Call <span className="font-semibold">+91 95000 71287 (Mr. Nambi)</span> with your requirements.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+
+
+
+
 
 			{/* Contact Popup */}
 			<ContactPopup

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
 const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
-  const [isSubmitted, setIsSubmitted] = useState(false);
+   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
+   const [isSubmitted, setIsSubmitted] = useState(false);
+   const [showDuplicateEmail, setShowDuplicateEmail] = useState(false);
+   const [submittedEmails, setSubmittedEmails] = useState<Set<string>>(new Set());
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -11,6 +13,24 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Validate email format first
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+
+    // Check for duplicate email
+    const normalizedEmail = formData.email.toLowerCase().trim();
+    console.log('Checking email:', normalizedEmail);
+    console.log('Submitted emails:', Array.from(submittedEmails));
+
+    if (submittedEmails.has(normalizedEmail)) {
+      console.log('Duplicate email detected!');
+      setShowDuplicateEmail(true);
+      return;
+    }
 
     // Split name into first and last
     const [first_name, ...lastParts] = formData.name.trim().split(' ');
@@ -41,6 +61,10 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
 
       if (response.ok) {
         console.log('Lead generated successfully');
+        // Add email to submitted list
+        const normalizedEmail = formData.email.toLowerCase().trim();
+        setSubmittedEmails(prev => new Set([...prev, normalizedEmail]));
+        console.log('Email added to submitted list:', normalizedEmail);
         setIsSubmitted(true);
 
         setTimeout(() => {
@@ -58,30 +82,32 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
 
   if (!isOpen) return null;
 
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50">
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-50 rounded-lg shadow-xl w-full max-w-md p-4">
-        <div className="flex justify-between items-center p-6 border-b border-brand-light">
-          <div className="flex items-center space-x-3 relative">
-            <div className="relative">
-              <img
-                src="/logos/daneshlogo.jpg"
-                alt="Danesh Industries Logo"
-                className="w-12 h-12 object-contain"
-              />
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 rounded-full animate-ping opacity-75"></div>
-              <div className="absolute -top-3 -right-3 w-3 h-3 bg-green-500 rounded-full animate-bounce opacity-75"></div>
-              <div className="absolute -top-5 -right-5 w-2 h-2 bg-yellow-500 rounded-full animate-pulse opacity-75"></div>
-            </div>
-            <h3 className="text-xl font-bold text-brand-dark">Contact Us</h3>
-          </div>
-          <button
-            onClick={onClose}
-            className="text-brand-gray hover:text-brand-dark text-2xl transition-colors duration-300"
-          >
-            ×
-          </button>
-        </div>
+   return (
+     <>
+       {/* Main Contact Popup */}
+       <div className="fixed inset-0 bg-black bg-opacity-50 z-50">
+         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-50 rounded-lg shadow-xl w-full max-w-md p-4">
+           <div className="flex justify-between items-center p-6 border-b border-brand-light">
+             <div className="flex items-center space-x-3 relative">
+               <div className="relative">
+                 <img
+                   src="/logos/daneshlogo.jpg"
+                   alt="Danesh Industries Logo"
+                   className="w-12 h-12 object-contain"
+                 />
+                 <div className="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 rounded-full animate-ping opacity-75"></div>
+                 <div className="absolute -top-3 -right-3 w-3 h-3 bg-green-500 rounded-full animate-bounce opacity-75"></div>
+                 <div className="absolute -top-5 -right-5 w-2 h-2 bg-yellow-500 rounded-full animate-pulse opacity-75"></div>
+               </div>
+               <h3 className="text-xl font-bold text-brand-dark">Contact Us</h3>
+             </div>
+             <button
+               onClick={onClose}
+               className="text-brand-gray hover:text-brand-dark text-2xl transition-colors duration-300"
+             >
+               ×
+             </button>
+           </div>
 
         <div className="p-6">
           {isSubmitted ? (
@@ -91,76 +117,73 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
               <p className="text-brand-gray">Your message has been sent successfully.</p>
             </div>
           ) : (
-            <>
-              <form id="contact-form" onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-brand-dark mb-1">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-brand-light rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-brand-blue hover:border-brand-blue transition-colors duration-300"
-                    placeholder="Enter your name"
-                  />
-                </div>
+            <form id="contact-form" onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-brand-dark mb-1">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-brand-light rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-brand-blue hover:border-brand-blue transition-colors duration-300"
+                  placeholder="Enter your name"
+                />
+              </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-brand-dark mb-1">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-brand-light rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-brand-blue hover:border-brand-blue transition-colors duration-300"
-                    placeholder="Enter your email"
-                  />
-                </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-brand-dark mb-1">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-brand-light rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-brand-blue hover:border-brand-blue transition-colors duration-300"
+                  placeholder="Enter your email"
+                />
+              </div>
 
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-brand-dark mb-1">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    id="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-brand-light rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-brand-blue hover:border-brand-blue transition-colors duration-300"
-                    placeholder="Enter your phone number"
-                  />
-                </div>
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-brand-dark mb-1">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  id="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-brand-light rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-brand-blue hover:border-brand-blue transition-colors duration-300"
+                  placeholder="Enter your phone number"
+                />
+              </div>
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-brand-dark mb-1">
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    id="message"
-                    rows={4}
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-brand-light rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-brand-blue hover:border-brand-blue transition-colors duration-300 resize-none"
-                    placeholder="Enter your message"
-                  />
-                </div>
-              </form>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-brand-dark mb-1">
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  id="message"
+                  rows={4}
+                  required
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-brand-light rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-brand-blue hover:border-brand-blue transition-colors duration-300 resize-none"
+                  placeholder="Enter your message"
+                />
+              </div>
 
               <div className="flex space-x-3 pt-4">
                 <button
                   type="submit"
-                  form="contact-form"
                   className="flex-1 bg-brand-blue text-white py-2 px-4 rounded-md hover:bg-opacity-90 hover:scale-105 transition-all duration-300 font-medium"
                   style={{ minHeight: '44px' }}
                 >
@@ -175,11 +198,37 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
                   Cancel
                 </button>
               </div>
-            </>
+            </form>
           )}
         </div>
       </div>
+
+      {/* Duplicate Email Popup */}
+      {showDuplicateEmail && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 z-[9999] flex items-center justify-center p-4">
+          <div className="bg-yellow-50 rounded-lg shadow-2xl w-full max-w-md mx-auto border-2 border-yellow-400">
+            <div className="text-center p-6">
+              <div className="text-yellow-600 text-6xl mb-4 animate-bounce">⚠️</div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-3">Email Already Exists!</h3>
+              <p className="text-gray-700 mb-6 text-lg leading-relaxed">
+                This email address is already in our contact list. Please provide an alternate email address to continue.
+              </p>
+              <button
+                onClick={() => {
+                  setShowDuplicateEmail(false);
+                  // Clear the email field so user can enter a new one
+                  setFormData(prev => ({ ...prev, email: '' }));
+                }}
+                className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
+                OK, Change Email
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
+    </>
   );
 };
 

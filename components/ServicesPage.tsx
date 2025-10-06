@@ -202,73 +202,113 @@ const servicesData: DetailedService[] = [
     }
 ];
 
-const ServiceCard: React.FC<{ service: DetailedService }> = ({ service }) => (
-    <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-h-[600px] flex flex-col">
-        <div className="text-brand-blue mb-4 flex-shrink-0">
-            {React.cloneElement(service.icon, { className: "h-12 w-12" })}
+const ServiceCard: React.FC<{
+    service: DetailedService;
+    isExpanded: boolean;
+    onToggle: () => void;
+}> = ({ service, isExpanded, onToggle }) => {
+    return (
+        <div className={`bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col ${isExpanded ? 'min-h-[800px]' : 'min-h-[300px]'}`}>
+            <div className="text-brand-blue mb-4 flex-shrink-0">
+                {React.cloneElement(service.icon, { className: "h-12 w-12" })}
+            </div>
+            <h3 className="text-xl font-bold mb-4 text-brand-blue hover:text-yellow-500 transition-colors duration-300 flex-shrink-0 cursor-pointer">
+                {service.title}
+            </h3>
+
+            <div className="flex-grow">
+                {!isExpanded ? (
+                    // Collapsed state - compact view
+                    <div className="space-y-4">
+                        <p className="text-brand-dark text-sm leading-relaxed">
+                            {service.description.length > 150
+                                ? `${service.description.substring(0, 150)}...`
+                                : service.description}
+                        </p>
+                        <div className="flex-shrink-0">
+                            <button
+                                onClick={onToggle}
+                                className="bg-brand-blue hover:bg-yellow-500 text-white hover:text-brand-dark font-semibold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105"
+                            >
+                                Read More
+                            </button>
+                        </div>
+                    </div>
+                ) : (
+                    // Expanded state - full details
+                    <div className="space-y-4">
+                        <p className="text-brand-dark text-sm leading-relaxed">
+                            {service.description}
+                        </p>
+
+                        <div className="space-y-6 flex-shrink-0">
+                            <div>
+                                <h4 className="font-semibold text-brand-blue mb-3 flex items-center">
+                                    <span className="text-brand-blue mr-2">◆</span>
+                                    Capabilities:
+                                </h4>
+                                <ul className="text-sm text-brand-dark space-y-2 ml-6">
+                                    {service.capabilities.map((capability, index) => (
+                                        <li key={index} className="flex items-start">
+                                            <span className="text-brand-blue mr-2">•</span>
+                                            <span>{capability}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 className="font-semibold text-brand-blue mb-3 flex items-center">
+                                    <span className="text-brand-blue mr-2">◆</span>
+                                    Industries Served:
+                                </h4>
+                                <ul className="text-sm text-brand-dark space-y-2 ml-6">
+                                    {service.industriesServed.map((industry, index) => (
+                                        <li key={index} className="flex items-start">
+                                            <span className="text-brand-blue mr-2">•</span>
+                                            <span>{industry}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 className="font-semibold text-brand-blue mb-3 flex items-center">
+                                    <span className="text-brand-blue mr-2">◆</span>
+                                    Value to Clients:
+                                </h4>
+                                <ul className="text-sm text-brand-dark space-y-2 ml-6">
+                                    {service.valueToClients.map((value, index) => (
+                                        <li key={index} className="flex items-start">
+                                            <span className="text-brand-blue mr-2">•</span>
+                                            <span>{value}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className="flex-shrink-0">
+                            <button
+                                onClick={onToggle}
+                                className="bg-brand-blue hover:bg-yellow-500 text-white hover:text-brand-dark font-semibold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105"
+                            >
+                                Show Less
+                            </button>
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
-        <h3 className="text-xl font-bold mb-4 text-brand-blue hover:text-yellow-500 transition-colors duration-300 flex-shrink-0 cursor-pointer">
-            {service.title}
-        </h3>
-
-        <p className="text-brand-dark text-sm leading-relaxed mb-6 flex-grow">
-            {service.description}
-        </p>
-
-        <div className="space-y-6 flex-shrink-0">
-            <div>
-                <h4 className="font-semibold text-brand-blue mb-3 flex items-center">
-                    <span className="text-brand-blue mr-2">◆</span>
-                    Capabilities:
-                </h4>
-                <ul className="text-sm text-brand-dark space-y-2 ml-6">
-                    {service.capabilities.map((capability, index) => (
-                        <li key={index} className="flex items-start">
-                            <span className="text-brand-blue mr-2">•</span>
-                            <span>{capability}</span>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-
-            <div>
-                <h4 className="font-semibold text-brand-blue mb-3 flex items-center">
-                    <span className="text-brand-blue mr-2">◆</span>
-                    Industries Served:
-                </h4>
-                <ul className="text-sm text-brand-dark space-y-2 ml-6">
-                    {service.industriesServed.map((industry, index) => (
-                        <li key={index} className="flex items-start">
-                            <span className="text-brand-blue mr-2">•</span>
-                            <span>{industry}</span>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-
-            <div>
-                <h4 className="font-semibold text-brand-blue mb-3 flex items-center">
-                    <span className="text-brand-blue mr-2">◆</span>
-                    Value to Clients:
-                </h4>
-                <ul className="text-sm text-brand-dark space-y-2 ml-6">
-                    {service.valueToClients.map((value, index) => (
-                        <li key={index} className="flex items-start">
-                            <span className="text-brand-blue mr-2">•</span>
-                            <span>{value}</span>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </div>
-    </div>
-);
+    );
+};
 
 const ServicesPage: React.FC = () => {
 
-//popup
+ //popup
 
-const [showContactPopup, setShowContactPopup] = useState(false);
+ const [showContactPopup, setShowContactPopup] = useState(false);
+ const [expandedServices, setExpandedServices] = useState<Set<string>>(new Set());
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -281,6 +321,16 @@ const [showContactPopup, setShowContactPopup] = useState(false);
         // Show contact popup immediately for testing
         setShowContactPopup(false);
     }, []);
+
+    const toggleServiceExpansion = (serviceTitle: string) => {
+        const newExpanded = new Set(expandedServices);
+        if (newExpanded.has(serviceTitle)) {
+            newExpanded.delete(serviceTitle);
+        } else {
+            newExpanded.add(serviceTitle);
+        }
+        setExpandedServices(newExpanded);
+    };
 
 
     return (
@@ -322,7 +372,11 @@ const [showContactPopup, setShowContactPopup] = useState(false);
                                 className="animate-fade-in w-full"
                                 style={{ animationDelay: `${index * 0.15}s` }}
                             >
-                                <ServiceCard service={service} />
+                                <ServiceCard
+                                    service={service}
+                                    isExpanded={expandedServices.has(service.title)}
+                                    onToggle={() => toggleServiceExpansion(service.title)}
+                                />
                             </div>
                         ))}
                     </div>

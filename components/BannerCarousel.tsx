@@ -6,8 +6,6 @@ const banners = [
   "/3.png",
   "/4.png",
   "/5.png",
-
-
 ];
 
 export default function BannerCarousel() {
@@ -21,19 +19,19 @@ export default function BannerCarousel() {
   }, []);
 
   return (
-    <div className="relative w-full h-full overflow-hidden">
+    <div className="relative w-full aspect-[14/7] overflow-hidden">
       <img
         src={banners[index]}
         alt="Danesh Industries Banner"
-        className="w-full h-full object-cover transition-all duration-700"
+        className="w-full h-full object-contain transition-all duration-700"
       />
       <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
         {banners.map((_, i) => (
           <button
             key={i}
             onClick={() => setIndex(i)}
-            className={`w-3 h-3 rounded-full ${
-              i === index ? "bg-white" : "bg-gray-400"
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              i === index ? "bg-white scale-125" : "bg-white/60 hover:bg-white/80"
             }`}
           />
         ))}

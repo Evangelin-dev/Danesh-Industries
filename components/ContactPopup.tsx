@@ -48,12 +48,15 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
           setFormData({ name: '', email: '', phone: '', message: '' });
           onClose();
         }, 2000);
-      } else {
-        console.error('Failed to submit lead', await response.text());
-      }
-    } catch (error) {
-      console.error('Error submitting lead:', error);
+      }else {
+      const errorText = await response.text();
+      window.alert(errorText || 'Something went wrong. Please check your details and try again.');
+      console.error('Failed to submit lead:', errorText);
     }
+  } catch (error: any) {
+    window.alert(error?.message || 'Network error. Please try again later.');
+    console.error('Error submitting lead:', error);
+  }
   };
 
   if (!isOpen) return null;

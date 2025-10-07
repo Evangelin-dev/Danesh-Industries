@@ -55,11 +55,14 @@ const ContactPage: React.FC = () => {
         setIsSubmitted(true);
         setFormData({ name: '', email: '', subject: '', message: '', phone: '' });
       } else {
-        console.error("Failed to submit lead:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error submitting lead:", error);
+      const errorText = await response.text();
+      window.alert(errorText || 'Something went wrong. Please check your details and try again.');
+      console.error('Failed to submit lead:', errorText);
     }
+  } catch (error: any) {
+    window.alert(error?.message || 'Network error. Please try again later.');
+    console.error('Error submitting lead:', error);
+  }
   };
 
   return (

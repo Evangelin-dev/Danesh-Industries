@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ContactPopup from './ContactPopup';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const backgroundImages = [
     '/2.png',
@@ -33,7 +34,7 @@ const clientLogoPaths: string[] = [
 /**
  * Reusable Card component for Vision, Mission, and Policy.
  */
-const Card: React.FC<CardProps> = ({ title, children }) => (
+const Card: React.FC<CardProps & { t: (key: string) => string }> = ({ title, children, t }) => (
     <article 
         className="bg-white rounded-lg shadow-lg p-8 transform hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col"
         aria-labelledby={`card-title-${title.toLowerCase().replace(/\s/g, '-')}`}
@@ -50,15 +51,15 @@ const Card: React.FC<CardProps> = ({ title, children }) => (
 /**
  * Component for the scrolling client logo carousel.
  */
-const ClientLogos: React.FC = () => {
+const ClientLogos: React.FC<{ t: (key: string) => string }> = ({ t }) => {
     // Determine the number of duplicates needed for seamless scrolling
     const logosToDisplay = [...clientLogoPaths, ...clientLogoPaths];
 
     return (
         <section className="mt-20 bg-white p-10 rounded-lg shadow-lg overflow-hidden" aria-label="Our Trusted Clients">
-            <h2 className="text-3xl font-bold text-brand-dark text-center mb-6">Our Trusted Clients</h2>
+            <h2 className="text-3xl font-bold text-brand-dark text-center mb-6">{t('about.clients.title') || 'Our Trusted Clients'}</h2>
             <p className="text-lg text-brand-dark text-center mb-8">
-                We are proud to serve leading companies in the industry.
+                {t('about.clients.description') || 'We are proud to serve leading companies in the industry.'}
             </p>
             
             <div className="relative w-full py-4">
@@ -113,6 +114,7 @@ const ClientLogos: React.FC = () => {
 
     // --- Main Component ---
     const AboutPage: React.FC = () => {
+        const { t } = useLanguage();
         const [showContactPopup, setShowContactPopup] = useState(false);
         const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -149,23 +151,23 @@ const ClientLogos: React.FC = () => {
                 <div className="container mx-auto px-6 relative z-10">
 
                     {/* SEO: Use h1 for the main page heading */}
-                     <header className="text-center mb-16">
-                         <h1 className="text-4xl font-extrabold text-yellow-500">About Danesh Industries</h1>
-                         <p className="mt-4 text-lg text-yellow-400">Our commitment to quality and excellence.</p>
-                     </header>
+                    <header className="text-center mb-16">
+                        <h1 className="text-4xl font-extrabold text-yellow-500">{t('about.title') || 'About Danesh Industries'}</h1>
+                        <p className="mt-4 text-lg text-yellow-400">{t('about.subtitle') || 'Our commitment to quality and excellence.'}</p>
+                    </header>
 
                     {/* Vision, Mission, Policy Section */}
                     <section aria-labelledby="vision-mission-heading">
                         <h2 id="vision-mission-heading" className="sr-only">Our Vision, Mission, and Quality Policy</h2>
                         <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-10">
-                            <Card title="Our Vision">
-                                “To be a professional organization, manufacturing the highest quality performance-oriented products while enhancing our relationships with customers across the globe.”
+                            <Card title={t('about.vision.title') || "Our Vision"} t={t}>
+                                {t('about.vision.content') || "“To be a professional organization, manufacturing the highest quality performance-oriented products while enhancing our relationships with customers across the globe.”"}
                             </Card>
-                            <Card title="Our Mission">
-                                “At Danesh Industries, we are committed to continuous improvement and strive for excellence in everything we do. Every team member contributes to a total quality culture, ensuring customer satisfaction.”
+                            <Card title={t('about.mission.title') || "Our Mission"} t={t}>
+                                {t('about.mission.content') || "“At Danesh Industries, we are committed to continuous improvement and strive for excellence in everything we do. Every team member contributes to a total quality culture, ensuring customer satisfaction.”"}
                             </Card>
-                            <Card title="Our Quality Policy">
-                                We are committed to achieving customer satisfaction by supplying quality products on time, every time — while continually improving our quality management systems and complying with international standards.
+                            <Card title={t('about.policy.title') || "Our Quality Policy"} t={t}>
+                                {t('about.policy.content') || "We are committed to achieving customer satisfaction by supplying quality products on time, every time — while continually improving our quality management systems and complying with international standards."}
                             </Card>
                         </div>
                     </section>
@@ -173,22 +175,22 @@ const ClientLogos: React.FC = () => {
                     {/* Infrastructure Section */}
                     <section className="mt-20 bg-white p-10 rounded-lg shadow-lg" aria-labelledby="infrastructure-heading">
                         <h2 id="infrastructure-heading" className="text-3xl font-bold text-brand-dark text-center mb-6">
-                            Infrastructure & Factory Overview
+                            {t('about.infrastructure.title') || 'Infrastructure & Factory Overview'}
                         </h2>
                         <div className="grid md:grid-cols-2 gap-8 text-lg text-brand-dark text-left">
                             <div>
-                                <h3 className="text-xl font-semibold text-brand-blue mb-2">Our Facility</h3>
-                                <p>Our state-of-the-art manufacturing unit is spread across 3000 sq. ft. in Chennai, India. It is equipped with modern machinery and a dedicated quality assurance lab to ensure every product meets the highest standards of precision and excellence.</p>
+                                <h3 className="text-xl font-semibold text-brand-blue mb-2">{t('about.infrastructure.facility.title') || 'Our Facility'}</h3>
+                                <p>{t('about.infrastructure.facility.content') || 'Our state-of-the-art manufacturing unit is spread across 3000 sq. ft. in Chennai, India. It is equipped with modern machinery and a dedicated quality assurance lab to ensure every product meets the highest standards of precision and excellence.'}</p>
                             </div>
                             <div>
-                                <h3 className="text-xl font-semibold text-brand-blue mb-2">Advanced Capabilities</h3>
-                                <p>We leverage advanced CNC machining, VMC, and precision lathes, alongside robust testing facilities, including hydro testing and PMI analysis. This allows us to handle complex projects and deliver components that perform reliably in the most demanding environments.</p>
+                                <h3 className="text-xl font-semibold text-brand-blue mb-2">{t('about.infrastructure.capabilities.title') || 'Advanced Capabilities'}</h3>
+                                <p>{t('about.infrastructure.capabilities.content') || 'We leverage advanced CNC machining, VMC, and precision lathes, alongside robust testing facilities, including hydro testing and PMI analysis. This allows us to handle complex projects and deliver components that perform reliably in the most demanding environments.'}</p>
                             </div>
                         </div>
                     </section>
 
                     {/* Client Logos Carousel Component */}
-                    <ClientLogos />
+                    <ClientLogos t={t} />
 
 
                     {/* Factory Image */}

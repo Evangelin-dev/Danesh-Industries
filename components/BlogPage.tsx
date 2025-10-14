@@ -1,6 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ContactPopup from './ContactPopup';
+import { useLanguage } from '../contexts/LanguageContext';
+
+// Translation function for blog content
+const translateBlogContent = (blogs: any[], t: (key: string) => string) => {
+  return blogs.map((blog: any) => {
+    // If API already provides Hindi content, use it
+    if (blog.title_hi && blog.description_hi) {
+      return blog;
+    }
+
+    // Otherwise, return original content (for now)
+    // In a production environment, you would implement:
+    // 1. Google Translate API integration
+    // 2. Azure Translator Text API
+    // 3. AWS Translate
+    // 4. Or maintain manual translations
+
+    return {
+      ...blog,
+      title_hi: blog.title, // Fallback to original
+      description_hi: blog.description, // Fallback to original
+    };
+  });
+};
 
 
 
@@ -11,6 +35,7 @@ import ContactPopup from './ContactPopup';
 
 //const BlogPage = () => {
 const BlogPage: React.FC = () => {
+  const { t, language } = useLanguage();
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showContactPopup, setShowContactPopup] = useState(false);
@@ -37,25 +62,35 @@ const BlogPage: React.FC = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch(
-          "https://portal.botdigitalsolutions.com/api/blogs/?access_key=42c8e913-0d5d-4e30-817b-adb9261dd3e2"
-        );
+        // Add language parameter to API request
+        const apiUrl = language === 'hi'
+          ? "https://portal.botdigitalsolutions.com/api/blogs/?access_key=42c8e913-0d5d-4e30-817b-adb9261dd3e2&lang=hi"
+          : "https://portal.botdigitalsolutions.com/api/blogs/?access_key=42c8e913-0d5d-4e30-817b-adb9261dd3e2";
+
+        const response = await fetch(apiUrl);
         if (!response.ok) {
-          throw new Error("Failed to fetch blogs");
+          throw new Error(t('blog.error') || "Failed to fetch blogs");
         }
         const data = await response.json();
-        setBlogs(data.results || []);
+
+        // Translate blog content if API doesn't support Hindi
+        let blogsData = data.results || [];
+        if (language === 'hi' && blogsData.length > 0) {
+          blogsData = translateBlogContent(blogsData, t);
+        }
+
+        setBlogs(blogsData);
       } catch (err) {
-        setError("Error loading blogs");
+        setError(t('blog.error') || "Error loading blogs");
       } finally {
         setLoading(false);
       }
     };
 
     fetchBlogs();
-  }, []);
+  }, [language, t]);
 
-  if (loading) return <p className="text-center py-6">Loading blogs...</p>;
+  if (loading) return <p className="text-center py-6">{t('blog.loading') || 'Loading blogs...'}</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   // ✅ Show fallback if no blogs
@@ -96,19 +131,16 @@ const BlogPage: React.FC = () => {
             </svg>
 
             <h1 className="text-4xl font-extrabold text-white mt-8 mb-4">
-              Industry Insights Coming Soon!
+              {t('blog.comingSoon.title') || 'Industry Insights Coming Soon!'}
             </h1>
             <p className="mt-4 text-lg text-gray-200 mb-8">
-              We are currently curating valuable content, including industry
-              trends, product application guides, and technical articles on
-              valves, flanges, and fittings. Please check back later to explore
-              our blog.
+              {t('blog.comingSoon.description') || 'We are currently curating valuable content, including industry trends, product application guides, and technical articles on valves, flanges, and fittings. Please check back later to explore our blog.'}
             </p>
             <Link
               to="/"
               className="bg-brand-yellow hover:bg-opacity-90 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 inline-block"
             >
-              Return to Home
+              {t('blog.returnHome') || 'Return to Home'}
             </Link>
           </div>
         </div>
@@ -121,9 +153,9 @@ const BlogPage: React.FC = () => {
       {/* Page Header */}
       <div className="py-10 text-center">
         <h1 className="text-4xl md:text-5xl font-serif font-bold">
-          Danesh Industries
+          {t('blog.companyName') || 'Danesh Industries'}
         </h1>
-        <h2 className="text-3xl mt-2 font-serif">Blog</h2>
+        <h2 className="text-3xl mt-2 font-serif">{t('blog.title') || 'Blog'}</h2>
       </div>
 
       {/* Blog Cards */}
@@ -148,10 +180,18 @@ const BlogPage: React.FC = () => {
                 <p className="text-sm text-gray-500 flex items-center gap-3">
                   {new Date(blog.date).toLocaleDateString()} • {blog.time_to_read}
                 </p>
-                <h2 className="text-xl font-semibold mt-2">{blog.title}</h2>
+                <h2 className="text-xl font-semibold mt-2">
+                  {language === 'hi' && blog.title_hi ? blog.title_hi : blog.title}
+                </h2>
                 <p className="text-gray-700 mt-2 line-clamp-3">
-                  {blog.description}
+                  {language === 'hi' && blog.description_hi ? blog.description_hi : blog.description}
                 </p>
+                {/* Language indicator */}
+                {language === 'hi' && (!blog.title_hi || !blog.description_hi) && (
+                  <p className="text-xs text-orange-600 mt-1">
+                    {t('blog.englishContent') || 'This content is in English.'}
+                  </p>
+                )}
                 {/* <Link to={`/blogs/${blog.slug}`}
 
                   className="text-blue-600 font-medium mt-3 inline-block hover:underline"
@@ -160,7 +200,7 @@ const BlogPage: React.FC = () => {
                 </Link> */}
 
   <Link to={`/blogs/${blog.slug}`} style={{ color: 'blue' }}>
-    Read More
+    {t('blog.readMore') || 'Read More'}
   </Link>
 
 {/* 

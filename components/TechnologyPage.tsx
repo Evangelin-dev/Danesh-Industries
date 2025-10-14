@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import ContactPopup from './ContactPopup';
+import { useLanguage } from '../contexts/LanguageContext';
 
 import SEO from './SEO';
 
-const technologies = [
-    { name: 'SolidWorks', description: 'For 3D modeling and design.', image: 'https://upload.wikimedia.org/wikipedia/commons/9/9e/SolidWorks_Logo.svg' },
-    { name: 'Mastercam', description: 'For process automation.', image: 'https://www.mastercam.com/wp-content/uploads/2020/05/Mastercam-Logo.png' },
-    { name: 'FARO Arm', description: 'For precision measurement.', image: 'https://www.faro.com/wp-content/uploads/2020/01/FARO-Logo.png' },
-    { name: 'PMI & Mobile Spectro', description: 'For material analysis.', image: 'https://www.spectro.com/fileadmin/_processed_/csm_Spectro_Logo_2018_RGB_300dpi_01_1c8b8b8b8b.png' },
-    { name: 'Hydro Testing', description: 'For final validation.', image: 'https://img.icons8.com/ios-filled/50/000000/test-tube.png' },
+const getTechnologiesData = (t: (key: string) => string) => [
+    { name: t('technology.solidworks.name') || 'SolidWorks', description: t('technology.solidworks.description') || 'For 3D modeling and design.', image: 'https://upload.wikimedia.org/wikipedia/commons/9/9e/SolidWorks_Logo.svg' },
+    { name: t('technology.mastercam.name') || 'Mastercam', description: t('technology.mastercam.description') || 'For process automation.', image: 'https://www.mastercam.com/wp-content/uploads/2020/05/Mastercam-Logo.png' },
+    { name: t('technology.faro.name') || 'FARO Arm', description: t('technology.faro.description') || 'For precision measurement.', image: 'https://www.faro.com/wp-content/uploads/2020/01/FARO-Logo.png' },
+    { name: t('technology.pmi.name') || 'PMI & Mobile Spectro', description: t('technology.pmi.description') || 'For material analysis.', image: 'https://www.spectro.com/fileadmin/_processed_/csm_Spectro_Logo_2018_RGB_300dpi_01_1c8b8b8b8b.png' },
+    { name: t('technology.hydro.name') || 'Hydro Testing', description: t('technology.hydro.description') || 'For final validation.', image: 'https://img.icons8.com/ios-filled/50/000000/test-tube.png' },
 ];
 
 const TechnologyPage: React.FC = () => {
+ const { t } = useLanguage();
 
-//popup
+ //popup
 
-const [showContactPopup, setShowContactPopup] = useState(false);
+ const [showContactPopup, setShowContactPopup] = useState(false);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -169,19 +171,19 @@ const [showContactPopup, setShowContactPopup] = useState(false);
                 <div className="absolute inset-0 bg-white opacity-50"></div>
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="text-center mb-16 animate-fade-in">
-                        <h1 className="text-4xl font-extrabold text-brand-dark">Our Technology</h1>
-                        <p className="mt-4 text-lg text-brand-gray">We Integrating advanced tools and software into our processes.</p>
+                        <h1 className="text-4xl font-extrabold text-brand-dark">{t('technology.title') || 'Our Technology'}</h1>
+                        <p className="mt-4 text-lg text-brand-gray">{t('technology.subtitle') || 'We Integrating advanced tools and software into our processes.'}</p>
                     </div>
 
                     <div className="max-w-4xl mx-auto">
                         <ul className="space-y-4">
-                            {technologies.map((tech, index) => (
-                                <li key={index} className={`bg-white p-6 rounded-lg shadow-sm flex items-center space-x-6 hover:shadow-lg hover:scale-105 transition-all duration-300 animate-fade-in ${tech.name === 'SolidWorks' ? 'solidworks-highlight' : ''} ${tech.name === 'Mastercam' ? 'mastercam-highlight' : ''} ${tech.name === 'FARO Arm' ? 'faro-highlight' : ''} ${tech.name === 'PMI & Mobile Spectro' ? 'pmi-highlight' : ''} ${tech.name === 'Hydro Testing' ? 'hydro-highlight' : ''}`} style={{ animationDelay: `${0.2 + index * 0.15}s` }}>
-                                    <div className={`flex-shrink-0 h-12 w-12 rounded-full bg-brand-blue flex items-center justify-center text-white font-bold text-2xl animate-spin-in overflow-hidden ${tech.name === 'SolidWorks' ? 'solidworks-icon' : ''} ${tech.name === 'Mastercam' ? 'mastercam-icon' : ''} ${tech.name === 'FARO Arm' ? 'faro-icon' : ''} ${tech.name === 'PMI & Mobile Spectro' ? 'pmi-icon' : ''} ${tech.name === 'Hydro Testing' ? 'hydro-icon' : ''}`} style={{ animationDelay: `${0.4 + index * 0.15}s` }}>
+                            {getTechnologiesData(t).map((tech, index) => (
+                                <li key={index} className={`bg-white p-6 rounded-lg shadow-sm flex items-center space-x-6 hover:shadow-lg hover:scale-105 transition-all duration-300 animate-fade-in ${index === 0 ? 'solidworks-highlight' : ''} ${index === 1 ? 'mastercam-highlight' : ''} ${index === 2 ? 'faro-highlight' : ''} ${index === 3 ? 'pmi-highlight' : ''} ${index === 4 ? 'hydro-highlight' : ''}`} style={{ animationDelay: `${0.2 + index * 0.15}s` }}>
+                                    <div className={`flex-shrink-0 h-12 w-12 rounded-full bg-brand-blue flex items-center justify-center text-white font-bold text-2xl animate-spin-in overflow-hidden ${index === 0 ? 'solidworks-icon' : ''} ${index === 1 ? 'mastercam-icon' : ''} ${index === 2 ? 'faro-icon' : ''} ${index === 3 ? 'pmi-icon' : ''} ${index === 4 ? 'hydro-icon' : ''}`} style={{ animationDelay: `${0.4 + index * 0.15}s` }}>
                                         {tech.image ? <img src={tech.image} alt={tech.name} className="h-8 w-8 object-contain" /> : index + 1}
                                     </div>
                                     <div>
-                                        <h3 className={`text-xl font-semibold text-brand-blue hover:text-brand-dark transition-colors duration-300 ${tech.name === 'SolidWorks' ? 'solidworks-title' : ''} ${tech.name === 'Mastercam' ? 'mastercam-title' : ''} ${tech.name === 'FARO Arm' ? 'faro-title' : ''} ${tech.name === 'PMI & Mobile Spectro' ? 'pmi-title' : ''} ${tech.name === 'Hydro Testing' ? 'hydro-title' : ''}`}>{tech.name}</h3>
+                                        <h3 className={`text-xl font-semibold text-brand-blue hover:text-brand-dark transition-colors duration-300 ${index === 0 ? 'solidworks-title' : ''} ${index === 1 ? 'mastercam-title' : ''} ${index === 2 ? 'faro-title' : ''} ${index === 3 ? 'pmi-title' : ''} ${index === 4 ? 'hydro-title' : ''}`}>{tech.name}</h3>
                                         <p className="text-brand-dark">{tech.description}</p>
                                     </div>
                                 </li>

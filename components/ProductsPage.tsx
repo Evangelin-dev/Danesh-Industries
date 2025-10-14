@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import SEO from './SEO';
+import { useLanguage } from '../contexts/LanguageContext';
 
 import ContactPopup from './ContactPopup';
 
@@ -1241,10 +1242,11 @@ const ProductDetail: React.FC<{ item: any; categoryId: string }> = ({ item, cate
 };
 
 const ProductsPage: React.FC = () => {
+ const { t } = useLanguage();
 
-//popup
+ //popup
 
-const [showContactPopup, setShowContactPopup] = useState(false);
+ const [showContactPopup, setShowContactPopup] = useState(false);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -1383,9 +1385,9 @@ const [showContactPopup, setShowContactPopup] = useState(false);
                 <div className="absolute inset-0 bg-blue-900 opacity-40"></div>
                 <div className="container mx-auto px-2 relative z-10">
                     <div className="text-center mb-16 animate-fade-in">
-                        <h1 className="text-4xl lg:text-5xl font-extrabold gradient-text">Our Products</h1>
+                        <h1 className="text-4xl lg:text-5xl font-extrabold gradient-text">{t('products.title') || 'Our Products'}</h1>
                         <p className="mt-4 text-lg text-white  max-w-3xl mx-auto">
-                            Explore our comprehensive range of high-quality, precision-engineered components for various industrial applications.
+                            {t('products.subtitle') || 'Explore our comprehensive range of high-quality, precision-engineered components for various industrial applications.'}
                         </p>
                     </div>
 

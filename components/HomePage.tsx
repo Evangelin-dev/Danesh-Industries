@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SEO from './SEO';
 import ContactPopup from './ContactPopup';
 import BannerCarousel from './BannerCarousel';
+import { useLanguage } from '../contexts/LanguageContext';
 
 
 
@@ -25,6 +26,7 @@ const highlights = [
 			</svg>
 		),
 		title: 'Precision Machining & Reverse Engineering',
+		key: 'precisionMachining',
 	},
 	{
 		icon: (
@@ -50,6 +52,7 @@ const highlights = [
 			</svg>
 		),
 		title: 'Wide Range of Industrial Fittings & Flanges',
+		key: 'industrialFittings',
 	},
 	{
 		icon: (
@@ -69,6 +72,7 @@ const highlights = [
 			</svg>
 		),
 		title: 'Global Standard Compliance',
+		key: 'globalStandards',
 	},
 	{
 		icon: (
@@ -95,6 +99,7 @@ const highlights = [
 			</svg>
 		),
 		title: 'Timely Delivery & Proven Reliability',
+		key: 'timelyDelivery',
 	},
 ];
 
@@ -142,6 +147,7 @@ const testimonials = [
 
 
 const HomePage: React.FC = () => {
+	const { t, language } = useLanguage();
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [showContactPopup, setShowContactPopup] = useState(false);
 
@@ -224,27 +230,26 @@ const HomePage: React.FC = () => {
 				<div className='absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black opacity-60'></div>
 				<div className='absolute top-8 left-1/2 -translate-x-1/2 text-center text-white z-10'>
 					<h1 className='text-4xl md:text-6xl font-extrabold leading-tight mb-4'>
-						Engineered for Excellence.
+						{language === 'hi' ? t('home.hero.title1Hindi') : t('home.hero.title1')}
 					</h1>
 					<h2 className='text-4xl md:text-6xl font-extrabold leading-tight mb-6'>
-						Built for Performance.
+						{language === 'hi' ? t('home.hero.title2Hindi') : t('home.hero.title2')}
 					</h2>
 					<p className='text-lg md:text-xl max-w-3xl mx-auto mb-10 text-gray-200'>
-						Manufacturing precision machined parts, socket weld fittings, flanges,
-						valves, and assemblies — with global quality standards.
+						{language === 'hi' ? t('home.hero.descriptionHindi') : t('home.hero.description')}
 					</p>
 					<div className='flex justify-center space-x-4'>
 						<Link
 							to='/products'
 							className='bg-brand-blue hover:bg-[#FFE5B4] hover:text-gray-800 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105'
 						>
-							View Products
+							{language === 'hi' ? 'उत्पाद देखें' : t('home.hero.viewProducts')}
 						</Link>
 						<Link
 							to='/contact'
 							className='bg-brand-yellow hover:bg-[#FFE5B4] hover:text-gray-800 text-brand-dark font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105'
 						>
-							Contact Us
+							{language === 'hi' ? 'संपर्क करें' : t('home.hero.contactUs')}
 						</Link>
 					</div>
 				</div>
@@ -272,7 +277,7 @@ const HomePage: React.FC = () => {
 										{item.icon}
 									</div>
 									<h3 className='text-xl font-semibold mb-2 hover:text-brand-yellow transition-colors duration-300'>
-										{item.title}
+										{t(`home.highlights.${item.key}`)}
 									</h3>
 
 								</div>
@@ -320,7 +325,7 @@ const HomePage: React.FC = () => {
 					<h2 className="text-3xl font-bold text-center text-brand-dark mb-12">Our Machinery in Action</h2>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 						<div className="text-center min-h-[300px] flex flex-col justify-end">
-							<h4 className="text-xl font-semibold text-brand-blue mb-4">Drilling in vertical machining center</h4>
+							<h4 className="text-xl font-semibold text-brand-blue mb-4">{t('home.machineryInAction.drilling')}</h4>
 							<video  muted loop poster="banner1.png"
 							className='w-full aspect-video rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300'
 								controls
@@ -332,7 +337,7 @@ const HomePage: React.FC = () => {
 							</video>
 						</div>
 						<div className="text-center min-h-[300px] flex flex-col justify-end">
-							<h4 className="text-xl font-semibold text-brand-blue mb-4">Inspection</h4>
+							<h4 className="text-xl font-semibold text-brand-blue mb-4">{t('home.machineryInAction.inspection')}</h4>
 							<video  muted loop poster="banner2.png"
 								className="w-full rounded-lg shadow-lg"
 								controls
@@ -345,7 +350,7 @@ const HomePage: React.FC = () => {
 							</video>
 						</div>
 						<div className="text-center min-h-[300px] flex flex-col justify-end">
-							<h4 className="text-xl font-semibold text-brand-blue mb-4">Machining precision components by using CNC TURNING CENTER</h4>
+							<h4 className="text-xl font-semibold text-brand-blue mb-4">{t('home.machineryInAction.cncTurning')}</h4>
 							<video  muted loop poster="/banner3.png"
 								className="w-full rounded-lg shadow-lg"
 								controls
@@ -366,11 +371,10 @@ const HomePage: React.FC = () => {
 				<div className='container mx-auto px-3 relative z-10'>
 					<div className='text-center mb-16'>
 						<h2 className='text-4xl font-extrabold text-white'>
-							Clientele & Testimonials
+							{t('home.testimonials.title')}
 						</h2>
 						<p className='mt-4 text-lg text-gray-300'>
-							Trusted by leading clients in oil & gas, valves, pumps, and engineering
-							sectors.
+							{t('home.testimonials.subtitle')}
 						</p>
 					</div>
 
@@ -440,19 +444,12 @@ const HomePage: React.FC = () => {
                     {/* Company Overview Section */}
                     <section className="mt-20 bg-white p-10 rounded-lg shadow-lg" aria-labelledby="company-overview-heading">
                         <h2 id="company-overview-heading" className="text-3xl font-bold text-purple-600 text-center mb-8">
-                            About Us – Danesh Industries
+                            {t('home.about.title')}
                         </h2>
 
                         <div className="text-lg text-brand-dark leading-relaxed space-y-6">
                             <p>
-                                Founded in 2016, Danesh Industries is a trusted manufacturer and exporter of
-                                <span className="font-bold text-blue-800 bg-blue-100 px-2 py-1 rounded-md border border-blue-300">machined components</span>,
-                                <span className="font-bold text-green-800 bg-green-100 px-2 py-1 rounded-md border border-green-300">precision machined parts</span>,
-                                <span className="font-bold text-purple-800 bg-purple-100 px-2 py-1 rounded-md border border-purple-300">CNC machine parts</span>, and
-                                <span className="font-bold text-indigo-800 bg-indigo-100 px-2 py-1 rounded-md border border-indigo-300">custom machined components</span>, based in Chennai, India.
-                                With a 5,000 sq. ft. ISO-certified manufacturing facility in Perungudi, we specialize in OEM spare parts,
-                                contract manufacturing services, and precision-engineered components for industries across India, Oman,
-                                Saudi Arabia, UAE, Qatar, Bahrain, Singapore, and Malaysia.
+                                {t('home.about.description')}
                             </p>
                         </div>
                     </section>
@@ -461,30 +458,18 @@ const HomePage: React.FC = () => {
                     <section className="mt-10 bg-gradient-to-br from-gray-50 to-white p-12 rounded-xl shadow-lg border border-gray-200" aria-labelledby="who-we-are-heading">
                         <div className="text-center mb-8">
                             <h2 id="who-we-are-heading" className="text-3xl font-bold text-brand-blue mb-4 transition-all duration-300 hover:text-yellow-600 hover:scale-105 cursor-pointer inline-block">
-                                Who We Are
+                                {t('home.whoWeAre.title')}
                                 <div className="w-20 h-1 bg-gradient-to-r from-brand-blue to-yellow-500 rounded-full mx-auto mt-2"></div>
                             </h2>
                         </div>
                         <div className="max-w-5xl mx-auto">
                             <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300">
-                                <div className="text-xl text-brand-dark leading-relaxed text-center">
+                                <div className="text-xl text-brand-dark leading-relaxed text-left">
                                     <p className="mb-4">
-                                        For over a decade, Danesh Industries has partnered with leading global companies such as
-                                         {" "}
- <span className="font-bold text-blue-800">Autosys</span>,
-                                        <span className="font-bold text-green-800">Severn Glocon Group</span>,
-                                        <span className="font-bold text-purple-800">Serino</span>,
-                                        <span className="font-bold text-indigo-800">Flowserve</span>,
-                                        <span className="font-bold text-orange-800">Armstrong International</span>,
-                                        <span className="font-bold text-red-800">JC VALVES</span> delivering export-quality
-                                        components that meet international standards.
+                                        {t('home.whoWeAre.description1')}
                                     </p>
                                     <p>
-                                        Our skilled team of engineers and machinists is committed
-                                        to <span className="font-bold text-teal-800">cost-effective</span>,
-                                        <span className="font-bold text-cyan-800">reliable</span>, and   {" "}
-
-                                        <span className="font-bold text-violet-800">scalable solutions</span> for diverse industrial sectors.
+                                        {t('home.whoWeAre.description2')}
                                     </p>
                                 </div>
                             </div>
@@ -495,54 +480,54 @@ const HomePage: React.FC = () => {
                     <section className="mt-10 bg-gradient-to-br from-white via-gray-50 to-white p-10 rounded-lg shadow-lg border border-gray-100" aria-labelledby="what-we-do-heading">
                         <div className="text-center mb-8">
                             <h2 id="what-we-do-heading" className="text-3xl font-bold text-brand-blue mb-3 relative inline-block">
-                                What We Do
+                                {t('home.whatWeDo.title')}
                                 <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-brand-blue to-yellow-500 rounded-full"></div>
                             </h2>
                             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                                We manufacture and supply a comprehensive range of industrial components and fittings, including:
+                                {t('home.whatWeDo.subtitle')}
                             </p>
                         </div>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-blue-50 to-transparent rounded-lg border border-blue-100 hover:border-blue-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-brand-blue to-blue-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-blue-700 transition-colors duration-300">Valve Components</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-blue-700 transition-colors duration-300">{t('home.whatWeDo.valveComponents')}</span>
                                 </div>
                             </div>
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-green-50 to-transparent rounded-lg border border-green-100 hover:border-green-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-green-700 transition-colors duration-300">Flanges (SS 304, SS 316, MS Spacer)</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-green-700 transition-colors duration-300">{t('home.whatWeDo.flanges')}</span>
                                 </div>
                             </div>
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-purple-50 to-transparent rounded-lg border border-purple-100 hover:border-purple-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-purple-700 transition-colors duration-300">GI Slip-On Flanges</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-purple-700 transition-colors duration-300">{t('home.whatWeDo.giFlanges')}</span>
                                 </div>
                             </div>
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-yellow-50 to-transparent rounded-lg border border-yellow-100 hover:border-yellow-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-yellow-700 transition-colors duration-300">GI Threaded Flanges</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-yellow-700 transition-colors duration-300">{t('home.whatWeDo.giThreadedFlanges')}</span>
                                 </div>
                             </div>
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-red-50 to-transparent rounded-lg border border-red-100 hover:border-red-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-red-700 transition-colors duration-300">Pipe Fittings (GI, Stainless Steel, Ductile Iron)</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-red-700 transition-colors duration-300">{t('home.whatWeDo.pipeFittings')}</span>
                                 </div>
                             </div>
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-indigo-50 to-transparent rounded-lg border border-indigo-100 hover:border-indigo-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-indigo-700 transition-colors duration-300">Cast Steel Screwed Fittings</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-indigo-700 transition-colors duration-300">{t('home.whatWeDo.castSteelFittings')}</span>
                                 </div>
                             </div>
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-pink-50 to-transparent rounded-lg border border-pink-100 hover:border-pink-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-pink-700 transition-colors duration-300">R Brand Fittings</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-pink-700 transition-colors duration-300">{t('home.whatWeDo.rBrandFittings')}</span>
                                 </div>
                             </div>
                             <div className="group">
@@ -618,7 +603,7 @@ const HomePage: React.FC = () => {
                     <section className="mt-10 bg-gray-50 p-10 rounded-lg" aria-labelledby="services-heading">
                         <div className="text-center mb-8">
                             <h2 id="services-heading" className="text-3xl font-bold text-brand-blue mb-3 relative inline-block transition-all duration-300 hover:text-yellow-500 hover:scale-105 cursor-pointer">
-                                Our Services
+                                {t('home.services.title')}
                                 <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-brand-blue via-yellow-500 to-brand-blue rounded-full"></div>
                                 <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-12 h-0.5 bg-yellow-400 rounded-full"></div>
                             </h2>
@@ -627,35 +612,35 @@ const HomePage: React.FC = () => {
                             <div className="group flex items-start p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer">
                                 <span className="text-brand-blue text-xl mr-3 flex-shrink-0 group-hover:text-yellow-500 group-hover:scale-125 transition-all duration-300">★</span>
                                 <div>
-                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">Precision Machining</div>
-                                    <p className="text-sm group-hover:text-gray-700 transition-colors duration-300">CNC Turning, Milling, Drilling</p>
+                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">{t('home.services.precisionMachining')}</div>
+                                    <p className="text-sm group-hover:text-gray-700 transition-colors duration-300">{t('home.services.precisionMachiningDesc')}</p>
                                 </div>
                             </div>
                             <div className="group flex items-start p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer">
                                 <span className="text-brand-blue text-xl mr-3 flex-shrink-0 group-hover:text-yellow-500 group-hover:scale-125 transition-all duration-300">★</span>
                                 <div>
-                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">Custom Component Manufacturing</div>
-                                    <p className="text-sm group-hover:text-gray-700 transition-colors duration-300">Flanges, fittings, valve parts</p>
+                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">{t('home.services.customComponents')}</div>
+                                    <p className="text-sm group-hover:text-gray-700 transition-colors duration-300">{t('home.services.customComponentsDesc')}</p>
                                 </div>
                             </div>
                             <div className="group flex items-start p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer">
                                 <span className="text-brand-blue text-xl mr-3 flex-shrink-0 group-hover:text-yellow-500 group-hover:scale-125 transition-all duration-300">★</span>
                                 <div>
-                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">Die & Mould Manufacturing</div>
-                                    <p className="text-sm group-hover:text-gray-700 transition-colors duration-300">Partition plates, seat rings, precision dies</p>
+                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">{t('home.services.dieMould')}</div>
+                                    <p className="text-sm group-hover:text-gray-700 transition-colors duration-300">{t('home.services.dieMouldDesc')}</p>
                                 </div>
                             </div>
                             <div className="group flex items-start p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer">
                                 <span className="text-brand-blue text-xl mr-3 flex-shrink-0 group-hover:text-yellow-500 group-hover:scale-125 transition-all duration-300">★</span>
                                 <div>
-                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">Threading, Grooving & Cutting Services</div>
+                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">{t('home.services.threadingGrooving')}</div>
                                 </div>
                             </div>
                             <div className="group flex items-start p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer">
                                 <span className="text-brand-blue text-xl mr-3 flex-shrink-0 group-hover:text-yellow-500 group-hover:scale-125 transition-all duration-300">★</span>
                                 <div>
-                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">Prototype Development & Mass Production</div>
-                                    <p className="text-sm group-hover:text-gray-700 transition-colors duration-300">With in-house CNC machining and quality testing, we cater to both low-volume prototypes and high-volume OEM manufacturing.</p>
+                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">{t('home.services.prototypeDevelopment')}</div>
+                                    <p className="text-sm group-hover:text-gray-700 transition-colors duration-300">{t('home.services.prototypeDevelopmentDesc')}</p>
                                 </div>
                             </div>
                         </div>
@@ -665,20 +650,20 @@ const HomePage: React.FC = () => {
                     <section className="mt-10 bg-white p-10 rounded-lg shadow-lg" aria-labelledby="expertise-heading">
                         <div className="text-center mb-8">
                             <h2 id="expertise-heading" className="text-3xl font-bold text-brand-blue mb-3 relative inline-block transition-all duration-300 hover:text-purple-600 hover:scale-105 cursor-pointer">
-                                Our Expertise
+                                {t('home.expertise.title')}
                                 <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-brand-blue via-purple-500 to-brand-blue rounded-full"></div>
                                 <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-0.5 bg-purple-400 rounded-full"></div>
                             </h2>
                         </div>
-                        <div className="space-y-6 text-brand-dark">
+                        <div className="space-y-6 text-brand-dark text-center">
                             <div className="group flex items-start p-4 rounded-xl bg-gradient-to-r from-purple-50/50 to-transparent hover:from-purple-100/70 hover:shadow-xl transition-all duration-500 cursor-pointer border border-purple-100/50 hover:border-purple-300">
                                 <div className="relative mr-4 flex-shrink-0">
                                     <span className="text-purple-600 text-2xl group-hover:text-purple-800 group-hover:scale-125 transition-all duration-300">◆</span>
                                     <div className="absolute -top-1 -right-1 w-2 h-2 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-300"></div>
                                 </div>
                                 <div className="flex-1">
-                                    <h3 className="text-xl font-semibold text-purple-700 mb-2 group-hover:text-purple-900 transition-colors duration-300">Machined Components</h3>
-                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">For pumps, process plants, and industrial assemblies.</p>
+                                    <h3 className="text-xl font-semibold text-purple-700 mb-2 group-hover:text-purple-900 transition-colors duration-300">{t('home.expertise.machinedComponents')}</h3>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.expertise.machinedComponentsDesc')}</p>
                                 </div>
                                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <div className="flex space-x-1">
@@ -695,8 +680,8 @@ const HomePage: React.FC = () => {
                                     <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-300"></div>
                                 </div>
                                 <div className="flex-1">
-                                    <h3 className="text-xl font-semibold text-blue-700 mb-2 group-hover:text-blue-900 transition-colors duration-300">Precision Machined Parts</h3>
-                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">With tight tolerances for critical industries.</p>
+                                    <h3 className="text-xl font-semibold text-blue-700 mb-2 group-hover:text-blue-900 transition-colors duration-300">{t('home.expertise.precisionParts')}</h3>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.expertise.precisionPartsDesc')}</p>
                                 </div>
                                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <div className="flex space-x-1">
@@ -713,8 +698,8 @@ const HomePage: React.FC = () => {
                                     <div className="absolute -top-1 -right-1 w-2 h-2 bg-indigo-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-300"></div>
                                 </div>
                                 <div className="flex-1">
-                                    <h3 className="text-xl font-semibold text-indigo-700 mb-2 group-hover:text-indigo-900 transition-colors duration-300">CNC Machine Parts</h3>
-                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">Manufactured on advanced CNC turning centres, VMC with 4th Axis, DRO milling, and lathes.</p>
+                                    <h3 className="text-xl font-semibold text-indigo-700 mb-2 group-hover:text-indigo-900 transition-colors duration-300">{t('home.expertise.cncParts')}</h3>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.expertise.cncPartsDesc')}</p>
                                 </div>
                                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <div className="flex space-x-1">
@@ -731,8 +716,8 @@ const HomePage: React.FC = () => {
                                     <div className="absolute -top-1 -right-1 w-2 h-2 bg-violet-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-300"></div>
                                 </div>
                                 <div className="flex-1">
-                                    <h3 className="text-xl font-semibold text-violet-700 mb-2 group-hover:text-violet-900 transition-colors duration-300">Contract Manufacturing Services</h3>
-                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">Long-term partnerships for prototype development, small batch runs, and large-scale production, with strict ISO-certified quality control.</p>
+                                    <h3 className="text-xl font-semibold text-violet-700 mb-2 group-hover:text-violet-900 transition-colors duration-300">{t('home.expertise.contractManufacturing')}</h3>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.expertise.contractManufacturingDesc')}</p>
                                 </div>
                                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <div className="flex space-x-1">
@@ -749,7 +734,8 @@ const HomePage: React.FC = () => {
                     <section className="mt-10 bg-gray-50 p-10 rounded-lg" aria-labelledby="why-choose-heading">
                         <div className="text-center mb-8">
                             <h2 id="why-choose-heading" className="text-3xl font-bold text-brand-blue mb-3 transition-all duration-300 hover:text-yellow-500 hover:scale-105 cursor-pointer inline-block">
-                                Why Choose Danesh Industries
+                                {t('home.highlights.title')}
+
                                 <div className="w-24 h-1 bg-gradient-to-r from-brand-blue to-yellow-500 rounded-full mx-auto mt-2"></div>
                             </h2>
                         </div>
@@ -758,7 +744,7 @@ const HomePage: React.FC = () => {
                         <div className="mb-8 text-center max-w-4xl mx-auto">
                             <div className="flex items-center justify-center space-x-4">
                                 <span className="text-2xl text-brand-blue flex-shrink-0">◆</span>
-                                <p className="text-2xl font-bold text-brand-blue italic">At Danesh Industries, we don't just manufacture parts — we build precision, trust, and long-term partnerships.</p>
+                                <p className="text-2xl font-bold text-brand-blue italic">{t('home.whyChoose.message')}</p>
                             </div>
                         </div>
 
@@ -766,37 +752,37 @@ const HomePage: React.FC = () => {
                             <div className="flex items-start space-x-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
                                 <div className="w-3 h-3 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                                 <p className="text-sm">
-                                    <span className="font-bold text-blue-800 bg-yellow-200 px-1 rounded">10+ years</span> of proven experience in OEM and contract manufacturing.
+                                    <span className="font-bold text-blue-800 bg-yellow-200 px-1 rounded">{t('home.whyChoose.experience')}</span> {t('home.whyChoose.experienceDesc')}
                                 </p>
                             </div>
                             <div className="flex items-start space-x-3 p-3 bg-green-50 rounded-lg border border-green-200">
                                 <div className="w-3 h-3 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
                                 <p className="text-sm">
-                                    Trusted supplier to companies across
-                                    <span className="font-bold text-green-800 bg-yellow-200 px-1 rounded">India</span>,
-                                    <span className="font-bold text-green-800 bg-yellow-200 px-1 rounded">Middle East</span>
-                                    <span className="font-bold text-green-800 bg-yellow-200 px-1 rounded">(Oman, Saudi Arabia, UAE, Qatar, Bahrain)</span>, and
-                                    <span className="font-bold text-green-800 bg-yellow-200 px-1 rounded">Southeast Asia</span>
-                                    <span className="font-bold text-green-800 bg-yellow-200 px-1 rounded">(Singapore, Malaysia)</span>.
+                                    {t('home.whyChoose.markets')}
+                                    <span className="font-bold text-green-800 bg-yellow-200 px-1 rounded">{t('home.whyChoose.india')}</span>,
+                                    <span className="font-bold text-green-800 bg-yellow-200 px-1 rounded">{t('home.whyChoose.middleEast')}</span>
+                                    <span className="font-bold text-green-800 bg-yellow-200 px-1 rounded">{t('home.whyChoose.middleEastCountries')}</span>, and
+                                    <span className="font-bold text-green-800 bg-yellow-200 px-1 rounded">{t('home.whyChoose.southeastAsia')}</span>
+                                    <span className="font-bold text-green-800 bg-yellow-200 px-1 rounded">{t('home.whyChoose.southeastAsiaCountries')}</span>.
                                 </p>
                             </div>
                             <div className="flex items-start space-x-3 p-3 bg-purple-50 rounded-lg border border-purple-200">
                                 <div className="w-3 h-3 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
                                 <p className="text-sm">
-                                    Advanced <span className="font-bold text-purple-800 bg-yellow-200 px-1 rounded">CNC machinery</span> and
-                                    <span className="font-bold text-purple-800 bg-yellow-200 px-1 rounded">in-house calibration</span> testing.
+                                    {t('home.whyChoose.advancedMachinery')} <span className="font-bold text-purple-800 bg-yellow-200 px-1 rounded">{t('home.whyChoose.advancedMachineryItem')}</span> and
+                                    <span className="font-bold text-purple-800 bg-yellow-200 px-1 rounded">{t('home.whyChoose.calibration')}</span> testing.
                                 </p>
                             </div>
                             <div className="flex items-start space-x-3 p-3 bg-indigo-50 rounded-lg border border-indigo-200">
                                 <div className="w-3 h-3 bg-indigo-600 rounded-full mt-2 flex-shrink-0"></div>
                                 <p className="text-sm">
-                                    <span className="font-bold text-indigo-800 bg-yellow-200 px-1 rounded">ISO-certified</span> processes ensuring quality and consistency.
+                                    <span className="font-bold text-indigo-800 bg-yellow-200 px-1 rounded">{t('home.whyChoose.isoCertified')}</span> processes ensuring quality and consistency.
                                 </p>
                             </div>
                             <div className="flex items-start space-x-3 p-3 bg-orange-50 rounded-lg border border-orange-200">
                                 <div className="w-3 h-3 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
                                 <p className="text-sm">
-                                    <span className="font-bold text-orange-800 bg-yellow-200 px-1 rounded">Fast</span> turnaround and scalable production capacity.
+                                    <span className="font-bold text-orange-800 bg-yellow-200 px-1 rounded">{t('home.whyChoose.fastTurnaround')}</span> {t('home.whyChoose.turnaroundItem')}
                                 </p>
                             </div>
                         </div>
@@ -815,28 +801,27 @@ const HomePage: React.FC = () => {
                     <section className="mt-10 bg-gray-50 p-10 rounded-lg" aria-labelledby="contract-manufacturing-heading">
                         <div className="text-center mb-8">
                             <h2 id="contract-manufacturing-heading" className="text-3xl font-bold text-brand-blue mb-3 transition-all duration-300 hover:text-indigo-600 hover:scale-105 cursor-pointer inline-block">
-                                Danesh Industries – Contract Manufacturing Services
+                                {t('home.contractManufacturing.title')}
                                 <div className="w-32 h-1 bg-gradient-to-r from-brand-blue via-indigo-500 to-brand-blue rounded-full mx-auto mt-2"></div>
                             </h2>
                         </div>
                         <div className="text-center mb-8">
                             <p className="text-lg text-brand-dark max-w-4xl mx-auto">
-                                For over a decade, Danesh Industries has been a reliable partner in contract manufacturing services,
-                                delivering precision-engineered components and assemblies to industries in
-                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">India</span>,
-                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">Oman</span>,
-                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">Saudi Arabia</span>,
+                                {t('home.contractManufacturing.description')}
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">{t('home.whyChoose.india')}</span>,
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">ओमान</span>,
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">सऊदी अरब</span>,
                                 <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">UAE</span>,
-                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">Qatar</span>,
-                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">Bahrain</span>,
-                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">Singapore</span>, and
-                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">Malaysia</span>.
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">कतर</span>,
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">बहरीन</span>,
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">सिंगापुर</span>, and
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">मलेशिया</span>.
                             </p>
                         </div>
 
                         <div className="text-center mb-6">
                             <h3 className="text-2xl font-bold text-indigo-600 mb-4 relative inline-block transition-all duration-300 hover:text-indigo-800 hover:scale-105 cursor-pointer">
-                                Our Capabilities
+                                {t('home.contractManufacturing.ourCapabilities')}
                                 <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-16 h-0.5 bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-full"></div>
                                 <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-12 h-0.5 bg-indigo-400 rounded-full"></div>
                             </h3>
@@ -845,102 +830,102 @@ const HomePage: React.FC = () => {
                             <div className="group flex items-start p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300 hover:shadow-md">
                                 <span className="text-yellow-500 text-xl mr-3 flex-shrink-0 group-hover:text-yellow-600 group-hover:scale-125 transition-all duration-300">★</span>
                                 <div>
-                                    <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">Precision Machining</div>
-                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">CNC turning, milling, drilling, and finishing.</p>
+                                    <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">{t('home.contractManufacturing.precisionMachining')}</div>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.contractManufacturing.precisionMachiningDesc')}</p>
                                 </div>
                             </div>
                             <div className="group flex items-start p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300 hover:shadow-md">
                                 <span className="text-yellow-500 text-xl mr-3 flex-shrink-0 group-hover:text-yellow-600 group-hover:scale-125 transition-all duration-300">★</span>
                                 <div>
-                                    <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">Fabrication & Assembly</div>
-                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">End-to-end production support.</p>
+                                    <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">{t('home.contractManufacturing.fabrication')}</div>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.contractManufacturing.fabricationDesc')}</p>
                                 </div>
                             </div>
                             <div className="group flex items-start p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300 hover:shadow-md">
                                 <span className="text-yellow-500 text-xl mr-3 flex-shrink-0 group-hover:text-yellow-600 group-hover:scale-125 transition-all duration-300">★</span>
                                 <div>
-                                    <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">Custom Engineering</div>
-                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">Reverse engineering, tailored designs, and product modifications.</p>
+                                    <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">{t('home.contractManufacturing.customEngineering')}</div>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.contractManufacturing.customEngineeringDesc')}</p>
                                 </div>
                             </div>
                             <div className="group flex items-start p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300 hover:shadow-md">
                                 <span className="text-yellow-500 text-xl mr-3 flex-shrink-0 group-hover:text-yellow-600 group-hover:scale-125 transition-all duration-300">★</span>
                                 <div>
-                                    <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">Quality Assurance</div>
-                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">ISO-certified processes, dimensional checks, and rigorous inspections.</p>
+                                    <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">{t('home.contractManufacturing.qualityAssurance')}</div>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.contractManufacturing.qualityAssuranceDesc')}</p>
                                 </div>
                             </div>
                         </div>
 
                         <div className="text-center mb-6">
                             <h3 className="text-2xl font-bold text-indigo-600 mb-4 transition-all duration-300 hover:text-indigo-800 hover:scale-105 cursor-pointer inline-block">
-                                Our Work Process
+                                {t('home.contractManufacturing.ourWorkProcess')}
                                 <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-full mx-auto mt-2"></div>
                             </h3>
                         </div>
                         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 mb-8 max-w-7xl mx-auto">
                             <div className="text-center p-4 bg-white rounded-xl shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-yellow-400 hover:text-violet-800 group cursor-pointer hover:border-yellow-300">
-                                <div className="text-base font-bold text-gray-800 group-hover:text-violet-800 transition-colors duration-300 mb-2">1. Discuss Needs</div>
+                                <div className="text-base font-bold text-gray-800 group-hover:text-violet-800 transition-colors duration-300 mb-2">{t('home.contractManufacturing.discussNeeds')}</div>
                                 <div className="w-8 h-8 bg-yellow-400 rounded-full mx-auto mb-2 group-hover:bg-violet-600 transition-colors duration-300"></div>
                             </div>
                             <div className="text-center p-4 bg-white rounded-xl shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-violet-600 hover:text-yellow-300 group cursor-pointer hover:border-violet-300">
-                                <div className="text-base font-bold text-gray-800 group-hover:text-yellow-300 transition-colors duration-300 mb-2">2. Plan & Quote</div>
+                                <div className="text-base font-bold text-gray-800 group-hover:text-yellow-300 transition-colors duration-300 mb-2">{t('home.contractManufacturing.planQuote')}</div>
                                 <div className="w-8 h-8 bg-violet-600 rounded-full mx-auto mb-2 group-hover:bg-yellow-400 transition-colors duration-300"></div>
                             </div>
                             <div className="text-center p-4 bg-white rounded-xl shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-yellow-400 hover:text-violet-800 group cursor-pointer hover:border-yellow-300">
-                                <div className="text-base font-bold text-gray-800 group-hover:text-violet-800 transition-colors duration-300 mb-2">3. Source Material</div>
+                                <div className="text-base font-bold text-gray-800 group-hover:text-violet-800 transition-colors duration-300 mb-2">{t('home.contractManufacturing.sourceMaterial')}</div>
                                 <div className="w-8 h-8 bg-yellow-400 rounded-full mx-auto mb-2 group-hover:bg-violet-600 transition-colors duration-300"></div>
                             </div>
                             <div className="text-center p-4 bg-white rounded-xl shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-violet-600 hover:text-yellow-300 group cursor-pointer hover:border-violet-300">
-                                <div className="text-base font-bold text-gray-800 group-hover:text-yellow-300 transition-colors duration-300 mb-2">4. Machine & Fabricate</div>
+                                <div className="text-base font-bold text-gray-800 group-hover:text-yellow-300 transition-colors duration-300 mb-2">{t('home.contractManufacturing.machineFabricate')}</div>
                                 <div className="w-8 h-8 bg-violet-600 rounded-full mx-auto mb-2 group-hover:bg-yellow-400 transition-colors duration-300"></div>
                             </div>
                             <div className="text-center p-4 bg-white rounded-xl shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-yellow-400 hover:text-violet-800 group cursor-pointer hover:border-yellow-300">
-                                <div className="text-base font-bold text-gray-800 group-hover:text-violet-800 transition-colors duration-300 mb-2">5. Quality Check</div>
+                                <div className="text-base font-bold text-gray-800 group-hover:text-violet-800 transition-colors duration-300 mb-2">{t('home.contractManufacturing.qualityCheck')}</div>
                                 <div className="w-8 h-8 bg-yellow-400 rounded-full mx-auto mb-2 group-hover:bg-violet-600 transition-colors duration-300"></div>
                             </div>
                             <div className="text-center p-4 bg-white rounded-xl shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-violet-600 hover:text-yellow-300 group cursor-pointer hover:border-violet-300">
-                                <div className="text-base font-bold text-gray-800 group-hover:text-yellow-300 transition-colors duration-300 mb-2">6. Assemble & Finish</div>
+                                <div className="text-base font-bold text-gray-800 group-hover:text-yellow-300 transition-colors duration-300 mb-2">{t('home.contractManufacturing.assembleFinish')}</div>
                                 <div className="w-8 h-8 bg-violet-600 rounded-full mx-auto mb-2 group-hover:bg-yellow-400 transition-colors duration-300"></div>
                             </div>
                             <div className="text-center p-4 bg-white rounded-xl shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-yellow-400 hover:text-violet-800 group cursor-pointer hover:border-yellow-300">
-                                <div className="text-base font-bold text-gray-800 group-hover:text-violet-800 transition-colors duration-300 mb-2">7. Pack & Deliver</div>
+                                <div className="text-base font-bold text-gray-800 group-hover:text-violet-800 transition-colors duration-300 mb-2">{t('home.contractManufacturing.packDeliver')}</div>
                                 <div className="w-8 h-8 bg-yellow-400 rounded-full mx-auto mb-2 group-hover:bg-violet-600 transition-colors duration-300"></div>
                             </div>
                             <div className="text-center p-4 bg-white rounded-xl shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-violet-600 hover:text-yellow-300 group cursor-pointer hover:border-violet-300">
-                                <div className="text-base font-bold text-gray-800 group-hover:text-yellow-300 transition-colors duration-300 mb-2">8. Support</div>
+                                <div className="text-base font-bold text-gray-800 group-hover:text-yellow-300 transition-colors duration-300 mb-2">{t('home.contractManufacturing.support')}</div>
                                 <div className="w-8 h-8 bg-violet-600 rounded-full mx-auto mb-2 group-hover:bg-yellow-400 transition-colors duration-300"></div>
                             </div>
                         </div>
 
                         <div className="text-center mb-6">
-                            <h3 className="text-xl font-bold text-brand-blue mb-4">Frequently Asked Questions (FAQ)</h3>
+                            <h3 className="text-xl font-bold text-brand-blue mb-4">{t('home.faq.title')}</h3>
                         </div>
                         <div className="bg-white p-6 rounded-lg shadow-lg max-w-5xl mx-auto">
                             <div className="space-y-6">
                                 <div>
-                                    <h4 className="font-semibold text-brand-blue mb-2">Q: What is contract manufacturing?</h4>
-                                    <p className="text-brand-dark text-sm">A: It means outsourcing your product's machining, fabrication, or assembly to a trusted partner. Danesh Industries provides CNC machining, fabrication, and testing under ISO standards.</p>
+                                    <h4 className="font-semibold text-brand-blue mb-2">{t('home.faq.q1')}</h4>
+                                    <p className="text-brand-dark text-sm">{t('home.faq.a1')}</p>
                                 </div>
                                 <div>
-                                    <h4 className="font-semibold text-brand-blue mb-2">Q: Which industries do you serve?</h4>
-                                    <p className="text-brand-dark text-sm">A: Oil & Gas, automotive, valves, chemical process plants, water treatment, and industrial machinery in India, GCC countries, and Southeast Asia.</p>
+                                    <h4 className="font-semibold text-brand-blue mb-2">{t('home.faq.q2')}</h4>
+                                    <p className="text-brand-dark text-sm">{t('home.faq.a2')}</p>
                                 </div>
                                 <div>
-                                    <h4 className="font-semibold text-brand-blue mb-2">Q: Can you handle both prototypes and mass production?</h4>
-                                    <p className="text-brand-dark text-sm">A: Yes, we support low-volume prototypes, small-batch runs, and high-volume OEM spare parts manufacturing.</p>
+                                    <h4 className="font-semibold text-brand-blue mb-2">{t('home.faq.q3')}</h4>
+                                    <p className="text-brand-dark text-sm">{t('home.faq.a3')}</p>
                                 </div>
                                 <div>
-                                    <h4 className="font-semibold text-brand-blue mb-2">Q: What materials do you work with?</h4>
-                                    <p className="text-brand-dark text-sm">A: Stainless Steel (304, 316), Mild Steel, Hastelloy, and special alloys.</p>
+                                    <h4 className="font-semibold text-brand-blue mb-2">{t('home.faq.q4')}</h4>
+                                    <p className="text-brand-dark text-sm">{t('home.faq.a4')}</p>
                                 </div>
                                 <div>
-                                    <h4 className="font-semibold text-brand-blue mb-2">Q: How do you ensure quality?</h4>
-                                    <p className="text-brand-dark text-sm">A: With ISO-certified quality control, in-house calibration, and strict dimensional checks on every batch.</p>
+                                    <h4 className="font-semibold text-brand-blue mb-2">{t('home.faq.q5')}</h4>
+                                    <p className="text-brand-dark text-sm">{t('home.faq.a5')}</p>
                                 </div>
                                 <div>
-                                    <h4 className="font-semibold text-brand-blue mb-2">Q: How do I get started?</h4>
-                                    <p className="text-brand-dark text-sm">📧 Email us at <span className="font-semibold">marketing@daneshindustries.com</span> or 📞 Call <span className="font-semibold">+91 95000 71287 (Mr. Nambi)</span> with your requirements.</p>
+                                    <h4 className="font-semibold text-brand-blue mb-2">{t('home.faq.q6')}</h4>
+                                    <p className="text-brand-dark text-sm">{t('home.faq.a6')} <span className="font-semibold">{t('home.faq.email')}</span> {t('home.faq.orCall')} <span className="font-semibold">{t('home.faq.phone')}</span> {t('home.faq.withRequirements')}</p>
                                 </div>
                             </div>
                         </div>

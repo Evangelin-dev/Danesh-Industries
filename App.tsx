@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { LanguageProvider } from './contexts/LanguageContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './components/HomePage';
@@ -227,15 +228,16 @@ const App: React.FC = () => {
 
   return (
     <HelmetProvider>
-      {/* Defined a custom CSS color for branding for demonstration */}
-      <style>{`
-        .bg-brand-dark { background-color: #1a365d; } /* Dark Blue/Navy */
-        .text-brand-dark { color: #1a365d; }
-        .text-brand-blue { color: #3b82f6; } /* Standard Blue */
-        .bg-brand-blue { background-color: #3b82f6; }
-        .bg-brand-light { background-color: #f7f7f9; }
-      `}</style>
-      <BrowserRouter>
+      <LanguageProvider>
+        {/* Defined a custom CSS color for branding for demonstration */}
+        <style>{`
+          .bg-brand-dark { background-color: #1a365d; } /* Dark Blue/Navy */
+          .text-brand-dark { color: #1a365d; }
+          .text-brand-blue { color: #3b82f6; } /* Standard Blue */
+          .bg-brand-blue { background-color: #3b82f6; }
+          .bg-brand-light { background-color: #f7f7f9; }
+        `}</style>
+        <BrowserRouter>
         <ScrollToTop />
         <div className="flex flex-col min-h-screen bg-brand-light font-sans">
           <Header />
@@ -458,6 +460,7 @@ const App: React.FC = () => {
           )}
         </div>
       </BrowserRouter>
+    </LanguageProvider>
     </HelmetProvider>
   );
 };

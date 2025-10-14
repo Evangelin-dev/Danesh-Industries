@@ -19,11 +19,11 @@ export default function BannerCarousel() {
   }, []);
 
   return (
-    <div className="relative w-full aspect-[14/7] overflow-hidden">
+    <div className="relative w-full h-[400px] overflow-hidden">
       <img
         src={banners[index]}
         alt="Danesh Industries Banner"
-        className="w-full h-full object-contain transition-all duration-700"
+        className="w-full h-full object-cover transition-all duration-700"
       />
       <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
         {banners.map((_, i) => (

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import type { JSX } from 'react';
 import SEO from './SEO';
+import { useLanguage } from '../contexts/LanguageContext';
 
 import ContactPopup from './ContactPopup';
 
@@ -16,117 +17,123 @@ interface DetailedService {
     valueToClients: string[];
 }
 
-const servicesData: DetailedService[] = [
+
+            //   {t('footer.description') || 
+            //     'Manufacturing precision machined parts, socket weld fittings, flanges,
+            //      valves, and assemblies with global quality standards.'}
+
+
+const getServicesData = (t: (key: string) => string): DetailedService[] => [
     {
-        title: 'CNC Machining Services',
-        description: 'At Danesh Industries, we specialize in high-precision CNC machining solutions tailored for OEMs, industrial projects, and specialized engineering requirements. With state-of-the-art CNC turning and milling machines, our team delivers components with exact tolerances, smooth finishes, and international quality standards.',
+        title: t('services.cncMachining.title') || 'CNC Machining Services',
+        description: t('services.cncMachining.description') || 'At Danesh Industries, we specialize in high-precision CNC machining solutions tailored for OEMs, industrial projects, and specialized engineering requirements. With state-of-the-art CNC turning and milling machines, our team delivers components with exact tolerances, smooth finishes, and international quality standards.',
         icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>,
         capabilities: [
-            'CNC turning and milling for small to large components',
-            'Prototype to mass production runs',
-            'High accuracy ±0.01 mm tolerances',
-            'Machining in stainless steel, aluminum, brass, copper, and engineering plastics',
-            'Custom fixtures, jigs, and tooling'
+            t('services.cncMachining.capabilities.turning') || 'CNC turning and milling for small to large components',
+            t('services.cncMachining.capabilities.prototype') || 'Prototype to mass production runs',
+            t('services.cncMachining.capabilities.accuracy') || 'High accuracy ±0.01 mm tolerances',
+            t('services.cncMachining.capabilities.materials') || 'Machining in stainless steel, aluminum, brass, copper, and engineering plastics',
+            t('services.cncMachining.capabilities.fixtures') || 'Custom fixtures, jigs, and tooling'
         ],
         industriesServed: [
-            'Automotive & Aerospace',
-            'Oil & Gas',
-            'Heavy Machinery',
-            'Food Processing & Pharma Equipment'
+            t('services.cncMachining.industries.automotive') || 'Automotive & Aerospace',
+            t('services.cncMachining.industries.oilGas') || 'Oil & Gas',
+            t('services.cncMachining.industries.heavyMachinery') || 'Heavy Machinery',
+            t('services.cncMachining.industries.foodPharma') || 'Food Processing & Pharma Equipment'
         ],
         valueToClients: [
-            'Faster production cycles',
-            'Consistent quality with ISO-certified processes',
-            'Cost optimization for both low and high-volume requirements'
+            t('services.cncMachining.value.fasterCycles') || 'Faster production cycles',
+            t('services.cncMachining.value.consistentQuality') || 'Consistent quality with ISO-certified processes',
+            t('services.cncMachining.value.costOptimization') || 'Cost optimization for both low and high-volume requirements'
         ]
     },
     {
-        title: 'Fabrication Services',
-        description: 'Our fabrication unit is equipped to handle both light and heavy fabrication works for diverse industries. We combine technical expertise with modern machinery to deliver durable and reliable structures.',
+        title: t('services.fabrication.title') || 'Fabrication Services',
+        description: t('services.fabrication.description') || 'Our fabrication unit is equipped to handle both light and heavy fabrication works for diverse industries. We combine technical expertise with modern machinery to deliver durable and reliable structures.',
         icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>,
         capabilities: [
-            'Sheet metal fabrication',
-            'Welding (MIG, TIG, ARC) and structural assembly',
-            'Cutting, bending, and surface finishing',
-            'Stainless steel, mild steel, and aluminum fabrication'
+            t('services.fabrication.capabilities.sheetMetal') || 'Sheet metal fabrication',
+            t('services.fabrication.capabilities.welding') || 'Welding (MIG, TIG, ARC) and structural assembly',
+            t('services.fabrication.capabilities.cutting') || 'Cutting, bending, and surface finishing',
+            t('services.fabrication.capabilities.materials') || 'Stainless steel, mild steel, and aluminum fabrication'
         ],
         industriesServed: [
-            'Process Equipment Manufacturers',
-            'Construction & Infrastructure',
-            'Industrial Machinery',
-            'Power & Energy Sector'
+            t('services.fabrication.industries.processEquipment') || 'Process Equipment Manufacturers',
+            t('services.fabrication.industries.construction') || 'Construction & Infrastructure',
+            t('services.fabrication.industries.industrialMachinery') || 'Industrial Machinery',
+            t('services.fabrication.industries.powerEnergy') || 'Power & Energy Sector'
         ],
         valueToClients: [
-            'End-to-end fabrication support from design to delivery',
-            'Strong adherence to safety and compliance standards',
-            'Long-lasting quality backed by skilled welders and inspectors'
+            t('services.fabrication.value.endToEnd') || 'End-to-end fabrication support from design to delivery',
+            t('services.fabrication.value.safetyCompliance') || 'Strong adherence to safety and compliance standards',
+            t('services.fabrication.value.longLasting') || 'Long-lasting quality backed by skilled welders and inspectors'
         ]
     },
     {
-        title: 'Reverse Engineering & MRO Services',
-        description: 'Danesh Industries is a trusted partner for restoring and replicating critical components when original parts are unavailable or obsolete. Our reverse engineering services are widely used in emergency breakdown situations and legacy equipment restoration.',
+        title: t('services.reverseEngineering.title') || 'Reverse Engineering & MRO Services',
+        description: t('services.reverseEngineering.description') || 'Danesh Industries is a trusted partner for restoring and replicating critical components when original parts are unavailable or obsolete. Our reverse engineering services are widely used in emergency breakdown situations and legacy equipment restoration.',
         icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h5M20 20v-5h-5M4 20h5v-5M20 4h-5v5" /></svg>,
         capabilities: [
-            '3D scanning, measurement, and CAD modeling',
-            'Replication of damaged or worn-out parts',
-            'Metallurgical analysis for material matching',
-            'Redesign for improved durability and performance'
+            t('services.reverseEngineering.capabilities.scanning') || '3D scanning, measurement, and CAD modeling',
+            t('services.reverseEngineering.capabilities.replication') || 'Replication of damaged or worn-out parts',
+            t('services.reverseEngineering.capabilities.analysis') || 'Metallurgical analysis for material matching',
+            t('services.reverseEngineering.capabilities.redesign') || 'Redesign for improved durability and performance'
         ],
         industriesServed: [
-            'Pharma & Biotech',
-            'Petrochemical & Chemical Plants',
-            'Food Processing Units',
-            'Textile & Heavy Engineering'
+            t('services.reverseEngineering.industries.pharma') || 'Pharma & Biotech',
+            t('services.reverseEngineering.industries.petrochemical') || 'Petrochemical & Chemical Plants',
+            t('services.reverseEngineering.industries.foodProcessing') || 'Food Processing Units',
+            t('services.reverseEngineering.industries.textile') || 'Textile & Heavy Engineering'
         ],
         valueToClients: [
-            'Extend equipment life and reduce replacement costs',
-            'Minimize downtime with rapid part restoration',
-            'Assured performance with ISO-quality controls'
+            t('services.reverseEngineering.value.extendLife') || 'Extend equipment life and reduce replacement costs',
+            t('services.reverseEngineering.value.minimizeDowntime') || 'Minimize downtime with rapid part restoration',
+            t('services.reverseEngineering.value.assuredPerformance') || 'Assured performance with ISO-quality controls'
         ]
     },
     {
-        title: 'Contract Manufacturing',
-        description: 'We work as long-term manufacturing partners for companies seeking consistent quality and timely delivery. With our infrastructure and skilled team, we provide turnkey manufacturing support for clients worldwide.',
+        title: t('services.contractManufacturing.title') || 'Contract Manufacturing',
+        description: t('services.contractManufacturing.description') || 'We work as long-term manufacturing partners for companies seeking consistent quality and timely delivery. With our infrastructure and skilled team, we provide turnkey manufacturing support for clients worldwide.',
         icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>,
         capabilities: [
-            'End-to-end production of OEM spare parts',
-            'Batch production with strict process control',
-            'Vendor-managed inventory (VMI) for repeat requirements',
-            'Export-quality packaging and logistics support'
+            t('services.contractManufacturing.capabilities.endToEnd') || 'End-to-end production of OEM spare parts',
+            t('services.contractManufacturing.capabilities.batchProduction') || 'Batch production with strict process control',
+            t('services.contractManufacturing.capabilities.vmi') || 'Vendor-managed inventory (VMI) for repeat requirements',
+            t('services.contractManufacturing.capabilities.packaging') || 'Export-quality packaging and logistics support'
         ],
         industriesServed: [
-            'Manufacturing Companies',
-            'Equipment OEMs',
-            'Industrial Suppliers',
-            'Global Exporters'
+            t('services.contractManufacturing.industries.manufacturing') || 'Manufacturing Companies',
+            t('services.contractManufacturing.industries.oems') || 'Equipment OEMs',
+            t('services.contractManufacturing.industries.suppliers') || 'Industrial Suppliers',
+            t('services.contractManufacturing.industries.exporters') || 'Global Exporters'
         ],
         valueToClients: [
-            'Reduced overhead costs for in-house facilities',
-            'On-time delivery with global supply chain integration',
-            'Strong confidentiality and IP protection'
+            t('services.contractManufacturing.value.reducedCosts') || 'Reduced overhead costs for in-house facilities',
+            t('services.contractManufacturing.value.onTimeDelivery') || 'On-time delivery with global supply chain integration',
+            t('services.contractManufacturing.value.confidentiality') || 'Strong confidentiality and IP protection'
         ]
     },
     {
-        title: 'Surface Treatments',
-        description: 'Our surface treatment services enhance corrosion resistance, wear resistance, and improve the overall lifespan of components.',
+        title: t('services.surfaceTreatments.title') || 'Surface Treatments',
+        description: t('services.surfaceTreatments.description') || 'Our surface treatment services enhance corrosion resistance, wear resistance, and improve the overall lifespan of components.',
         icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a4 4 0 004-4V5z" /></svg>,
         capabilities: [
-            'Zinc Plating (Electroplated & Hot-dip)',
-            'Nickel Plating & Electroless Nickel Plating',
-            'Chrome Plating, Boronizing & Nitriding',
-            'Anodizing for Aluminum & Passivation for Stainless Steel',
-            'Powder Coating, Painting & Blasting'
+            t('services.surfaceTreatments.capabilities.zincPlating') || 'Zinc Plating (Electroplated & Hot-dip)',
+            t('services.surfaceTreatments.capabilities.nickelPlating') || 'Nickel Plating & Electroless Nickel Plating',
+            t('services.surfaceTreatments.capabilities.chromePlating') || 'Chrome Plating, Boronizing & Nitriding',
+            t('services.surfaceTreatments.capabilities.anodizing') || 'Anodizing for Aluminum & Passivation for Stainless Steel',
+            t('services.surfaceTreatments.capabilities.powderCoating') || 'Powder Coating, Painting & Blasting'
         ],
         industriesServed: [
-            'Automotive components',
-            'Oil & Gas & Petrochemicals',
-            'Food Processing equipment',
-            'Industrial machinery'
+            t('services.surfaceTreatments.industries.automotive') || 'Automotive components',
+            t('services.surfaceTreatments.industries.oilGas') || 'Oil & Gas & Petrochemicals',
+            t('services.surfaceTreatments.industries.foodProcessing') || 'Food Processing equipment',
+            t('services.surfaceTreatments.industries.industrialMachinery') || 'Industrial machinery'
         ],
         valueToClients: [
-            'Increased part longevity',
-            'Improved performance with protective finishes',
-            'Compliance with international surface treatment standards'
+            t('services.surfaceTreatments.value.longevity') || 'Increased part longevity',
+            t('services.surfaceTreatments.value.performance') || 'Improved performance with protective finishes',
+            t('services.surfaceTreatments.value.compliance') || 'Compliance with international surface treatment standards'
         ]
     },
     {
@@ -206,7 +213,8 @@ const ServiceCard: React.FC<{
     service: DetailedService;
     isExpanded: boolean;
     onToggle: () => void;
-}> = ({ service, isExpanded, onToggle }) => {
+    t: (key: string) => string;
+}> = ({ service, isExpanded, onToggle, t }) => {
     return (
         <div className={`bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col ${isExpanded ? 'min-h-[800px]' : 'min-h-[300px]'}`}>
             <div className="text-brand-blue mb-4 flex-shrink-0">
@@ -230,7 +238,7 @@ const ServiceCard: React.FC<{
                                 onClick={onToggle}
                                 className="bg-brand-blue hover:bg-yellow-500 text-white hover:text-brand-dark font-semibold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105"
                             >
-                                Read More
+                                {t('services.readMore') || 'Read More'}
                             </button>
                         </div>
                     </div>
@@ -245,7 +253,7 @@ const ServiceCard: React.FC<{
                             <div>
                                 <h4 className="font-semibold text-brand-blue mb-3 flex items-center">
                                     <span className="text-brand-blue mr-2">◆</span>
-                                    Capabilities:
+                                    {t('services.capabilities') || 'Capabilities'}:
                                 </h4>
                                 <ul className="text-sm text-brand-dark space-y-2 ml-6">
                                     {service.capabilities.map((capability, index) => (
@@ -260,7 +268,7 @@ const ServiceCard: React.FC<{
                             <div>
                                 <h4 className="font-semibold text-brand-blue mb-3 flex items-center">
                                     <span className="text-brand-blue mr-2">◆</span>
-                                    Industries Served:
+                                    {t('services.industriesServed') || 'Industries Served'}:
                                 </h4>
                                 <ul className="text-sm text-brand-dark space-y-2 ml-6">
                                     {service.industriesServed.map((industry, index) => (
@@ -275,7 +283,7 @@ const ServiceCard: React.FC<{
                             <div>
                                 <h4 className="font-semibold text-brand-blue mb-3 flex items-center">
                                     <span className="text-brand-blue mr-2">◆</span>
-                                    Value to Clients:
+                                    {t('services.valueToClients') || 'Value to Clients'}:
                                 </h4>
                                 <ul className="text-sm text-brand-dark space-y-2 ml-6">
                                     {service.valueToClients.map((value, index) => (
@@ -293,7 +301,7 @@ const ServiceCard: React.FC<{
                                 onClick={onToggle}
                                 className="bg-brand-blue hover:bg-yellow-500 text-white hover:text-brand-dark font-semibold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105"
                             >
-                                Show Less
+                                {t('services.showLess') || 'Show Less'}
                             </button>
                         </div>
                     </div>
@@ -304,11 +312,12 @@ const ServiceCard: React.FC<{
 };
 
 const ServicesPage: React.FC = () => {
+  const { t } = useLanguage();
 
- //popup
+  //popup
 
- const [showContactPopup, setShowContactPopup] = useState(false);
- const [expandedServices, setExpandedServices] = useState<Set<string>>(new Set());
+  const [showContactPopup, setShowContactPopup] = useState(false);
+  const [expandedServices, setExpandedServices] = useState<Set<string>>(new Set());
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -362,11 +371,11 @@ const ServicesPage: React.FC = () => {
                 <div className="absolute inset-0 bg-white opacity-70"></div>
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="text-center mb-16">
-                        <h1 className="text-4xl font-extrabold text-brand-dark">Our Services</h1>
-                        <p className="mt-4 text-lg text-brand-gray">Comprehensive manufacturing solutions from precision machining to quality assurance.</p>
+                        <h1 className="text-4xl font-extrabold text-brand-dark">{t('services.title') || 'Our Services'}</h1>
+                        <p className="mt-4 text-lg text-brand-gray">{t('services.subtitle') || 'Comprehensive manufacturing solutions from precision machining to quality assurance.'}</p>
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-                        {servicesData.map((service, index) => (
+                        {getServicesData(t).map((service, index) => (
                             <div
                                 key={service.title}
                                 className="animate-fade-in w-full"
@@ -376,6 +385,7 @@ const ServicesPage: React.FC = () => {
                                     service={service}
                                     isExpanded={expandedServices.has(service.title)}
                                     onToggle={() => toggleServiceExpansion(service.title)}
+                                    t={t}
                                 />
                             </div>
                         ))}

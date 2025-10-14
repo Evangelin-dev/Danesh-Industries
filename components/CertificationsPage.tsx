@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import ContactPopup from './ContactPopup';
+import { useLanguage } from '../contexts/LanguageContext';
 
-const standards = [
-    { name: 'ASME', description: 'American Society of Mechanical Engineers standards for pressure vessels, piping, and components.' },
-    { name: 'ASTM', description: 'American Society for Testing and Materials standards for material properties and testing.' },
-    { name: 'DIN', description: 'Deutsches Institut für Normung (German Institute for Standardization) standards.' },
-    { name: 'API', description: 'American Petroleum Institute standards for the oil and gas industry.' },
-    { name: 'NORSOK', description: 'Norwegian standards developed for the petroleum industry.' },
-    { name: 'ISO 9001:2015', description: 'International standard for a quality management system (QMS).' },
-    { name: 'NACE', description: 'National Association of Corrosion Engineers standards for corrosion control.' },
-    { name: 'EN Standards', description: 'European Standards for products, services, or systems.' },
+const getStandardsData = (t: (key: string) => string) => [
+    { name: 'ASME', description: t('certifications.standards.asme') || 'American Society of Mechanical Engineers standards for pressure vessels, piping, and components.' },
+    { name: 'ASTM', description: t('certifications.standards.astm') || 'American Society for Testing and Materials standards for material properties and testing.' },
+    { name: 'DIN', description: t('certifications.standards.din') || 'Deutsches Institut für Normung (German Institute for Standardization) standards.' },
+    { name: 'API', description: t('certifications.standards.api') || 'American Petroleum Institute standards for the oil and gas industry.' },
+    { name: 'NORSOK', description: t('certifications.standards.norsok') || 'Norwegian standards developed for the petroleum industry.' },
+    { name: 'ISO 9001:2015', description: t('certifications.standards.iso') || 'International standard for a quality management system (QMS).' },
+    { name: 'NACE', description: t('certifications.standards.nace') || 'National Association of Corrosion Engineers standards for corrosion control.' },
+    { name: 'EN Standards', description: t('certifications.standards.en') || 'European Standards for products, services, or systems.' },
 ];
 
 const CertificationsPage: React.FC = () => {
+ const { t } = useLanguage();
 
-//popup
+ //popup
 
-const [showContactPopup, setShowContactPopup] = useState(false);
+ const [showContactPopup, setShowContactPopup] = useState(false);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -97,19 +99,19 @@ const [showContactPopup, setShowContactPopup] = useState(false);
                 <div className="absolute inset-0 bg-white opacity-30"></div>
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="text-center mb-16 animate-fade-in">
-                        <h1 className="text-4xl font-extrabold text-brand-dark">Certifications & Compliance</h1>
+                        <h1 className="text-4xl font-extrabold text-brand-dark">{t('certifications.title') || 'Certifications & Compliance'}</h1>
                         <p className="mt-4 text-lg text-brand-gray max-w-3xl mx-auto">
-                            Our unwavering commitment to global quality standards ensures that every product we deliver is reliable, safe, and built to perform.
+                            {t('certifications.subtitle') || 'Our unwavering commitment to global quality standards ensures that every product we deliver is reliable, safe, and built to perform.'}
                         </p>
                     </div>
 
                     <div className="max-w-5xl mx-auto bg-white p-10 rounded-lg shadow-xl animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                        <h2 className="text-2xl font-bold text-brand-dark mb-6">Adherence to International Standards</h2>
+                        <h2 className="text-2xl font-bold text-brand-dark mb-6">{t('certifications.standards.title') || 'Adherence to International Standards'}</h2>
                         <p className="mb-8 text-brand-dark">
-                            We manufacture products in strict compliance with a wide range of international standards to meet the diverse needs of our global clientele. Our quality assurance systems are designed to ensure traceability, consistency, and excellence from raw material sourcing to final inspection.
+                            {t('certifications.standards.description') || 'We manufacture products in strict compliance with a wide range of international standards to meet the diverse needs of our global clientele. Our quality assurance systems are designed to ensure traceability, consistency, and excellence from raw material sourcing to final inspection.'}
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {standards.map((standard, index) => (
+                            {getStandardsData(t).map((standard, index) => (
                                 <div key={standard.name} className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 hover:scale-105 hover:shadow-lg transition-all duration-300 animate-fade-in" style={{ animationDelay: `${0.4 + index * 0.1}s` }}>
                                     <h3 className="font-bold text-brand-blue text-lg hover:text-brand-yellow transition-colors duration-300">{standard.name}</h3>
                                     <p className="text-sm text-brand-gray">{standard.description}</p>
@@ -131,14 +133,14 @@ const [showContactPopup, setShowContactPopup] = useState(false);
                         download="ISO_CERTIFICATE_DANESH.pdf"
                         className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
                     >
-                        Download ISO Certificate
+                        {t('certifications.download') || 'Download ISO Certificate'}
                     </a>
                     </div>
 
                     <div className="mt-16 text-center animate-fade-in" style={{ animationDelay: '1.0s' }}>
-                        <h2 className="text-3xl font-bold text-brand-dark mb-4 hover:text-brand-blue transition-colors duration-300">Our Quality Management System</h2>
+                        <h2 className="text-3xl font-bold text-brand-dark mb-4 hover:text-brand-blue transition-colors duration-300">{t('certifications.qms.title') || 'Our Quality Management System'}</h2>
                         <p className="max-w-3xl mx-auto text-lg text-brand-gray hover:text-brand-dark transition-colors duration-300">
-                            Our processes are governed by a robust Quality Management System (QMS) that aligns with ISO 9001:2015 principles. This includes rigorous inspection, continuous process improvement, and comprehensive documentation support to guarantee that our products meet and exceed customer expectations.
+                            {t('certifications.qms.description') || 'Our processes are governed by a robust Quality Management System (QMS) that aligns with ISO 9001:2015 principles. This includes rigorous inspection, continuous process improvement, and comprehensive documentation support to guarantee that our products meet and exceed customer expectations.'}
                         </p>
                         <div className="mt-8 flex justify-center space-x-6">
                             <div className="w-24 h-24 bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 rounded-full flex items-center justify-center animate-medal shadow-2xl medal-glow">

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
-  const [isSubmitted, setIsSubmitted] = useState(false);
+   const { t } = useLanguage();
+   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
+   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -76,7 +78,7 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
               <div className="absolute -top-3 -right-3 w-3 h-3 bg-green-500 rounded-full animate-bounce opacity-75"></div>
               <div className="absolute -top-5 -right-5 w-2 h-2 bg-yellow-500 rounded-full animate-pulse opacity-75"></div>
             </div>
-            <h3 className="text-xl font-bold text-brand-dark">Contact Us</h3>
+            <h3 className="text-xl font-bold text-brand-dark">{t('contactPopup.title')}</h3>
           </div>
           <button
             onClick={onClose}
@@ -90,15 +92,15 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
           {isSubmitted ? (
             <div className="text-center py-8">
               <div className="text-green-500 text-5xl mb-4">✓</div>
-              <h4 className="text-lg font-semibold text-green-600 mb-2">Thank you!</h4>
-              <p className="text-brand-gray">Your message has been sent successfully.</p>
+              <h4 className="text-lg font-semibold text-green-600 mb-2">{t('contactPopup.successTitle')}</h4>
+              <p className="text-brand-gray">{t('contactPopup.successMessage')}</p>
             </div>
           ) : (
             <>
               <form id="contact-form" onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-brand-dark mb-1">
-                    Full Name
+                    {t('contactPopup.fullName')}
                   </label>
                   <input
                     type="text"
@@ -108,13 +110,13 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
                     value={formData.name}
                     onChange={handleChange}
                     className="w-full px-3 py-2 border border-brand-light rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-brand-blue hover:border-brand-blue transition-colors duration-300"
-                    placeholder="Enter your name"
+                    placeholder={t('contactPopup.fullNamePlaceholder')}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-brand-dark mb-1">
-                    Email Address
+                    {t('contactPopup.emailAddress')}
                   </label>
                   <input
                     type="email"
@@ -124,13 +126,13 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-3 py-2 border border-brand-light rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-brand-blue hover:border-brand-blue transition-colors duration-300"
-                    placeholder="Enter your email"
+                    placeholder={t('contactPopup.emailPlaceholder')}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-brand-dark mb-1">
-                    Phone Number
+                    {t('contactPopup.phoneNumber')}
                   </label>
                   <input
                     type="tel"
@@ -139,13 +141,13 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-3 py-2 border border-brand-light rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-brand-blue hover:border-brand-blue transition-colors duration-300"
-                    placeholder="Enter your phone number"
+                    placeholder={t('contactPopup.phonePlaceholder')}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-brand-dark mb-1">
-                    Message
+                    {t('contactPopup.message')}
                   </label>
                   <textarea
                     name="message"
@@ -155,7 +157,7 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-3 py-2 border border-brand-light rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-brand-blue hover:border-brand-blue transition-colors duration-300 resize-none"
-                    placeholder="Enter your message"
+                    placeholder={t('contactPopup.messagePlaceholder')}
                   />
                 </div>
               </form>
@@ -167,7 +169,7 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
                   className="flex-1 bg-brand-blue text-white py-2 px-4 rounded-md hover:bg-opacity-90 hover:scale-105 transition-all duration-300 font-medium"
                   style={{ minHeight: '44px' }}
                 >
-                  Send Message
+                  {t('contactPopup.sendMessage')}
                 </button>
                 <button
                   type="button"
@@ -175,7 +177,7 @@ const ContactPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
                   className="flex-1 bg-gray-400 text-white py-2 px-4 rounded-md hover:bg-opacity-90 hover:scale-105 transition-all duration-300 font-medium"
                   style={{ minHeight: '44px' }}
                 >
-                  Cancel
+                  {t('contactPopup.cancel')}
                 </button>
               </div>
             </>

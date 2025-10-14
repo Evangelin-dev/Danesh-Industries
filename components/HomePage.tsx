@@ -12,6 +12,7 @@ const highlights = [
 		icon: (
 			<svg
 				xmlns='http://www.w3.org/2000/svg'
+
 				className='h-10 w-10 text-brand-blue'
 				fill='none'
 				viewBox='0 0 24 24'
@@ -105,35 +106,31 @@ const highlights = [
 
 const testimonials = [
 	{
-		quote: 'Thanks for the fast delivery within a short span.',
+		quoteKey: 'home.testimonials.quote1',
 		author: 'Arun Kumar',
 		company: 'Flowserve Sanmar Ltd',
 		logo: '/logos/flowserve-sanmar.jpeg', // Updated with logo from logos.docx
 	},
 	{
-		quote:
-			'The supply of materials we received was timely and of high quality. The consistency in your deliveries has helped us maintain our production schedule smoothly. Keep up the good work!',
+		quoteKey: 'home.testimonials.quote2',
 		author: 'Karthick',
 		company: 'Armstrong International Pvt Ltd',
 		logo: '/logos/armstrong-international.png', // Updated with logo from logos.docx
 	},
 	{
-		quote:
-			'Danesh Industries has been a reliable partner for our critical valve components. Their precision machining is top-notch.',
+		quoteKey: 'home.testimonials.quote3',
 		author: 'Priya Singh',
 		company: 'IGP Engineers',
 		logo: '/logos/priyasingh.jpeg', // Updated with logo from logos.docx
 	},
 	{
-		quote:
-			'The quality of the flanges we ordered exceeded our expectations. Excellent service and support from their team.',
+		quoteKey: 'home.testimonials.quote4',
 		author: 'Rajesh Menon',
 		company: 'VK Fasteners',
 		logo: '/logos/vkfasteners.jpeg', // Updated with logo from logos.docx
 	},
 	{
-		quote:
-			'We appreciate the custom solutions and the attention to detail. Danesh Industries is our go-to for specialized fittings.',
+		quoteKey: 'home.testimonials.quote5',
 		author: 'Anjali Verma',
 		company: 'Autosys Pvt Ltd',
 		logo: '/logos/autosys.jpeg', // Updated with logo from logos.docx
@@ -264,7 +261,7 @@ const HomePage: React.FC = () => {
 				<div className='relative z-10'>
 					<div className='container mx-auto px-6'>
 						<h2 className='text-3xl font-bold text-center text-white mb-12 animate-bounce-in'>
-							Why Choose Us?
+							{t('home.highlights.title')}
 						</h2>
 						<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8'>
 							{highlights.map((item, index) => (
@@ -322,7 +319,7 @@ const HomePage: React.FC = () => {
 			{/* Sample Videos Section */}
 			<section className="py-21 bg-gray-100">
 				<div className="container mx-auto px-6 py-4">
-					<h2 className="text-3xl font-bold text-center text-brand-dark mb-12">Our Machinery in Action</h2>
+					<h2 className="text-3xl font-bold text-center text-brand-dark mb-12">{t('home.machineryInAction.title')}</h2>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 						<div className="text-center min-h-[300px] flex flex-col justify-end">
 							<h4 className="text-xl font-semibold text-brand-blue mb-4">{t('home.machineryInAction.drilling')}</h4>
@@ -395,7 +392,7 @@ const HomePage: React.FC = () => {
 												<path d='M9.333 22.583c0 2.25 1.042 4.125 3.125 5.625l2.208-2.833c-1.042-.667-1.583-1.625-1.583-2.875 0-.917.333-1.625 1-2.125.667-.5 1.5-1.042 2.5-1.625 1.25-.75 2.167-1.542 2.75-2.375.583-.833.875-1.833.875-3 0-2.417-.917-4.417-2.75-6S15.417 1 13 1c-2.417 0-4.417.875-6 2.625S4 7.583 4 10.333c0 3.083.833 5.75 2.5 8 1.667 2.25 3.833 3.25 3.833 4.25z'></path>
 											</svg>
 											<p className='text-white text-lg italic mb-6'>
-												{`"${testimonial.quote}"`}
+												{`"${t(testimonial.quoteKey)}"`}
 											</p>
 										</div>
 										<div className='text-right'>
@@ -462,15 +459,55 @@ const HomePage: React.FC = () => {
                                 <div className="w-20 h-1 bg-gradient-to-r from-brand-blue to-yellow-500 rounded-full mx-auto mt-2"></div>
                             </h2>
                         </div>
-                        <div className="max-w-5xl mx-auto">
-                            <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300">
-                                <div className="text-xl text-brand-dark leading-relaxed text-left">
-                                    <p className="mb-4">
-                                        {t('home.whoWeAre.description1')}
-                                    </p>
-                                    <p>
-                                        {t('home.whoWeAre.description2')}
-                                    </p>
+                        <div className="max-w-9xl mx-auto">
+                            <div className="bg-white p-12 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300">
+                                <div className="text-lg text-brand-dark leading-relaxed">
+                                    <div className="mb-8">
+                                        <div className="flex items-start mb-6">
+                                            <span className="text-yellow-500 text-2xl mr-4 flex-shrink-0 mt-1">★</span>
+                                            <p className="text-left">
+                                                {t('home.whoWeAre.description1')}
+                                            </p>
+                                        </div>
+                                        <div className="flex items-start">
+                                            <span className="text-yellow-500 text-2xl mr-4 flex-shrink-0 mt-1">★</span>
+                                            <p className="text-left">
+                                                {t('home.whoWeAre.description2')}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    {/* Key Company Highlights */}
+                                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                        <div className="flex items-center p-3 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg border border-blue-200 hover:shadow-md transition-all duration-300">
+                                            <span className="text-blue-600 text-lg mr-3">◆</span>
+                                            <div className="text-center">
+                                                <div className="font-bold text-blue-800 text-sm">{t('home.whoWeAre.experience')}</div>
+                                                <div className="text-xs text-blue-600">{t('home.whoWeAre.experienceSub')}</div>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center p-3 bg-gradient-to-r from-green-50 to-green-100 rounded-lg border border-green-200 hover:shadow-md transition-all duration-300">
+                                            <span className="text-green-600 text-lg mr-3">◆</span>
+                                            <div className="text-center">
+                                                <div className="font-bold text-green-800 text-sm">{t('home.whoWeAre.partnerships')}</div>
+                                                <div className="text-xs text-green-600">{t('home.whoWeAre.partnershipsSub')}</div>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center p-3 bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg border border-purple-200 hover:shadow-md transition-all duration-300">
+                                            <span className="text-purple-600 text-lg mr-3">◆</span>
+                                            <div className="text-center">
+                                                <div className="font-bold text-purple-800 text-sm">{t('home.whoWeAre.quality')}</div>
+                                                <div className="text-xs text-purple-600">{t('home.whoWeAre.qualitySub')}</div>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center p-3 bg-gradient-to-r from-orange-50 to-orange-100 rounded-lg border border-orange-200 hover:shadow-md transition-all duration-300">
+                                            <span className="text-orange-600 text-lg mr-3">◆</span>
+                                            <div className="text-center">
+                                                <div className="font-bold text-orange-800 text-sm">{t('home.whoWeAre.team')}</div>
+                                                <div className="text-xs text-orange-600">{t('home.whoWeAre.teamSub')}</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -533,199 +570,190 @@ const HomePage: React.FC = () => {
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-teal-50 to-transparent rounded-lg border border-teal-100 hover:border-teal-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-teal-700 transition-colors duration-300">Grooved Fittings</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-teal-700 transition-colors duration-300">{t('home.whatWeDo.groovedFittings')}</span>
                                 </div>
                             </div>
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-orange-50 to-transparent rounded-lg border border-orange-100 hover:border-orange-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-orange-700 transition-colors duration-300">Partition Plate Dies</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-orange-700 transition-colors duration-300">{t('home.whatWeDo.partitionPlates')}</span>
                                 </div>
                             </div>
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-cyan-50 to-transparent rounded-lg border border-cyan-100 hover:border-cyan-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-cyan-700 transition-colors duration-300">Pull Studs</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-cyan-700 transition-colors duration-300">{t('home.whatWeDo.pullStuds')}</span>
                                 </div>
                             </div>
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-emerald-50 to-transparent rounded-lg border border-emerald-100 hover:border-emerald-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-emerald-700 transition-colors duration-300">Plug Valves</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-emerald-700 transition-colors duration-300">{t('home.whatWeDo.plugValves')}</span>
                                 </div>
                             </div>
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-violet-50 to-transparent rounded-lg border border-violet-100 hover:border-violet-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-violet-500 to-violet-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-violet-700 transition-colors duration-300">Mild Steel Pins</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-violet-700 transition-colors duration-300">{t('home.whatWeDo.mildSteelPins')}</span>
                                 </div>
                             </div>
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-rose-50 to-transparent rounded-lg border border-rose-100 hover:border-rose-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-rose-500 to-rose-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-rose-700 transition-colors duration-300">Ball Valve Seat Rings</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-rose-700 transition-colors duration-300">{t('home.whatWeDo.ballValveSeatRings')}</span>
                                 </div>
                             </div>
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-amber-50 to-transparent rounded-lg border border-amber-100 hover:border-amber-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-amber-500 to-amber-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-amber-700 transition-colors duration-300">Solenoid Valves</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-amber-700 transition-colors duration-300">{t('home.whatWeDo.solenoidValves')}</span>
                                 </div>
                             </div>
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-lime-50 to-transparent rounded-lg border border-lime-100 hover:border-lime-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-lime-500 to-lime-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-lime-700 transition-colors duration-300">Cage for control valve</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-lime-700 transition-colors duration-300">{t('home.whatWeDo.cageControlValve')}</span>
                                 </div>
                             </div>
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-sky-50 to-transparent rounded-lg border border-sky-100 hover:border-sky-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-sky-500 to-sky-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-sky-700 transition-colors duration-300">Plug for control valve</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-sky-700 transition-colors duration-300">{t('home.whatWeDo.plugControlValve')}</span>
                                 </div>
                             </div>
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-fuchsia-50 to-transparent rounded-lg border border-fuchsia-100 hover:border-fuchsia-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-fuchsia-500 to-fuchsia-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-fuchsia-700 transition-colors duration-300">Seat Ring for all valves</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-fuchsia-700 transition-colors duration-300">{t('home.whatWeDo.seatRingValves')}</span>
                                 </div>
                             </div>
                             <div className="group">
                                 <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-emerald-50 to-transparent rounded-lg border border-emerald-100 hover:border-emerald-300 hover:shadow-md transition-all duration-300">
                                     <div className="w-3 h-3 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex-shrink-0"></div>
-                                    <span className="font-semibold text-brand-blue group-hover:text-emerald-700 transition-colors duration-300">Actuator cylinder</span>
+                                    <span className="font-semibold text-brand-blue group-hover:text-emerald-700 transition-colors duration-300">{t('home.whatWeDo.actuatorCylinder')}</span>
                                 </div>
                             </div>
                         </div>
                     </section>
 
                     {/* Our Services Section */}
-                    <section className="mt-10 bg-gray-50 p-10 rounded-lg" aria-labelledby="services-heading">
-                        <div className="text-center mb-8">
-                            <h2 id="services-heading" className="text-3xl font-bold text-brand-blue mb-3 relative inline-block transition-all duration-300 hover:text-yellow-500 hover:scale-105 cursor-pointer">
+                    <section className="mt-10 bg-gray-50 p-8 rounded-lg" aria-labelledby="services-heading">
+                        <div className="text-center mb-6">
+                            <h2 id="services-heading" className="text-3xl font-bold text-brand-blue mb-2 transition-all duration-300 hover:text-yellow-500 hover:scale-105 cursor-pointer inline-block">
                                 {t('home.services.title')}
-                                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-brand-blue via-yellow-500 to-brand-blue rounded-full"></div>
-                                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-12 h-0.5 bg-yellow-400 rounded-full"></div>
+                                <div className="w-20 h-1 bg-gradient-to-r from-brand-blue to-yellow-500 rounded-full mx-auto mt-2"></div>
                             </h2>
                         </div>
-                        <div className="space-y-4 text-brand-dark max-w-4xl mx-auto">
-                            <div className="group flex items-start p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer">
-                                <span className="text-brand-blue text-xl mr-3 flex-shrink-0 group-hover:text-yellow-500 group-hover:scale-125 transition-all duration-300">★</span>
-                                <div>
-                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">{t('home.services.precisionMachining')}</div>
-                                    <p className="text-sm group-hover:text-gray-700 transition-colors duration-300">{t('home.services.precisionMachiningDesc')}</p>
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                            <div className="group relative p-8 bg-gradient-to-br from-white via-gray-50 to-white rounded-2xl hover:shadow-2xl hover:shadow-yellow-200/50 transition-all duration-500 cursor-pointer border border-gray-100 hover:border-yellow-300 transform hover:-translate-y-2 overflow-hidden">
+                                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="relative z-10">
+                                    <div className="flex items-start mb-4">
+                                        <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mr-4 shadow-lg group-hover:shadow-yellow-300/50 transition-all duration-300">
+                                            <span className="text-white text-xl group-hover:scale-110 transition-transform duration-300">★</span>
+                                        </div>
+                                        <div className="font-bold text-brand-blue text-lg group-hover:text-yellow-600 transition-colors duration-300 leading-tight">{t('home.services.precisionMachining')}</div>
+                                    </div>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300 ml-16 leading-relaxed">{t('home.services.precisionMachiningDesc')}</p>
                                 </div>
                             </div>
-                            <div className="group flex items-start p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer">
-                                <span className="text-brand-blue text-xl mr-3 flex-shrink-0 group-hover:text-yellow-500 group-hover:scale-125 transition-all duration-300">★</span>
-                                <div>
-                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">{t('home.services.customComponents')}</div>
-                                    <p className="text-sm group-hover:text-gray-700 transition-colors duration-300">{t('home.services.customComponentsDesc')}</p>
+
+                            <div className="group relative p-8 bg-gradient-to-br from-white via-gray-50 to-white rounded-2xl hover:shadow-2xl hover:shadow-blue-200/50 transition-all duration-500 cursor-pointer border border-gray-100 hover:border-blue-300 transform hover:-translate-y-2 overflow-hidden">
+                                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="relative z-10">
+                                    <div className="flex items-start mb-4">
+                                        <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mr-4 shadow-lg group-hover:shadow-blue-300/50 transition-all duration-300">
+                                            <span className="text-white text-xl group-hover:scale-110 transition-transform duration-300">★</span>
+                                        </div>
+                                        <div className="font-bold text-brand-blue text-lg group-hover:text-blue-600 transition-colors duration-300 leading-tight">{t('home.services.customComponents')}</div>
+                                    </div>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300 ml-16 leading-relaxed">{t('home.services.customComponentsDesc')}</p>
                                 </div>
                             </div>
-                            <div className="group flex items-start p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer">
-                                <span className="text-brand-blue text-xl mr-3 flex-shrink-0 group-hover:text-yellow-500 group-hover:scale-125 transition-all duration-300">★</span>
-                                <div>
-                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">{t('home.services.dieMould')}</div>
-                                    <p className="text-sm group-hover:text-gray-700 transition-colors duration-300">{t('home.services.dieMouldDesc')}</p>
+
+                            <div className="group relative p-8 bg-gradient-to-br from-white via-gray-50 to-white rounded-2xl hover:shadow-2xl hover:shadow-purple-200/50 transition-all duration-500 cursor-pointer border border-gray-100 hover:border-purple-300 transform hover:-translate-y-2 overflow-hidden">
+                                <div className="absolute inset-0 bg-gradient-to-br from-purple-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="relative z-10">
+                                    <div className="flex items-start mb-4">
+                                        <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mr-4 shadow-lg group-hover:shadow-purple-300/50 transition-all duration-300">
+                                            <span className="text-white text-xl group-hover:scale-110 transition-transform duration-300">★</span>
+                                        </div>
+                                        <div className="font-bold text-brand-blue text-lg group-hover:text-purple-600 transition-colors duration-300 leading-tight">{t('home.services.dieMould')}</div>
+                                    </div>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300 ml-16 leading-relaxed">{t('home.services.dieMouldDesc')}</p>
                                 </div>
                             </div>
-                            <div className="group flex items-start p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer">
-                                <span className="text-brand-blue text-xl mr-3 flex-shrink-0 group-hover:text-yellow-500 group-hover:scale-125 transition-all duration-300">★</span>
-                                <div>
-                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">{t('home.services.threadingGrooving')}</div>
+
+                            <div className="group relative p-8 bg-gradient-to-br from-white via-gray-50 to-white rounded-2xl hover:shadow-2xl hover:shadow-green-200/50 transition-all duration-500 cursor-pointer border border-gray-100 hover:border-green-300 transform hover:-translate-y-2 overflow-hidden">
+                                <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="relative z-10">
+                                    <div className="flex items-start mb-4">
+                                        <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mr-4 shadow-lg group-hover:shadow-green-300/50 transition-all duration-300">
+                                            <span className="text-white text-xl group-hover:scale-110 transition-transform duration-300">★</span>
+                                        </div>
+                                        <div className="font-bold text-brand-blue text-lg group-hover:text-green-600 transition-colors duration-300 leading-tight">{t('home.services.threadingGrooving')}</div>
+                                    </div>
+                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300 ml-16 leading-relaxed">{t('home.services.threadingGrooving')}</p>
                                 </div>
                             </div>
-                            <div className="group flex items-start p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer">
-                                <span className="text-brand-blue text-xl mr-3 flex-shrink-0 group-hover:text-yellow-500 group-hover:scale-125 transition-all duration-300">★</span>
-                                <div>
-                                    <div className="font-semibold text-brand-blue mb-1 group-hover:text-yellow-600 transition-colors duration-300">{t('home.services.prototypeDevelopment')}</div>
-                                    <p className="text-sm group-hover:text-gray-700 transition-colors duration-300">{t('home.services.prototypeDevelopmentDesc')}</p>
+
+                            <div className="group relative p-8 bg-gradient-to-br from-white via-gray-50 to-white rounded-2xl hover:shadow-2xl hover:shadow-yellow-200/50 transition-all duration-500 cursor-pointer border border-gray-100 hover:border-yellow-300 transform hover:-translate-y-2 overflow-hidden">
+                                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="relative z-10">
+                                    <div className="flex items-start mb-4">
+                                        <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mr-4 shadow-lg group-hover:shadow-yellow-300/50 transition-all duration-300">
+                                            <span className="text-white text-xl group-hover:scale-110 transition-transform duration-300">★</span>
+                                        </div>
+                                        <div className="font-bold text-brand-blue text-lg group-hover:text-yellow-600 transition-colors duration-300 leading-tight">{t('home.services.prototypeDevelopment')}</div>
+                                    </div>
+                                    <div className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300 ml-16 leading-relaxed">
+                                        <div className="mb-2">{t('home.services.prototypeDevelopmentDesc').split(',')[0] + ','}</div>
+                                        <div>{t('home.services.prototypeDevelopmentDesc').split(',')[1]}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </section>
 
                     {/* Our Expertise Section */}
-                    <section className="mt-10 bg-white p-10 rounded-lg shadow-lg" aria-labelledby="expertise-heading">
-                        <div className="text-center mb-8">
-                            <h2 id="expertise-heading" className="text-3xl font-bold text-brand-blue mb-3 relative inline-block transition-all duration-300 hover:text-purple-600 hover:scale-105 cursor-pointer">
+                    <section className="mt-10 bg-white p-8 rounded-lg shadow-lg" aria-labelledby="expertise-heading">
+                        <div className="text-center mb-6">
+                            <h2 id="expertise-heading" className="text-2xl font-bold text-brand-blue mb-2 transition-all duration-300 hover:text-purple-600 hover:scale-105 cursor-pointer inline-block">
                                 {t('home.expertise.title')}
-                                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-brand-blue via-purple-500 to-brand-blue rounded-full"></div>
-                                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-0.5 bg-purple-400 rounded-full"></div>
+                                <div className="w-20 h-1 bg-gradient-to-r from-brand-blue to-purple-500 rounded-full mx-auto mt-2"></div>
                             </h2>
                         </div>
-                        <div className="space-y-6 text-brand-dark text-center">
-                            <div className="group flex items-start p-4 rounded-xl bg-gradient-to-r from-purple-50/50 to-transparent hover:from-purple-100/70 hover:shadow-xl transition-all duration-500 cursor-pointer border border-purple-100/50 hover:border-purple-300">
-                                <div className="relative mr-4 flex-shrink-0">
-                                    <span className="text-purple-600 text-2xl group-hover:text-purple-800 group-hover:scale-125 transition-all duration-300">◆</span>
-                                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-300"></div>
+                        <div className="grid md:grid-cols-2 gap-4 text-brand-dark">
+                            <div className="group p-4 rounded-lg bg-gradient-to-br from-purple-50 to-purple-100 hover:shadow-lg transition-all duration-300 cursor-pointer border border-purple-200 hover:border-purple-400">
+                                <div className="flex items-center mb-2">
+                                    <span className="text-purple-600 text-xl mr-3 group-hover:scale-125 transition-transform duration-300">◆</span>
+                                    <h3 className="text-lg font-semibold text-purple-700 group-hover:text-purple-900 transition-colors duration-300">{t('home.expertise.machinedComponents')}</h3>
                                 </div>
-                                <div className="flex-1">
-                                    <h3 className="text-xl font-semibold text-purple-700 mb-2 group-hover:text-purple-900 transition-colors duration-300">{t('home.expertise.machinedComponents')}</h3>
-                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.expertise.machinedComponentsDesc')}</p>
-                                </div>
-                                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <div className="flex space-x-1">
-                                        <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                                        <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                                        <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-                                    </div>
-                                </div>
+                                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.expertise.machinedComponentsDesc')}</p>
                             </div>
 
-                            <div className="group flex items-start p-4 rounded-xl bg-gradient-to-r from-blue-50/50 to-transparent hover:from-blue-100/70 hover:shadow-xl transition-all duration-500 cursor-pointer border border-blue-100/50 hover:border-blue-300">
-                                <div className="relative mr-4 flex-shrink-0">
-                                    <span className="text-blue-600 text-2xl group-hover:text-blue-800 group-hover:scale-125 transition-all duration-300">◆</span>
-                                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-300"></div>
+                            <div className="group p-4 rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 hover:shadow-lg transition-all duration-300 cursor-pointer border border-blue-200 hover:border-blue-400">
+                                <div className="flex items-center mb-2">
+                                    <span className="text-blue-600 text-xl mr-3 group-hover:scale-125 transition-transform duration-300">◆</span>
+                                    <h3 className="text-lg font-semibold text-blue-700 group-hover:text-blue-900 transition-colors duration-300">{t('home.expertise.precisionParts')}</h3>
                                 </div>
-                                <div className="flex-1">
-                                    <h3 className="text-xl font-semibold text-blue-700 mb-2 group-hover:text-blue-900 transition-colors duration-300">{t('home.expertise.precisionParts')}</h3>
-                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.expertise.precisionPartsDesc')}</p>
-                                </div>
-                                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <div className="flex space-x-1">
-                                        <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                                        <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-                                    </div>
-                                </div>
+                                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.expertise.precisionPartsDesc')}</p>
                             </div>
 
-                            <div className="group flex items-start p-4 rounded-xl bg-gradient-to-r from-indigo-50/50 to-transparent hover:from-indigo-100/70 hover:shadow-xl transition-all duration-500 cursor-pointer border border-indigo-100/50 hover:border-indigo-300">
-                                <div className="relative mr-4 flex-shrink-0">
-                                    <span className="text-indigo-600 text-2xl group-hover:text-indigo-800 group-hover:scale-125 transition-all duration-300">◆</span>
-                                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-indigo-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-300"></div>
+                            <div className="group p-4 rounded-lg bg-gradient-to-br from-indigo-50 to-indigo-100 hover:shadow-lg transition-all duration-300 cursor-pointer border border-indigo-200 hover:border-indigo-400">
+                                <div className="flex items-center mb-2">
+                                    <span className="text-indigo-600 text-xl mr-3 group-hover:scale-125 transition-transform duration-300">◆</span>
+                                    <h3 className="text-lg font-semibold text-indigo-700 group-hover:text-indigo-900 transition-colors duration-300">{t('home.expertise.cncParts')}</h3>
                                 </div>
-                                <div className="flex-1">
-                                    <h3 className="text-xl font-semibold text-indigo-700 mb-2 group-hover:text-indigo-900 transition-colors duration-300">{t('home.expertise.cncParts')}</h3>
-                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.expertise.cncPartsDesc')}</p>
-                                </div>
-                                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <div className="flex space-x-1">
-                                        <div className="w-2 h-2 bg-indigo-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                                        <div className="w-2 h-2 bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                                        <div className="w-2 h-2 bg-indigo-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-                                    </div>
-                                </div>
+                                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.expertise.cncPartsDesc')}</p>
                             </div>
 
-                            <div className="group flex items-start p-4 rounded-xl bg-gradient-to-r from-violet-50/50 to-transparent hover:from-violet-100/70 hover:shadow-xl transition-all duration-500 cursor-pointer border border-violet-100/50 hover:border-violet-300">
-                                <div className="relative mr-4 flex-shrink-0">
-                                    <span className="text-violet-600 text-2xl group-hover:text-violet-800 group-hover:scale-125 transition-all duration-300">◆</span>
-                                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-violet-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-300"></div>
+                            <div className="group p-4 rounded-lg bg-gradient-to-br from-violet-50 to-violet-100 hover:shadow-lg transition-all duration-300 cursor-pointer border border-violet-200 hover:border-violet-400">
+                                <div className="flex items-center mb-2">
+                                    <span className="text-violet-600 text-xl mr-3 group-hover:scale-125 transition-transform duration-300">◆</span>
+                                    <h3 className="text-lg font-semibold text-violet-700 group-hover:text-violet-900 transition-colors duration-300">{t('home.expertise.contractManufacturing')}</h3>
                                 </div>
-                                <div className="flex-1">
-                                    <h3 className="text-xl font-semibold text-violet-700 mb-2 group-hover:text-violet-900 transition-colors duration-300">{t('home.expertise.contractManufacturing')}</h3>
-                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.expertise.contractManufacturingDesc')}</p>
-                                </div>
-                                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <div className="flex space-x-1">
-                                        <div className="w-2 h-2 bg-violet-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                                        <div className="w-2 h-2 bg-violet-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                                        <div className="w-2 h-2 bg-violet-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-                                    </div>
-                                </div>
+                                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.expertise.contractManufacturingDesc')}</p>
                             </div>
                         </div>
                     </section>
@@ -809,13 +837,13 @@ const HomePage: React.FC = () => {
                             <p className="text-lg text-brand-dark max-w-4xl mx-auto">
                                 {t('home.contractManufacturing.description')}
                                 <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">{t('home.whyChoose.india')}</span>,
-                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">ओमान</span>,
-                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">सऊदी अरब</span>,
-                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">UAE</span>,
-                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">कतर</span>,
-                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">बहरीन</span>,
-                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">सिंगापुर</span>, and
-                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">मलेशिया</span>.
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">{t('home.whyChoose.middleEastCountries').replace(/[()]/g, '').split(', ')[0]}</span>,
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">{t('home.whyChoose.middleEastCountries').replace(/[()]/g, '').split(', ')[1]}</span>,
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">{t('home.whyChoose.middleEastCountries').replace(/[()]/g, '').split(', ')[2]}</span>,
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">{t('home.whyChoose.middleEastCountries').replace(/[()]/g, '').split(', ')[3]}</span>,
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">{t('home.whyChoose.middleEastCountries').replace(/[()]/g, '').split(', ')[4]}</span>,
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">{t('home.whyChoose.southeastAsiaCountries').replace(/[()]/g, '').split(', ')[0]}</span>, and
+                                <span className="font-bold text-black bg-yellow-100 px-2 py-1 rounded-md border border-yellow-300">{t('home.whyChoose.southeastAsiaCountries').replace(/[()]/g, '').split(', ')[1]}</span>.
                             </p>
                         </div>
 
@@ -826,33 +854,42 @@ const HomePage: React.FC = () => {
                                 <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-12 h-0.5 bg-indigo-400 rounded-full"></div>
                             </h3>
                         </div>
-                        <div className="max-w-5xl mx-auto mb-8 space-y-4">
-                            <div className="group flex items-start p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300 hover:shadow-md">
-                                <span className="text-yellow-500 text-xl mr-3 flex-shrink-0 group-hover:text-yellow-600 group-hover:scale-125 transition-all duration-300">★</span>
-                                <div>
-                                    <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">{t('home.contractManufacturing.precisionMachining')}</div>
-                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.contractManufacturing.precisionMachiningDesc')}</p>
+                        <div className="max-w-6xl mx-auto mb-8">
+                            <div className="grid md:grid-cols-2 gap-6">
+                                {/* Left Column */}
+                                <div className="space-y-4">
+                                    <div className="group flex items-start p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300 hover:shadow-md">
+                                        <span className="text-yellow-500 text-xl mr-3 flex-shrink-0 group-hover:text-yellow-600 group-hover:scale-125 transition-all duration-300">★</span>
+                                        <div className="text-left">
+                                            <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">{t('home.contractManufacturing.precisionMachining')}</div>
+                                            <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.contractManufacturing.precisionMachiningDesc')}</p>
+                                        </div>
+                                    </div>
+                                    <div className="group flex items-start p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300 hover:shadow-md">
+                                        <span className="text-yellow-500 text-xl mr-3 flex-shrink-0 group-hover:text-yellow-600 group-hover:scale-125 transition-all duration-300">★</span>
+                                        <div className="text-left">
+                                            <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">{t('home.contractManufacturing.customEngineering')}</div>
+                                            <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.contractManufacturing.customEngineeringDesc')}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="group flex items-start p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300 hover:shadow-md">
-                                <span className="text-yellow-500 text-xl mr-3 flex-shrink-0 group-hover:text-yellow-600 group-hover:scale-125 transition-all duration-300">★</span>
-                                <div>
-                                    <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">{t('home.contractManufacturing.fabrication')}</div>
-                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.contractManufacturing.fabricationDesc')}</p>
-                                </div>
-                            </div>
-                            <div className="group flex items-start p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300 hover:shadow-md">
-                                <span className="text-yellow-500 text-xl mr-3 flex-shrink-0 group-hover:text-yellow-600 group-hover:scale-125 transition-all duration-300">★</span>
-                                <div>
-                                    <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">{t('home.contractManufacturing.customEngineering')}</div>
-                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.contractManufacturing.customEngineeringDesc')}</p>
-                                </div>
-                            </div>
-                            <div className="group flex items-start p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300 hover:shadow-md">
-                                <span className="text-yellow-500 text-xl mr-3 flex-shrink-0 group-hover:text-yellow-600 group-hover:scale-125 transition-all duration-300">★</span>
-                                <div>
-                                    <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">{t('home.contractManufacturing.qualityAssurance')}</div>
-                                    <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.contractManufacturing.qualityAssuranceDesc')}</p>
+
+                                {/* Right Column */}
+                                <div className="space-y-4">
+                                    <div className="group flex items-start p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300 hover:shadow-md">
+                                        <span className="text-yellow-500 text-xl mr-3 flex-shrink-0 group-hover:text-yellow-600 group-hover:scale-125 transition-all duration-300">★</span>
+                                        <div className="text-left">
+                                            <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">{t('home.contractManufacturing.fabrication')}</div>
+                                            <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.contractManufacturing.fabricationDesc')}</p>
+                                        </div>
+                                    </div>
+                                    <div className="group flex items-start p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300 hover:shadow-md">
+                                        <span className="text-yellow-500 text-xl mr-3 flex-shrink-0 group-hover:text-yellow-600 group-hover:scale-125 transition-all duration-300">★</span>
+                                        <div className="text-left">
+                                            <div className="font-semibold text-gray-800 mb-1 group-hover:text-yellow-700 transition-colors duration-300">{t('home.contractManufacturing.qualityAssurance')}</div>
+                                            <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{t('home.contractManufacturing.qualityAssuranceDesc')}</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -947,3 +984,4 @@ const HomePage: React.FC = () => {
 };
 
 export default HomePage;
+

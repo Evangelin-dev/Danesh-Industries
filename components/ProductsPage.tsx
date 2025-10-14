@@ -1242,7 +1242,7 @@ const ProductDetail: React.FC<{ item: any; categoryId: string }> = ({ item, cate
 };
 
 const ProductsPage: React.FC = () => {
- const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
  //popup
 
@@ -1385,9 +1385,9 @@ const ProductsPage: React.FC = () => {
                 <div className="absolute inset-0 bg-blue-900 opacity-40"></div>
                 <div className="container mx-auto px-2 relative z-10">
                     <div className="text-center mb-16 animate-fade-in">
-                        <h1 className="text-4xl lg:text-5xl font-extrabold gradient-text">{t('products.title') || 'Our Products'}</h1>
+                        <h1 className="text-4xl lg:text-5xl font-extrabold gradient-text">{t('products.title')}</h1>
                         <p className="mt-4 text-lg text-white  max-w-3xl mx-auto">
-                            {t('products.subtitle') || 'Explore our comprehensive range of high-quality, precision-engineered components for various industrial applications.'}
+                            {t('products.subtitle')}
                         </p>
                     </div>
 
@@ -1406,36 +1406,36 @@ const ProductsPage: React.FC = () => {
                                     navigate('/products');
                                 }
                             }}
-                            className="p-1 border border-gray-300 rounded-md 
+                            className="p-1 border border-gray-300 rounded-md
                             focus:outline-none focus:ring-2 focus:ring-brand-blue"
                             style={{ backgroundColor: '#FFC400', position: 'fixed', top: '310px', left: '50px' }}
-                                
-                            
+
+
                         >
-                            <option value="">Select a category</option>
-                            <option value="valve-components">Valve Components</option>
-                            <option value="flanges">Flanges</option>
-                            <option value="ms-flanges">MS Flanges</option>
-                            <option value="ss-304-flanges">SS 304 Flanges</option>
-                            <option value="ms-spacer-flanges">MS Spacer Flanges</option>
-                            <option value="ss-316-flanges">SS 316 Flanges</option>
-                            <option value="gi-slip-on-flanges">GI Slip-On Flanges</option>
-                            <option value="gi-threaded-flanges">GI Threaded Flanges</option>
-                            <option value="pipe-fittings">Pipe Fittings</option>
-                            <option value="cast-steel-screwed-fittings">Cast Steel Screwed Fittings</option>
-                            <option value="ductile-iron-fittings">Ductile Iron Fittings</option>
-                            <option value="grooved-fittings">Grooved Fittings</option>
-                            <option value="forged-steel-fittings">Forged Steel Fittings</option>
-                            <option value="gi-r-brand-fittings">GI R Brand Fittings</option>
-                            <option value="gi-fittings">GI Fittings</option>
-                            <option value="ss-fittings">Stainless Steel (SS) Fittings</option>
-                            <option value="pull-studs">Pull Studs</option>
-                            <option value="plug-valves">Plug Valves</option>
-                            <option value="control-valves">Control Valves</option>
-                            <option value="mild-steel-pins">Mild Steel Pins</option>
-                            <option value="partition-plate-die">Partition Plate Die</option>
-                            <option value="ball-valve-seat-ring">Ball Valve Seat Ring</option>
-                            <option value="solenoid-valves">Solenoid Valves</option>
+                            <option value="">{t('products.selectCategory')}</option>
+                            <option value="valve-components">{t('products.categories.valveComponents')}</option>
+                            <option value="flanges">{t('products.categories.flanges')}</option>
+                            <option value="ms-flanges">{t('products.categories.msFlanges')}</option>
+                            <option value="ss-304-flanges">{t('products.categories.ss304Flanges')}</option>
+                            <option value="ms-spacer-flanges">{t('products.categories.msSpacerFlanges')}</option>
+                            <option value="ss-316-flanges">{t('products.categories.ss316Flanges')}</option>
+                            <option value="gi-slip-on-flanges">{t('products.categories.giSlipOnFlanges')}</option>
+                            <option value="gi-threaded-flanges">{t('products.categories.giThreadedFlanges')}</option>
+                            <option value="pipe-fittings">{t('products.categories.pipeFittings')}</option>
+                            <option value="cast-steel-screwed-fittings">{t('products.categories.castSteelFittings')}</option>
+                            <option value="ductile-iron-fittings">{t('products.categories.ductileIronFittings')}</option>
+                            <option value="grooved-fittings">{t('products.categories.groovedFittings')}</option>
+                            <option value="forged-steel-fittings">{t('products.categories.forgedSteelFittings')}</option>
+                            <option value="gi-r-brand-fittings">{t('products.categories.giRBrandFittings')}</option>
+                            <option value="gi-fittings">{t('products.categories.giFittings')}</option>
+                            <option value="ss-fittings">{t('products.categories.ssFittings')}</option>
+                            <option value="pull-studs">{t('products.categories.pullStuds')}</option>
+                            <option value="plug-valves">{t('products.categories.plugValves')}</option>
+                            <option value="control-valves">{t('products.categories.controlValves')}</option>
+                            <option value="mild-steel-pins">{t('products.categories.mildSteelPins')}</option>
+                            <option value="partition-plate-die">{t('products.categories.partitionPlateDie')}</option>
+                            <option value="ball-valve-seat-ring">{t('products.categories.ballValveSeatRing')}</option>
+                            <option value="solenoid-valves">{t('products.categories.solenoidValves')}</option>
                         </select>
                     </div>
                 </div>
@@ -1450,18 +1450,40 @@ const ProductsPage: React.FC = () => {
                                         value={selectedItem[categoryData.id] || ''}
                                         onChange={(e) => handleItemSelect(categoryData.id, e.target.value)}
                                         className="p-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                                        style={{ backgroundColor: '#FFC400' 
+                                        style={{ backgroundColor: '#FFC400'
                                        , position: 'fixed', top: '20px', right: '10px' }}
 
                     >
-                                        <option value="">Select an item</option>
+                                        <option value="">{t('products.selectItem')}</option>
                                         {categoryData.items.map((item, index) => (
                                             <option key={index} value={item.name}>{item.name}</option>
                                         ))}
                                     </select>
                                 </div>
                                 <div className="bg-white rounded-lg shadow-lg p-6">
-                                    <p className="text-lg text-gray-800">{categoryData.introduction}</p>
+                                    <p className="text-lg text-gray-800">
+                                        {categoryData.id === 'valve-components' && language === 'hi'
+                                            ? t('products.valveComponents.introduction')
+                                            : categoryData.id === 'flanges' && language === 'hi'
+                                            ? t('products.flanges.introduction')
+                                            : categoryData.id === 'ms-flanges' && language === 'hi'
+                                            ? t('products.msFlanges.introduction')
+                                            : categoryData.id === 'ss-304-flanges' && language === 'hi'
+                                            ? t('products.ss304Flanges.introduction')
+                                            : categoryData.id === 'ms-spacer-flanges' && language === 'hi'
+                                            ? t('products.msSpacerFlanges.introduction')
+                                            : categoryData.id === 'ss-316-flanges' && language === 'hi'
+                                            ? t('products.ss316Flanges.introduction')
+                                            : categoryData.id === 'gi-slip-on-flanges' && language === 'hi'
+                                            ? t('products.giSlipOnFlanges.introduction')
+                                            : categoryData.id === 'gi-threaded-flanges' && language === 'hi'
+                                            ? t('products.giThreadedFlanges.introduction')
+                                            : categoryData.id === 'pipe-fittings' && language === 'hi'
+                                            ? t('products.pipeFittings.introduction')
+                                            : categoryData.id === 'cast-steel-screwed-fittings' && language === 'hi'
+                                            ? t('products.castSteelScrewedFittings.introduction')
+                                            : categoryData.introduction}
+                                    </p>
                                 </div>
                                 {selectedItem[categoryData.id] && (
                                     <div className="mt-6 bg-white rounded-lg shadow-lg p-6">
@@ -1473,13 +1495,99 @@ const ProductsPage: React.FC = () => {
                                         {categoryData.id === 'control-valves' || categoryData.id === 'mild-steel-pins' || categoryData.id === 'partition-plate-die' || categoryData.id === 'ball-valve-seat-ring' || categoryData.id === 'solenoid-valves' || categoryData.id === 'gi-r-brand-fittings' || categoryData.id === 'ductile-iron-fittings' || categoryData.id === 'cast-steel-screwed-fittings' || categoryData.id === 'pipe-fittings' || categoryData.id === 'ss-316-flanges' || categoryData.id === 'ms-spacer-flanges' || categoryData.id === 'ss-304-flanges' || categoryData.id === 'plug-valves' || categoryData.id === 'pull-studs' || categoryData.id === 'ss-fittings' || categoryData.id === 'gi-fittings' || categoryData.id === 'forged-steel-fittings' || categoryData.id === 'gi-slip-on-flanges' || categoryData.id === 'gi-threaded-flanges' ? (
                                             <div className="flex flex-col lg:flex-row gap-6">
                                                 <div className="flex-1">
-                                                    <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' || categoryData.id === 'ms-flanges' ? 'text-orange-500' : 'text-amber-600'}`}>Applications of Danesh Industries {categoryData.category}</h3>
+                                                    <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' || categoryData.id === 'ms-flanges' ? 'text-orange-500' : 'text-amber-600'}`}>
+                                                        {categoryData.id === 'flanges' && language === 'hi'
+                                                            ? t('products.flanges.applications.title')
+                                                            : categoryData.id === 'ms-flanges' && language === 'hi'
+                                                            ? t('products.msFlanges.applications.title')
+                                                            : categoryData.id === 'ss-304-flanges' && language === 'hi'
+                                                            ? t('products.ss304Flanges.applications.title')
+                                                            : `Applications of Danesh Industries ${categoryData.category}`}
+                                                    </h3>
                                                     <ul className="list-none space-y-2 text-lg text-white">
-                                                        {categoryData.applications.map((app, index) => (
-                                                            <li key={index} className="flex items-center">
-                                                                <span className="text-blue-500 mr-2">●</span>{app}
-                                                            </li>
-                                                        ))}
+                                                        {categoryData.id === 'flanges' && language === 'hi'
+                                                            ? [
+                                                                t('products.flanges.applications.1'),
+                                                                t('products.flanges.applications.2'),
+                                                                t('products.flanges.applications.3'),
+                                                                t('products.flanges.applications.4'),
+                                                                t('products.flanges.applications.5'),
+                                                                t('products.flanges.applications.6')
+                                                            ].map((app, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-blue-500 mr-2">●</span>{app}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.id === 'ss-316-flanges' && language === 'hi'
+                                                            ? [
+                                                                t('products.ss316Flanges.applications.1'),
+                                                                t('products.ss316Flanges.applications.2'),
+                                                                t('products.ss316Flanges.applications.3'),
+                                                                t('products.ss316Flanges.applications.4'),
+                                                                t('products.ss316Flanges.applications.5'),
+                                                                t('products.ss316Flanges.applications.6')
+                                                            ].map((app, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-blue-500 mr-2">●</span>{app}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.id === 'gi-slip-on-flanges' && language === 'hi'
+                                                            ? [
+                                                                t('products.giSlipOnFlanges.applications.1'),
+                                                                t('products.giSlipOnFlanges.applications.2'),
+                                                                t('products.giSlipOnFlanges.applications.3'),
+                                                                t('products.giSlipOnFlanges.applications.4'),
+                                                                t('products.giSlipOnFlanges.applications.5')
+                                                            ].map((app, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-blue-500 mr-2">●</span>{app}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.id === 'gi-threaded-flanges' && language === 'hi'
+                                                            ? [
+                                                                t('products.giThreadedFlanges.applications.1'),
+                                                                t('products.giThreadedFlanges.applications.2'),
+                                                                t('products.giThreadedFlanges.applications.3'),
+                                                                t('products.giThreadedFlanges.applications.4'),
+                                                                t('products.giThreadedFlanges.applications.5'),
+                                                                t('products.giThreadedFlanges.applications.6')
+                                                            ].map((app, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-blue-500 mr-2">●</span>{app}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.id === 'cast-steel-screwed-fittings' && language === 'hi'
+                                                            ? [
+                                                                t('products.castSteelScrewedFittings.applications.1'),
+                                                                t('products.castSteelScrewedFittings.applications.2'),
+                                                                t('products.castSteelScrewedFittings.applications.3'),
+                                                                t('products.castSteelScrewedFittings.applications.4'),
+                                                                t('products.castSteelScrewedFittings.applications.5'),
+                                                                t('products.castSteelScrewedFittings.applications.6')
+                                                            ].map((app, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-blue-500 mr-2">●</span>{app}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.id === 'ductile-iron-fittings' && language === 'hi'
+                                                            ? [
+                                                                t('products.ductileIronFittings.applications.1'),
+                                                                t('products.ductileIronFittings.applications.2'),
+                                                                t('products.ductileIronFittings.applications.3'),
+                                                                t('products.ductileIronFittings.applications.4'),
+                                                                t('products.ductileIronFittings.applications.5'),
+                                                                t('products.ductileIronFittings.applications.6')
+                                                            ].map((app, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-blue-500 mr-2">●</span>{app}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.applications.map((app, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-blue-500 mr-2">●</span>{app}
+                                                                </li>
+                                                            ))
+                                                        }
                                                     </ul>
                                                 </div>
                                                 <div className="flex-shrink-0">
@@ -1494,11 +1602,39 @@ const ProductsPage: React.FC = () => {
                                             <>
                                                 <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' ? 'text-orange-500' : 'text-amber-600'}`}>Applications of Danesh Industries {categoryData.category}</h3>
                                                 <ul className="list-none space-y-2 text-lg text-white">
-                                                    {categoryData.applications.map((app, index) => (
-                                                        <li key={index} className="flex items-center">
-                                                            <span className="text-blue-500 mr-2">●</span>{app}
-                                                        </li>
-                                                    ))}
+                                                    {categoryData.id === 'ms-flanges' && language === 'hi'
+                                                        ? [
+                                                            t('products.msFlanges.applications.1'),
+                                                            t('products.msFlanges.applications.2'),
+                                                            t('products.msFlanges.applications.3'),
+                                                            t('products.msFlanges.applications.4'),
+                                                            t('products.msFlanges.applications.5')
+                                                        ].map((app, index) => (
+                                                            <li key={index} className="flex items-center">
+                                                                <span className="text-blue-500 mr-2">●</span>{app}
+                                                            </li>
+                                                        ))
+                                                        : categoryData.id === 'ss-304-flanges' && language === 'hi'
+                                                        ? [
+                                                            t('products.ss304Flanges.applications.1'),
+                                                            t('products.ss304Flanges.applications.2'),
+                                                            t('products.ss304Flanges.applications.3'),
+                                                            t('products.ss304Flanges.applications.4'),
+                                                            t('products.ss304Flanges.applications.5'),
+                                                            t('products.ss304Flanges.applications.6'),
+                                                            t('products.ss304Flanges.applications.7'),
+                                                            t('products.ss304Flanges.applications.8')
+                                                        ].map((app, index) => (
+                                                            <li key={index} className="flex items-center">
+                                                                <span className="text-blue-500 mr-2">●</span>{app}
+                                                            </li>
+                                                        ))
+                                                        : categoryData.applications.map((app, index) => (
+                                                            <li key={index} className="flex items-center">
+                                                                <span className="text-blue-500 mr-2">●</span>{app}
+                                                            </li>
+                                                        ))
+                                                    }
                                                 </ul>
                                             </>
                                         )}
@@ -1509,13 +1645,45 @@ const ProductsPage: React.FC = () => {
                                         {categoryData.id === 'control-valves' || categoryData.id === 'mild-steel-pins' || categoryData.id === 'partition-plate-die' || categoryData.id === 'ball-valve-seat-ring' || categoryData.id === 'solenoid-valves' || categoryData.id === 'gi-r-brand-fittings' || categoryData.id === 'ductile-iron-fittings' || categoryData.id === 'cast-steel-screwed-fittings' || categoryData.id === 'pipe-fittings' || categoryData.id === 'ss-316-flanges' || categoryData.id === 'ms-spacer-flanges' || categoryData.id === 'ss-304-flanges' || categoryData.id === 'plug-valves' || categoryData.id === 'pull-studs' || categoryData.id === 'ss-fittings' || categoryData.id === 'gi-fittings' || categoryData.id === 'forged-steel-fittings' || categoryData.id === 'grooved-fittings' ? (
                                             <div className="flex flex-col lg:flex-row gap-6">
                                                 <div className="flex-1">
-                                                    <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' || categoryData.id === 'ms-flanges' ? 'text-orange-500' : 'text-amber-600'}`}>Applications of Danesh Industries {categoryData.category}</h3>
+                                                    <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' || categoryData.id === 'ms-flanges' ? 'text-orange-500' : 'text-amber-600'}`}>
+                                                        {categoryData.id === 'ss-316-flanges' && language === 'hi'
+                                                            ? t('products.ss316Flanges.applications.title')
+                                                            : categoryData.id === 'pipe-fittings' && language === 'hi'
+                                                            ? 'दानेश इंडस्ट्रीज पाइप फिटिंग्स के अनुप्रयोग'
+                                                            : `Applications of Danesh Industries ${categoryData.category}`}
+                                                    </h3>
                                                     <ul className="list-none space-y-2 text-lg text-white">
-                                                        {categoryData.applications.map((app, index) => (
-                                                            <li key={index} className="flex items-center">
-                                                                <span className="text-blue-500 mr-2">●</span>{app}
-                                                            </li>
-                                                        ))}
+                                                        {categoryData.id === 'ms-spacer-flanges' && language === 'hi'
+                                                            ? [
+                                                                t('products.msSpacerFlanges.applications.1'),
+                                                                t('products.msSpacerFlanges.applications.2'),
+                                                                t('products.msSpacerFlanges.applications.3'),
+                                                                t('products.msSpacerFlanges.applications.4'),
+                                                                t('products.msSpacerFlanges.applications.5')
+                                                            ].map((app, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-blue-500 mr-2">●</span>{app}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.id === 'pipe-fittings' && language === 'hi'
+                                                            ? [
+                                                                t('products.pipeFittings.applications.1'),
+                                                                t('products.pipeFittings.applications.2'),
+                                                                t('products.pipeFittings.applications.3'),
+                                                                t('products.pipeFittings.applications.4'),
+                                                                t('products.pipeFittings.applications.5'),
+                                                                t('products.pipeFittings.applications.6')
+                                                            ].map((app, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-blue-500 mr-2">●</span>{app}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.applications.map((app, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-blue-500 mr-2">●</span>{app}
+                                                                </li>
+                                                            ))
+                                                        }
                                                     </ul>
                                                 </div>
                                                 <div className="flex-shrink-0">
@@ -1571,14 +1739,33 @@ const ProductsPage: React.FC = () => {
                                 )}
                                 {categoryData.composition && (
                                     <div className="mt-6">
-                                        <h3 className="text-2xl font-bold text-brand-blue mb-4">Composition of Ductile Iron Fittings</h3>
-                                        <p className="text-lg text-white mb-2">{categoryData.composition.text}</p>
+                                        <h3 className="text-2xl font-bold text-brand-blue mb-4">
+                                            {categoryData.id === 'ductile-iron-fittings' && language === 'hi'
+                                                ? 'डक्टाइल आयरन फिटिंग्स की संरचना'
+                                                : 'Composition of Ductile Iron Fittings'}
+                                        </h3>
+                                        <p className="text-lg text-white mb-2">
+                                            {categoryData.id === 'ductile-iron-fittings' && language === 'hi'
+                                                ? t('products.ductileIronFittings.composition.text')
+                                                : categoryData.composition.text}
+                                        </p>
                                         <ul className="list-none space-y-1 text-white">
-                                            {categoryData.composition.points.map((point, index) => (
-                                                <li key={index} className="flex items-center">
-                                                    <span className="text-green-500 mr-2">•</span>{point}
-                                                </li>
-                                            ))}
+                                            {categoryData.id === 'ductile-iron-fittings' && language === 'hi'
+                                                ? [
+                                                    t('products.ductileIronFittings.composition.points.1'),
+                                                    t('products.ductileIronFittings.composition.points.2'),
+                                                    t('products.ductileIronFittings.composition.points.3')
+                                                ].map((point, index) => (
+                                                    <li key={index} className="flex items-center">
+                                                        <span className="text-green-500 mr-2">•</span>{point}
+                                                    </li>
+                                                ))
+                                                : categoryData.composition.points.map((point, index) => (
+                                                    <li key={index} className="flex items-center">
+                                                        <span className="text-green-500 mr-2">•</span>{point}
+                                                    </li>
+                                                ))
+                                            }
                                         </ul>
                                     </div>
                                 )}
@@ -1587,13 +1774,66 @@ const ProductsPage: React.FC = () => {
                                         {categoryData.id === 'flanges' ? (
                                             <div className="flex flex-col lg:flex-row gap-6">
                                                 <div className="flex-1">
-                                                    <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' || categoryData.id === 'grooved-fittings' || categoryData.id === 'gi-slip-on-flanges' ? 'text-orange-500' : 'text-brand-blue'}`}>Benefits of Danesh Industries {categoryData.category}</h3>
+                                                    <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' || categoryData.id === 'grooved-fittings' || categoryData.id === 'gi-slip-on-flanges' ? 'text-orange-500' : 'text-brand-blue'}`}>
+                                                        {categoryData.id === 'flanges' && language === 'hi'
+                                                            ? t('products.flanges.benefits.title')
+                                                            : `Benefits of Danesh Industries ${categoryData.category}`}
+                                                    </h3>
                                                     <ul className="list-none space-y-2 text-lg text-white">
-                                                        {categoryData.advantages.map((adv, index) => (
-                                                            <li key={index} className="flex items-center">
-                                                                <span className="text-green-500 mr-2">✔</span>{adv}
-                                                            </li>
-                                                        ))}
+                                                        {categoryData.id === 'flanges' && language === 'hi'
+                                                            ? [
+                                                                t('products.flanges.benefits.1'),
+                                                                t('products.flanges.benefits.2'),
+                                                                t('products.flanges.benefits.3'),
+                                                                t('products.flanges.benefits.4'),
+                                                                t('products.flanges.benefits.5')
+                                                            ].map((benefit, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-green-500 mr-2">✔</span>{benefit}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.id === 'gi-slip-on-flanges' && language === 'hi'
+                                                            ? [
+                                                                t('products.giSlipOnFlanges.advantages.1'),
+                                                                t('products.giSlipOnFlanges.advantages.2'),
+                                                                t('products.giSlipOnFlanges.advantages.3'),
+                                                                t('products.giSlipOnFlanges.advantages.4'),
+                                                                t('products.giSlipOnFlanges.advantages.5')
+                                                            ].map((adv, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-green-500 mr-2">✔</span>{adv}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.id === 'gi-threaded-flanges' && language === 'hi'
+                                                            ? [
+                                                                t('products.giThreadedFlanges.advantages.1'),
+                                                                t('products.giThreadedFlanges.advantages.2'),
+                                                                t('products.giThreadedFlanges.advantages.3'),
+                                                                t('products.giThreadedFlanges.advantages.4'),
+                                                                t('products.giThreadedFlanges.advantages.5')
+                                                            ].map((adv, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-green-500 mr-2">✔</span>{adv}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.id === 'ductile-iron-fittings' && language === 'hi'
+                                                            ? [
+                                                                t('products.ductileIronFittings.advantages.1'),
+                                                                t('products.ductileIronFittings.advantages.2'),
+                                                                t('products.ductileIronFittings.advantages.3'),
+                                                                t('products.ductileIronFittings.advantages.4'),
+                                                                t('products.ductileIronFittings.advantages.5')
+                                                            ].map((adv, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-green-500 mr-2">✔</span>{adv}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.advantages.map((adv, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-green-500 mr-2">✔</span>{adv}
+                                                                </li>
+                                                            ))
+                                                        }
                                                     </ul>
                                                 </div>
                                                 <div className="flex-shrink-0">
@@ -1623,13 +1863,56 @@ const ProductsPage: React.FC = () => {
                                         {categoryData.id === 'ms-flanges' ? (
                                             <div className="flex flex-col lg:flex-row gap-6">
                                                 <div className="flex-1">
-                                                    <h3 className="text-2xl font-bold text-amber-600 mb-4">Key Features of Danesh Industries {categoryData.category}</h3>
+                                                    <h3 className="text-2xl font-bold text-amber-600 mb-4">
+                                                        {categoryData.id === 'ms-flanges' && language === 'hi'
+                                                            ? t('products.msFlanges.keyFeatures.title')
+                                                            : categoryData.id === 'ss-304-flanges' && language === 'hi'
+                                                            ? t('products.ss304Flanges.keyFeatures.title')
+                                                            : `Key Features of Danesh Industries ${categoryData.category}`}
+                                                    </h3>
                                                     <ul className="list-none space-y-2 text-lg text-white">
-                                                        {categoryData.keyFeatures.map((feature, index) => (
-                                                            <li key={index} className="flex items-center">
-                                                                <span className="text-blue-500 mr-2">●</span>{feature}
-                                                            </li>
-                                                        ))}
+                                                        {categoryData.id === 'ms-flanges' && language === 'hi'
+                                                            ? [
+                                                                t('products.msFlanges.keyFeatures.1'),
+                                                                t('products.msFlanges.keyFeatures.2'),
+                                                                t('products.msFlanges.keyFeatures.3'),
+                                                                t('products.msFlanges.keyFeatures.4'),
+                                                                t('products.msFlanges.keyFeatures.5')
+                                                            ].map((feature, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-blue-500 mr-2">●</span>{feature}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.id === 'ss-316-flanges' && language === 'hi'
+                                                            ? [
+                                                                t('products.ss316Flanges.keyFeatures.1'),
+                                                                t('products.ss316Flanges.keyFeatures.2'),
+                                                                t('products.ss316Flanges.keyFeatures.3'),
+                                                                t('products.ss316Flanges.keyFeatures.4'),
+                                                                t('products.ss316Flanges.keyFeatures.5')
+                                                            ].map((feature, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-blue-500 mr-2">●</span>{feature}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.id === 'cast-steel-screwed-fittings' && language === 'hi'
+                                                            ? [
+                                                                t('products.castSteelScrewedFittings.keyFeatures.1'),
+                                                                t('products.castSteelScrewedFittings.keyFeatures.2'),
+                                                                t('products.castSteelScrewedFittings.keyFeatures.3'),
+                                                                t('products.castSteelScrewedFittings.keyFeatures.4'),
+                                                                t('products.castSteelScrewedFittings.keyFeatures.5')
+                                                            ].map((feature, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-blue-500 mr-2">●</span>{feature}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.keyFeatures.map((feature, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-blue-500 mr-2">●</span>{feature}
+                                                                </li>
+                                                            ))
+                                                        }
                                                     </ul>
                                                 </div>
                                                 <div className="flex-shrink-0">
@@ -1643,13 +1926,30 @@ const ProductsPage: React.FC = () => {
                                         )
                                         : (
                                             <div>
-                                                <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'ss-304-flanges' ? 'text-orange-500' : 'text-amber-600'}`}>Key Features of Danesh Industries {categoryData.category}</h3>
+                                                <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'ss-304-flanges' ? 'text-orange-500' : 'text-amber-600'}`}>
+                                                    {categoryData.id === 'ss-316-flanges' && language === 'hi'
+                                                        ? t('products.ss316Flanges.keyFeatures.title')
+                                                        : `Key Features of Danesh Industries ${categoryData.category}`}
+                                                </h3>
                                                 <ul className="list-none space-y-2 text-lg text-white">
-                                                    {categoryData.keyFeatures.map((feature, index) => (
-                                                        <li key={index} className="flex items-center">
-                                                            <span className="text-blue-500 mr-2">●</span>{feature}
-                                                        </li>
-                                                    ))}
+                                                    {categoryData.id === 'ms-spacer-flanges' && language === 'hi'
+                                                        ? [
+                                                            t('products.msSpacerFlanges.keyFeatures.1'),
+                                                            t('products.msSpacerFlanges.keyFeatures.2'),
+                                                            t('products.msSpacerFlanges.keyFeatures.3'),
+                                                            t('products.msSpacerFlanges.keyFeatures.4'),
+                                                            t('products.msSpacerFlanges.keyFeatures.5')
+                                                        ].map((feature, index) => (
+                                                            <li key={index} className="flex items-center">
+                                                                <span className="text-blue-500 mr-2">●</span>{feature}
+                                                            </li>
+                                                        ))
+                                                        : categoryData.keyFeatures.map((feature, index) => (
+                                                            <li key={index} className="flex items-center">
+                                                                <span className="text-blue-500 mr-2">●</span>{feature}
+                                                            </li>
+                                                        ))
+                                                    }
                                                 </ul>
                                             </div>
                                         )
@@ -1706,35 +2006,153 @@ const ProductsPage: React.FC = () => {
                                 )}
                                 {categoryData.whyChoose && (
                                     <div className="mt-6">
-                                        {categoryData.id === 'valve-components' ? (
+                                        {categoryData.id === 'valve-components' || categoryData.id === 'pipe-fittings' ? (
                                             <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6">
                                                 <div className="flex-1">
-                                                    <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'valve-components' || categoryData.id === 'ms-flanges' ? 'text-orange-500' : 'text-brand-blue'}`}>Why Choose Danesh Industries {categoryData.category}?</h3>
+                                                    <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'valve-components' || categoryData.id === 'ms-flanges' || categoryData.id === 'pipe-fittings' ? 'text-orange-500' : 'text-brand-blue'}`}>
+                                                        {categoryData.id === 'valve-components' && language === 'hi'
+                                                            ? t('products.valveComponents.whyChoose')
+                                                            : categoryData.id === 'pipe-fittings' && language === 'hi'
+                                                            ? 'दानेश इंडस्ट्रीज पाइप फिटिंग्स को क्यों चुनें?'
+                                                            : `Why Choose Danesh Industries ${categoryData.category}?`}
+                                                    </h3>
                                                     <ul className="list-none space-y-2 text-lg text-white">
-                                                        {categoryData.whyChoose.map((point, index) => (
-                                                            <li key={index} className="flex items-center">
-                                                                <span className="text-blue-500 mr-2">•</span>{point}
-                                                            </li>
-                                                        ))}
+                                                        {categoryData.id === 'valve-components' && language === 'hi'
+                                                            ? [
+                                                                t('products.valveComponents.reason1'),
+                                                                t('products.valveComponents.reason2'),
+                                                                t('products.valveComponents.reason3'),
+                                                                t('products.valveComponents.reason4'),
+                                                                t('products.valveComponents.reason5')
+                                                            ].map((point, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-blue-500 mr-2">•</span>{point}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.id === 'pipe-fittings' && language === 'hi'
+                                                            ? [
+                                                                t('products.pipeFittings.whyChoose.1'),
+                                                                t('products.pipeFittings.whyChoose.2'),
+                                                                t('products.pipeFittings.whyChoose.3'),
+                                                                t('products.pipeFittings.whyChoose.4'),
+                                                                t('products.pipeFittings.whyChoose.5')
+                                                            ].map((point, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-green-500 mr-2">✔</span>{point}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.id === 'ss-316-flanges' && language === 'hi'
+                                                            ? [
+                                                                t('products.ss316Flanges.whyChoose.1'),
+                                                                t('products.ss316Flanges.whyChoose.2'),
+                                                                t('products.ss316Flanges.whyChoose.3'),
+                                                                t('products.ss316Flanges.whyChoose.4'),
+                                                                t('products.ss316Flanges.whyChoose.5')
+                                                            ].map((point, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-green-500 mr-2">✔</span>{point}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.id === 'gi-slip-on-flanges' && language === 'hi'
+                                                            ? [
+                                                                t('products.giSlipOnFlanges.whyChoose.1'),
+                                                                t('products.giSlipOnFlanges.whyChoose.2'),
+                                                                t('products.giSlipOnFlanges.whyChoose.3'),
+                                                                t('products.giSlipOnFlanges.whyChoose.4')
+                                                            ].map((point, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-green-500 mr-2">✔</span>{point}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.id === 'gi-threaded-flanges' && language === 'hi'
+                                                            ? [
+                                                                t('products.giThreadedFlanges.whyChoose.1'),
+                                                                t('products.giThreadedFlanges.whyChoose.2'),
+                                                                t('products.giThreadedFlanges.whyChoose.3'),
+                                                                t('products.giThreadedFlanges.whyChoose.4'),
+                                                                t('products.giThreadedFlanges.whyChoose.5')
+                                                            ].map((point, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-green-500 mr-2">✔</span>{point}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.id === 'cast-steel-screwed-fittings' && language === 'hi'
+                                                            ? [
+                                                                t('products.castSteelScrewedFittings.whyChoose.1'),
+                                                                t('products.castSteelScrewedFittings.whyChoose.2'),
+                                                                t('products.castSteelScrewedFittings.whyChoose.3'),
+                                                                t('products.castSteelScrewedFittings.whyChoose.4'),
+                                                                t('products.castSteelScrewedFittings.whyChoose.5')
+                                                            ].map((point, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-green-500 mr-2">✔</span>{point}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.id === 'ductile-iron-fittings' && language === 'hi'
+                                                            ? [
+                                                                t('products.ductileIronFittings.whyChoose.1'),
+                                                                t('products.ductileIronFittings.whyChoose.2'),
+                                                                t('products.ductileIronFittings.whyChoose.3'),
+                                                                t('products.ductileIronFittings.whyChoose.4'),
+                                                                t('products.ductileIronFittings.whyChoose.5')
+                                                            ].map((point, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-green-500 mr-2">✔</span>{point}
+                                                                </li>
+                                                            ))
+                                                            : categoryData.whyChoose.map((point, index) => (
+                                                                <li key={index} className="flex items-center">
+                                                                    <span className="text-green-500 mr-2">✔</span>{point}
+                                                                </li>
+                                                            ))
+                                                        }
                                                     </ul>
                                                 </div>
                                                 <div className="flex-shrink-0">
                                                     <img
-                                                        src="/valve_components.jpg"
-                                                        alt="Valve Components"
+                                                        src={categoryData.id === 'pipe-fittings' ? "/product_image/Pipe_Fittings.png" : "/valve_components.jpg"}
+                                                        alt={categoryData.category}
                                                         className="w-64 h-48 object-contain rounded-lg shadow-lg"
                                                     />
                                                 </div>
                                             </div>
                                         ) : (
                                             <>
-                                                <h3 className="text-2xl font-bold text-brand-blue mb-4">Why Choose Danesh Industries {categoryData.category}?</h3>
+                                                <h3 className="text-2xl font-bold text-brand-blue mb-4">
+                                                    {categoryData.id === 'ms-flanges' && language === 'hi'
+                                                        ? t('products.msFlanges.whyChoose.title')
+                                                        : categoryData.id === 'ss-316-flanges' && language === 'hi'
+                                                        ? t('products.ss316Flanges.whyChoose.title')
+                                                        : `Why Choose Danesh Industries ${categoryData.category}?`}
+                                                </h3>
                                                 <ul className="list-none space-y-2 text-lg text-white">
-                                                    {categoryData.whyChoose.map((point, index) => (
-                                                        <li key={index} className="flex items-center">
-                                                            <span className="text-green-500 mr-2">✔</span>{point}
-                                                        </li>
-                                                    ))}
+                                                    {categoryData.id === 'ms-flanges' && language === 'hi'
+                                                        ? [
+                                                            t('products.msFlanges.whyChoose.1'),
+                                                            t('products.msFlanges.whyChoose.2'),
+                                                            t('products.msFlanges.whyChoose.3')
+                                                        ].map((point, index) => (
+                                                            <li key={index} className="flex items-center">
+                                                                <span className="text-green-500 mr-2">✔</span>{point}
+                                                            </li>
+                                                        ))
+                                                        : categoryData.id === 'ms-spacer-flanges' && language === 'hi'
+                                                        ? [
+                                                            t('products.msSpacerFlanges.whyChoose.1'),
+                                                            t('products.msSpacerFlanges.whyChoose.2'),
+                                                            t('products.msSpacerFlanges.whyChoose.3'),
+                                                            t('products.msSpacerFlanges.whyChoose.4')
+                                                        ].map((point, index) => (
+                                                            <li key={index} className="flex items-center">
+                                                                <span className="text-green-500 mr-2">✔</span>{point}
+                                                            </li>
+                                                        ))
+                                                        : categoryData.whyChoose.map((point, index) => (
+                                                            <li key={index} className="flex items-center">
+                                                                <span className="text-green-500 mr-2">✔</span>{point}
+                                                            </li>
+                                                        ))
+                                                    }
                                                 </ul>
                                             </>
                                         )}
@@ -1745,11 +2163,23 @@ const ProductsPage: React.FC = () => {
                                         <h3 className="text-2xl font-bold text-brand-blue mb-4">How to Select the Right {categoryData.category}</h3>
                                         <p className="text-lg text-brand-dark mb-2">When choosing a {categoryData.category}, consider:</p>
                                         <ul className="list-none space-y-2 text-lg text-brand-dark">
-                                            {categoryData.selectionGuide.map((guide, index) => (
-                                                <li key={index} className="flex items-center">
-                                                    <span className="text-blue-500 mr-2">●</span>{guide}
-                                                </li>
-                                            ))}
+                                            {categoryData.id === 'gi-threaded-flanges' && language === 'hi'
+                                                ? [
+                                                    t('products.giThreadedFlanges.selectionGuide.1'),
+                                                    t('products.giThreadedFlanges.selectionGuide.2'),
+                                                    t('products.giThreadedFlanges.selectionGuide.3'),
+                                                    t('products.giThreadedFlanges.selectionGuide.4')
+                                                ].map((guide, index) => (
+                                                    <li key={index} className="flex items-center">
+                                                        <span className="text-blue-500 mr-2">●</span>{guide}
+                                                    </li>
+                                                ))
+                                                : categoryData.selectionGuide.map((guide, index) => (
+                                                    <li key={index} className="flex items-center">
+                                                        <span className="text-blue-500 mr-2">●</span>{guide}
+                                                    </li>
+                                                ))
+                                            }
                                         </ul>
                                     </div>
                                 )}
@@ -1757,11 +2187,22 @@ const ProductsPage: React.FC = () => {
                                     <div className="mt-6">
                                         <h3 className="text-2xl font-bold text-brand-blue mb-4">{categoryData.id === 'grooved-fittings' ? 'Disadvantages of Grooved Fittings' : `Limitations of ${categoryData.category}`}</h3>
                                         <ul className="list-none space-y-2 text-lg text-white">
-                                            {categoryData.limitations.map((lim, index) => (
-                                                <li key={index} className="flex items-center">
-                                                    <span className="text-red-500 mr-2">⚠️</span>{lim}
-                                                </li>
-                                            ))}
+                                            {categoryData.id === 'gi-slip-on-flanges' && language === 'hi'
+                                                ? [
+                                                    t('products.giSlipOnFlanges.limitations.1'),
+                                                    t('products.giSlipOnFlanges.limitations.2'),
+                                                    t('products.giSlipOnFlanges.limitations.3')
+                                                ].map((lim, index) => (
+                                                    <li key={index} className="flex items-center">
+                                                        <span className="text-red-500 mr-2">⚠️</span>{lim}
+                                                    </li>
+                                                ))
+                                                : categoryData.limitations.map((lim, index) => (
+                                                    <li key={index} className="flex items-center">
+                                                        <span className="text-red-500 mr-2">⚠️</span>{lim}
+                                                    </li>
+                                                ))
+                                            }
                                         </ul>
                                     </div>
                                 )}
@@ -1769,11 +2210,22 @@ const ProductsPage: React.FC = () => {
                                     <div className="mt-6">
                                         <h3 className="text-2xl font-bold text-brand-blue mb-4">Installation Considerations for {categoryData.category}</h3>
                                         <ul className="list-none space-y-2 text-lg text-white">
-                                            {categoryData.installationConsiderations.map((consideration, index) => (
-                                                <li key={index} className="flex items-center">
-                                                    <span className="text-blue-500 mr-2">●</span>{consideration}
-                                                </li>
-                                            ))}
+                                            {categoryData.id === 'ss-316-flanges' && language === 'hi'
+                                                ? [
+                                                    t('products.ss316Flanges.installationConsiderations.1'),
+                                                    t('products.ss316Flanges.installationConsiderations.2'),
+                                                    t('products.ss316Flanges.installationConsiderations.3')
+                                                ].map((consideration, index) => (
+                                                    <li key={index} className="flex items-center">
+                                                        <span className="text-blue-500 mr-2">●</span>{consideration}
+                                                    </li>
+                                                ))
+                                                : categoryData.installationConsiderations.map((consideration, index) => (
+                                                    <li key={index} className="flex items-center">
+                                                        <span className="text-blue-500 mr-2">●</span>{consideration}
+                                                    </li>
+                                                ))
+                                            }
                                         </ul>
                                     </div>
                                 )}
@@ -1781,24 +2233,161 @@ const ProductsPage: React.FC = () => {
                                     <div className="mt-6">
                                         <h3 className="text-2xl font-bold text-brand-blue mb-4">{categoryData.id === 'ductile-iron-fittings' ? 'Maintenance & Installation' : `Workplace Safety Guidelines for ${categoryData.category}`}</h3>
                                         <ul className="list-none space-y-2 text-lg text-white">
-                                            {categoryData.safetyGuidelines.map((guideline, index) => (
-                                                <li key={index} className="flex items-center">
-                                                    <span className="text-red-500 mr-2">⚠️</span>{guideline}
-                                                </li>
-                                            ))}
+                                            {categoryData.id === 'ms-spacer-flanges' && language === 'hi'
+                                                ? [
+                                                    t('products.msSpacerFlanges.safetyGuidelines.1'),
+                                                    t('products.msSpacerFlanges.safetyGuidelines.2'),
+                                                    t('products.msSpacerFlanges.safetyGuidelines.3'),
+                                                    t('products.msSpacerFlanges.safetyGuidelines.4'),
+                                                    t('products.msSpacerFlanges.safetyGuidelines.5')
+                                                ].map((guideline, index) => (
+                                                    <li key={index} className="flex items-center">
+                                                        <span className="text-red-500 mr-2">⚠️</span>{guideline}
+                                                    </li>
+                                                ))
+                                                : categoryData.id === 'ductile-iron-fittings' && language === 'hi'
+                                                ? [
+                                                    t('products.ductileIronFittings.safetyGuidelines.1'),
+                                                    t('products.ductileIronFittings.safetyGuidelines.2'),
+                                                    t('products.ductileIronFittings.safetyGuidelines.3'),
+                                                    t('products.ductileIronFittings.safetyGuidelines.4')
+                                                ].map((guideline, index) => (
+                                                    <li key={index} className="flex items-center">
+                                                        <span className="text-red-500 mr-2">⚠️</span>{guideline}
+                                                    </li>
+                                                ))
+                                                : categoryData.safetyGuidelines.map((guideline, index) => (
+                                                    <li key={index} className="flex items-center">
+                                                        <span className="text-red-500 mr-2">⚠️</span>{guideline}
+                                                    </li>
+                                                ))
+                                            }
                                         </ul>
                                     </div>
                                 )}
                                 {categoryData.faq && (
                                     <div className="mt-6">
-                                        <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'valve-components' || categoryData.id === 'flanges' ? 'text-orange-500' : 'text-brand-blue'}`}>{categoryData.category} FAQ</h3>
+                                        <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'valve-components' || categoryData.id === 'flanges' || categoryData.id === 'pipe-fittings' ? 'text-orange-500' : 'text-brand-blue'}`}>
+                                            {categoryData.id === 'pipe-fittings' && language === 'hi'
+                                                ? 'पाइप फिटिंग्स FAQ'
+                                                : `${categoryData.category} FAQ`}
+                                        </h3>
                                         <div className="space-y-4">
-                                            {categoryData.faq.map((faq, index) => (
-                                                <div key={index}>
-                                                    <p className={`font-bold ${categoryData.id === 'valve-components' || categoryData.id === 'flanges' ? 'text-orange-500' : 'text-brand-blue'}`}>Q{index + 1}. {faq.q}</p>
-                                                    <p className="text-white">A: {faq.a}</p>
-                                                </div>
-                                            ))}
+                                            {categoryData.id === 'valve-components' && language === 'hi'
+                                                ? [
+                                                    { q: t('products.valveComponents.faq.q1'), a: t('products.valveComponents.faq.a1') },
+                                                    { q: t('products.valveComponents.faq.q2'), a: t('products.valveComponents.faq.a2') },
+                                                    { q: t('products.valveComponents.faq.q3'), a: t('products.valveComponents.faq.a3') },
+                                                    { q: t('products.valveComponents.faq.q4'), a: t('products.valveComponents.faq.a4') }
+                                                ].map((faq, index) => (
+                                                    <div key={index}>
+                                                        <p className="font-bold text-orange-500">Q{index + 1}. {faq.q}</p>
+                                                        <p className="text-white">A: {faq.a}</p>
+                                                    </div>
+                                                ))
+                                                : categoryData.id === 'flanges' && language === 'hi'
+                                                ? [
+                                                    { q: t('products.flanges.faq.q1'), a: t('products.flanges.faq.a1') },
+                                                    { q: t('products.flanges.faq.q2'), a: t('products.flanges.faq.a2') },
+                                                    { q: t('products.flanges.faq.q3'), a: t('products.flanges.faq.a3') },
+                                                    { q: t('products.flanges.faq.q4'), a: t('products.flanges.faq.a4') }
+                                                ].map((faq, index) => (
+                                                    <div key={index}>
+                                                        <p className="font-bold text-orange-500">Q{index + 1}. {faq.q}</p>
+                                                        <p className="text-white">A: {faq.a}</p>
+                                                    </div>
+                                                ))
+                                                : categoryData.id === 'pipe-fittings' && language === 'hi'
+                                                ? [
+                                                    { q: t('products.pipeFittings.faq.q1'), a: t('products.pipeFittings.faq.a1') },
+                                                    { q: t('products.pipeFittings.faq.q2'), a: t('products.pipeFittings.faq.a2') },
+                                                    { q: t('products.pipeFittings.faq.q3'), a: t('products.pipeFittings.faq.a3') },
+                                                    { q: t('products.pipeFittings.faq.q4'), a: t('products.pipeFittings.faq.a4') }
+                                                ].map((faq, index) => (
+                                                    <div key={index}>
+                                                        <p className="font-bold text-orange-500">Q{index + 1}. {faq.q}</p>
+                                                        <p className="text-white">A: {faq.a}</p>
+                                                    </div>
+                                                ))
+                                                : categoryData.id === 'ms-spacer-flanges' && language === 'hi'
+                                                ? [
+                                                    { q: t('products.msSpacerFlanges.faq.q1'), a: t('products.msSpacerFlanges.faq.a1') },
+                                                    { q: t('products.msSpacerFlanges.faq.q2'), a: t('products.msSpacerFlanges.faq.a2') },
+                                                    { q: t('products.msSpacerFlanges.faq.q3'), a: t('products.msSpacerFlanges.faq.a3') },
+                                                    { q: t('products.msSpacerFlanges.faq.q4'), a: t('products.msSpacerFlanges.faq.a4') }
+                                                ].map((faq, index) => (
+                                                    <div key={index}>
+                                                        <p className={`font-bold ${categoryData.id === 'valve-components' || categoryData.id === 'flanges' || categoryData.id === 'pipe-fittings' ? 'text-orange-500' : 'text-brand-blue'}`}>Q{index + 1}. {faq.q}</p>
+                                                        <p className="text-white">A: {faq.a}</p>
+                                                    </div>
+                                                ))
+                                                : categoryData.id === 'ss-316-flanges' && language === 'hi'
+                                                ? [
+                                                    { q: t('products.ss316Flanges.faq.q1'), a: t('products.ss316Flanges.faq.a1') },
+                                                    { q: t('products.ss316Flanges.faq.q2'), a: t('products.ss316Flanges.faq.a2') },
+                                                    { q: t('products.ss316Flanges.faq.q3'), a: t('products.ss316Flanges.faq.a3') },
+                                                    { q: t('products.ss316Flanges.faq.q4'), a: t('products.ss316Flanges.faq.a4') }
+                                                ].map((faq, index) => (
+                                                    <div key={index}>
+                                                        <p className={`font-bold ${categoryData.id === 'valve-components' || categoryData.id === 'flanges' || categoryData.id === 'pipe-fittings' ? 'text-orange-500' : 'text-brand-blue'}`}>Q{index + 1}. {faq.q}</p>
+                                                        <p className="text-white">A: {faq.a}</p>
+                                                    </div>
+                                                ))
+                                                : categoryData.id === 'gi-slip-on-flanges' && language === 'hi'
+                                                ? [
+                                                    { q: t('products.giSlipOnFlanges.faq.q1'), a: t('products.giSlipOnFlanges.faq.a1') },
+                                                    { q: t('products.giSlipOnFlanges.faq.q2'), a: t('products.giSlipOnFlanges.faq.a2') },
+                                                    { q: t('products.giSlipOnFlanges.faq.q3'), a: t('products.giSlipOnFlanges.faq.a3') }
+                                                ].map((faq, index) => (
+                                                    <div key={index}>
+                                                        <p className={`font-bold ${categoryData.id === 'valve-components' || categoryData.id === 'flanges' || categoryData.id === 'pipe-fittings' ? 'text-orange-500' : 'text-brand-blue'}`}>Q{index + 1}. {faq.q}</p>
+                                                        <p className="text-white">A: {faq.a}</p>
+                                                    </div>
+                                                ))
+                                                : categoryData.id === 'gi-threaded-flanges' && language === 'hi'
+                                                ? [
+                                                    { q: t('products.giThreadedFlanges.faq.q1'), a: t('products.giThreadedFlanges.faq.a1') },
+                                                    { q: t('products.giThreadedFlanges.faq.q2'), a: t('products.giThreadedFlanges.faq.a2') },
+                                                    { q: t('products.giThreadedFlanges.faq.q3'), a: t('products.giThreadedFlanges.faq.a3') },
+                                                    { q: t('products.giThreadedFlanges.faq.q4'), a: t('products.giThreadedFlanges.faq.a4') }
+                                                ].map((faq, index) => (
+                                                    <div key={index}>
+                                                        <p className={`font-bold ${categoryData.id === 'valve-components' || categoryData.id === 'flanges' || categoryData.id === 'pipe-fittings' ? 'text-orange-500' : 'text-brand-blue'}`}>Q{index + 1}. {faq.q}</p>
+                                                        <p className="text-white">A: {faq.a}</p>
+                                                    </div>
+                                                ))
+                                                : categoryData.id === 'cast-steel-screwed-fittings' && language === 'hi'
+                                                ? [
+                                                    { q: t('products.castSteelScrewedFittings.faq.q1'), a: t('products.castSteelScrewedFittings.faq.a1') },
+                                                    { q: t('products.castSteelScrewedFittings.faq.q2'), a: t('products.castSteelScrewedFittings.faq.a2') },
+                                                    { q: t('products.castSteelScrewedFittings.faq.q3'), a: t('products.castSteelScrewedFittings.faq.a3') },
+                                                    { q: t('products.castSteelScrewedFittings.faq.q4'), a: t('products.castSteelScrewedFittings.faq.a4') }
+                                                ].map((faq, index) => (
+                                                    <div key={index}>
+                                                        <p className={`font-bold ${categoryData.id === 'valve-components' || categoryData.id === 'flanges' || categoryData.id === 'pipe-fittings' || categoryData.id === 'cast-steel-screwed-fittings' ? 'text-orange-500' : 'text-brand-blue'}`}>Q{index + 1}. {faq.q}</p>
+                                                        <p className="text-white">A: {faq.a}</p>
+                                                    </div>
+                                                ))
+                                                : categoryData.id === 'ductile-iron-fittings' && language === 'hi'
+                                                ? [
+                                                    { q: t('products.ductileIronFittings.faq.q1'), a: t('products.ductileIronFittings.faq.a1') },
+                                                    { q: t('products.ductileIronFittings.faq.q2'), a: t('products.ductileIronFittings.faq.a2') },
+                                                    { q: t('products.ductileIronFittings.faq.q3'), a: t('products.ductileIronFittings.faq.a3') },
+                                                    { q: t('products.ductileIronFittings.faq.q4'), a: t('products.ductileIronFittings.faq.a4') },
+                                                    { q: t('products.ductileIronFittings.faq.q5'), a: t('products.ductileIronFittings.faq.a5') }
+                                                ].map((faq, index) => (
+                                                    <div key={index}>
+                                                        <p className={`font-bold ${categoryData.id === 'valve-components' || categoryData.id === 'flanges' || categoryData.id === 'pipe-fittings' || categoryData.id === 'cast-steel-screwed-fittings' || categoryData.id === 'ductile-iron-fittings' ? 'text-orange-500' : 'text-brand-blue'}`}>Q{index + 1}. {faq.q}</p>
+                                                        <p className="text-white">A: {faq.a}</p>
+                                                    </div>
+                                                ))
+                                                : categoryData.faq.map((faq, index) => (
+                                                    <div key={index}>
+                                                        <p className={`font-bold ${categoryData.id === 'valve-components' || categoryData.id === 'flanges' || categoryData.id === 'pipe-fittings' || categoryData.id === 'cast-steel-screwed-fittings' || categoryData.id === 'ductile-iron-fittings' ? 'text-orange-500' : 'text-brand-blue'}`}>Q{index + 1}. {faq.q}</p>
+                                                        <p className="text-white">A: {faq.a}</p>
+                                                    </div>
+                                                ))
+                                            }
                                         </div>
                                     </div>
                                 )}

@@ -636,6 +636,54 @@ const HomePage: React.FC = () => {
                         </div>
                     </section>
 
+                    {/* Flanges Applications Section */}
+                    <section className="mt-10 bg-white p-10 rounded-lg shadow-lg" aria-labelledby="flanges-applications-heading">
+                        <div className="text-center mb-8">
+                            <h2 id="flanges-applications-heading" className="text-3xl font-bold text-brand-blue mb-3 transition-all duration-300 hover:text-purple-600 hover:scale-105 cursor-pointer inline-block">
+                                {t('home.flanges.title')}
+                                <div className="w-32 h-1 bg-gradient-to-r from-brand-blue to-purple-500 rounded-full mx-auto mt-2"></div>
+                            </h2>
+                        </div>
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-blue-50 to-transparent rounded-lg border border-blue-100 hover:border-blue-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-brand-blue to-blue-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-blue-700 transition-colors duration-300">{t('products.flanges.applications.1')}</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-green-50 to-transparent rounded-lg border border-green-100 hover:border-green-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-green-700 transition-colors duration-300">{t('products.flanges.applications.2')}</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-purple-50 to-transparent rounded-lg border border-purple-100 hover:border-purple-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-purple-700 transition-colors duration-300">{t('products.flanges.applications.3')}</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-yellow-50 to-transparent rounded-lg border border-yellow-100 hover:border-yellow-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-yellow-700 transition-colors duration-300">{t('products.flanges.applications.4')}</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-red-50 to-transparent rounded-lg border border-red-100 hover:border-red-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-red-700 transition-colors duration-300">{t('products.flanges.applications.5')}</span>
+                                </div>
+                            </div>
+                            <div className="group">
+                                <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-indigo-50 to-transparent rounded-lg border border-indigo-100 hover:border-indigo-300 hover:shadow-md transition-all duration-300">
+                                    <div className="w-3 h-3 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-brand-blue group-hover:text-indigo-700 transition-colors duration-300">{t('products.flanges.applications.6')}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
                     {/* Our Services Section */}
                     <section className="mt-10 bg-gray-50 p-8 rounded-lg" aria-labelledby="services-heading">
                         <div className="text-center mb-6">

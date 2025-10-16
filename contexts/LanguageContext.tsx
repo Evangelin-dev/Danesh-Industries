@@ -149,6 +149,7 @@ const translations = {
     'home.whatWeDo.plugControlValve': 'Plug for control valve',
     'home.whatWeDo.seatRingValves': 'Seat Ring for all valves',
     'home.whatWeDo.actuatorCylinder': 'Actuator cylinder',
+    'home.flanges.title': 'Applications of Danesh Industries Flanges',
 
     // Our Services Section
     'home.services.title': 'Our Services',
@@ -481,6 +482,129 @@ const translations = {
     'products.giRBrandFittings.faq.a4': 'ये प्रीमियम-ग्रेड गैल्वेनाइज्ड आयरन का उपयोग करके निर्मित की जाती हैं, जो लंबी सेवा जीवन, स्थायित्व और संक्षारण प्रतिरोध सुनिश्चित करती हैं।',
 
     // Add more translations as needed
+    
+
+    // Flanges Applications - Hindi (Complete Set)
+    'products.flanges.applications.title': 'दानेश इंडस्ट्रीज फ्लैंजेस के अनुप्रयोग',
+    'products.flanges.applications.1': 'प्रक्रिया और यांत्रिक पाइपिंग सिस्टम',
+    'products.flanges.applications.2': 'पाइपिंग लेआउट में संरचनात्मक सहायता',
+    'products.flanges.applications.3': 'भूमिगत और टैंक पाइपिंग सिस्टम',
+    'products.flanges.applications.4': 'HVAC और वेंटिलेशन सिस्टम',
+    'products.flanges.applications.5': 'गैस, पानी और तेल वितरण नेटवर्क',
+    'products.flanges.applications.6': 'बिजली और ऊर्जा बुनियादी ढांचा',
+
+    // Pull Studs Section - Hindi
+    'products.pullStuds.introduction': 'दानेश इंडस्ट्रीज में, हम परिशुद्ध मशीनिंग अनुप्रयोगों के लिए डिज़ाइन किए गए पुल स्टड्स (पुल स्टड पुलर्स) का निर्माण और आपूर्ति करते हैं। ये कंपोनेंट्स CNC मशीनों और टूल होल्डिंग सिस्टम में महत्वपूर्ण हैं, जो सुरक्षित क्लैंपिंग, उच्च सटीकता और विश्वसनीय मशीनिंग प्रदर्शन सुनिश्चित करते हैं।',
+    'products.pullStuds.applications.1': 'CNC मशीनिंग केंद्र',
+    'products.pullStuds.applications.2': 'मिलिंग मशीनें',
+    'products.pullStuds.applications.3': 'परिशुद्धता टूल होल्डिंग सिस्टम',
+    'products.pullStuds.applications.4': 'ऑटोमोटिव और एयरोस्पेस कंपोनेंट मशीनिंग',
+    'products.pullStuds.applications.5': 'भारी-शुल्क औद्योगिक मशीनिंग सेटअप',
+    'products.pullStuds.whyChoose.1': 'उच्च सटीकता के लिए सख्त आयामी सहनशीलता के साथ निर्मित',
+    'products.pullStuds.whyChoose.2': 'उच्च-लोड मशीनिंग परिस्थितियों में विश्वसनीयता के लिए डिज़ाइन किया गया',
+    'products.pullStuds.whyChoose.3': 'स्थायित्व सुनिश्चित करने के लिए गुणवत्ता वाली कच्ची सामग्रियों के साथ उत्पादित',
+    'products.pullStuds.whyChoose.4': 'समय पर डिलीवरी के साथ कस्टमाइज्ड पैकेजिंग',
+    'products.pullStuds.whyChoose.5': 'इंजीनियरिंग, ऑटोमोटिव और विनिर्माण क्षेत्रों में ग्राहकों द्वारा विश्वसनीय',
+    'products.pullStuds.faq.q1': 'पुल स्टड्स क्या हैं?',
+    'products.pullStuds.faq.a1': 'पुल स्टड्स CNC मशीनों और टूल होल्डिंग सिस्टम में उपयोग किए जाने वाले परिशुद्धता कंपोनेंट्स हैं जो सुरक्षित क्लैंपिंग और सटीक मशीनिंग प्रदर्शन सुनिश्चित करते हैं।',
+    'products.pullStuds.faq.q2': 'पुल स्टड्स का उपयोग कहां किया जाता है?',
+    'products.pullStuds.faq.a2': 'ये CNC मशीनिंग केंद्रों, मिलिंग मशीनों, परिशुद्धता टूल होल्डिंग सिस्टम और औद्योगिक मशीनिंग सेटअप में उपयोग किए जाते हैं।',
+    'products.pullStuds.faq.q3': 'पुल स्टड्स की सामग्री क्या है?',
+    'products.pullStuds.faq.a3': 'हम उच्च ग्रेड B7 स्टील से पुल स्टड्स का निर्माण करते हैं जो तन्यता ताकत और कठोरता के लिए जाना जाता है।',
+    'products.pullStuds.faq.q4': 'क्या पुल स्टड्स को अनुकूलित किया जा सकता है?',
+    'products.pullStuds.faq.a4': 'हां, हम ग्राहक आवश्यकताओं के अनुसार विभिन्न आकारों और फिनिश में कस्टम पुल स्टड्स प्रदान करते हैं।',
+
+    // Plug Valves Section - Hindi
+    'products.plugValves.introduction': 'दानेश इंडस्ट्रीज में, हम औद्योगिक वाल्व सिस्टम में विश्वसनीय सीलिंग, सुचारू संचालन और स्थायित्व सुनिश्चित करने वाले प्लग वाल्व कंपोनेंट्स और असेंबली का निर्माण और आपूर्ति करते हैं। हमारे प्लग वाल्व्स तेल और गैस, पेट्रोकेमिकल्स, जल उपचार और सामान्य औद्योगिक अनुप्रयोगों में उपयोग के लिए इंजीनियर्ड हैं।',
+    'products.plugValves.applications.1': 'तेल और गैस पाइपलाइन',
+    'products.plugValves.applications.2': 'रासायनिक और पेट्रोकेमिकल संयंत्र',
+    'products.plugValves.applications.3': 'जल आपूर्ति और अपशिष्ट जल उपचार प्रणाली',
+    'products.plugValves.applications.4': 'औद्योगिक द्रव हैंडलिंग सिस्टम',
+    'products.plugValves.applications.5': 'सख्त शटऑफ और प्रवाह नियंत्रण की आवश्यकता वाले प्रक्रिया उद्योग',
+    'products.plugValves.whyChoose.1': 'ASME, ASTM, DIN, EN मानकों के अनुसार निर्मित',
+    'products.plugValves.whyChoose.2': 'प्लग और बॉल वाल्व असेंबली के साथ सहज एकीकरण के लिए परिशुद्धता इंजीनियर्ड',
+    'products.plugValves.whyChoose.3': 'विश्वसनीय सीलिंग और विस्तारित सेवा जीवन प्रदान करता है',
+    'products.plugValves.whyChoose.4': 'समय पर डिलीवरी और ग्राहक-केंद्रित सेवा द्वारा समर्थित',
+    'products.plugValves.faq.q1': 'प्लग स्टेम असेंबली क्या है?',
+    'products.plugValves.faq.a1': 'प्लग स्टेम असेंबली प्लग वाल्व में एक मुख्य कंपोनेंट है, जो औद्योगिक पाइपलाइनों में सीलिंग और प्रवाह नियंत्रण प्रदान करने के लिए डिज़ाइन किया गया है।',
+    'products.plugValves.faq.q2': 'आपकी प्लग स्टेम असेंबली में किस सामग्री का उपयोग किया जाता है?',
+    'products.plugValves.faq.a2': 'हम इन्हें उच्च ग्रेड एल्यूमीनियम से बनाते हैं, जो स्थायित्व के लिए सुरक्षात्मक कोटिंग के साथ तैयार किया जाता है।',
+    'products.plugValves.faq.q3': 'मानक आकार क्या उपलब्ध है?',
+    'products.plugValves.faq.a3': 'हमारा मानक आकार 1 इंच है, लेकिन हम परियोजना आवश्यकताओं के आधार पर कस्टम आकार भी प्रदान करते हैं।',
+    'products.plugValves.faq.q4': 'ये प्लग वाल्व कंपोनेंट्स कहां उपयोग किए जाते हैं?',
+    'products.plugValves.faq.a4': 'ये तेल और गैस, पेट्रोकेमिकल्स, जल उपचार, औद्योगिक द्रव सिस्टम और प्रक्रिया उद्योगों में उपयोग किए जाते हैं।',
+
+    // Control Valves Section - Hindi
+    'products.controlValves.introduction': 'दानेश इंडस्ट्रीज में, हम परिशुद्धता, स्थायित्व और औद्योगिक प्रदर्शन के लिए डिज़ाइन किए गए कंट्रोल वाल्व कंपोनेंट्स की आपूर्ति करते हैं। हमारा क्विक ओपनिंग केज विश्वसनीय प्रवाह नियंत्रण प्रदान करने के लिए इंजीनियर्ड है और औद्योगिक वाल्व सिस्टम, प्रक्रिया उद्योगों और यांत्रिक अनुप्रयोगों में व्यापक रूप से उपयोग किया जाता है।',
+    'products.controlValves.applications.1': 'औद्योगिक प्रक्रिया संयंत्र',
+    'products.controlValves.applications.2': 'तेल और गैस वाल्व सिस्टम',
+    'products.controlValves.applications.3': 'पेट्रोकेमिकल और रासायनिक उद्योग',
+    'products.controlValves.applications.4': 'जल उपचार सुविधाएं',
+    'products.controlValves.applications.5': 'विनिर्माण और यांत्रिक अनुप्रयोग',
+    'products.controlValves.whyChoose.1': 'ASME, ASTM, DIN, EN अंतरराष्ट्रीय मानकों के अनुसार निर्मित',
+    'products.controlValves.whyChoose.2': 'सटीक फिट और प्रदर्शन के लिए परिशुद्धता मशीनीकृत',
+    'products.controlValves.whyChoose.3': 'औद्योगिक उपयोग में दीर्घकालिक विश्वसनीयता के लिए डिज़ाइन किया गया',
+    'products.controlValves.whyChoose.4': 'कस्टमाइजेशन और समय पर डिलीवरी द्वारा समर्थित',
+
+    // Mild Steel Pins Section - Hindi
+    'products.mildSteelPins.introduction': 'दानेश इंडस्ट्रीज में, हम ऑटोमोबाइल उद्योग और औद्योगिक अनुप्रयोगों में व्यापक रूप से उपयोग किए जाने वाले माइल्ड स्टील पिन्स का अग्रणी निर्माता हैं। उच्च ग्रेड माइल्ड स्टील से निर्मित और परिशुद्धता के साथ तैयार, हमारे पिन्स स्थायित्व, ताकत और विश्वसनीयता के लिए इंजीनियर्ड हैं।',
+    'products.mildSteelPins.applications.1': 'ऑटोमोटिव कंपोनेंट्स और असेंबली',
+    'products.mildSteelPins.applications.2': 'यांत्रिक इंजीनियरिंग और फैब्रिकेशन',
+    'products.mildSteelPins.applications.3': 'भारी मशीनरी और उपकरण',
+    'products.mildSteelPins.applications.4': 'औद्योगिक और विनिर्माण प्रक्रियाएं',
+    'products.mildSteelPins.whyChoose.1': 'सख्त आयामी सटीकता और गुणवत्ता मानकों के अनुसार निर्मित',
+    'products.mildSteelPins.whyChoose.2': 'टिकाऊ, लागत-प्रभावी और संक्षारण प्रतिरोधी',
+    'products.mildSteelPins.whyChoose.3': 'मानक और कस्टमाइज्ड विशिष्टताओं दोनों में उपलब्ध',
+    'products.mildSteelPins.whyChoose.4': 'समय पर डिलीवरी और ग्राहक-केंद्रित सेवा द्वारा समर्थित',
+    'products.mildSteelPins.faq.q1': 'माइल्ड स्टील पिन्स का उपयोग किस लिए किया जाता है?',
+    'products.mildSteelPins.faq.a1': 'ये ऑटोमोटिव असेंबली, मशीनरी और औद्योगिक अनुप्रयोगों में लोड-बेयरिंग और परिशुद्धता कनेक्शन के लिए व्यापक रूप से उपयोग किए जाते हैं।',
+    'products.mildSteelPins.faq.q2': 'कौन सी फिनिशिंग प्रदान की जाती है?',
+    'products.mildSteelPins.faq.a2': 'हमारे पिन्स क्रोम फिनिश के साथ उपलब्ध हैं, जो संक्षारण प्रतिरोध और स्थायित्व सुनिश्चित करता है।',
+    'products.mildSteelPins.faq.q3': 'क्या आप कस्टमाइज्ड आकार प्रदान कर सकते हैं?',
+    'products.mildSteelPins.faq.a3': 'हां, हम ग्राहक आवश्यकताओं के आधार पर विभिन्न आकारों, व्यास और फिनिश में कस्टम पिन्स का निर्माण करते हैं।',
+    'products.mildSteelPins.faq.q4': 'डिलीवरी समयसीमा क्या है?',
+    'products.mildSteelPins.faq.a4': 'मानक डिलीवरी 3 सप्ताह है, ग्राहक आवश्यकताओं के अनुसार पैकेजिंग प्रदान की जाती है।',
+
+    // Partition Plate Die Section - Hindi
+    'products.partitionPlateDie.introduction': 'दानेश इंडस्ट्रीज में, हम परिशुद्धता और स्थायित्व के साथ इंजीनियर्ड पार्टिशन प्लेट डाई का निर्माण करने में अग्रणी हैं ताकि फैक्टरी और औद्योगिक अनुप्रयोगों की आवश्यकताओं को पूरा किया जा सके। उच्च ग्रेड माइल्ड स्टील का उपयोग करके निर्मित, हमारी डाई सटीकता, विश्वसनीयता और लंबी सेवा जीवन के लिए डिज़ाइन की गई हैं।',
+    'products.partitionPlateDie.applications.1': 'फैक्टरी और औद्योगिक उत्पादन सेटअप',
+    'products.partitionPlateDie.applications.2': 'पार्टिशन प्लेट विनिर्माण',
+    'products.partitionPlateDie.applications.3': 'शीट मेटल फॉर्मिंग',
+    'products.partitionPlateDie.applications.4': 'विशिष्ट ग्राहक परियोजनाओं के लिए कस्टमाइज्ड डाई-मेकिंग',
+    'products.partitionPlateDie.whyChoose.1': 'डाई विनिर्माण में अग्रणी के रूप में सिद्ध विशेषज्ञता',
+    'products.partitionPlateDie.whyChoose.2': 'सटीकता और स्थायित्व के लिए सख्त गुणवत्ता नियंत्रण',
+    'products.partitionPlateDie.whyChoose.3': '4 सप्ताह के भीतर समय पर डिलीवरी',
+    'products.partitionPlateDie.whyChoose.4': 'ग्राहक-केंद्रित सेवा और सहायता द्वारा समर्थित',
+    'products.partitionPlateDie.faq.q1': 'पार्टिशन प्लेट डाई में किस सामग्री का उपयोग किया जाता है?',
+    'products.partitionPlateDie.faq.a1': 'हमारी डाई उच्च ग्रेड माइल्ड स्टील से बनी होती हैं, जो ताकत और लंबी सेवा जीवन सुनिश्चित करती हैं।',
+    'products.partitionPlateDie.faq.q2': 'उत्पादन क्षमता क्या है?',
+    'products.partitionPlateDie.faq.a2': 'हम मासिक 50 डाई तक का निर्माण करते हैं, 4 सप्ताह में डिलीवरी उपलब्ध है।',
+    'products.partitionPlateDie.faq.q3': 'क्या डाई को अनुकूलित किया जा सकता है?',
+    'products.partitionPlateDie.faq.a3': 'हां, हम विशिष्ट ग्राहक आवश्यकताओं को पूरा करने के लिए डिज़ाइन, आकार और पैकेजिंग तैयार कर सकते हैं।',
+    'products.partitionPlateDie.faq.q4': 'पार्टिशन प्लेट डाई का उपयोग कौन से उद्योग करते हैं?',
+    'products.partitionPlateDie.faq.a4': 'ये फैक्टरियों, शीट मेटल फॉर्मिंग और औद्योगिक पार्टिशन विनिर्माण में व्यापक रूप से उपयोग की जाती हैं।',
+
+    // Ball Valve Seat Ring Section - Hindi
+    'products.ballValveSeatRing.introduction': 'दानेश इंडस्ट्रीज में, हम औद्योगिक अनुप्रयोगों में परिशुद्धता, स्थायित्व और विश्वसनीयता के लिए डिज़ाइन किए गए बॉल वाल्व सीट रिंग्स का अग्रणी निर्माता हैं। उच्च ग्रेड माइल्ड स्टील से निर्मित, हमारी सीट रिंग्स सटीक सीलिंग, सुचारू वाल्व संचालन और लंबी सेवा जीवन सुनिश्चित करती हैं।',
+    'products.ballValveSeatRing.applications.1': 'तेल और गैस पाइपलाइन',
+    'products.ballValveSeatRing.applications.2': 'रासायनिक और पेट्रोकेमिकल उद्योग',
+    'products.ballValveSeatRing.applications.3': 'बिजली उत्पादन प्रणाली',
+    'products.ballValveSeatRing.applications.4': 'जल आपूर्ति और अपशिष्ट जल उपचार संयंत्र',
+    'products.ballValveSeatRing.applications.5': 'औद्योगिक प्रक्रिया पाइपिंग सिस्टम',
+    'products.ballValveSeatRing.whyChoose.1': 'ASME, ASTM, DIN, EN और अंतरराष्ट्रीय मानकों को पूरा करने के लिए डिज़ाइन किया गया',
+    'products.ballValveSeatRing.whyChoose.2': 'लीक-प्रूफ सीलिंग के लिए परिशुद्धता इंजीनियरिंग के साथ निर्मित',
+    'products.ballValveSeatRing.whyChoose.3': 'औद्योगिक और वाणिज्यिक क्षेत्रों में ग्राहकों द्वारा विश्वसनीय',
+    'products.ballValveSeatRing.whyChoose.4': 'कस्टमाइजेशन, गुणवत्ता आश्वासन और समय पर आपूर्ति द्वारा समर्थित',
+    'products.ballValveSeatRing.faq.q1': 'बॉल वाल्व सीट रिंग क्या है?',
+    'products.ballValveSeatRing.faq.a1': 'यह बॉल वाल्व के अंदर एक गोल सीलिंग कंपोनेंट है जो सख्त शटऑफ और सुचारू वाल्व संचालन सुनिश्चित करता है।',
+    'products.ballValveSeatRing.faq.q2': 'आपकी सीट रिंग्स में किस सामग्री का उपयोग किया जाता है?',
+    'products.ballValveSeatRing.faq.a2': 'हम इन्हें उच्च गुणवत्ता वाले माइल्ड स्टील से बनाते हैं, जो अतिरिक्त स्थायित्व के लिए सुरक्षात्मक सिल्वर फिनिश के साथ तैयार किया जाता है।',
+    'products.ballValveSeatRing.faq.q3': 'आप कौन सा मानक आकार प्रदान करते हैं?',
+    'products.ballValveSeatRing.faq.a3': 'हमारा मानक आकार 4 इंच है, लेकिन हम परियोजना आवश्यकताओं के आधार पर कस्टम आकार भी प्रदान करते हैं।',
+    'products.ballValveSeatRing.faq.q4': 'बॉल वाल्व सीट रिंग्स का उपयोग कौन से उद्योग करते हैं?',
+    'products.ballValveSeatRing.faq.a4': 'ये तेल और गैस, रसायन, पेट्रोकेमिकल्स, बिजली संयंत्रों, जल उपचार और सामान्य औद्योगिक पाइपिंग सिस्टम में व्यापक रूप से उपयोग किए जाते हैं।',
+
+    // Add more translations as needed
   },
   hi: {
     // Navigation
@@ -577,6 +701,7 @@ const translations = {
     'home.whatWeDo.plugControlValve': 'कंट्रोल वाल्व के लिए प्लग',
     'home.whatWeDo.seatRingValves': 'सभी वाल्व्स के लिए सीट रिंग',
     'home.whatWeDo.actuatorCylinder': 'एक्ट्यूएटर सिलेंडर',
+    'home.flanges.title': 'दानेश इंडस्ट्रीज फ्लैंजेस के अनुप्रयोग',
 
     // Our Services Section - Hindi
     'home.services.title': 'हमारी सेवाएं',
@@ -678,6 +803,7 @@ const translations = {
     // Products Page - Hindi
     'products.title': 'हमारे उत्पाद',
     'products.subtitle': 'विविध औद्योगिक अनुप्रयोगों के लिए हमारी उच्च-गुणवत्ता वाली, परिशुद्ध-इंजीनियर्ड कंपोनेंट्स की व्यापक श्रृंखला का अन्वेषण करें।',
+    'products.selectCategory': 'श्रेणी चुनें',
     'products.category.valveComponents': 'वाल्व कंपोनेंट्स',
     'products.selectItem': 'एक आइटम चुनें',
     'products.valveComponents.introduction': 'दानेश इंडस्ट्रीज में, हम औद्योगिक वाल्व सिस्टम के साथ अनुकूलता, स्थायित्व और परिशुद्धता के लिए डिज़ाइन किए गए उच्च-गुणवत्ता वाले वाल्व कंपोनेंट्स के निर्माण में विशेषज्ञ हैं। हमारे कंपोनेंट्स वैश्विक गुणवत्ता मानकों को पूरा करने के लिए इंजीनियर्ड हैं और तेल और गैस, पेट्रोकेमिकल्स, जल उपचार और प्रक्रिया उद्योगों में व्यापक रूप से उपयोग किए जाते हैं। हम विभिन्न प्रकार के वाल्व कंपोनेंट्स की पेशकश करते हैं, जिनमें प्लग वाल्व कंपोनेंट्स और बॉल वाल्व्स के लिए स्टेम्स शामिल हैं, जो लंबे समय तक चलने वाले प्रदर्शन के लिए बेहतर सामग्रियों के साथ निर्मित हैं।',
@@ -764,6 +890,15 @@ const translations = {
     'products.ss304Flanges.whyChoose.2': 'लीक-प्रूफ सीलिंग के लिए बेहतर सतह फिनिश',
     'products.ss304Flanges.whyChoose.3': 'स्लिप-ऑन, वेल्ड नेक, सॉकेट वेल्ड, थ्रेडेड, ब्लाइंड और लैप जॉइंट सहित प्रकारों की विस्तृत श्रृंखला में उपलब्ध',
     'products.ss304Flanges.whyChoose.4': 'महत्वपूर्ण औद्योगिक और वाणिज्यिक परियोजनाओं में सिद्ध ट्रैक रिकॉर्ड',
+
+
+    // SS 304 Flanges FAQ - Hindi
+    'products.ss304Flanges.faq.q1': 'SS 304 स्टेनलेस स्टील क्या है?',
+    'products.ss304Flanges.faq.a1': 'SS 304 एक ऑस्टेनिटिक स्टेनलेस स्टील ग्रेड है जिसमें ~18% क्रोमियम और 8% निकल होता है, जो उत्कृष्ट संक्षारण प्रतिरोध, वेल्डेबिलिटी और ताकत प्रदान करता है।',
+    'products.ss304Flanges.faq.q2': 'SS 304 फ्लैंजेस का उपयोग कहां किया जा सकता है?',
+    'products.ss304Flanges.faq.a2': 'ये रासायनिक संयंत्रों, खाद्य उद्योग, समुद्री अनुप्रयोगों, हीट एक्सचेंजरों और जल उपचार प्रणालियों के लिए उपयुक्त हैं।',
+    'products.ss304Flanges.faq.q3': 'अन्य ग्रेड की तुलना में SS 304 फ्लैंजेस को क्यों चुनें?',
+    'products.ss304Flanges.faq.a3': 'क्योंकि वे ताकत, संक्षारण प्रतिरोध, किफायतीपन और बहुमुखी प्रतिभा का सबसे अच्छा संतुलन प्रदान करते हैं, जो उन्हें वैश्विक स्तर पर सबसे व्यापक रूप से उपयोग किया जाने वाला फ्लैंज सामग्री बनाते हैं।',
 
     // Highlight items - Hindi
     'home.highlights.precisionMachining': 'परिशुद्ध मशीनिंग और रिवर्स इंजीनियरिंग',
@@ -1249,6 +1384,96 @@ const translations = {
 
     // Solenoid Valves Detailed Description - Hindi
     'products.solenoidValves.detailedDescription': 'दानेश इंडस्ट्रीज में, हम सोलनॉइड वाल्व्स का निर्माण और आपूर्ति करते हैं, जो औद्योगिक पाइपिंग और स्वचालन प्रणालियों में परिशुद्ध नियंत्रण, स्थायित्व और दक्षता के लिए डिज़ाइन किए गए हैं। ये वाल्व तरल पदार्थों या गैसों के प्रवाह को नियंत्रित करने के लिए विद्युत चुम्बकीय संचालन का उपयोग करते हैं, जो इन्हें स्वचालन, द्रव नियंत्रण और प्रक्रिया उद्योगों में एक आवश्यक घटक बनाते हैं। हमारे सोलनॉइड वाल्व्स मांग वाले वातावरण में भी विश्वसनीय, लीक-प्रूफ प्रदर्शन प्रदान करने के लिए अंतरराष्ट्रीय मानकों को पूरा करने के लिए इंजीनियर्ड हैं।',
+
+    // Solenoid Valves Section - Hindi
+    // 'products.solenoidValves.introduction': 'At Danesh Industries, we manufacture and supply Solenoid Valves, designed for precision control, durability, and efficiency in industrial piping and automation systems. These valves use electromagnetic operation to regulate the flow of liquids or gases, making them an essential component in automation, fluid control, and process industries. Our solenoid valves are engineered to meet international standards and deliver reliable, leak-proof performance even in demanding environments.',
+    // 'products.solenoidValves.applications.title': 'Applications of Danesh Industries Solenoid Valves',
+    // 'products.solenoidValves.applications.1': 'Industrial automation & process control',
+    // 'products.solenoidValves.applications.2': 'Oil & gas plants',
+    // 'products.solenoidValves.applications.3': 'Chemical & petrochemical industries',
+    // 'products.solenoidValves.applications.4': 'Water treatment & distribution systems',
+    // 'products.solenoidValves.applications.5': 'Food & beverage processing',
+    // 'products.solenoidValves.applications.6': 'Pharmaceutical & medical applications',
+    // 'products.solenoidValves.applications.7': 'HVAC & refrigeration systems',
+    // 'products.solenoidValves.keyFeatures.title': 'Key Features of Danesh Industries Solenoid Valves',
+    // 'products.solenoidValves.keyFeatures.1': 'Precise Flow Control – Provides accurate regulation of fluids and gases',
+    // 'products.solenoidValves.keyFeatures.2': 'Durable Build – Manufactured from premium-grade materials for long service life',
+    // 'products.solenoidValves.keyFeatures.3': 'Automation-Ready – Compatible with industrial automation and process systems',
+    // 'products.solenoidValves.keyFeatures.4': 'Leak-Proof Operation – Ensures reliability in critical applications',
+    // 'products.solenoidValves.keyFeatures.5': 'Custom Options – Available in different sizes, voltages, and materials',
+    // 'products.solenoidValves.whyChoose.title': 'Why Choose Danesh Industries Solenoid Valves?',
+    // 'products.solenoidValves.whyChoose.1': 'Manufactured to ASME, ASTM, DIN, EN, and IEC standards',
+    // 'products.solenoidValves.whyChoose.2': 'Designed for precision, reliability, and durability',
+    // 'products.solenoidValves.whyChoose.3': 'Available in custom sizes and material grades',
+    // 'products.solenoidValves.whyChoose.4': 'Backed by timely delivery and quality assurance',
+    // 'products.solenoidValves.whyChoose.5': 'Trusted supplier to industrial and commercial sectors',
+    // 'products.solenoidValves.faq.q1': 'What is a solenoid valve?',
+    // 'products.solenoidValves.faq.a1': 'A solenoid valve is an electromagnetically operated valve used to control the flow of liquids or gases in pipelines.',
+    // 'products.solenoidValves.faq.q2': 'What industries use solenoid valves?',
+    // 'products.solenoidValves.faq.a2': 'They are widely used in oil & gas, water treatment, chemical plants, pharmaceuticals, HVAC, and automation systems.',
+    // 'products.solenoidValves.faq.q3': 'What materials are your solenoid valves made of?',
+    // 'products.solenoidValves.faq.a3': 'We manufacture solenoid valves in stainless steel, brass, and mild steel, based on customer requirements.',
+    // 'products.solenoidValves.faq.q4': 'Can solenoid valves be customized?',
+    // 'products.solenoidValves.faq.a4': 'Yes, we offer custom sizes, voltage configurations, and material options as per project needs.',
+    // 'products.solenoidValves.faq.q5': 'What is the typical delivery time?',
+    // 'products.solenoidValves.faq.a5': 'Standard delivery is 3–4 weeks, depending on order volume and customization.',
+
+
+
+'products.solenoidValves.introduction': 'डैनेश इंडस्ट्रीज में, हम सटीक नियंत्रण, टिकाऊपन और दक्षता के लिए डिज़ाइन किए गए सोलनॉइड वाल्व का निर्माण और आपूर्ति करते हैं। ये वाल्व औद्योगिक पाइपिंग और ऑटोमेशन सिस्टम में तरल या गैस के प्रवाह को नियंत्रित करने के लिए विद्युत-चुंबकीय संचालन का उपयोग करते हैं, जिससे ये ऑटोमेशन, फ्लूड कंट्रोल और प्रोसेस इंडस्ट्रीज का एक महत्वपूर्ण घटक बन जाते हैं। हमारे सोलनॉइड वाल्व अंतरराष्ट्रीय मानकों के अनुसार इंजीनियर्ड हैं और कठिन परिस्थितियों में भी विश्वसनीय, लीक-प्रूफ प्रदर्शन प्रदान करते हैं।',
+
+'products.solenoidValves.applications.title': 'डैनेश इंडस्ट्रीज सोलनॉइड वाल्व के उपयोग के क्षेत्र',
+'products.solenoidValves.applications.1': 'औद्योगिक ऑटोमेशन और प्रक्रिया नियंत्रण',
+'products.solenoidValves.applications.2': 'तेल और गैस संयंत्र',
+'products.solenoidValves.applications.3': 'रासायनिक और पेट्रोकेमिकल उद्योग',
+'products.solenoidValves.applications.4': 'जल शोधन और वितरण प्रणाली',
+'products.solenoidValves.applications.5': 'खाद्य और पेय प्रसंस्करण',
+'products.solenoidValves.applications.6': 'फार्मास्युटिकल और चिकित्सा अनुप्रयोग',
+'products.solenoidValves.applications.7': 'एचवीएसी और रेफ्रिजरेशन सिस्टम',
+
+'products.solenoidValves.keyFeatures.title': 'डैनेश इंडस्ट्रीज सोलनॉइड वाल्व की प्रमुख विशेषताएँ',
+'products.solenoidValves.keyFeatures.1': 'सटीक प्रवाह नियंत्रण – तरल और गैसों का सही नियमन प्रदान करता है',
+'products.solenoidValves.keyFeatures.2': 'टिकाऊ निर्माण – लंबे सेवा जीवन के लिए उच्च गुणवत्ता वाली सामग्री से निर्मित',
+'products.solenoidValves.keyFeatures.3': 'ऑटोमेशन-रेडी – औद्योगिक ऑटोमेशन और प्रक्रिया प्रणालियों के साथ संगत',
+'products.solenoidValves.keyFeatures.4': 'लीक-प्रूफ संचालन – महत्वपूर्ण अनुप्रयोगों में विश्वसनीयता सुनिश्चित करता है',
+'products.solenoidValves.keyFeatures.5': 'कस्टम विकल्प – विभिन्न आकारों, वोल्टेज और सामग्री में उपलब्ध',
+
+'products.solenoidValves.whyChoose.title': 'डैनेश इंडस्ट्रीज सोलनॉइड वाल्व क्यों चुनें?',
+'products.solenoidValves.whyChoose.1': 'ASME, ASTM, DIN, EN और IEC मानकों के अनुसार निर्मित',
+'products.solenoidValves.whyChoose.2': 'सटीकता, विश्वसनीयता और टिकाऊपन के लिए डिज़ाइन किया गया',
+'products.solenoidValves.whyChoose.3': 'कस्टम आकारों और सामग्री ग्रेड में उपलब्ध',
+'products.solenoidValves.whyChoose.4': 'समय पर डिलीवरी और गुणवत्ता आश्वासन के साथ समर्थित',
+'products.solenoidValves.whyChoose.5': 'औद्योगिक और वाणिज्यिक क्षेत्रों के विश्वसनीय आपूर्तिकर्ता',
+
+'products.solenoidValves.faq.q1': 'सोलनॉइड वाल्व क्या है?',
+'products.solenoidValves.faq.a1': 'सोलनॉइड वाल्व एक विद्युत-चुंबकीय रूप से संचालित वाल्व है, जिसका उपयोग पाइपलाइनों में तरल या गैस के प्रवाह को नियंत्रित करने के लिए किया जाता है।',
+
+'products.solenoidValves.faq.q2': 'कौन-से उद्योग सोलनॉइड वाल्व का उपयोग करते हैं?',
+'products.solenoidValves.faq.a2': 'इनका व्यापक रूप से तेल और गैस, जल शोधन, रासायनिक संयंत्र, फार्मास्युटिकल, एचवीएसी और ऑटोमेशन सिस्टम में उपयोग किया जाता है।',
+
+'products.solenoidValves.faq.q3': 'आपके सोलनॉइड वाल्व किस सामग्री से बने हैं?',
+'products.solenoidValves.faq.a3': 'हम ग्राहक की आवश्यकताओं के अनुसार स्टेनलेस स्टील, पीतल (ब्रास) और माइल्ड स्टील में सोलनॉइड वाल्व का निर्माण करते हैं।',
+
+'products.solenoidValves.faq.q4': 'क्या सोलनॉइड वाल्व को कस्टमाइज़ किया जा सकता है?',
+'products.solenoidValves.faq.a4': 'हाँ, हम प्रोजेक्ट की आवश्यकता के अनुसार कस्टम आकार, वोल्टेज कॉन्फ़िगरेशन और सामग्री विकल्प प्रदान करते हैं।',
+'products.solenoidValves.faq.q5': 'सामान्य डिलीवरी समय क्या है?',
+'products.solenoidValves.faq.a5': 'मानक डिलीवरी समय 3–4 सप्ताह है, जो ऑर्डर की मात्रा और कस्टमाइज़ेशन पर निर्भर करता है।',
+
+
+
+
+
+    // Partition Plate Die FAQ - Hindi
+    'products.partitionPlateDie.faq.q1': 'पार्टिशन प्लेट डाई में किस सामग्री का उपयोग किया जाता है?',
+    'products.partitionPlateDie.faq.a1': 'हमारी डाई उच्च ग्रेड माइल्ड स्टील से बनी होती हैं, जो ताकत और लंबी सेवा जीवन सुनिश्चित करती हैं।',
+    'products.partitionPlateDie.faq.q2': 'उत्पादन क्षमता क्या है?',
+    'products.partitionPlateDie.faq.a2': 'हम मासिक 50 डाई तक का निर्माण करते हैं, 4 सप्ताह में डिलीवरी उपलब्ध है।',
+    'products.partitionPlateDie.faq.q3': 'क्या डाई को अनुकूलित किया जा सकता है?',
+    'products.partitionPlateDie.faq.a3': 'हां, हम विशिष्ट ग्राहक आवश्यकताओं को पूरा करने के लिए डिज़ाइन, आकार और पैकेजिंग तैयार कर सकते हैं।',
+    'products.partitionPlateDie.faq.q4': 'पार्टिशन प्लेट डाई का उपयोग कौन से उद्योग करते हैं?',
+    'products.partitionPlateDie.faq.a4': 'ये फैक्टरियों, शीट मेटल फॉर्मिंग और औद्योगिक पार्टिशन विनिर्माण में व्यापक रूप से उपयोग की जाती हैं।',
+    'products.partitionPlateDie.faq.q5': 'डाई को कैसे पैक किया जाता है?',
+    'products.partitionPlateDie.faq.a5': 'पैकेजिंग ग्राहक आवश्यकताओं के अनुसार प्रदान की जाती है, जो सुरक्षित परिवहन और हैंडलिंग सुनिश्चित करती है।',
 
     // Add more translations as needed
   },

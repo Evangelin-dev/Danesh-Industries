@@ -1232,7 +1232,8 @@ const ProductDetail: React.FC<{ item: any; categoryId: string; language: string;
                     {item.keyFeatures && (
                         <div className="p-4 bg-gray-50 rounded-lg">
                             <h4 className="text-xl font-bold mb-3 text-brand-blue">
-                                {categoryId === 'ss-304-flanges' && language === 'hi' ? t('products.ss304Flanges.keyFeatures.title') : 'Key Features'}
+                                {categoryId === 'ss-304-flanges' && language === 'hi' ? t('products.ss304Flanges.keyFeatures.title') :
+                                 categoryId === 'solenoid-valves' && language === 'hi' ? t('products.solenoidValves.keyFeatures.title') : 'Key Features'}
                             </h4>
                             {categoryId === 'ss-304-flanges' && language === 'hi' ? (
                                 <ul className="list-none pl-5 space-y-1">
@@ -1253,13 +1254,88 @@ const ProductDetail: React.FC<{ item: any; categoryId: string; language: string;
                                         {t('products.ss304Flanges.keyFeatures.4')}
                                     </li>
                                 </ul>
+                            ) : categoryId === 'solenoid-valves' && language === 'hi' ? (
+                                <ul className="list-none pl-5 space-y-1">
+                                    <li className="flex items-center">
+                                        <span className="text-green-500 mr-2">✔</span>
+                                        {t('products.solenoidValves.keyFeatures.1')}
+                                    </li>
+                                    <li className="flex items-center">
+                                        <span className="text-green-500 mr-2">✔</span>
+                                        {t('products.solenoidValves.keyFeatures.2')}
+                                    </li>
+                                    <li className="flex items-center">
+                                        <span className="text-green-500 mr-2">✔</span>
+                                        {t('products.solenoidValves.keyFeatures.3')}
+                                    </li>
+                                    <li className="flex items-center">
+                                        <span className="text-green-500 mr-2">✔</span>
+                                        {t('products.solenoidValves.keyFeatures.4')}
+                                    </li>
+                                    <li className="flex items-center">
+                                        <span className="text-green-500 mr-2">✔</span>
+                                        {t('products.solenoidValves.keyFeatures.5')}
+                                    </li>
+                                </ul>
                             ) : (
                                 renderList(item.keyFeatures)
                             )}
                         </div>
                     )}
-                    {item.specifications && (<div><h4 className="text-lg font-semibold mb-2">Specifications</h4>{renderTable(item.specifications)}</div>)}
-                    {item.additionalInfo && (<div><h4 className="text-lg font-semibold mb-2">Additional Information</h4>{renderTable(item.additionalInfo)}</div>)}
+                    {item.specifications && (
+                        <div>
+                            <h4 className="text-lg font-semibold mb-2">
+                                {categoryId === 'solenoid-valves' && language === 'hi' ? 'विशेषताएं' : 'Specifications'}
+                            </h4>
+                            {categoryId === 'solenoid-valves' && language === 'hi' ? (
+                                <table className="min-w-full">
+                                    <tbody>
+                                        <tr className="border-b">
+                                            <td className="py-2 font-semibold pr-4">{t('products.solenoidValves.specifications.type')}</td>
+                                            <td className="py-2">{t('products.solenoidValves.specifications.material')}</td>
+                                        </tr>
+                                        <tr className="border-b">
+                                            <td className="py-2 font-semibold pr-4">{t('products.solenoidValves.specifications.application')}</td>
+                                            <td className="py-2">{t('products.solenoidValves.specifications.surfaceFinish')}</td>
+                                        </tr>
+                                        <tr className="border-b">
+                                            <td className="py-2 font-semibold pr-4">{'पैकेजिंग'}</td>
+                                            <td className="py-2">{t('products.solenoidValves.specifications.packaging')}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            ) : (
+                                renderTable(item.specifications)
+                            )}
+                        </div>
+                    )}
+                    {item.additionalInfo && (
+                        <div>
+                            <h4 className="text-lg font-semibold mb-2">
+                                {categoryId === 'solenoid-valves' && language === 'hi' ? 'अतिरिक्त जानकारी' : 'Additional Information'}
+                            </h4>
+                            {categoryId === 'solenoid-valves' && language === 'hi' ? (
+                                <table className="min-w-full">
+                                    <tbody>
+                                        <tr className="border-b">
+                                            <td className="py-2 font-semibold pr-4">{'उत्पादन क्षमता'}</td>
+                                            <td className="py-2">{t('products.solenoidValves.additionalInfo.productionCapacity')}</td>
+                                        </tr>
+                                        <tr className="border-b">
+                                            <td className="py-2 font-semibold pr-4">{'डिलीवरी समय'}</td>
+                                            <td className="py-2">{t('products.solenoidValves.additionalInfo.deliveryTime')}</td>
+                                        </tr>
+                                        <tr className="border-b">
+                                            <td className="py-2 font-semibold pr-4">{'पैकेजिंग'}</td>
+                                            <td className="py-2">{t('products.solenoidValves.additionalInfo.packaging')}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            ) : (
+                                renderTable(item.additionalInfo)
+                            )}
+                        </div>
+                    )}
                     {item.additionalNote && <p className="text-lg text-white  italic">{item.additionalNote}</p>}
                     {item.advantages && (<div><h4 className="text-lg font-semibold mb-2">Advantages</h4>{renderList(item.advantages)}</div>)}
                     {item.applications && (<div><h4 className="text-lg font-semibold mb-2">Applications</h4>{renderList(item.applications)}</div>)}
@@ -1552,9 +1628,9 @@ const ProductsPage: React.FC = () => {
                                             : categoryData.id === 'gi-r-brand-fittings' && language === 'hi'
                                             ? t('products.giRBrandFittings.introduction')
                                             : categoryData.id === 'gi-fittings' && language === 'hi'
-                                            ? 'दानेश इंडस्ट्रीज में, हम औद्योगिक और वाणिज्यिक पाइपिंग सिस्टम की आवश्यकताओं को पूरा करने के लिए मजबूत, टिकाऊ और संक्षारण प्रतिरोधी गैल्वेनाइज्ड आयरन (GI) फिटिंग्स की व्यापक श्रृंखला का निर्माण और आपूर्ति करते हैं।'
+                                            ? t('products.giFittings.introduction')
                                             : categoryData.id === 'ss-fittings' && language === 'hi'
-                                            ? 'दानेश इंडस्ट्रीज में, हम उच्च दबाव, उच्च तापमान और संक्षारक अनुप्रयोगों के लिए परिशुद्धता इंजीनियर्ड स्टेनलेस स्टील फिटिंग्स का निर्माण और आपूर्ति करते हैं।'
+                                            ? t('products.ssFittings.introduction')
                                             : categoryData.id === 'pull-studs' && language === 'hi'
                                             ? t('products.pullStuds.introduction')
                                             : categoryData.id === 'plug-valves' && language === 'hi'
@@ -1743,7 +1819,7 @@ const ProductsPage: React.FC = () => {
                                                             : categoryData.id === 'ss-316-flanges' && language === 'hi'
                                                             ? t('products.ss316Flanges.applications.title')
                                                             : categoryData.id === 'pipe-fittings' && language === 'hi'
-                                                            ? 'दानेश इंडस्ट्रीज पाइप फिटिंग्स के अनुप्रयोग'
+                                                            ? t('products.pipeFittings.applications.title')
                                                             : categoryData.id === 'solenoid-valves' && language === 'hi'
                                                             ? t('products.solenoidValves.applications.title')
                                                             : `Applications of Danesh Industries ${categoryData.category}`}
@@ -1957,7 +2033,7 @@ const ProductsPage: React.FC = () => {
                                     <div className="mt-6">
                                         <h3 className="text-2xl font-bold text-amber-600 mb-4">
                                             {categoryData.id === 'grooved-fittings' && language === 'hi'
-                                                ? 'ग्रूव्ड फिटिंग्स के कंपोनेंट्स'
+                                                ? t('products.groovedFittings.components.title')
                                                 : 'Components of Grooved Fittings'}
                                         </h3>
                                         {categoryData.components.map((component, index) => (
@@ -2004,8 +2080,8 @@ const ProductsPage: React.FC = () => {
                                 {categoryData.composition && (
                                     <div className="mt-6">
                                         <h3 className="text-2xl font-bold text-brand-blue mb-4">
-                                            {categoryData.id === 'ductile-iron-fittings' && language === 'hi'
-                                                ? 'डक्टाइल आयरन फिटिंग्स की संरचना'
+                                            {(categoryData.id as string) === 'ductile-iron-fittings' && language === 'hi'
+                                                ? t('products.ductileIronFittings.composition.title')
                                                 : 'Composition of Ductile Iron Fittings'}
                                         </h3>
                                         <p className="text-lg text-white mb-2">
@@ -2042,7 +2118,7 @@ const ProductsPage: React.FC = () => {
                                                         {categoryData.id === 'flanges' && language === 'hi'
                                                             ? t('products.flanges.benefits.title')
                                                             : categoryData.id === 'grooved-fittings' && language === 'hi'
-                                                            ? 'दानेश इंडस्ट्रीज ग्रूव्ड फिटिंग्स के लाभ'
+                                                            ? t('products.groovedFittings.benefits.title')
                                                             : `Benefits of Danesh Industries ${categoryData.category}`}
                                                     </h3>
                                                     <ul className="list-none space-y-2 text-lg text-white">
@@ -2410,9 +2486,9 @@ const ProductsPage: React.FC = () => {
                                                         {categoryData.id === 'valve-components' && language === 'hi'
                                                             ? t('products.valveComponents.whyChoose')
                                                             : categoryData.id === 'pipe-fittings' && language === 'hi'
-                                                            ? 'दानेश इंडस्ट्रीज पाइप फिटिंग्स को क्यों चुनें?'
-                                                            : categoryData.id === 'solenoid-valves' && language === 'hi'
-                                                            ? t('products.solenoidValves.whyChoose.title')
+                                                            ? t('products.pipeFittings.whyChoose.title')
+                                                            : (categoryData.id as string) === 'solenoid-valves' && language === 'hi'
+                                                             ? t('products.solenoidValves.whyChoose.title')
                                                             : `Why Choose Danesh Industries ${categoryData.category}?`}
                                                     </h3>
                                                     <ul className="list-none space-y-2 text-lg text-white">
@@ -2736,7 +2812,7 @@ const ProductsPage: React.FC = () => {
                                 )}
                                 {categoryData.limitations && (
                                     <div className="mt-6">
-                                        <h3 className="text-2xl font-bold text-brand-blue mb-4">{categoryData.id === 'grooved-fittings' && language === 'hi' ? 'ग्रूव्ड फिटिंग्स के नुकसान' : categoryData.id === 'grooved-fittings' ? 'Disadvantages of Grooved Fittings' : `Limitations of ${categoryData.category}`}</h3>
+                                        <h3 className="text-2xl font-bold text-brand-blue mb-4">{(categoryData.id as string) === 'grooved-fittings' && language === 'hi' ? t('products.groovedFittings.limitations.title') : categoryData.id === 'grooved-fittings' ? 'Disadvantages of Grooved Fittings' : `Limitations of ${categoryData.category}`}</h3>
                                         <ul className="list-none space-y-2 text-lg text-white">
                                             {categoryData.id === 'gi-slip-on-flanges' && language === 'hi'
                                                 ? [
@@ -2830,7 +2906,7 @@ const ProductsPage: React.FC = () => {
                                     <div className="mt-6">
                                         <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'valve-components' || categoryData.id === 'flanges' || categoryData.id === 'pipe-fittings' ? 'text-orange-500' : 'text-brand-blue'}`}>
                                             {categoryData.id === 'pipe-fittings' && language === 'hi'
-                                                ? 'पाइप फिटिंग्स FAQ'
+                                                ? t('products.pipeFittings.faq.title')
                                                 : `${categoryData.category} FAQ`}
                                         </h3>
                                         <div className="space-y-4">

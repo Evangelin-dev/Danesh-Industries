@@ -604,7 +604,45 @@ const translations = {
     'products.ballValveSeatRing.faq.q4': 'बॉल वाल्व सीट रिंग्स का उपयोग कौन से उद्योग करते हैं?',
     'products.ballValveSeatRing.faq.a4': 'ये तेल और गैस, रसायन, पेट्रोकेमिकल्स, बिजली संयंत्रों, जल उपचार और सामान्य औद्योगिक पाइपिंग सिस्टम में व्यापक रूप से उपयोग किए जाते हैं।',
 
-    // Add more translations as needed
+    // GI Fittings Section - Hindi
+    'products.giFittings.introduction': 'दानेश इंडस्ट्रीज में, हम औद्योगिक और वाणिज्यिक पाइपिंग सिस्टम की आवश्यकताओं को पूरा करने के लिए मजबूत, टिकाऊ और संक्षारण प्रतिरोधी गैल्वेनाइज्ड आयरन (GI) फिटिंग्स की व्यापक श्रृंखला का निर्माण और आपूर्ति करते हैं।',
+
+    // SS Fittings Section - Hindi
+    'products.ssFittings.introduction': 'दानेश इंडस्ट्रीज में, हम उच्च दबाव, उच्च तापमान और संक्षारक अनुप्रयोगों के लिए परिशुद्धता इंजीनियर्ड स्टेनलेस स्टील फिटिंग्स का निर्माण और आपूर्ति करते हैं।',
+// Solenoid Valves Section - English
+'products.solenoidValves.introduction': 'At Danesh Industries, we manufacture and supply Solenoid Valves, designed for precision control, durability, and efficiency in industrial piping and automation systems. These valves use electromagnetic operation to regulate the flow of liquids or gases, making them an essential component in automation, fluid control, and process industries. Our solenoid valves are engineered to meet international standards and deliver reliable, leak-proof performance even in demanding environments.',
+'products.solenoidValves.applications.title': 'Applications of Danesh Industries Solenoid Valves',
+'products.solenoidValves.applications.1': 'Industrial automation & process control',
+'products.solenoidValves.applications.2': 'Oil & gas plants',
+'products.solenoidValves.applications.3': 'Chemical & petrochemical industries',
+'products.solenoidValves.applications.4': 'Water treatment & distribution systems',
+'products.solenoidValves.applications.5': 'Food & beverage processing',
+'products.solenoidValves.applications.6': 'Pharmaceutical & medical applications',
+'products.solenoidValves.applications.7': 'HVAC & refrigeration systems',
+'products.solenoidValves.keyFeatures.title': 'Key Features of Danesh Industries Solenoid Valves',
+'products.solenoidValves.keyFeatures.1': 'Precise Flow Control – Provides accurate regulation of fluids and gases',
+'products.solenoidValves.keyFeatures.2': 'Durable Build – Manufactured from premium-grade materials for long service life',
+'products.solenoidValves.keyFeatures.3': 'Automation-Ready – Compatible with industrial automation and process systems',
+'products.solenoidValves.keyFeatures.4': 'Leak-Proof Operation – Ensures reliability in critical applications',
+'products.solenoidValves.keyFeatures.5': 'Custom Options – Available in different sizes, voltages, and materials',
+'products.solenoidValves.whyChoose.title': 'Why Choose Danesh Industries Solenoid Valves?',
+'products.solenoidValves.whyChoose.1': 'Manufactured to ASME, ASTM, DIN, EN, and IEC standards',
+'products.solenoidValves.whyChoose.2': 'Designed for precision, reliability, and durability',
+'products.solenoidValves.whyChoose.3': 'Available in custom sizes and material grades',
+'products.solenoidValves.whyChoose.4': 'Backed by timely delivery and quality assurance',
+'products.solenoidValves.whyChoose.5': 'Trusted supplier to industrial and commercial sectors',
+'products.solenoidValves.faq.q1': 'What is a solenoid valve?',
+'products.solenoidValves.faq.a1': 'A solenoid valve is an electromagnetically operated valve used to control the flow of liquids or gases in pipelines.',
+'products.solenoidValves.faq.q2': 'What industries use solenoid valves?',
+'products.solenoidValves.faq.a2': 'They are widely used in oil & gas, water treatment, chemical plants, pharmaceuticals, HVAC, and automation systems.',
+'products.solenoidValves.faq.q3': 'What materials are your solenoid valves made of?',
+'products.solenoidValves.faq.a3': 'We manufacture solenoid valves in stainless steel, brass, and mild steel, based on customer requirements.',
+'products.solenoidValves.faq.q4': 'Can solenoid valves be customized?',
+'products.solenoidValves.faq.a4': 'Yes, we offer custom sizes, voltage configurations, and material options as per project needs.',
+'products.solenoidValves.faq.q5': 'What is the typical delivery time?',
+'products.solenoidValves.faq.a5': 'Standard delivery is 3–4 weeks, depending on order volume and customization.',
+
+// Add more translations as needed
   },
   hi: {
     // Navigation
@@ -1100,6 +1138,9 @@ const translations = {
 
     // Pipe Fittings Section - Hindi
     'products.pipeFittings.introduction': 'दानेश इंडस्ट्रीज में, हम आधुनिक पाइपिंग सिस्टम की रीढ़ बनाने वाली पाइप फिटिंग्स की एक विस्तृत श्रृंखला का निर्माण और आपूर्ति करते हैं। फिटिंग्स पाइप्स को जोड़ने, दिशा बदलने, जोड़ों को सील करने और पाइपलाइनों के भीतर प्रवाह को नियंत्रित करने के लिए आवश्यक हैं। हमारी फिटिंग्स ASME, ASTM, DIN, EN और अन्य वैश्विक मानकों को पूरा करने के लिए डिज़ाइन की गई हैं, जो तेल और गैस, जल उपचार, पेट्रोकेमिकल्स, HVAC, खाद्य प्रसंस्करण और बिजली उत्पादन जैसे उद्योगों में विश्वसनीयता और प्रदर्शन सुनिश्चित करती हैं।',
+    'products.pipeFittings.applications.title': 'दानेश इंडस्ट्रीज पाइप फिटिंग्स के अनुप्रयोग',
+    'products.pipeFittings.whyChoose.title': 'दानेश इंडस्ट्रीज पाइप फिटिंग्स को क्यों चुनें?',
+    'products.pipeFittings.faq.title': 'पाइप फिटिंग्स FAQ',
     'products.pipeFittings.applications.1': 'तेल और गैस ट्रांसमिशन लाइनें',
     'products.pipeFittings.applications.2': 'रासायनिक और पेट्रोकेमिकल संयंत्र',
     'products.pipeFittings.applications.3': 'जल आपूर्ति और उपचार प्रणाली',
@@ -1126,6 +1167,7 @@ const translations = {
     'products.ductileIronFittings.composition.points.1': 'उच्च तन्यता ताकत',
     'products.ductileIronFittings.composition.points.2': 'क्रैकिंग और वार्पिंग के प्रतिरोध',
     'products.ductileIronFittings.composition.points.3': 'चरम वातावरण में बेहतर प्रदर्शन',
+    'products.ductileIronFittings.composition.title': 'डक्टाइल आयरन फिटिंग्स की संरचना',
     'products.ductileIronFittings.advantages.1': 'हीट रेजिस्टेंट – 1000°F (538°C) तक तापमान का सामना करता है, जो इसे चरम परिचालन परिस्थितियों के लिए आदर्श बनाता है',
     'products.ductileIronFittings.advantages.2': 'संक्षारण प्रतिरोधी – जिंक फॉसफेट कोटिंग नमी, समुद्री जल और संक्षारक तत्वों के खिलाफ सुरक्षा सुनिश्चित करती है',
     'products.ductileIronFittings.advantages.3': 'बहुमुखी प्रतिभा – कोहनियां, टीज़, रेड्यूसर, कपलर और फ्लैंजेस सहित कई डिज़ाइनों में उपलब्ध, आकार ½" से 6" या अधिक',
@@ -1164,6 +1206,7 @@ const translations = {
     'products.groovedFittings.components.body.points.2': 'पाइप्स और कपलिंग्स के साथ सुरक्षित कनेक्शन के लिए ग्रूव्ड सतहों की सुविधा',
     'products.groovedFittings.components.body.points.3': 'मजबूत, लीक-फ्री कनेक्शन के लिए सीलिंग रिंग्स के साथ डिज़ाइन किया गया',
     'products.groovedFittings.components.gasket.title': 'गैस्केट',
+    'products.groovedFittings.components.title': 'ग्रूव्ड फिटिंग्स के कंपोनेंट्स',
     'products.groovedFittings.components.gasket.points.1': 'फिटिंग बॉडी और पाइप के सिरों के बीच सील प्रदान करता है',
     'products.groovedFittings.components.gasket.points.2': 'आमतौर पर नियोप्रीन, EPDM या रबर से बना',
     'products.groovedFittings.components.gasket.points.3': 'कंपन को कम करने और शोर अवशोषण प्रदान करता है',
@@ -1173,9 +1216,11 @@ const translations = {
     'products.groovedFittings.advantages.3': 'बेहतर सुरक्षा – आपातकाल में दबाव जारी करता है, सिस्टम को नुकसान को कम करता है',
     'products.groovedFittings.advantages.4': 'कंपन नियंत्रण – गैस्केट सिस्टम में कंपन और शोर को कम करते हैं',
     'products.groovedFittings.advantages.5': 'विश्वसनीय सीलिंग – महत्वपूर्ण अनुप्रयोगों में दीर्घकालिक लीक-प्रूफ प्रदर्शन सुनिश्चित करता है',
+    'products.groovedFittings.benefits.title': 'दानेश इंडस्ट्रीज ग्रूव्ड फिटिंग्स के लाभ',
     'products.groovedFittings.limitations.1': 'उच्च प्रारंभिक लागत – पारंपरिक फिटिंग्स की तुलना में अधिक महंगा',
     'products.groovedFittings.limitations.2': 'रखरखाव की आवश्यकता – गैस्केट और कपलिंग्स का समय-समय पर निरीक्षण की आवश्यकता होती है',
     'products.groovedFittings.limitations.3': 'विशेष श्रम – स्थापना के लिए उचित प्रशिक्षण और उपकरण आवश्यक हैं',
+    'products.groovedFittings.limitations.title': 'ग्रूव्ड फिटिंग्स के नुकसान',
     'products.groovedFittings.applications.1': 'अग्नि सुरक्षा सिस्टम (स्प्रिंकलर, हाइड्रेंट)',
     'products.groovedFittings.applications.2': 'HVAC और एयर कंडीशनिंग नेटवर्क',
     'products.groovedFittings.applications.3': 'औद्योगिक पाइपिंग सिस्टम',
@@ -1382,41 +1427,7 @@ const translations = {
     'products.forgedSteelFittings.faq.q5': 'क्या फोर्ज्ड स्टील फिटिंग्स को अनुकूलित किया जा सकता है?',
     'products.forgedSteelFittings.faq.a5': 'हां, हम ग्राहक और परियोजना आवश्यकताओं के आधार पर कस्टम विशिष्टताओं और फिनिश प्रदान करते हैं।',
 
-    // Solenoid Valves Detailed Description - Hindi
-    'products.solenoidValves.detailedDescription': 'दानेश इंडस्ट्रीज में, हम सोलनॉइड वाल्व्स का निर्माण और आपूर्ति करते हैं, जो औद्योगिक पाइपिंग और स्वचालन प्रणालियों में परिशुद्ध नियंत्रण, स्थायित्व और दक्षता के लिए डिज़ाइन किए गए हैं। ये वाल्व तरल पदार्थों या गैसों के प्रवाह को नियंत्रित करने के लिए विद्युत चुम्बकीय संचालन का उपयोग करते हैं, जो इन्हें स्वचालन, द्रव नियंत्रण और प्रक्रिया उद्योगों में एक आवश्यक घटक बनाते हैं। हमारे सोलनॉइड वाल्व्स मांग वाले वातावरण में भी विश्वसनीय, लीक-प्रूफ प्रदर्शन प्रदान करने के लिए अंतरराष्ट्रीय मानकों को पूरा करने के लिए इंजीनियर्ड हैं।',
 
-    // Solenoid Valves Section - Hindi
-    // 'products.solenoidValves.introduction': 'At Danesh Industries, we manufacture and supply Solenoid Valves, designed for precision control, durability, and efficiency in industrial piping and automation systems. These valves use electromagnetic operation to regulate the flow of liquids or gases, making them an essential component in automation, fluid control, and process industries. Our solenoid valves are engineered to meet international standards and deliver reliable, leak-proof performance even in demanding environments.',
-    // 'products.solenoidValves.applications.title': 'Applications of Danesh Industries Solenoid Valves',
-    // 'products.solenoidValves.applications.1': 'Industrial automation & process control',
-    // 'products.solenoidValves.applications.2': 'Oil & gas plants',
-    // 'products.solenoidValves.applications.3': 'Chemical & petrochemical industries',
-    // 'products.solenoidValves.applications.4': 'Water treatment & distribution systems',
-    // 'products.solenoidValves.applications.5': 'Food & beverage processing',
-    // 'products.solenoidValves.applications.6': 'Pharmaceutical & medical applications',
-    // 'products.solenoidValves.applications.7': 'HVAC & refrigeration systems',
-    // 'products.solenoidValves.keyFeatures.title': 'Key Features of Danesh Industries Solenoid Valves',
-    // 'products.solenoidValves.keyFeatures.1': 'Precise Flow Control – Provides accurate regulation of fluids and gases',
-    // 'products.solenoidValves.keyFeatures.2': 'Durable Build – Manufactured from premium-grade materials for long service life',
-    // 'products.solenoidValves.keyFeatures.3': 'Automation-Ready – Compatible with industrial automation and process systems',
-    // 'products.solenoidValves.keyFeatures.4': 'Leak-Proof Operation – Ensures reliability in critical applications',
-    // 'products.solenoidValves.keyFeatures.5': 'Custom Options – Available in different sizes, voltages, and materials',
-    // 'products.solenoidValves.whyChoose.title': 'Why Choose Danesh Industries Solenoid Valves?',
-    // 'products.solenoidValves.whyChoose.1': 'Manufactured to ASME, ASTM, DIN, EN, and IEC standards',
-    // 'products.solenoidValves.whyChoose.2': 'Designed for precision, reliability, and durability',
-    // 'products.solenoidValves.whyChoose.3': 'Available in custom sizes and material grades',
-    // 'products.solenoidValves.whyChoose.4': 'Backed by timely delivery and quality assurance',
-    // 'products.solenoidValves.whyChoose.5': 'Trusted supplier to industrial and commercial sectors',
-    // 'products.solenoidValves.faq.q1': 'What is a solenoid valve?',
-    // 'products.solenoidValves.faq.a1': 'A solenoid valve is an electromagnetically operated valve used to control the flow of liquids or gases in pipelines.',
-    // 'products.solenoidValves.faq.q2': 'What industries use solenoid valves?',
-    // 'products.solenoidValves.faq.a2': 'They are widely used in oil & gas, water treatment, chemical plants, pharmaceuticals, HVAC, and automation systems.',
-    // 'products.solenoidValves.faq.q3': 'What materials are your solenoid valves made of?',
-    // 'products.solenoidValves.faq.a3': 'We manufacture solenoid valves in stainless steel, brass, and mild steel, based on customer requirements.',
-    // 'products.solenoidValves.faq.q4': 'Can solenoid valves be customized?',
-    // 'products.solenoidValves.faq.a4': 'Yes, we offer custom sizes, voltage configurations, and material options as per project needs.',
-    // 'products.solenoidValves.faq.q5': 'What is the typical delivery time?',
-    // 'products.solenoidValves.faq.a5': 'Standard delivery is 3–4 weeks, depending on order volume and customization.',
 
 
 

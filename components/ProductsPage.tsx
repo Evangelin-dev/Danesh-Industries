@@ -6,6 +6,25 @@ import { useLanguage } from '../contexts/LanguageContext';
 import ContactPopup from './ContactPopup';
 
 
+// Add helper functions after productData (or near top of file)
+const convertIdToTranslationKey = (id?: string) => {
+    if (!id) return '';
+    // convert hyphen-case id like 'ss-304-flanges' -> 'ss304Flanges', 'ms-spacer-flanges' -> 'msSpacerFlanges'
+    const parts = id.split('-');
+    return parts.map((p, i) => i === 0 ? p.toLowerCase() : p.charAt(0).toUpperCase() + p.slice(1)).join('');
+};
+
+const translateArray = (items: string[] = [], categoryId: string | undefined, section: string, language: string, t: (k: string) => string) => {
+    if (language !== 'hi' || !categoryId) return items;
+    const keyId = convertIdToTranslationKey(categoryId);
+    return items.map((item, idx) => {
+        const tKey = `products.${keyId}.${section}.${idx + 1}`;
+        const translated = t(tKey);
+        // if translation equals key, assume missing -> fallback to original item
+        return translated && translated !== tKey ? translated : item;
+    });
+};
+
 const PRODUCT_IMAGE = 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=4000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 const getProductDescription = (category: string) => {
                 return `Leading manufacturer and supplier of ${category}, flanges, fittings, valves, and industrial components. Danesh Industries offers high-quality ${category.toLowerCase()} manufacturing in Chennai, India. We specialize in precision-engineered products meeting international standards. Contact us for ${category.toLowerCase()}, industrial valves, and fittings requirements.`;
@@ -1174,24 +1193,51 @@ const AccordionItem: React.FC<{ title: string; children: React.ReactNode; isOpen
 };
 
 const ProductDetail: React.FC<{ item: any; categoryId: string; language: string; t: (key: string) => string }> = ({ item, categoryId, language, t }) => {
-    const renderList = (items: string[]) => (
-        <ul className="list-none pl-5 space-y-1">
-            {items.map((text, index) => <li key={index} className="flex items-center"><span className="text-green-500 mr-2">✔</span>{text}</li>)}
-        </ul>
-    );
+    const getTranslatedItemName = (itemName: string) => {
+        if (language !== 'hi') return itemName;
+        
+        const translations: { [key: string]: string } = {
+            'Plug Valve Components': t('products.items.plugValveComponents'),
+            'Stem for Ball Valve': t('products.items.stemForBallValve'),
+            'Threaded Flanges': t('products.items.threadedFlanges'),
+            'Blind Flanges': t('products.items.blindFlanges'),
+            'Custom Configurations': t('products.items.customConfigurations'),
+        };
+        
+        return translations[itemName] || itemName;
+    };
 
-    const renderTable = (data: Record<string, string>) => (
-        <table className="min-w-full">
-            <tbody>
-                {Object.entries(data).map(([key, value]) => (
-                    <tr key={key} className="border-b">
-                        <td className="py-2 font-semibold pr-4">{key}</td>
-                        <td className="py-2">{value}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
-    );
+    const renderList = (items: string[] | undefined, section?: string) => {
+        if (!items) return null;
+        const listItems = section ? translateArray(items, categoryId, section, language, t) : items;
+        return (
+            <ul className="list-none pl-5 space-y-1">
+                {listItems.map((text, index) => <li key={index} className="flex items-center"><span className="text-green-500 mr-2">✔</span>{text}</li>)}
+            </ul>
+        );
+    };
+
+    const renderTable = (data: Record<string, string> | undefined) => {
+        if (!data) return null;
+        return (
+            <table className="min-w-full">
+                <tbody>
+                    {Object.entries(data).map(([key, value]) => {
+                        // Try translate header and value where possible
+                        const header = language === 'hi' && categoryId ? t(`products.${convertIdToTranslationKey(categoryId)}.specifications.${key.replace(/\s+/g, '')}`) : key;
+                        const translatedHeader = header && header !== `products.${convertIdToTranslationKey(categoryId)}.specifications.${key.replace(/\s+/g, '')}` ? header : key;
+                        const translatedValue = language === 'hi' ? (t(`products.${convertIdToTranslationKey(categoryId)}.specifications.values.${key.replace(/\s+/g, '')}`) || value) : value;
+                        return (
+                            <tr key={key} className="border-b">
+                                <td className="py-2 font-semibold pr-4">{translatedHeader}</td>
+                                <td className="py-2">{translatedValue}</td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
+        );
+    };
 
     const renderFaq = (faqItems: { q: string, a: string }[], categoryId?: string) => (
         <div className="space-y-4">
@@ -1215,14 +1261,16 @@ const ProductDetail: React.FC<{ item: any; categoryId: string; language: string;
 
     return (
         <div className="space-y-4">
-            {item.description && <p className="text-lg">{item.description}</p>}
+            {item.description && <p className="text-lg">{language === 'hi' && categoryId ? (t(`products.${convertIdToTranslationKey(categoryId)}.description`) || item.description) : item.description}</p>}
             <div className="flex flex-col lg:flex-row gap-6">
                 <div className="flex-shrink-0">
-                    <h4 className="text-lg font-semibold mb-2 text-center text-orange-400">{item.name}</h4>
+                    <h4 className="text-lg font-semibold mb-2 text-center text-orange-400">
+                        {getTranslatedItemName(item.name)}
+                    </h4>
                     {item.image && (
                         <img
                             src={item.image}
-                            alt={item.name}
+                            alt={getTranslatedItemName(item.name)}
                             className="w-48 h-48 object-contain rounded-lg shadow-lg"
                             loading="lazy"
                         />
@@ -1232,62 +1280,37 @@ const ProductDetail: React.FC<{ item: any; categoryId: string; language: string;
                     {item.keyFeatures && (
                         <div className="p-4 bg-gray-50 rounded-lg">
                             <h4 className="text-xl font-bold mb-3 text-brand-blue">
-                                {categoryId === 'ss-304-flanges' && language === 'hi' ? t('products.ss304Flanges.keyFeatures.title') :
-                                 categoryId === 'solenoid-valves' && language === 'hi' ? t('products.solenoidValves.keyFeatures.title') : 'Key Features'}
+                                {categoryId === 'ss-304-flanges' && language === 'hi' ? t('products.ss304Flanges.keyFeatures.title') : categoryId === 'solenoid-valves' && language === 'hi' ? t('products.solenoidValves.keyFeatures.title') : 'Key Features'}
                             </h4>
                             {categoryId === 'ss-304-flanges' && language === 'hi' ? (
+                                // existing special mapping...
                                 <ul className="list-none pl-5 space-y-1">
-                                    <li className="flex items-center">
-                                        <span className="text-green-500 mr-2">✔</span>
-                                        {t('products.ss304Flanges.keyFeatures.1')}
-                                    </li>
-                                    <li className="flex items-center">
-                                        <span className="text-green-500 mr-2">✔</span>
-                                        {t('products.ss304Flanges.keyFeatures.2')}
-                                    </li>
-                                    <li className="flex items-center">
-                                        <span className="text-green-500 mr-2">✔</span>
-                                        {t('products.ss304Flanges.keyFeatures.3')}
-                                    </li>
-                                    <li className="flex items-center">
-                                        <span className="text-green-500 mr-2">✔</span>
-                                        {t('products.ss304Flanges.keyFeatures.4')}
-                                    </li>
+                                    <li className="flex items-center"><span className="text-green-500 mr-2">✔</span>{t('products.ss304Flanges.keyFeatures.1')}</li>
+                                    <li className="flex items-center"><span className="text-green-500 mr-2">✔</span>{t('products.ss304Flanges.keyFeatures.2')}</li>
+                                    <li className="flex items-center"><span className="text-green-500 mr-2">✔</span>{t('products.ss304Flanges.keyFeatures.3')}</li>
+                                    <li className="flex items-center"><span className="text-green-500 mr-2">✔</span>{t('products.ss304Flanges.keyFeatures.4')}</li>
                                 </ul>
                             ) : categoryId === 'solenoid-valves' && language === 'hi' ? (
+                                // existing special mapping...
                                 <ul className="list-none pl-5 space-y-1">
-                                    <li className="flex items-center">
-                                        <span className="text-green-500 mr-2">✔</span>
-                                        {t('products.solenoidValves.keyFeatures.1')}
-                                    </li>
-                                    <li className="flex items-center">
-                                        <span className="text-green-500 mr-2">✔</span>
-                                        {t('products.solenoidValves.keyFeatures.2')}
-                                    </li>
-                                    <li className="flex items-center">
-                                        <span className="text-green-500 mr-2">✔</span>
-                                        {t('products.solenoidValves.keyFeatures.3')}
-                                    </li>
-                                    <li className="flex items-center">
-                                        <span className="text-green-500 mr-2">✔</span>
-                                        {t('products.solenoidValves.keyFeatures.4')}
-                                    </li>
-                                    <li className="flex items-center">
-                                        <span className="text-green-500 mr-2">✔</span>
-                                        {t('products.solenoidValves.keyFeatures.5')}
-                                    </li>
+                                    <li className="flex items-center"><span className="text-green-500 mr-2">✔</span>{t('products.solenoidValves.keyFeatures.1')}</li>
+                                    <li className="flex items-center"><span className="text-green-500 mr-2">✔</span>{t('products.solenoidValves.keyFeatures.2')}</li>
+                                    <li className="flex items-center"><span className="text-green-500 mr-2">✔</span>{t('products.solenoidValves.keyFeatures.3')}</li>
+                                    <li className="flex items-center"><span className="text-green-500 mr-2">✔</span>{t('products.solenoidValves.keyFeatures.4')}</li>
+                                    <li className="flex items-center"><span className="text-green-500 mr-2">✔</span>{t('products.solenoidValves.keyFeatures.5')}</li>
                                 </ul>
                             ) : (
-                                renderList(item.keyFeatures)
+                                renderList(item.keyFeatures, 'keyFeatures')
                             )}
                         </div>
                     )}
                     {item.specifications && (
                         <div>
                             <h4 className="text-lg font-semibold mb-2">
-                                {categoryId === 'solenoid-valves' && language === 'hi' ? 'विशेषताएं' : 'Specifications'}
+                                {categoryId === 'solenoid-valves' && language === 'hi' ? t('products.specifications') : 'Specifications'}
                             </h4>
                             {categoryId === 'solenoid-valves' && language === 'hi' ? (
+                                // existing special mapping...
                                 <table className="min-w-full">
                                     <tbody>
                                         <tr className="border-b">
@@ -1299,7 +1322,7 @@ const ProductDetail: React.FC<{ item: any; categoryId: string; language: string;
                                             <td className="py-2">{t('products.solenoidValves.specifications.surfaceFinish')}</td>
                                         </tr>
                                         <tr className="border-b">
-                                            <td className="py-2 font-semibold pr-4">{'पैकेजिंग'}</td>
+                                            <td className="py-2 font-semibold pr-4">{t('products.packaging')}</td>
                                             <td className="py-2">{t('products.solenoidValves.specifications.packaging')}</td>
                                         </tr>
                                     </tbody>
@@ -1312,21 +1335,21 @@ const ProductDetail: React.FC<{ item: any; categoryId: string; language: string;
                     {item.additionalInfo && (
                         <div>
                             <h4 className="text-lg font-semibold mb-2">
-                                {categoryId === 'solenoid-valves' && language === 'hi' ? 'अतिरिक्त जानकारी' : 'Additional Information'}
+                                {categoryId === 'solenoid-valves' && language === 'hi' ? t('products.additionalInfo') : 'Additional Information'}
                             </h4>
                             {categoryId === 'solenoid-valves' && language === 'hi' ? (
                                 <table className="min-w-full">
                                     <tbody>
                                         <tr className="border-b">
-                                            <td className="py-2 font-semibold pr-4">{'उत्पादन क्षमता'}</td>
+                                            <td className="py-2 font-semibold pr-4">{t('products.productionCapacity')}</td>
                                             <td className="py-2">{t('products.solenoidValves.additionalInfo.productionCapacity')}</td>
                                         </tr>
                                         <tr className="border-b">
-                                            <td className="py-2 font-semibold pr-4">{'डिलीवरी समय'}</td>
+                                            <td className="py-2 font-semibold pr-4">{t('products.deliveryTime')}</td>
                                             <td className="py-2">{t('products.solenoidValves.additionalInfo.deliveryTime')}</td>
                                         </tr>
                                         <tr className="border-b">
-                                            <td className="py-2 font-semibold pr-4">{'पैकेजिंग'}</td>
+                                            <td className="py-2 font-semibold pr-4">{t('products.packaging')}</td>
                                             <td className="py-2">{t('products.solenoidValves.additionalInfo.packaging')}</td>
                                         </tr>
                                     </tbody>
@@ -1342,7 +1365,7 @@ const ProductDetail: React.FC<{ item: any; categoryId: string; language: string;
                     {item.faq && (
                         <div>
                             <h4 className="text-lg font-semibold mb-2">
-                                {categoryId === 'ss-304-flanges' && language === 'hi' ? 'सामान्य प्रश्न' : 'FAQs'}
+                                {categoryId === 'ss-304-flanges' && language === 'hi' ? t('products.faq') : 'FAQs'}
                             </h4>
                             {categoryId === 'ss-304-flanges' && language === 'hi' ? (
                                 <div className="space-y-4">
@@ -1380,6 +1403,20 @@ const ProductDetail: React.FC<{ item: any; categoryId: string; language: string;
 
 const ProductsPage: React.FC = () => {
   const { t, language } = useLanguage();
+
+  const getTranslatedItemName = (itemName: string) => {
+    if (language !== 'hi') return itemName;
+    
+    const translations: { [key: string]: string } = {
+      'Plug Valve Components': t('products.items.plugValveComponents'),
+      'Stem for Ball Valve': t('products.items.stemForBallValve'),
+      'Threaded Flanges': t('products.items.threadedFlanges'),
+      'Blind Flanges': t('products.items.blindFlanges'),
+      'Custom Configurations': t('products.items.customConfigurations'),
+    };
+    
+    return translations[itemName] || itemName;
+  };
 
  //popup
 
@@ -1581,8 +1618,8 @@ const ProductsPage: React.FC = () => {
                         <section key={categoryData.id} id={categoryData.id} className="mb-20 scroll-mt-32 animate-fade-in" style={{ animationDelay: `${0.5 + catIndex * 0.2}s` }}>
                             <div className="mb-8">
                                 <div className="flex justify-between items-center">
-                                    <h2 className={`text-3xl lg:text-4xl font-bold border-l-4 border-brand-yellow pl-4 mb-4 ${categoryData.id === 'flanges' || categoryData.id === 'valve-components' || categoryData.id === 'ms-flanges' || categoryData.id === 'ss-304-flanges' || categoryData.id === 'gi-r-brand-fittings' || categoryData.id === 'gi-fittings' || categoryData.id === 'ss-fittings' || categoryData.id === 'pull-studs' || categoryData.id === 'plug-valves' || categoryData.id === 'control-valves' || categoryData.id === 'mild-steel-pins' || categoryData.id === 'partition-plate-die' || categoryData.id === 'ball-valve-seat-ring' || categoryData.id === 'solenoid-valves' || categoryData.id === 'cast-steel-screwed-fittings' || categoryData.id === 'pipe-fittings' || categoryData.id === 'gi-slip-on-flanges' || categoryData.id === 'ss-316-flanges' || categoryData.id === 'ms-spacer-flanges' ? 'text-orange-500' : 'text-brand-blue'}`}>
-                                        {categoryData.category}</h2>
+                                    <h2 className={`text-3xl lg:text-4xl font-bold border-l-4 border-brand-yellow pl-4 mb-4 ${['flanges', 'valve-components', 'ms-flanges', 'ss-304-flanges', 'gi-r-brand-fittings', 'gi-fittings', 'ss-fittings', 'pull-studs', 'plug-valves', 'control-valves', 'mild-steel-pins', 'partition-plate-die', 'ball-valve-seat-ring', 'solenoid-valves', 'cast-steel-screwed-fittings', 'pipe-fittings', 'gi-slip-on-flanges', 'ss-316-flanges', 'ms-spacer-flanges'].includes(categoryData.id) ? 'text-orange-500' : 'text-brand-blue'}`}>
+                                        {language === 'hi' ? t(`products.categories.${categoryData.id}`) : categoryData.category}</h2>
                                     <select
                                         value={selectedItem[categoryData.id] || ''}
                                         onChange={(e) => handleItemSelect(categoryData.id, e.target.value)}
@@ -1593,7 +1630,9 @@ const ProductsPage: React.FC = () => {
                     >
                                         <option value="">{t('products.selectItem')}</option>
                                         {categoryData.items.map((item, index) => (
-                                            <option key={index} value={item.name}>{item.name}</option>
+                                            <option key={index} value={item.name}>
+                                                {getTranslatedItemName(item.name)}
+                                            </option>
                                         ))}
                                     </select>
                                 </div>
@@ -1663,7 +1702,7 @@ const ProductsPage: React.FC = () => {
                                                             ? t('products.msFlanges.applications.title')
                                                             : categoryData.id === 'ss-304-flanges' && language === 'hi'
                                                             ? t('products.ss304Flanges.applications.title')
-                                                            : `Applications of Danesh Industries ${categoryData.category}`}
+                                                            : language === 'hi' ? t('products.applications.title') : `Applications of Danesh Industries ${categoryData.category}`}
                                                     </h3>
                                                     <ul className="list-none space-y-2 text-lg text-white">
                                                         {categoryData.id === 'flanges' && language === 'hi'
@@ -1766,7 +1805,7 @@ const ProductsPage: React.FC = () => {
                                             </div>
                                         ) : (
                                             <>
-                                                <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' ? 'text-orange-500' : 'text-amber-600'}`}>Applications of Danesh Industries {categoryData.category}</h3>
+                                                <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' ? 'text-orange-500' : 'text-amber-600'}`}>{language === 'hi' ? t('products.applications.title') : `Applications of Danesh Industries ${categoryData.category}`}</h3>
                                                 <ul className="list-none space-y-2 text-lg text-white">
                                                     {categoryData.id === 'ms-flanges' && language === 'hi'
                                                         ? [
@@ -1822,7 +1861,7 @@ const ProductsPage: React.FC = () => {
                                                             ? t('products.pipeFittings.applications.title')
                                                             : categoryData.id === 'solenoid-valves' && language === 'hi'
                                                             ? t('products.solenoidValves.applications.title')
-                                                            : `Applications of Danesh Industries ${categoryData.category}`}
+                                                            : language === 'hi' ? t('products.applications.title') : `Applications of Danesh Industries ${categoryData.category}`}
                                                     </h3>
                                                     <ul className="list-none space-y-2 text-lg text-white">
                                                         {categoryData.id === 'ms-flanges' && language === 'hi'
@@ -1893,12 +1932,12 @@ const ProductsPage: React.FC = () => {
                                                             ))
                                                             : categoryData.id === 'gi-fittings' && language === 'hi'
                                                             ? [
-                                                                'प्लंबिंग और सैनिटरी सिस्टम',
-                                                                'जल आपूर्ति और वितरण पाइपलाइन',
-                                                                'हीटिंग सिस्टम और HVAC नेटवर्क',
-                                                                'रासायनिक और औद्योगिक पाइपलाइन',
-                                                                'घरेलू और वाणिज्यिक पाइपिंग सिस्टम',
-                                                                'कृषि और सिंचाई अनुप्रयोग'
+                                                                t('products.giFittings.applications.1'),
+                                                                t('products.giFittings.applications.2'),
+                                                                t('products.giFittings.applications.3'),
+                                                                t('products.giFittings.applications.4'),
+                                                                t('products.giFittings.applications.5'),
+                                                                t('products.giFittings.applications.6')
                                                             ].map((app, index) => (
                                                                 <li key={index} className="flex items-center">
                                                                     <span className="text-blue-500 mr-2">●</span>{app}
@@ -1906,12 +1945,12 @@ const ProductsPage: React.FC = () => {
                                                             ))
                                                             : categoryData.id === 'ss-fittings' && language === 'hi'
                                                             ? [
-                                                                'तेल और गैस अन्वेषण और पाइपलाइन',
-                                                                'रासायनिक और पेट्रोकेमिकल प्रसंस्करण संयंत्र',
-                                                                'खाद्य और पेय प्रसंस्करण (डेयरी, ब्रुअरी, वाइनरी)',
-                                                                'फार्मास्युटिकल और चिकित्सा उद्योग',
-                                                                'जल उपचार और विलवणीकरण संयंत्र',
-                                                                'निर्माण और भारी इंजीनियरिंग परियोजनाएं'
+                                                                t('products.ssFittings.applications.1'),
+                                                                t('products.ssFittings.applications.2'),
+                                                                t('products.ssFittings.applications.3'),
+                                                                t('products.ssFittings.applications.4'),
+                                                                t('products.ssFittings.applications.5'),
+                                                                t('products.ssFittings.applications.6')
                                                             ].map((app, index) => (
                                                                 <li key={index} className="flex items-center">
                                                                     <span className="text-blue-500 mr-2">●</span>{app}
@@ -2005,7 +2044,7 @@ const ProductsPage: React.FC = () => {
                                             </div>
                                         ) : (
                                             <>
-                                                <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' ? 'text-orange-500' : 'text-amber-600'}`}>Applications of Danesh Industries {categoryData.category}</h3>
+                                                <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' ? 'text-orange-500' : 'text-amber-600'}`}>{language === 'hi' ? t('products.applications.title') : `Applications of Danesh Industries ${categoryData.category}`}</h3>
                                                 <ul className="list-none space-y-2 text-lg text-white">
                                                     {categoryData.applications.map((app, index) => (
                                                         <li key={index} className="flex items-center">
@@ -2208,11 +2247,11 @@ const ProductsPage: React.FC = () => {
                                                             ))
                                                             : categoryData.id === 'gi-fittings' && language === 'hi'
                                                             ? [
-                                                                'ताकत और स्थायित्व - भारी-शुल्क और दीर्घकालिक उपयोग के लिए डिज़ाइन किया गया',
-                                                                'संक्षारण प्रतिरोधी - जंग और नमी से सुरक्षा के लिए जिंक कोटिंग',
-                                                                'लागत-प्रभावी - स्टेनलेस स्टील फिटिंग्स का किफायती विकल्प',
-                                                                'आसान स्थापना - विशेष उपकरण या श्रम की आवश्यकता के बिना त्वरित असेंबली',
-                                                                'कम रखरखाव - न्यूनतम रखरखाव के साथ विश्वसनीय प्रदर्शन'
+                                                                t('products.giFittings.advantages.1'),
+                                                                t('products.giFittings.advantages.2'),
+                                                                t('products.giFittings.advantages.3'),
+                                                                t('products.giFittings.advantages.4'),
+                                                                t('products.giFittings.advantages.5')
                                                             ].map((adv, index) => (
                                                                 <li key={index} className="flex items-center">
                                                                     <span className="text-green-500 mr-2">✔</span>{adv}
@@ -2220,12 +2259,12 @@ const ProductsPage: React.FC = () => {
                                                             ))
                                                             : categoryData.id === 'ss-fittings' && language === 'hi'
                                                             ? [
-                                                                'संक्षारण प्रतिरोध - जंग, नमी और कठोर रसायनों के खिलाफ उत्कृष्ट प्रतिरोध',
-                                                                'उच्च शक्ति - 3000 psi से 15,000 psi तक परिचालन दबाव का सामना',
-                                                                'तापमान प्रतिरोध - चरम तापमान रेंज में विश्वसनीय प्रदर्शन',
-                                                                'बहुमुखी प्रतिभा - कई आकारों (0.25" से 4") और कॉन्फ़िगरेशन में उपलब्ध',
-                                                                'स्थायित्व - न्यूनतम रखरखाव के साथ दीर्घकालिक विश्वसनीयता के लिए इंजीनियर्ड',
-                                                                'स्वच्छ और सुरक्षित - खाद्य, पेय और फार्मास्युटिकल उद्योगों के लिए आदर्श जहां स्वच्छता महत्वपूर्ण है'
+                                                                t('products.ssFittings.advantages.1'),
+                                                                t('products.ssFittings.advantages.2'),
+                                                                t('products.ssFittings.advantages.3'),
+                                                                t('products.ssFittings.advantages.4'),
+                                                                t('products.ssFittings.advantages.5'),
+                                                                t('products.ssFittings.advantages.6')
                                                             ].map((adv, index) => (
                                                                 <li key={index} className="flex items-center">
                                                                     <span className="text-green-500 mr-2">✔</span>{adv}
@@ -2249,7 +2288,7 @@ const ProductsPage: React.FC = () => {
                                             </div>
                                         ) : (
                                             <>
-                                                <h3 className="text-2xl font-bold text-brand-blue mb-4">Benefits of Danesh Industries {categoryData.category}</h3>
+                                                <h3 className="text-2xl font-bold text-brand-blue mb-4">{language === 'hi' ? t('products.benefits.title') : `Benefits of Danesh Industries ${categoryData.category}`}</h3>
                                                 <ul className="list-none space-y-2 text-lg text-white">
                                                     {categoryData.advantages.map((adv, index) => (
                                                         <li key={index} className="flex items-center">
@@ -2271,7 +2310,7 @@ const ProductsPage: React.FC = () => {
                                                             ? t('products.msFlanges.keyFeatures.title')
                                                             : categoryData.id === 'ss-304-flanges' && language === 'hi'
                                                             ? t('products.ss304Flanges.keyFeatures.title')
-                                                            : `Key Features of Danesh Industries ${categoryData.category}`}
+                                                            : language === 'hi' ? t('products.keyFeatures.title') : `Key Features of Danesh Industries ${categoryData.category}`}
                                                     </h3>
                                                     <ul className="list-none space-y-2 text-lg text-white">
                                                         {categoryData.id === 'ms-flanges' && language === 'hi'
@@ -2347,11 +2386,11 @@ const ProductsPage: React.FC = () => {
                                                             ))
                                                             : categoryData.id === 'gi-fittings' && language === 'hi'
                                                             ? [
-                                                                'उच्च-गुणवत्ता वाला निर्माण - टिकाऊ गैल्वेनाइज्ड आयरन से बना, कठिन परिस्थितियों में वर्षों तक चलने के लिए डिज़ाइन किया गया',
-                                                                'विकल्पों की विस्तृत श्रृंखला - विभिन्न परियोजनाओं के अनुरूप कई आकारों, आकृतियों और शैलियों में उपलब्ध',
-                                                                'आसान स्थापना - परेशानी मुक्त सेटअप के लिए चरण-दर-चरण गाइड और स्पष्ट निर्देशों के साथ आपूर्ति',
-                                                                'संक्षारण प्रतिरोध - जंग, नमी और घिसाव के खिलाफ सुरक्षा के लिए सुरक्षात्मक गैल्वनीकरण',
-                                                                'लाइफटाइम विश्वसनीयता - उद्योग-मानक गुणवत्ता आश्वासन और वारंटी सहायता द्वारा समर्थित'
+                                                                t('products.giFittings.keyFeatures.1'),
+                                                                t('products.giFittings.keyFeatures.2'),
+                                                                t('products.giFittings.keyFeatures.3'),
+                                                                t('products.giFittings.keyFeatures.4'),
+                                                                t('products.giFittings.keyFeatures.5')
                                                             ].map((feature, index) => (
                                                                 <li key={index} className="flex items-center">
                                                                     <span className="text-blue-500 mr-2">●</span>{feature}
@@ -2359,11 +2398,11 @@ const ProductsPage: React.FC = () => {
                                                             ))
                                                             : categoryData.id === 'ss-fittings' && language === 'hi'
                                                             ? [
-                                                                'उच्च शक्ति और दबाव प्रतिरोध - 6000 PSI तक दबाव को संभाल सकता है',
-                                                                'उत्कृष्ट स्थायित्व - कास्ट फिटिंग्स की तुलना में लंबी सेवा जीवन',
-                                                                'संक्षारण प्रतिरोध - विशेष कोटिंग्स और सामग्री ग्रेड उपलब्ध',
-                                                                'आयामी सटीकता - सख्त सहनशीलता के साथ निर्मित',
-                                                                'कम रखरखाव - विश्वसनीय प्रदर्शन के साथ न्यूनतम डाउनटाइम'
+                                                                t('products.ssFittings.keyFeatures.1'),
+                                                                t('products.ssFittings.keyFeatures.2'),
+                                                                t('products.ssFittings.keyFeatures.3'),
+                                                                t('products.ssFittings.keyFeatures.4'),
+                                                                t('products.ssFittings.keyFeatures.5')
                                                             ].map((feature, index) => (
                                                                 <li key={index} className="flex items-center">
                                                                     <span className="text-blue-500 mr-2">●</span>{feature}
@@ -2391,7 +2430,7 @@ const ProductsPage: React.FC = () => {
                                                 <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'ss-304-flanges' ? 'text-orange-500' : 'text-amber-600'}`}>
                                                     {categoryData.id === 'ss-316-flanges' && language === 'hi'
                                                         ? t('products.ss316Flanges.keyFeatures.title')
-                                                        : `Key Features of Danesh Industries ${categoryData.category}`}
+                                                        : language === 'hi' ? t('products.keyFeatures.title') : `Key Features of Danesh Industries ${categoryData.category}`}
                                                 </h3>
                                                 <ul className="list-none space-y-2 text-lg text-white">
                                                     {categoryData.id === 'ms-spacer-flanges' && language === 'hi'
@@ -2434,7 +2473,7 @@ const ProductsPage: React.FC = () => {
                                         {categoryData.id === 'flanges' || categoryData.id === 'grooved-fittings' || categoryData.id === 'gi-threaded-flanges' || categoryData.id === 'gi-slip-on-flanges' ? (
                                             <div className="flex flex-col lg:flex-row gap-6">
                                                 <div className="flex-1">
-                                                    <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' || categoryData.id === 'grooved-fittings' ? 'text-orange-500' : 'text-brand-blue'}`}>Benefits of Danesh Industries {categoryData.category}</h3>
+                                                    <h3 className={`text-2xl font-bold mb-4 ${categoryData.id === 'flanges' || categoryData.id === 'grooved-fittings' ? 'text-orange-500' : 'text-brand-blue'}`}>{language === 'hi' ? t('products.benefits.title') : `Benefits of Danesh Industries ${categoryData.category}`}</h3>
                                                     <ul className="list-none space-y-2 text-lg text-white">
                                                         {categoryData.advantages.map((adv, index) => (
                                                             <li key={index} className="flex items-center">
@@ -2453,7 +2492,7 @@ const ProductsPage: React.FC = () => {
                                             </div>
                                         ) : (
                                             <>
-                                                <h3 className="text-2xl font-bold text-brand-blue mb-4">Benefits of Danesh Industries {categoryData.category}</h3>
+                                                <h3 className="text-2xl font-bold text-brand-blue mb-4">{language === 'hi' ? t('products.benefits.title') : `Benefits of Danesh Industries ${categoryData.category}`}</h3>
                                                 <ul className="list-none space-y-2 text-lg text-white">
                                                     {categoryData.advantages.map((adv, index) => (
                                                         <li key={index} className="flex items-center">
@@ -2625,11 +2664,10 @@ const ProductsPage: React.FC = () => {
                                                             ))
                                                             : categoryData.id === 'gi-fittings' && language === 'hi'
                                                             ? [
-                                                                'मानक और कस्टम GI फिटिंग्स की विस्तृत श्रृंखला',
-                                                                'ASME, ASTM, DIN, EN और अंतरराष्ट्रीय मानकों के अनुसार निर्मित',
-                                                                'घरेलू, वाणिज्यिक और औद्योगिक उपयोग के लिए उपयुक्त',
-                                                                'सख्त गुणवत्ता आश्वासन और प्रतिस्पर्धी मूल्य निर्धारण द्वारा समर्थित',
-                                                                'बड़ी परियोजनाओं के लिए थोक उपलब्धता और समय पर डिलीवरी'
+                                                                t('products.giFittings.whyChoose.1'),
+                                                                t('products.giFittings.whyChoose.2'),
+                                                                t('products.giFittings.whyChoose.3'),
+                                                                t('products.giFittings.whyChoose.4')
                                                             ].map((point, index) => (
                                                                 <li key={index} className="flex items-center">
                                                                     <span className="text-green-500 mr-2">✔</span>{point}

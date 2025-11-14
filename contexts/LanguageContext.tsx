@@ -1486,6 +1486,111 @@ const translations = {
     'products.partitionPlateDie.faq.q5': 'डाई को कैसे पैक किया जाता है?',
     'products.partitionPlateDie.faq.a5': 'पैकेजिंग ग्राहक आवश्यकताओं के अनुसार प्रदान की जाती है, जो सुरक्षित परिवहन और हैंडलिंग सुनिश्चित करती है।',
 
+    // Missing Solenoid Valves Specifications and Additional Info - Hindi
+    'products.solenoidValves.specifications.type': 'प्रकार',
+    'products.solenoidValves.specifications.material': 'सामग्री',
+    'products.solenoidValves.specifications.application': 'अनुप्रयोग',
+    'products.solenoidValves.specifications.surfaceFinish': 'सतह फिनिश',
+    'products.solenoidValves.specifications.packaging': 'पैकेजिंग',
+    'products.solenoidValves.additionalInfo.productionCapacity': 'उत्पादन क्षमता',
+    'products.solenoidValves.additionalInfo.deliveryTime': 'डिलीवरी समय',
+    'products.solenoidValves.additionalInfo.packaging': 'पैकेजिंग',
+
+    // Additional Product Introduction Keys - Hindi (only new ones)
+    'products.giFittings.introduction': 'दानेश इंडस्ट्रीज में, हम गैल्वेनाइज्ड आयरन (GI) फिटिंग्स का निर्माण और आपूर्ति करते हैं, जो संक्षारण प्रतिरोध और स्थायित्व के लिए जाने जाते हैं।',
+    'products.ssFittings.introduction': 'दानेश इंडस्ट्रीज में, हम स्टेनलेस स्टील (SS) फिटिंग्स का निर्माण और आपूर्ति करते हैं, जो उच्च दबाव, उच्च तापमान और संक्षारक अनुप्रयोगों के लिए परिशुद्धता इंजीनियर्ड हैं।',
+    'products.pullStuds.introduction': 'दानेश इंडस्ट्रीज में, हम परिशुद्ध मशीनिंग अनुप्रयोगों के लिए डिज़ाइन किए गए पुल स्टड्स (पुल स्टड पुलर्स) का निर्माण और आपूर्ति करते हैं।',
+    'products.plugValves.introduction': 'दानेश इंडस्ट्रीज में, हम औद्योगिक वाल्व सिस्टम में विश्वसनीय सीलिंग, सुचारू संचालन और स्थायित्व सुनिश्चित करने वाले प्लग वाल्व कंपोनेंट्स और असेंबली का निर्माण और आपूर्ति करते हैं।',
+    'products.controlValves.introduction': 'दानेश इंडस्ट्रीज में, हम परिशुद्धता, स्थायित्व और औद्योगिक प्रदर्शन के लिए डिज़ाइन किए गए कंट्रोल वाल्व कंपोनेंट्स की आपूर्ति करते हैं।',
+    'products.mildSteelPins.introduction': 'दानेश इंडस्ट्रीज में, हम ऑटोमोबाइल उद्योग और औद्योगिक अनुप्रयोगों में व्यापक रूप से उपयोग किए जाने वाले माइल्ड स्टील पिन्स का अग्रणी निर्माता हैं।',
+    'products.ballValveSeatRing.introduction': 'दानेश इंडस्ट्रीज में, हम औद्योगिक अनुप्रयोगों में परिशुद्धता, स्थायित्व और विश्वसनीयता के लिए डिज़ाइन किए गए बॉल वाल्व सीट रिंग्स का अग्रणी निर्माता हैं।',
+
+    // Common Product Terms - Hindi
+    'products.specifications': 'विशेषताएं',
+    'products.additionalInfo': 'अतिरिक्त जानकारी',
+    'products.faq': 'सामान्य प्रश्न',
+    'products.packaging': 'पैकेजिंग',
+    'products.productionCapacity': 'उत्पादन क्षमता',
+    'products.deliveryTime': 'डिलीवरी समय',
+
+    // GI Fittings Applications - Hindi
+    'products.giFittings.applications.1': 'प्लंबिंग और सैनिटरी सिस्टम',
+    'products.giFittings.applications.2': 'जल आपूर्ति और वितरण पाइपलाइन',
+    'products.giFittings.applications.3': 'हीटिंग सिस्टम और HVAC नेटवर्क',
+    'products.giFittings.applications.4': 'रासायनिक और औद्योगिक पाइपलाइन',
+    'products.giFittings.applications.5': 'घरेलू और वाणिज्यिक पाइपिंग सिस्टम',
+    'products.giFittings.applications.6': 'कृषि और सिंचाई अनुप्रयोग',
+
+    // SS Fittings Applications - Hindi
+    'products.ssFittings.applications.1': 'तेल और गैस अन्वेषण और पाइपलाइन',
+    'products.ssFittings.applications.2': 'रासायनिक और पेट्रोकेमिकल प्रसंस्करण संयंत्र',
+    'products.ssFittings.applications.3': 'खाद्य और पेय प्रसंस्करण (डेयरी, ब्रुअरी, वाइनरी)',
+    'products.ssFittings.applications.4': 'फार्मास्युटिकल और चिकित्सा उद्योग',
+    'products.ssFittings.applications.5': 'जल उपचार और विलवणीकरण संयंत्र',
+    'products.ssFittings.applications.6': 'निर्माण और भारी इंजीनियरिंग परियोजनाएं',
+
+    // GI Fittings Advantages - Hindi
+    'products.giFittings.advantages.1': 'ताकत और स्थायित्व - भारी-शुल्क और दीर्घकालिक उपयोग के लिए डिज़ाइन किया गया',
+    'products.giFittings.advantages.2': 'संक्षारण प्रतिरोधी - जंग और नमी से सुरक्षा के लिए जिंक कोटिंग',
+    'products.giFittings.advantages.3': 'लागत-प्रभावी - स्टेनलेस स्टील फिटिंग्स का किफायती विकल्प',
+    'products.giFittings.advantages.4': 'आसान स्थापना - विशेष उपकरण या श्रम की आवश्यकता के बिना त्वरित असेंबली',
+    'products.giFittings.advantages.5': 'कम रखरखाव - न्यूनतम रखरखाव के साथ विश्वसनीय प्रदर्शन',
+
+    // SS Fittings Advantages - Hindi
+    'products.ssFittings.advantages.1': 'संक्षारण प्रतिरोध - जंग, नमी और कठोर रसायनों के खिलाफ उत्कृष्ट प्रतिरोध',
+    'products.ssFittings.advantages.2': 'उच्च शक्ति - 3000 psi से 15,000 psi तक परिचालन दबाव का सामना',
+    'products.ssFittings.advantages.3': 'तापमान प्रतिरोध - चरम तापमान रेंज में विश्वसनीय प्रदर्शन',
+    'products.ssFittings.advantages.4': 'बहुमुखी प्रतिभा - कई आकारों (0.25" से 4") और कॉन्फ़िगरेशन में उपलब्ध',
+    'products.ssFittings.advantages.5': 'स्थायित्व - न्यूनतम रखरखाव के साथ दीर्घकालिक विश्वसनीयता के लिए इंजीनियर्ड',
+    'products.ssFittings.advantages.6': 'स्वच्छ और सुरक्षित - खाद्य, पेय और फार्मास्युटिकल उद्योगों के लिए आदर्श जहां स्वच्छता महत्वपूर्ण है',
+
+    // GI Fittings Key Features - Hindi
+    'products.giFittings.keyFeatures.1': 'उच्च-गुणवत्ता वाला निर्माण - टिकाऊ गैल्वेनाइज्ड आयरन से बना, कठिन परिस्थितियों में वर्षों तक चलने के लिए डिज़ाइन किया गया',
+    'products.giFittings.keyFeatures.2': 'विकल्पों की विस्तृत श्रृंखला - विभिन्न परियोजनाओं के अनुरूप कई आकारों, आकृतियों और शैलियों में उपलब्ध',
+    'products.giFittings.keyFeatures.3': 'आसान स्थापना - परेशानी मुक्त सेटअप के लिए चरण-दर-चरण गाइड और स्पष्ट निर्देशों के साथ आपूर्ति',
+    'products.giFittings.keyFeatures.4': 'संक्षारण प्रतिरोध - जंग, नमी और घिसाव के खिलाफ सुरक्षा के लिए सुरक्षात्मक गैल्वनीकरण',
+    'products.giFittings.keyFeatures.5': 'लाइफटाइम विश्वसनीयता - उद्योग-मानक गुणवत्ता आश्वासन और वारंटी सहायता द्वारा समर्थित',
+
+    // SS Fittings Key Features - Hindi
+    'products.ssFittings.keyFeatures.1': 'उच्च शक्ति और दबाव प्रतिरोध - 6000 PSI तक दबाव को संभाल सकता है',
+    'products.ssFittings.keyFeatures.2': 'उत्कृष्ट स्थायित्व - कास्ट फिटिंग्स की तुलना में लंबी सेवा जीवन',
+    'products.ssFittings.keyFeatures.3': 'संक्षारण प्रतिरोध - विशेष कोटिंग्स और सामग्री ग्रेड उपलब्ध',
+    'products.ssFittings.keyFeatures.4': 'आयामी सटीकता - सख्त सहनशीलता के साथ निर्मित',
+    'products.ssFittings.keyFeatures.5': 'कम रखरखाव - विश्वसनीय प्रदर्शन के साथ न्यूनतम डाउनटाइम',
+
+    // GI Fittings Why Choose - Hindi
+    'products.giFittings.whyChoose.1': 'मानक और कस्टम GI फिटिंग्स की विस्तृत श्रृंखला',
+    'products.giFittings.whyChoose.2': 'ASME, ASTM, DIN, EN और अंतरराष्ट्रीय मानकों के अनुसार निर्मित',
+    'products.giFittings.whyChoose.3': 'घरेलू, वाणिज्यिक और औद्योगिक उपयोग के लिए उपयुक्त',
+    'products.giFittings.whyChoose.4': 'कस्टमाइजेशन और समय पर डिलीवरी द्वारा समर्थित',
+
+    // Common Section Titles - Hindi
+    'products.applications.title': 'दानेश इंडस्ट्रीज के अनुप्रयोग',
+    'products.benefits.title': 'दानेश इंडस्ट्रीज के लाभ',
+    'products.keyFeatures.title': 'दानेश इंडस्ट्रीज की मुख्य विशेषताएं',
+    'products.whyChoose.title': 'दानेश इंडस्ट्रीज को क्यों चुनें',
+
+    // Product Item Names - Hindi
+    'products.items.plugValveComponents': 'प्लग वाल्व कंपोनेंट्स',
+    'products.items.stemForBallValve': 'बॉल वाल्व के लिए स्टेम',
+    'products.items.slip-onFlanges': 'स्लिप-ऑन फ्लैंजेस',
+    'products.items.buttweldFittings': 'बटवेल्ड फिटिंग्स',
+    'products.items.socketWeldFlanges': 'सॉकेट वेल्ड फ्लैंज',
+    'products.items.threadedFlanges': 'थ्रेडेड फ्लैंजेस',
+    'products.items.blindFlanges': 'ब्लाइंड फ्लैंजेस',
+    'products.items.lapJointFlanges': 'लैप जॉइंट फ्लैंजेस',
+
+    'products.items.customConfigurations': 'कस्टम कॉन्फ़िगरेशन',
+
+    // Common Product Terms - Hindi
+    'products.material': 'सामग्री',
+    'products.finishing': 'फिनिशिंग',
+    'products.packagingType': 'पैकेजिंग प्रकार',
+    'products.size': 'आकार',
+    'products.color': 'रंग',
+    'products.usageApplication': 'उपयोग/अनुप्रयोग',
+    'products.headShape': 'हेड आकार',
+
     // Add more translations as needed
   },
 };

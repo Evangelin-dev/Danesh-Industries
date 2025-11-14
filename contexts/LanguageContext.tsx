@@ -485,13 +485,13 @@ const translations = {
     
 
     // Flanges Applications - Hindi (Complete Set)
-    'products.flanges.applications.title': 'दानेश इंडस्ट्रीज फ्लैंजेस के अनुप्रयोग',
-    'products.flanges.applications.1': 'प्रक्रिया और यांत्रिक पाइपिंग सिस्टम',
-    'products.flanges.applications.2': 'पाइपिंग लेआउट में संरचनात्मक सहायता',
-    'products.flanges.applications.3': 'भूमिगत और टैंक पाइपिंग सिस्टम',
-    'products.flanges.applications.4': 'HVAC और वेंटिलेशन सिस्टम',
-    'products.flanges.applications.5': 'गैस, पानी और तेल वितरण नेटवर्क',
-    'products.flanges.applications.6': 'बिजली और ऊर्जा बुनियादी ढांचा',
+    'products.flanges.applications.title': 'Applications of Danesh Industries Flanges',
+    'products.flanges.applications.1': 'Process and mechanical piping systems',
+    'products.flanges.applications.2': 'Structural support in piping layouts',
+    'products.flanges.applications.3': 'Underground and tank piping systems',
+    'products.flanges.applications.4': 'HVAC and ventilation systems',
+    'products.flanges.applications.5': 'Gas, water and oil distribution networks',
+    'products.flanges.applications.6': 'Power and energy infrastructure',
 
     // Pull Studs Section - Hindi
     'products.pullStuds.introduction': 'दानेश इंडस्ट्रीज में, हम परिशुद्ध मशीनिंग अनुप्रयोगों के लिए डिज़ाइन किए गए पुल स्टड्स (पुल स्टड पुलर्स) का निर्माण और आपूर्ति करते हैं। ये कंपोनेंट्स CNC मशीनों और टूल होल्डिंग सिस्टम में महत्वपूर्ण हैं, जो सुरक्षित क्लैंपिंग, उच्च सटीकता और विश्वसनीय मशीनिंग प्रदर्शन सुनिश्चित करते हैं।',

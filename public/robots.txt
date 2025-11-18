@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /valvecomponents.html
+Disallow: /profile.html
+Disallow: /contactus.html
+Disallow: /clients.html
+Disallow: /organizationchart.html
+Disallow: /certificates.html
+Disallow: /industriesweserve.html
+
+
+Sitemap: https://www.daneshindustries.com/sitemap.xml

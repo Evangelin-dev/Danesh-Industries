@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ContactPopup from './ContactPopup';
+import SEO from './SEO';
 import { useLanguage } from '../contexts/LanguageContext';
 
 
@@ -25,6 +26,11 @@ const CapabilitiesPage: React.FC = () => {
 
     return (
         <>
+            <SEO
+                title="Manufacturing Capabilities - Danesh Industries"
+                description="Overview of Danesh Industries' manufacturing capabilities: CNC machining, VMC, testing, and quality assurance for valves, flanges and industrial components."
+                url="/capabilities"
+            />
             <style dangerouslySetInnerHTML={{
                 __html: `
                     @keyframes capabilities-slideshow {

@@ -1,9 +1,16 @@
 import React from 'react';
+import SEO from './SEO';
 
 const TermsPage: React.FC = () => {
   return (
-    <div className="bg-brand-light py-20">
-      <div className="container mx-auto px-6 max-w-4xl bg-white p-10 rounded-lg shadow-md">
+    <div>
+      <SEO
+        title="Terms & Conditions - Danesh Industries"
+        description="Terms and conditions for use of Danesh Industries website, purchase orders, warranty and liability terms for products and services."
+        url="/terms"
+      />
+      <div className="bg-brand-light py-20">
+        <div className="container mx-auto px-6 max-w-4xl bg-white p-10 rounded-lg shadow-md">
         <h1 className="text-4xl font-extrabold text-brand-dark mb-8">Terms & Conditions</h1>
         <div className="prose lg:prose-xl max-w-none text-brand-dark space-y-6">
           <section>
@@ -74,6 +81,7 @@ const TermsPage: React.FC = () => {
             <h2 className="text-2xl font-bold text-brand-yellow">11. Amendments</h2>
             <p>Danesh Industries may update or modify these Terms & Conditions without prior notice.</p>
           </section>
+        </div>
         </div>
       </div>
     </div>

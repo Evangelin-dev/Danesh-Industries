@@ -299,6 +299,25 @@ const HomePage: React.FC = () => {
 				{/* </div> */}
 			{/* </div> */} 
 
+            {/* Quick Links for internal linking (helps crawlers find important pages) */}
+            <section className="py-12 bg-white rounded-lg shadow-lg mt-12">
+                <div className="container mx-auto px-6 text-center">
+                    <h2 className="text-2xl font-bold text-brand-dark mb-4">Quick Links</h2>
+                    <div className="flex flex-wrap justify-center gap-4">
+                        <Link to="/about" className="px-4 py-2 rounded bg-brand-blue text-white">About</Link>
+                        <Link to="/products" className="px-4 py-2 rounded bg-brand-blue text-white">Products</Link>
+                        <Link to="/services" className="px-4 py-2 rounded bg-brand-blue text-white">Services</Link>
+                        <Link to="/capabilities" className="px-4 py-2 rounded bg-brand-blue text-white">Capabilities</Link>
+                        <Link to="/technology" className="px-4 py-2 rounded bg-brand-blue text-white">Technology</Link>
+                        <Link to="/certifications" className="px-4 py-2 rounded bg-brand-blue text-white">Certifications</Link>
+                        <Link to="/blog" className="px-4 py-2 rounded bg-brand-blue text-white">Blog</Link>
+                        <Link to="/contact" className="px-4 py-2 rounded bg-brand-blue text-white">Contact</Link>
+                        <Link to="/terms" className="px-4 py-2 rounded bg-brand-blue text-white">Terms</Link>
+                        <Link to="/privacy" className="px-4 py-2 rounded bg-brand-blue text-white">Privacy</Link>
+                    </div>
+                </div>
+            </section>
+
 			{/* Chatbot Section
 			/*<section className="py-10 bg-white">
 				<div className="container mx-auto px-6 text-center">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ContactPopup from "./ContactPopup";
 import ExportCountryPopup from "./CountryPopup";
+import SEO from './SEO';
 
 
 const DubaiValveSupplier: React.FC = () => {
@@ -35,6 +36,11 @@ const DubaiValveSupplier: React.FC = () => {
 
         {/* HERO */}
         <section className="relative h-[350px] md:h-[420px] flex items-center justify-center">
+        <SEO
+          title="Valve Supplier for Dubai (UAE) - Danesh Industries"
+          description="Danesh Industries supplies stainless-steel valves, CNC components, and flanges across the UAE. Export-ready valve solutions for Dubai, Abu Dhabi, Sharjah and beyond."
+          url="/dubai-valve-supplier"
+        />
           <img src="./uae.jpg" className="absolute inset-0 w-full h-full object-cover reveal" />
           <div className="absolute inset-0 bg-black bg-opacity-40" />
           <h1 className="text-white text-4xl md:text-5xl font-extrabold relative reveal">

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ContactPopup from "./ContactPopup";
+import SEO from './SEO';
 
 const SaudiValveSupplier: React.FC = () => {
   const [showContactPopup, setShowContactPopup] = useState(false);
@@ -49,6 +50,12 @@ const SaudiValveSupplier: React.FC = () => {
           box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
       `}</style>
+
+      <SEO
+        title="Valve Supplier for Saudi Arabia - Danesh Industries"
+        description="Danesh Industries exports high-performance industrial valves and CNC-machined components across Saudi Arabia. Reliable supply and export documentation for Riyadh, Jeddah and Dammam projects."
+        url="/saudi-valve-supplier"
+      />
 
       <div className="bg-brand-light">
 

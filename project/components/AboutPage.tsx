@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SEO from './SEO';
 import ContactPopup from './ContactPopup';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -145,8 +146,14 @@ const ClientLogos: React.FC<{ t: (key: string) => string }> = ({ t }) => {
     };
 
         return (
-            // Use <main> for the primary content area for better SEO/accessibility
-            <main className="py-20 relative" role="main" style={backgroundStyle}>
+            <>
+                <SEO
+                    title="About Danesh Industries - Precision Machining & Valve Components"
+                    description="Learn about Danesh Industries — precision machined parts, valve components, flanges and OEM spare parts manufacturer based in Chennai. Quality, compliance and timely delivery are our priorities."
+                    url="/about"
+                />
+                {/* Use <main> for the primary content area for better SEO/accessibility */}
+                <main className="py-20 relative" role="main" style={backgroundStyle}>
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black opacity-85"></div>
                 <div className="container mx-auto px-6 relative z-10">
 
@@ -213,6 +220,7 @@ const ClientLogos: React.FC<{ t: (key: string) => string }> = ({ t }) => {
 
                 </div>
             </main>
+            </>
         );
     };
 

@@ -37,7 +37,7 @@ const TechnologyPage: React.FC = () => {
         <>
             <SEO
                 title="Our Technology - Danesh Industries"
-                description="Advanced technologies and tools including SolidWorks, Mastercam, FARO Arm, PMI & Mobile Spectro, and Hydro Testing for precision manufacturing."
+                description="Danesh Industries uses an integrated suite of advanced technologies — SolidWorks for CAD, Mastercam for CAM automation, FARO measurement systems, PMI and mobile spectrometers for material verification, and rigorous hydro testing — combining digital design, precision measurement and process validation to deliver high-reliability components to global industries."
                 url="/technology"
             />
             <style dangerouslySetInnerHTML={{
@@ -170,9 +170,10 @@ const TechnologyPage: React.FC = () => {
             <div className="bg-brand-light py-20 relative" style={{ backgroundSize: 'cover', backgroundPosition: 'center', animation: 'tech-slideshow 16s infinite' }}>
                 <div className="absolute inset-0 bg-white opacity-50"></div>
                 <div className="container mx-auto px-6 relative z-10">
-                    <div className="text-center mb-16 animate-fade-in">
+                        <div className="text-center mb-16 animate-fade-in">
                         <h1 className="text-4xl font-extrabold text-brand-dark">{t('technology.title') || 'Our Technology'}</h1>
                         <p className="mt-4 text-lg text-brand-gray">{t('technology.subtitle') || 'We Integrating advanced tools and software into our processes.'}</p>
+                        <p className="mt-4 text-base text-brand-gray max-w-3xl mx-auto">{t('technology.longDescription') || 'Our technology stack brings together digital design, CNC programming, precision metrology and material verification to ensure every component meets specifications. From concept CAD models to CNC toolpaths, in-process inspection with FARO systems, to positive material identification and hydrostatic testing, we validate geometry, material, and performance to reduce defects and ensure fit-for-service delivery to petrochemical, power, and OEM customers. This holistic approach shortens lead times and improves part reliability.'}</p>
                     </div>
 
                     <div className="max-w-4xl mx-auto">

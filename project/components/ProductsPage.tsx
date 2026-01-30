@@ -439,7 +439,7 @@ const productData = [
         items: [
             {
                 name: 'GI Blind Flanges',
-                image: '/product_image/GI_Blind_Flanges.png',
+                image: '/product_image/GI_Threaded_Flanges.png',
                 additionalNote: 'Used to seal the end of a pipe system, providing safety and inspection points.',
             },
             {
@@ -476,19 +476,19 @@ const productData = [
         ],
         items: [
             {
-                name: 'Barbed Fittings',
+                name: 'Barbed Pipe Fittings for Low to Medium Pressure Applications',
                 image: '/product_image/Barbed_Fittings.png',
-                keyFeatures: ['Best suited for low to medium-pressure applications', 'Easy to install by hand or with a wrench', 'Available in brass, steel, and plastic', 'Suitable for plastic tubing, flexible hoses, and reinforced rubber pipes', 'Tapered design with ridges ensures a tight, secure hold']
+                keyFeatures: ['Our barbed fittings are precision-machined for secure hose connections in industrial fluid transfer systems', 'Manufactured in Chennai for quick installation and reliable performance', 'Available in brass, steel, and plastic', 'Suitable for plastic tubing, flexible hoses, and reinforced rubber pipes', 'Tapered ridged design ensures a tight, secure hold']
             },
             {
-                name: 'Threaded Fittings',
+                name: 'Threaded Pipe Fittings – Precision CNC Machined',
                 image: '/product_image/Threaded_Fittings.png',
-                keyFeatures: ['Provide stronger sealing than barbed fittings', 'Designed with a threaded lip for secure connection and disconnection', 'Excellent resistance to water and gas leaks', 'Manufactured in steel, brass, and plastic', 'Common uses include pressure relief valves, check valves, and joint connections', 'Compatible with straight and angled pipes']
+                keyFeatures: ['Danesh Industries manufactures threaded pipe fittings with accurate threading for strong sealing and vibration resistance', 'Suitable for oil & gas, water treatment, and industrial piping systems', 'Excellent resistance to water and gas leaks', 'Manufactured in steel, brass, and plastic', 'Common uses include pressure relief valves, check valves, and joint connections']
             },
             {
-                name: 'Compression Fittings',
+                name: 'Compression Pipe Fittings for High-Pressure Systems',
                 image: '/product_image/Compression_Fittings.png',
-                keyFeatures: ['Ideal for high-pressure applications', 'Made from brass, steel, aluminum, or plastic', 'Create a leak-proof seal using a ferrule or compression ring', 'Easy to install and highly reliable', 'Suitable for pipelines requiring durability, flexibility, and safety']
+                keyFeatures: ['Our compression fittings are designed for high-pressure and critical piping applications, offering leak-free performance and long-term reliability', 'Manufactured to meet industrial quality standards', 'Made from brass, steel, aluminum, or plastic', 'Create a leak-proof seal using a ferrule or compression ring', 'Suitable for pipelines requiring durability, flexibility, and safety']
             }
         ]
     },
@@ -1583,11 +1583,19 @@ const ProductsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Contact Popup */}
-      <ContactPopup
-        isOpen={showContactPopup}
-        onClose={() => setShowContactPopup(false)}
-      />
+            {/* Location Footer */}
+            <div className="bg-gray-900 text-gray-200 py-6">
+                <div className="container mx-auto px-4 text-center">
+                    <p className="text-sm font-semibold">Serving Chennai &amp; Industrial Hubs</p>
+                    <p className="text-sm mt-2">Danesh Industries supplies pipe fittings to Chennai, Sriperumbudur, Oragadam, Ambattur, Hosur, Coimbatore, and exports to UAE, Saudi Arabia, Bahrain, Oman, Qatar, and Kuwait.</p>
+                </div>
+            </div>
+
+            {/* Contact Popup */}
+            <ContactPopup
+                isOpen={showContactPopup}
+                onClose={() => setShowContactPopup(false)}
+            />
     </>
   );
 };

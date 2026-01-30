@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ContactPopup from './ContactPopup';
+import SEO from './SEO';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const getStandardsData = (t: (key: string) => string) => [
@@ -36,6 +37,11 @@ const CertificationsPage: React.FC = () => {
 
     return (
         <>
+            <SEO
+                title="Certifications & Compliance - Danesh Industries"
+                description="Danesh Industries certifications and compliance information, ISO and industry-standard practices for quality assurance and testing."
+                url="/certifications"
+            />
             <style dangerouslySetInnerHTML={{
                 __html: `
                     @keyframes cert-slideshow {

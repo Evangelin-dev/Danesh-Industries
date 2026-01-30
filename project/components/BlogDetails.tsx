@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useLanguage } from '../contexts/LanguageContext';
+import SEO from './SEO';
 // Removed: import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Removed: import BlogDetails from "./BlogDetails"; // This was likely a typo or unnecessary import
 
@@ -73,9 +74,15 @@ const BlogDetail = () => {
   if (!blog) return <p className="text-center">{t('blog.notFound') || 'Blog not found.'}</p>;
 
   // --- Main Blog Content Rendering ---
-
   return (
     <div className="max-w-4xl mx-auto px-6 py-10">
+      {blog && (
+        <SEO
+          title={language === 'hi' && (blog as any).title_hi ? (blog as any).title_hi : blog.title}
+          description={language === 'hi' && (blog as any).description_hi ? (blog as any).description_hi : blog.description}
+          url={`/blogs/${slug}`}
+        />
+      )}
       
       {/* Blog Image */}
       <img

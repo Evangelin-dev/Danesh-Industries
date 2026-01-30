@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import SEO from './SEO';
 import { Link } from "react-router-dom";
 import ContactPopup from './ContactPopup';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -90,7 +91,16 @@ const BlogPage: React.FC = () => {
     fetchBlogs();
   }, [language, t]);
 
-  if (loading) return <p className="text-center py-6">{t('blog.loading') || 'Loading blogs...'}</p>;
+  if (loading) return (
+    <>
+      <SEO
+        title={t('blog.titleMeta') || 'Blog - Danesh Industries'}
+        description={t('blog.descriptionMeta') || 'Industry insights, product guides, and technical articles on valves, flanges, and fittings from Danesh Industries.'}
+        url="/blog"
+      />
+      <p className="text-center py-6">{t('blog.loading') || 'Loading blogs...'}</p>
+    </>
+  );
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   // ✅ Show fallback if no blogs
@@ -108,6 +118,11 @@ const BlogPage: React.FC = () => {
         {/* Overlay */}
         <div className="absolute inset-0 bg-black opacity-50"></div>
 
+        <SEO
+          title={t('blog.titleMeta') || 'Blog - Danesh Industries'}
+          description={t('blog.descriptionMeta') || 'Industry insights, product guides, and technical articles on valves, flanges, and fittings from Danesh Industries.'}
+          url="/blog"
+        />
         <div className="container mx-auto px-6 text-center relative z-10">
           <div className="max-w-2xl mx-auto">
             <svg
@@ -150,12 +165,18 @@ const BlogPage: React.FC = () => {
 
   return (
     <div className="bg-black min-h-screen text-white">
+      <SEO
+        title={t('blog.titleMeta') || 'Blog - Danesh Industries'}
+        description={t('blog.descriptionMeta') || 'Industry insights, product guides, and technical articles on valves, flanges, and fittings from Danesh Industries.'}
+        url="/blog"
+      />
       {/* Page Header */}
-      <div className="py-10 text-center">
-        <h1 className="text-4xl md:text-5xl font-serif font-bold">
-          {t('blog.companyName') || 'Danesh Industries'}
-        </h1>
-        <h2 className="text-3xl mt-2 font-serif">{t('blog.title') || 'Blog'}</h2>
+      {/* Fallback H1 placed in-body so simple crawlers find it immediately */}
+      <h1 className="sr-only">{t('blog.title') || 'Blog — Industry Insights'}</h1>
+      <div className="py-10 text-center" role="main">
+        <h1 id="blog-main-heading" className="text-4xl md:text-5xl font-serif font-bold">{t('blog.title') || 'Blog — Industry Insights'}</h1>
+        <h2 className="text-3xl mt-2 font-serif">{t('blog.companyName') || 'Danesh Industries'}</h2>
+        <p className="max-w-2xl mx-auto mt-4 text-lg text-gray-300">{t('blog.subtitle') || 'Technical articles, product guides, and industry updates focused on valves, flanges, CNC machining and reliability engineering — written to help engineers and procurement teams make informed decisions.'}</p>
       </div>
 
       {/* Blog Cards */}

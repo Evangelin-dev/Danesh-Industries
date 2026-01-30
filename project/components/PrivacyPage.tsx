@@ -1,9 +1,16 @@
 import React from 'react';
+import SEO from './SEO';
 
 const PrivacyPage: React.FC = () => {
   return (
-    <div className="bg-brand-light py-20">
-      <div className="container mx-auto px-6 max-w-4xl bg-white p-10 rounded-lg shadow-md">
+    <div>
+      <SEO
+        title="Privacy Policy - Danesh Industries"
+        description="Danesh Industries privacy practices: what information we collect, how we use it, and how we protect your data."
+        url="/privacy"
+      />
+      <div className="bg-brand-light py-20">
+        <div className="container mx-auto px-6 max-w-4xl bg-white p-10 rounded-lg shadow-md">
         <h1 className="text-4xl font-extrabold text-brand-dark mb-8">Privacy Policy</h1>
         <p className="mb-6 text-brand-dark">At Danesh Industries, we value your privacy and are committed to protecting your personal information.</p>
         <div className="prose lg:prose-xl max-w-none text-brand-dark space-y-6">
@@ -67,6 +74,7 @@ const PrivacyPage: React.FC = () => {
               Address: No 906, 10th Cross Street, Venkateswara Nagar, Perungudi, Chennai - 600096, Tamil Nadu, India
             </p>
           </section>
+        </div>
         </div>
       </div>
     </div>

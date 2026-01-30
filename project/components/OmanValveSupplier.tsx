@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ContactPopup from "./ContactPopup";
+import SEO from './SEO';
 
 const OmanValveSupplier: React.FC = () => {
   const [showContactPopup, setShowContactPopup] = useState(false);
@@ -50,6 +51,12 @@ const OmanValveSupplier: React.FC = () => {
           box-shadow: 0 12px 28px rgba(0,0,0,0.12);
         }
       `}</style>
+
+      <SEO
+        title="CNC Machining & Valve Supplier for Oman - Danesh Industries"
+        description="Danesh Industries supplies CNC-machined components, stainless-steel valves and custom parts to Oman. Export-grade valves with quality assurance and timely delivery."
+        url="/oman-valve-supplier"
+      />
 
       <div className="bg-brand-light">
 

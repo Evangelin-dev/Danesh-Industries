@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prerender": "node ./scripts/prerender.cjs",
+    "check-seo-local": "node ./scripts/check-seo-local.cjs http://localhost:5173",
+    "check-seo-light": "node ./scripts/check-seo-lightweight.mjs http://localhost:5173"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -17,15 +20,12 @@
   "devDependencies": {
     "@types/node": "^22.14.0",
     "@types/react": "^19.1.13",
+    "cheerio": "^1.2.0",
+    "node-fetch": "^2.6.7",
+    "puppeteer": "^21.4.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"
   },
-
-
-
-
-
-  
   "commands": [
     {
       "type": "command",
@@ -34,11 +34,4 @@
       }
     }
   ]
-
-
-
-
-
-
-  
 }

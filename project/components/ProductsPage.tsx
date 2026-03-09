@@ -4,8 +4,30 @@ import SEO from './SEO';
 import { useLanguage } from '../contexts/LanguageContext';
 import ProductCard from './ProductCard';
 import ProductDetails from './ProductDetails';
+import InlineProductDetails from './InlineProductDetails';
 import ContactPopup from './ContactPopup';
+import CategoryTabs from './CategoryTabs';
+import CategoryTitle from './CategoryTitle';
 
+/**
+ * ProductsPage - Single Page Product Filtering System
+ * 
+ * This component implements a category-based filtering system where:
+ * - All products are displayed on one page without navigation
+ * - Category filtering is managed through React state (activeCategory)
+ * - First category is selected by default on page load
+ * - CategoryTabs component displays 6 visible tabs + "More Categories" dropdown
+ * - CategoryTitle component shows selected category name and introduction
+ * - Products are filtered dynamically based on activeCategory state
+ * - URL remains on /products (no route changes during filtering)
+ * - Smooth animations transition between category changes
+ * 
+ * Key State:
+ * - activeCategory: Currently selected category ID
+ * - showContactPopup: Popup display toggle
+ * 
+ * For detailed documentation, see: PRODUCT_FILTERING_GUIDE.md
+ */
 
 // Add helper functions after productData (or near top of file)
 const convertIdToTranslationKey = (id?: string) => {
@@ -1404,6 +1426,12 @@ const ProductDetail: React.FC<{ item: any; categoryId: string; language: string;
 
 const ProductsPage: React.FC = () => {
   const { t, language } = useLanguage();
+  const navigate = useNavigate();
+  const { categoryId, productId } = useParams<{ categoryId?: string; productId?: string }>();
+
+  // State management for category filtering
+  const [activeCategory, setActiveCategory] = useState<string>(productData[0]?.id || '');
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [showContactPopup, setShowContactPopup] = useState(false);
 
   // Show contact popup after 60 seconds
@@ -1414,20 +1442,16 @@ const ProductsPage: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
-
-
-  const { categoryId, productId } = useParams<{ categoryId?: string; productId?: string }>();
-  const navigate = useNavigate();
-
-  // If viewing a product detail, show ProductDetails component
-  if (categoryId && productId) {
+  // If viewing a product detail via URL, show ProductDetails component
+  if (categoryId && productId && !selectedProduct) {
     return <ProductDetails productData={productData} />;
   }
 
-  // Otherwise show products grid or category view
-  const selectedCategory = categoryId 
-    ? productData.find(cat => cat.id === categoryId)
-    : null;
+  // Get the selected category data
+  const selectedCategory = productData.find(cat => cat.id === activeCategory) || productData[0];
+
+  // Filter products for the selected category
+  const filteredProducts = selectedCategory?.items || [];
 
   const getShortSpec = (item: any): string => {
     if (item.keyFeatures && item.keyFeatures.length > 0) {
@@ -1437,165 +1461,151 @@ const ProductsPage: React.FC = () => {
   };
 
   const handleViewDetails = (catId: string, productName: string) => {
-    navigate(`/products/${catId}/${encodeURIComponent(productName)}`);
+    // Find the product and set it as selected
+    const category = productData.find(c => c.id === catId);
+    const product = category?.items.find(p => p.name === productName);
+    if (product && category) {
+      setSelectedProduct({ product, category, categoryId: catId });
+    }
   };
 
-  const seoTitle = selectedCategory 
-    ? `${selectedCategory.category} - Danesh Industries`
-    : 'Our Products - Danesh Industries';
+  const handleBackFromDetails = () => {
+    setSelectedProduct(null);
+  };
 
-  const seoDescription = selectedCategory
-    ? selectedCategory.introduction
-    : 'Explore our comprehensive range of precision machined parts, flanges, fittings, valves, and industrial components.';
+  const handleCategoryChange = (categoryId: string) => {
+    setActiveCategory(categoryId);
+    setSelectedProduct(null);
+  };
+
+
 
   return (
     <>
       <SEO
-        title={seoTitle}
-        description={seoDescription}
+        title={`${selectedCategory.category} - Danesh Industries`}
+        description={selectedCategory.introduction}
         keywords="flanges, fittings, valves, industrial components, Danesh Industries"
-        url={categoryId ? `/products/${categoryId}` : '/products'}
+        url="/products"
       />
 
       <div className="bg-brand-dark min-h-screen">
         {/* Hero Section */}
-        <div className="py-16 relative" style={{ backgroundSize: 'cover', backgroundPosition: 'center', backgroundImage: 'url(/techno2.jpg)' }}>
+        <div 
+          className="py-16 relative" 
+          style={{ 
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center', 
+            backgroundImage: 'url(/techno2.jpg)' 
+          }}
+        >
           <div className="absolute inset-0 bg-blue-900 opacity-40"></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-8">
               <h1 className="text-4xl lg:text-5xl font-extrabold text-white mb-4">
-                {selectedCategory ? selectedCategory.category : t('products.title')}
+                {t('products.title') || 'Our Products'}
               </h1>
               <p className="text-lg text-gray-200 max-w-3xl mx-auto">
-                {selectedCategory 
-                  ? selectedCategory.introduction.substring(0, 150) + '...'
-                  : t('products.subtitle')
-                }
+                {t('products.subtitle') || 'Explore our comprehensive range of precision-engineered industrial components'}
               </p>
             </div>
           </div>
         </div>
 
-        {/* Category Navigation */}
-        {!selectedCategory && (
-          <div className="bg-gray-900 border-b border-gray-700 sticky top-0 z-40 py-4">
-            <div className="container mx-auto px-4">
-              <div className="flex flex-wrap gap-2 justify-center">
-                {productData.slice(0, 8).map(cat => (
+        {/* Category Tabs Navigation */}
+        <CategoryTabs
+          categories={productData}
+          activeCategory={activeCategory}
+          onCategoryChange={handleCategoryChange}
+          maxVisibleTabs={100}
+        />
+
+        {/* Products Section */}
+        <div className="container mx-auto px-4 py-12">
+          {/* Show Product Details or Category Title + Grid */}
+          {selectedProduct ? (
+            <>
+              {/* Product Name as Title */}
+              <div className="mb-12 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg shadow-lg p-8 animate-fade-in">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+                      {selectedProduct.product.name}
+                    </h2>
+                    <p className="text-gray-100 text-base md:text-lg">
+                      {selectedProduct.category.category}
+                    </p>
+                  </div>
                   <button
-                    key={cat.id}
-                    onClick={() => navigate(`/products/${cat.id}`)}
-                    className="px-4 py-2 bg-brand-blue hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-semibold"
+                    onClick={handleBackFromDetails}
+                    className="mt-2 px-4 py-2 bg-brand-yellow hover:bg-yellow-500 text-gray-800 rounded-lg font-semibold transition-colors duration-300"
                   >
-                    {cat.category}
+                    ← Back
                   </button>
-                ))}
-                {productData.length > 8 && (
-                  <select
-                    onChange={(e) => {
-                      if (e.target.value) navigate(`/products/${e.target.value}`);
-                    }}
-                    className="px-4 py-2 bg-brand-yellow text-gray-800 rounded-lg font-semibold focus:outline-none"
-                  >
-                    <option value="">More Categories...</option>
-                    {productData.slice(8).map(cat => (
-                      <option key={cat.id} value={cat.id}>{cat.category}</option>
-                    ))}
-                  </select>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Products Grid or Category Detail */}
-        <div className="container mx-auto px-4 py-16">
-          {selectedCategory ? (
-            // Category with products grid
-            <div>
-              <button
-                onClick={() => navigate('/products')}
-                className="mb-8 flex items-center text-brand-yellow hover:text-yellow-300 transition-colors font-semibold"
-              >
-                <span className="mr-2">←</span> Back to All Products
-              </button>
-
-              <div className="mb-12 bg-white rounded-lg shadow-lg p-8">
-                <h2 className={`text-3xl font-bold mb-4 ${
-                  ['flanges', 'valve-components', 'ms-flanges', 'ss-304-flanges', 'gi-r-brand-fittings', 'gi-fittings', 'ss-fittings', 'pull-studs', 'plug-valves', 'control-valves', 'mild-steel-pins', 'partition-plate-die', 'ball-valve-seat-ring', 'solenoid-valves', 'cast-steel-screwed-fittings', 'pipe-fittings', 'gi-slip-on-flanges', 'ss-316-flanges', 'ms-spacer-flanges'].includes(categoryId || '')
-                    ? 'text-orange-500'
-                    : 'text-brand-blue'
-                }`}>
-                  About {selectedCategory.category}
-                </h2>
-                <p className="text-gray-700 text-lg leading-relaxed">
-                  {selectedCategory.introduction}
-                </p>
+                </div>
               </div>
 
-              <h3 className={`text-2xl font-bold mb-8 ${
-                ['flanges', 'valve-components', 'ms-flanges', 'ss-304-flanges', 'gi-r-brand-fittings', 'gi-fittings', 'ss-fittings', 'pull-studs', 'plug-valves', 'control-valves', 'mild-steel-pins', 'partition-plate-die', 'ball-valve-seat-ring', 'solenoid-valves', 'cast-steel-screwed-fittings', 'pipe-fittings', 'gi-slip-on-flanges', 'ss-316-flanges', 'ms-spacer-flanges'].includes(categoryId || '')
-                  ? 'text-orange-500'
-                  : 'text-brand-blue'
-              }`}>
-                {selectedCategory.category} Variants
-              </h3>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                {selectedCategory.items.map((item, idx) => (
-                  <ProductCard
-                    key={idx}
-                    id={`${categoryId}-${idx}`}
-                    name={item.name}
-                    image={item.image}
-                    shortSpec={getShortSpec(item)}
-                    categoryId={categoryId || ''}
-                    onViewDetails={handleViewDetails}
-                  />
-                ))}
+              {/* Product Details Inline */}
+              <div className="animate-fade-in">
+                <InlineProductDetails
+                  product={selectedProduct.product}
+                  category={selectedProduct.category}
+                  onBack={handleBackFromDetails}
+                />
               </div>
-            </div>
+            </>
           ) : (
-            // All products grid
-            <div>
-              <h2 className="text-3xl font-bold mb-4 text-white text-center">Browse All Products</h2>
-              <p className="text-gray-300 text-center mb-12 max-w-2xl mx-auto">
-                Explore our comprehensive range of precision-engineered industrial components, flanges, fittings, and valves.
-              </p>
+            <>
+              {/* Category Title with Introduction */}
+              <CategoryTitle
+                categoryName={selectedCategory.category}
+                categoryIntro={selectedCategory.introduction}
+              />
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {productData.map(category => (
-                  category.items.map((item, idx) => (
-                    <ProductCard
-                      key={`${category.id}-${idx}`}
-                      id={`${category.id}-${idx}`}
-                      name={item.name}
-                      image={item.image}
-                      shortSpec={getShortSpec(item)}
-                      categoryId={category.id}
-                      onViewDetails={handleViewDetails}
-                    />
-                  ))
-                ))}
+              {/* Products Grid with Smooth Transition */}
+              <div className="animate-fade-in">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filteredProducts.length > 0 ? (
+                    filteredProducts.map((item, idx) => (
+                      <div 
+                        key={`${activeCategory}-${idx}`}
+                        className="transform transition-all duration-300 hover:scale-105"
+                      >
+                        <ProductCard
+                          id={`${activeCategory}-${idx}`}
+                          name={item.name}
+                          image={item.image}
+                          shortSpec={getShortSpec(item)}
+                          categoryId={activeCategory}
+                          onViewDetails={handleViewDetails}
+                        />
+                      </div>
+                    ))
+                  ) : (
+                    <div className="col-span-1 md:col-span-2 lg:col-span-3 text-center py-12">
+                      <p className="text-gray-400 text-lg">No products found for this category.</p>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
+            </>
           )}
         </div>
       </div>
 
-            {/* Location Footer */}
-            <div className="bg-gray-900 text-gray-200 py-6">
-                <div className="container mx-auto px-4 text-center">
-                    <p className="text-sm font-semibold">Serving Chennai &amp; Industrial Hubs</p>
-                    <p className="text-sm mt-2">Danesh Industries supplies pipe fittings to Chennai, Sriperumbudur, Oragadam, Ambattur, Hosur, Coimbatore, and exports to UAE, Saudi Arabia, Bahrain, Oman, Qatar, and Kuwait.</p>
-                </div>
-            </div>
+      {/* Location Footer */}
+      <div className="bg-gray-900 text-gray-200 py-6">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-sm font-semibold">Serving Chennai &amp; Industrial Hubs</p>
+          <p className="text-sm mt-2">Danesh Industries supplies pipe fittings to Chennai, Sriperumbudur, Oragadam, Ambattur, Hosur, Coimbatore, and exports to UAE, Saudi Arabia, Bahrain, Oman, Qatar, and Kuwait.</p>
+        </div>
+      </div>
 
-            {/* Contact Popup */}
-            <ContactPopup
-                isOpen={showContactPopup}
-                onClose={() => setShowContactPopup(false)}
-            />
+      {/* Contact Popup */}
+      <ContactPopup
+        isOpen={showContactPopup}
+        onClose={() => setShowContactPopup(false)}
+      />
     </>
   );
 };

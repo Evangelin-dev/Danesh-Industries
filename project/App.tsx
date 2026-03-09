@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from './contexts/LanguageContext';
+import './styles/globals.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './components/HomePage';

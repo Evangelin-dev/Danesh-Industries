@@ -30,6 +30,9 @@ import CategoryTitle from './CategoryTitle';
  */
 
 // Add helper functions after productData (or near top of file)
+const slugify = (name: string) =>
+  name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
 const convertIdToTranslationKey = (id?: string) => {
     if (!id) return '';
     // convert hyphen-case id like 'ss-304-flanges' -> 'ss304Flanges', 'ms-spacer-flanges' -> 'msSpacerFlanges'
@@ -1461,12 +1464,7 @@ const ProductsPage: React.FC = () => {
   };
 
   const handleViewDetails = (catId: string, productName: string) => {
-    // Find the product and set it as selected
-    const category = productData.find(c => c.id === catId);
-    const product = category?.items.find(p => p.name === productName);
-    if (product && category) {
-      setSelectedProduct({ product, category, categoryId: catId });
-    }
+    navigate(`/products/${catId}/${slugify(productName)}`);
   };
 
   const handleBackFromDetails = () => {

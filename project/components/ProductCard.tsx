@@ -20,7 +20,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div className="group bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
       {/* Image Container */}
-      <div className="relative h-48 bg-gray-200 overflow-hidden">
+      <div
+        className="relative h-48 bg-gray-200 overflow-hidden cursor-pointer"
+        onClick={() => onViewDetails(categoryId, name)}
+        role="button"
+        aria-label={`View details for ${name}`}
+      >
         <img
           src={image}
           alt={name}

@@ -6,6 +6,9 @@ import WhyChooseUs from './WhyChooseUs';
 import FAQSection from './FAQSection';
 import ContactPopup from './ContactPopup';
 
+const slugify = (name: string) =>
+  name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
 interface ProductItem {
   name: string;
   image?: string;
@@ -46,7 +49,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productData }) => {
 
   const currentProduct = useMemo(() => {
     if (!currentCategory || !productId) return null;
-    return currentCategory.items.find(item => item.name === decodeURIComponent(productId));
+    return currentCategory.items.find(item => slugify(item.name) === productId);
   }, [currentCategory, productId]);
 
   // Set initial variant
@@ -88,7 +91,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productData }) => {
         title={seoTitle}
         description={seoDescription}
         keywords={`${currentProduct.name}, ${currentCategory.category}, Danesh Industries`}
-        url={`/products/${categoryId}/${productId}`}
+        url={`/products/${categoryId}/${currentProduct ? slugify(currentProduct.name) : productId}`}
       />
 
       <div className="bg-brand-dark min-h-screen py-12">
@@ -140,7 +143,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productData }) => {
                     onChange={(e) => {
                       const newProduct = currentCategory.items.find(item => item.name === e.target.value);
                       if (newProduct) {
-                        navigate(`/products/${categoryId}/${encodeURIComponent(newProduct.name)}`);
+                        navigate(`/products/${categoryId}/${slugify(newProduct.name)}`);
                         setSelectedVariant(newProduct.name);
                       }
                     }}

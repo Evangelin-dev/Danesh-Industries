@@ -48,13 +48,13 @@ const BlogDetail = () => {
         
         const jsonResponse = await response.json();
 
-        // Check for success flag in the API response structure
-        if (!jsonResponse.success || !jsonResponse.data) {
-            throw new Error("API response was unsuccessful or data is missing.");
+        // Set the blog state to the top-level response or 'result' field
+        // Adjust this if your API returns the blog at a different key
+        if (!jsonResponse || (!jsonResponse.result && !jsonResponse.id)) {
+          throw new Error("API response was unsuccessful or data is missing.");
         }
-
-        // Set the blog state to the 'data' field from the API response
-        setBlog(jsonResponse.data);
+        // Prefer 'result' field if present, else use the response itself
+        setBlog(jsonResponse.result || jsonResponse);
 
       } catch (err) {
         console.error("Fetch error:", err);

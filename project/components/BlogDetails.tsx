@@ -41,58 +41,88 @@ const BlogDetail = () => {
           ? `https://portal.botdigitalsolutions.com/api/blogs/${slug}?access_key=42c8e913-0d5d-4e30-817b-adb9261dd3e2&lang=hi`
           : `https://portal.botdigitalsolutions.com/api/blogs/${slug}?access_key=42c8e913-0d5d-4e30-817b-adb9261dd3e2`;
 
-        console.log("BlogDetail: Fetching from URL:", apiUrl);
-        const response = await fetch(apiUrl);
-        console.log("BlogDetail: Response status:", response.status);
-        console.log("BlogDetail: Response content-type:", response.headers.get('Content-Type'));
+        console.log("BlogDetail: Starting fetch for slug:", slug);
+        console.log("BlogDetail: API URL:", apiUrl);
+        
+        const fetchOptions = {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+          },
+        };
+
+        console.log("BlogDetail: Making fetch request...");
+        const response = await fetch(apiUrl, fetchOptions);
+        console.log("BlogDetail: Response received, status:", response.status);
+        console.log("BlogDetail: Response statusText:", response.statusText);
 
         if (!response.ok) {
-            const errorText = await response.text();
-            console.error("BlogDetail: HTTP error response:", errorText.substring(0, 500));
+            console.error("BlogDetail: HTTP error, status:", response.status);
             throw new Error(`Failed to fetch blog: HTTP status ${response.status}`);
         }
         
-        const contentType = response.headers.get('Content-Type') || '';
-        if (!contentType.includes('application/json')) {
-          const responseText = await response.text();
-          console.error("BlogDetail: Non-JSON response received:", contentType, responseText.substring(0, 500));
-          throw new Error("API returned non-JSON response");
+        console.log("BlogDetail: Response is OK, attempting to parse JSON...");
+        let jsonResponse;
+        try {
+          jsonResponse = await response.json();
+          console.log("BlogDetail: ✓ JSON parsed successfully");
+          console.log("BlogDetail: Response has", Object.keys(jsonResponse || {}).length, "keys");
+          console.log("BlogDetail: Keys:", Object.keys(jsonResponse || {}));
+        } catch (parseErr) {
+          console.error("BlogDetail: ✗ JSON parse failed:", parseErr);
+          throw new Error("Failed to parse API response as JSON");
         }
-
-        const jsonResponse = await response.json();
-        console.log("BlogDetail: API response received:", jsonResponse);
 
         // Handle different API response structures
         let blogData = null;
         
         // Check if response is the blog object itself
-        if (jsonResponse && jsonResponse.id) {
+        if (jsonResponse && typeof jsonResponse === 'object' && jsonResponse.id) {
           blogData = jsonResponse;
-          console.log("BlogDetail: Using top-level response as blog data");
+          console.log("BlogDetail: ✓ Using top-level response as blog data");
+          console.log("BlogDetail: Blog ID:", blogData.id);
+          console.log("BlogDetail: Blog Title:", blogData.title?.substring(0, 50));
         }
         // Check if response wraps blog in 'result' field
-        else if (jsonResponse && jsonResponse.result && jsonResponse.result.id) {
+        else if (jsonResponse && jsonResponse.result && typeof jsonResponse.result === 'object' && jsonResponse.result.id) {
           blogData = jsonResponse.result;
-          console.log("BlogDetail: Using response.result as blog data");
+          console.log("BlogDetail: ✓ Using response.result as blog data");
         }
         // Check if response wraps blog in 'data' field  
-        else if (jsonResponse && jsonResponse.data && jsonResponse.data.id) {
+        else if (jsonResponse && jsonResponse.data && typeof jsonResponse.data === 'object' && jsonResponse.data.id) {
           blogData = jsonResponse.data;
-          console.log("BlogDetail: Using response.data as blog data");
+          console.log("BlogDetail: ✓ Using response.data as blog data");
         }
         
         if (!blogData) {
-          console.error("BlogDetail: Invalid response - no blog data found. Response:", jsonResponse);
-          throw new Error("API response was unsuccessful or data is missing.");
+          console.error("BlogDetail: ✗ No blog data extracted");
+          console.error("BlogDetail: Response structure - type:", typeof jsonResponse);
+          console.error("BlogDetail: Response keys:", Object.keys(jsonResponse || {}));
+          console.error("BlogDetail: Has .id at top level?", jsonResponse?.id !== undefined);
+          console.error("BlogDetail: Has .result?", jsonResponse?.result !== undefined);
+          console.error("BlogDetail: Has .data?", jsonResponse?.data !== undefined);
+          throw new Error("API response does not contain expected blog data structure");
         }
-        console.log("BlogDetail: Blog data valid, setting blog:", blogData.id);
+        
+        console.log("BlogDetail: ✓ Setting blog state...");
         setBlog(blogData);
+        console.log("BlogDetail: ✓ Blog state set successfully");
 
       } catch (err) {
+        console.error("BlogDetail: ✗✗✗ FETCH FAILED ✗✗✗");
         const errorMsg = err instanceof Error ? err.message : String(err);
-        console.error("BlogDetail: Fetch error:", errorMsg, err);
+        console.error("BlogDetail: Error type:", err?.constructor?.name);
+        console.error("BlogDetail: Error message:", errorMsg);
+        if (err instanceof Error) {
+          console.error("BlogDetail: Error stack:", err.stack);
+        } else {
+          console.error("BlogDetail: Error object:", err);
+        }
+        console.error("BlogDetail: Current slug:", slug);
+        console.error("BlogDetail: Current language:", language);
         setError("Error loading blog. Please check the network connection or slug.");
       } finally {
+        console.log("BlogDetail: Finally block - setting loading to false");
         setLoading(false);
       }
     };

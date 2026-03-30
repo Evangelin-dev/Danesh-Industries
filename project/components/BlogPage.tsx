@@ -68,20 +68,30 @@ const BlogPage: React.FC = () => {
           ? "https://portal.botdigitalsolutions.com/api/blogs/?access_key=42c8e913-0d5d-4e30-817b-adb9261dd3e2&lang=hi"
           : "https://portal.botdigitalsolutions.com/api/blogs/?access_key=42c8e913-0d5d-4e30-817b-adb9261dd3e2";
 
+        console.log("BlogPage: Fetching blogs from:", apiUrl);
         const response = await fetch(apiUrl);
         if (!response.ok) {
           throw new Error(t('blog.error') || "Failed to fetch blogs");
         }
         const data = await response.json();
+        console.log("BlogPage: API response received, results count:", (data.results || []).length);
 
         // Translate blog content if API doesn't support Hindi
         let blogsData = data.results || [];
+        console.log("BlogPage: First blog has slug?", blogsData.length > 0 ? blogsData[0].slug : "N/A");
+        blogsData.forEach((blog: any, idx: number) => {
+          if (idx < 3) console.log(`BlogPage: Blog ${idx} - id: ${blog.id}, slug: ${blog.slug}`);
+        });
+
         if (language === 'hi' && blogsData.length > 0) {
           blogsData = translateBlogContent(blogsData, t);
         }
 
+        console.log("BlogPage: Setting blogs state with", blogsData.length, "blogs");
         setBlogs(blogsData);
       } catch (err) {
+        const errorMsg = err instanceof Error ? err.message : String(err);
+        console.error("BlogPage: Fetch error:", errorMsg);
         setError(t('blog.error') || "Error loading blogs");
       } finally {
         setLoading(false);

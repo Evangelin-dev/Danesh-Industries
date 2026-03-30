@@ -24,6 +24,8 @@ const BlogDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  console.log("BlogDetail: Component mounted/updated with slug:", slug, "language:", language);
+
   useEffect(() => {
     // Only fetch if a slug is available
     if (!slug) {
@@ -39,25 +41,56 @@ const BlogDetail = () => {
           ? `https://portal.botdigitalsolutions.com/api/blogs/${slug}?access_key=42c8e913-0d5d-4e30-817b-adb9261dd3e2&lang=hi`
           : `https://portal.botdigitalsolutions.com/api/blogs/${slug}?access_key=42c8e913-0d5d-4e30-817b-adb9261dd3e2`;
 
+        console.log("BlogDetail: Fetching from URL:", apiUrl);
         const response = await fetch(apiUrl);
+        console.log("BlogDetail: Response status:", response.status);
+        console.log("BlogDetail: Response content-type:", response.headers.get('Content-Type'));
 
         if (!response.ok) {
-            // Handle HTTP error statuses (404, 500, etc.)
+            const errorText = await response.text();
+            console.error("BlogDetail: HTTP error response:", errorText.substring(0, 500));
             throw new Error(`Failed to fetch blog: HTTP status ${response.status}`);
         }
         
-        const jsonResponse = await response.json();
+        const contentType = response.headers.get('Content-Type') || '';
+        if (!contentType.includes('application/json')) {
+          const responseText = await response.text();
+          console.error("BlogDetail: Non-JSON response received:", contentType, responseText.substring(0, 500));
+          throw new Error("API returned non-JSON response");
+        }
 
-        // Set the blog state to the top-level response or 'result' field
-        // Adjust this if your API returns the blog at a different key
-        if (!jsonResponse || (!jsonResponse.result && !jsonResponse.id)) {
+        const jsonResponse = await response.json();
+        console.log("BlogDetail: API response received:", jsonResponse);
+
+        // Handle different API response structures
+        let blogData = null;
+        
+        // Check if response is the blog object itself
+        if (jsonResponse && jsonResponse.id) {
+          blogData = jsonResponse;
+          console.log("BlogDetail: Using top-level response as blog data");
+        }
+        // Check if response wraps blog in 'result' field
+        else if (jsonResponse && jsonResponse.result && jsonResponse.result.id) {
+          blogData = jsonResponse.result;
+          console.log("BlogDetail: Using response.result as blog data");
+        }
+        // Check if response wraps blog in 'data' field  
+        else if (jsonResponse && jsonResponse.data && jsonResponse.data.id) {
+          blogData = jsonResponse.data;
+          console.log("BlogDetail: Using response.data as blog data");
+        }
+        
+        if (!blogData) {
+          console.error("BlogDetail: Invalid response - no blog data found. Response:", jsonResponse);
           throw new Error("API response was unsuccessful or data is missing.");
         }
-        // Prefer 'result' field if present, else use the response itself
-        setBlog(jsonResponse.result || jsonResponse);
+        console.log("BlogDetail: Blog data valid, setting blog:", blogData.id);
+        setBlog(blogData);
 
       } catch (err) {
-        console.error("Fetch error:", err);
+        const errorMsg = err instanceof Error ? err.message : String(err);
+        console.error("BlogDetail: Fetch error:", errorMsg, err);
         setError("Error loading blog. Please check the network connection or slug.");
       } finally {
         setLoading(false);

@@ -5,7 +5,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import SEO from './SEO';
 
 const getTechnologiesData = (t: (key: string) => string) => [
-    { name: t('technology.solidworks.name') || 'SolidWorks', description: t('technology.solidworks.description') || 'For 3D modeling and design.', image: 'https://upload.wikimedia.org/wikipedia/commons/9/9e/SolidWorks_Logo.svg' },
+    { name: t('technology.Design and development engineering.name') || 'Design and development engineering', description: t('technology.Design and development engineering.description') || 'Precision 2D drafting & 3D cad Modelling.', image: 'https://upload.wikimedia.org/wikipedia/commons/9/9e/Design and development engineering_Logo.svg' },
     { name: t('technology.mastercam.name') || 'Mastercam', description: t('technology.mastercam.description') || 'For process automation.', image: 'https://www.mastercam.com/wp-content/uploads/2020/05/Mastercam-Logo.png' },
     { name: t('technology.faro.name') || 'FARO Arm', description: t('technology.faro.description') || 'For precision measurement.', image: 'https://www.faro.com/wp-content/uploads/2020/01/FARO-Logo.png' },
     { name: t('technology.pmi.name') || 'PMI & Mobile Spectro', description: t('technology.pmi.description') || 'For material analysis.', image: 'https://www.spectro.com/fileadmin/_processed_/csm_Spectro_Logo_2018_RGB_300dpi_01_1c8b8b8b8b.png' },
@@ -37,7 +37,7 @@ const TechnologyPage: React.FC = () => {
         <>
             <SEO
                 title="Our Technology - Danesh Industries"
-                description="Danesh Industries uses an integrated suite of advanced technologies — SolidWorks for CAD, Mastercam for CAM automation, FARO measurement systems, PMI and mobile spectrometers for material verification, and rigorous hydro testing — combining digital design, precision measurement and process validation to deliver high-reliability components to global industries."
+                description="Danesh Industries uses an integrated suite of advanced technologies — Design and development engineering for CAD, Mastercam for CAM automation, FARO measurement systems, PMI and mobile spectrometers for material verification, and rigorous hydro testing — combining digital design, precision measurement and process validation to deliver high-reliability components to global industries."
                 url="/technology"
             />
             <style dangerouslySetInnerHTML={{
@@ -65,22 +65,22 @@ const TechnologyPage: React.FC = () => {
                         animation: spin-in 0.8s ease-out forwards;
                         opacity: 0;
                     }
-                    @keyframes solidworks-glow {
+                    @keyframes Design and development engineering-glow {
                         0%, 100% { box-shadow: 0 0 15px rgba(138, 43, 226, 0.4), 0 0 30px rgba(138, 43, 226, 0.2); }
                         50% { box-shadow: 0 0 25px rgba(138, 43, 226, 0.8), 0 0 50px rgba(138, 43, 226, 0.4), 0 0 75px rgba(138, 43, 226, 0.2); }
                     }
-                    .solidworks-highlight:hover {
+                    .Design and development engineering-highlight:hover {
                         background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(147, 112, 219, 0.05));
                         border: 2px solid rgba(138, 43, 226, 0.3);
                         box-shadow: 0 8px 25px rgba(138, 43, 226, 0.15);
                         transform: scale(1.02);
                     }
-                    .solidworks-icon:hover {
-                        animation: solidworks-glow 2s ease-in-out infinite;
+                    .Design and development engineering-icon:hover {
+                        animation: Design and development engineering-glow 2s ease-in-out infinite;
                         background: linear-gradient(135deg, #8A2BE2, #9370DB);
                         transform: scale(1.1) rotate(5deg);
                     }
-                    .solidworks-title:hover {
+                    .Design and development engineering-title:hover {
                         color: #8A2BE2 !important;
                         text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
                         font-weight: 700;
@@ -179,12 +179,12 @@ const TechnologyPage: React.FC = () => {
                     <div className="max-w-4xl mx-auto">
                         <ul className="space-y-4">
                             {getTechnologiesData(t).map((tech, index) => (
-                                <li key={index} className={`bg-white p-6 rounded-lg shadow-sm flex items-center space-x-6 hover:shadow-lg hover:scale-105 transition-all duration-300 animate-fade-in ${index === 0 ? 'solidworks-highlight' : ''} ${index === 1 ? 'mastercam-highlight' : ''} ${index === 2 ? 'faro-highlight' : ''} ${index === 3 ? 'pmi-highlight' : ''} ${index === 4 ? 'hydro-highlight' : ''}`} style={{ animationDelay: `${0.2 + index * 0.15}s` }}>
-                                    <div className={`flex-shrink-0 h-12 w-12 rounded-full bg-brand-blue flex items-center justify-center text-white font-bold text-2xl animate-spin-in overflow-hidden ${index === 0 ? 'solidworks-icon' : ''} ${index === 1 ? 'mastercam-icon' : ''} ${index === 2 ? 'faro-icon' : ''} ${index === 3 ? 'pmi-icon' : ''} ${index === 4 ? 'hydro-icon' : ''}`} style={{ animationDelay: `${0.4 + index * 0.15}s` }}>
+                                <li key={index} className={`bg-white p-6 rounded-lg shadow-sm flex items-center space-x-6 hover:shadow-lg hover:scale-105 transition-all duration-300 animate-fade-in ${index === 0 ? 'Design and development engineering-highlight' : ''} ${index === 1 ? 'mastercam-highlight' : ''} ${index === 2 ? 'faro-highlight' : ''} ${index === 3 ? 'pmi-highlight' : ''} ${index === 4 ? 'hydro-highlight' : ''}`} style={{ animationDelay: `${0.2 + index * 0.15}s` }}>
+                                    <div className={`flex-shrink-0 h-12 w-12 rounded-full bg-brand-blue flex items-center justify-center text-white font-bold text-2xl animate-spin-in overflow-hidden ${index === 0 ? 'Design and development engineering-icon' : ''} ${index === 1 ? 'mastercam-icon' : ''} ${index === 2 ? 'faro-icon' : ''} ${index === 3 ? 'pmi-icon' : ''} ${index === 4 ? 'hydro-icon' : ''}`} style={{ animationDelay: `${0.4 + index * 0.15}s` }}>
                                         {tech.image ? <img src={tech.image} alt={tech.name} className="h-8 w-8 object-contain" /> : index + 1}
                                     </div>
                                     <div>
-                                        <h3 className={`text-xl font-semibold text-brand-blue hover:text-brand-dark transition-colors duration-300 ${index === 0 ? 'solidworks-title' : ''} ${index === 1 ? 'mastercam-title' : ''} ${index === 2 ? 'faro-title' : ''} ${index === 3 ? 'pmi-title' : ''} ${index === 4 ? 'hydro-title' : ''}`}>{tech.name}</h3>
+                                        <h3 className={`text-xl font-semibold text-brand-blue hover:text-brand-dark transition-colors duration-300 ${index === 0 ? 'Design and development engineering-title' : ''} ${index === 1 ? 'mastercam-title' : ''} ${index === 2 ? 'faro-title' : ''} ${index === 3 ? 'pmi-title' : ''} ${index === 4 ? 'hydro-title' : ''}`}>{tech.name}</h3>
                                         <p className="text-brand-dark">{tech.description}</p>
                                     </div>
                                 </li>

@@ -431,8 +431,8 @@ const translations = {
     // Technology Page
     'technology.title': 'Our Technology',
     'technology.subtitle': 'We Integrating advanced tools and software into our processes.',
-    'technology.solidworks.name': 'SolidWorks',
-    'technology.solidworks.description': 'For 3D modeling and design.',
+    'technology.Design and development engineering.name': 'Design and development engineering',
+    'technology.Design and development engineering.description': 'Precision 2D drafting & 3D cad Modelling.',
     'technology.mastercam.name': 'Mastercam',
     'technology.mastercam.description': 'For process automation.',
     'technology.faro.name': 'FARO Arm',
@@ -1098,8 +1098,8 @@ const translations = {
     // Technology Page
     'technology.title': 'हमारी प्रौद्योगिकी',
     'technology.subtitle': 'हम अपनी प्रक्रियाओं में उन्नत उपकरणों और सॉफ्टवेयर को एकीकृत करते हैं।',
-    'technology.solidworks.name': 'सॉलिडवर्क्स',
-    'technology.solidworks.description': '3D मॉडलिंग और डिजाइन के लिए।',
+    'technology.Design and development engineering.name': 'सॉलिडवर्क्स',
+    'technology.Design and development engineering.description': '3D मॉडलिंग और डिजाइन के लिए।',
     'technology.mastercam.name': 'मास्टरकैम',
     'technology.mastercam.description': 'प्रक्रिया स्वचालन के लिए।',
     'technology.faro.name': 'फेरो आर्म',
